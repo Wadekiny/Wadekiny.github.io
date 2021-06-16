@@ -1,0 +1,1823 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next gemini" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=CodeNewRoman Nerd Font:300,300italic,400,400italic,700,700italic|CodeNewRoman Nerd Font:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/w180180.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/w3232.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/w1616.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/w512512.png?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Wadekiny">
+<meta property="og:url" content="http://example.com/page/3/index.html">
+<meta property="og:site_name" content="Wadekiny">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Tianyong Wang">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://example.com/page/3/"/>
+
+
+
+
+
+  <title>Wadekiny</title>
+  
+
+
+
+
+
+
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Wadekiny</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">U look awesome today</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/12/ubuntu%E6%9B%B4%E6%8D%A2%E8%BD%AF%E4%BB%B6%E6%BA%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/qifei.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wadekiny">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/02/12/ubuntu%E6%9B%B4%E6%8D%A2%E8%BD%AF%E4%BB%B6%E6%BA%90/" itemprop="url">ubuntu更换软件源</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-12T01:25:53+08:00">
+                2021-02-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><code>sudo nvim /etc/apt/sources.list</code></p>
+<p>添加：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">deb http:<span class="regexp">//mi</span>rrors.aliyun.com<span class="regexp">/ubuntu/</span> bionic main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb-src http:<span class="regexp">//mi</span>rrors.aliyun.com<span class="regexp">/ubuntu/</span> bionic main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb http:<span class="regexp">//mi</span>rrors.aliyun.com<span class="regexp">/ubuntu/</span> bionic-security main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb-src http:<span class="regexp">//mi</span>rrors.aliyun.com<span class="regexp">/ubuntu/</span> bionic-security main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb http:<span class="regexp">//mi</span>rrors.aliyun.com<span class="regexp">/ubuntu/</span> bionic-updates main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb-src http:<span class="regexp">//mi</span>rrors.aliyun.com<span class="regexp">/ubuntu/</span> bionic-updates main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb http:<span class="regexp">//mi</span>rrors.aliyun.com<span class="regexp">/ubuntu/</span> bionic-backports main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb-src http:<span class="regexp">//mi</span>rrors.aliyun.com<span class="regexp">/ubuntu/</span> bionic-backports main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb http:<span class="regexp">//mi</span>rrors.aliyun.com<span class="regexp">/ubuntu/</span> bionic-proposed main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb-src http:<span class="regexp">//mi</span>rrors.aliyun.com<span class="regexp">/ubuntu/</span> bionic-proposed main restricted universe multiverse</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/12/ubuntu18-04%E8%BF%9B%E5%85%A5%E7%B3%BB%E7%BB%9F%E9%BB%91%E5%B1%8F-R7000P/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/qifei.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wadekiny">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/02/12/ubuntu18-04%E8%BF%9B%E5%85%A5%E7%B3%BB%E7%BB%9F%E9%BB%91%E5%B1%8F-R7000P/" itemprop="url">ubuntu18.04进入系统黑屏(R7000P)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-12T00:45:34+08:00">
+                2021-02-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="进桌面环境黑屏，花屏（对于R7000P）"><a href="#进桌面环境黑屏，花屏（对于R7000P）" class="headerlink" title="进桌面环境黑屏，花屏（对于R7000P）"></a>进桌面环境黑屏，花屏（对于R7000P）</h2><p>原因：实在是太捞了，自带的nouveau驱动和NVIDIA的驱动冲突，导致黑屏。</p>
+<p>方法：</p>
+<ol>
+<li><p>装ubuntu双系统前先关闭secure boot，显卡模式换为可切换（非独显模式）</p>
+</li>
+<li><p>进入桌面环境后（黑屏），按ctrl alt F2 进入tty2。或选系统时选高级选项，进入recovery mode再进入桌面环境。</p>
+</li>
+<li><p><code>sudo vim /etc/modprobe.d/blacklist.conf</code><br>最后两行添加（添加到黑名单，不出意外的话以后不需要再动）</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">blacklist</span> nouveau</span><br><span class="line"></span><br><span class="line"><span class="attribute"><span class="nomarkup">options</span></span> nouveau modeset=<span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>刷新内核<br><code>sudo update-initramfs -u</code><br>重启<br><code>reboot</code></p>
+</li>
+<li><p>此时应该能够正常显示桌面系统，装NVIDIA显卡驱动<br>查找推荐的驱动型号，对于RTX2060，有些驱动版本不能支持，太旧的驱动不能用。<br><code>ubuntu-drivers devices</code><br><img src="/2021/02/12/ubuntu18-04%E8%BF%9B%E5%85%A5%E7%B3%BB%E7%BB%9F%E9%BB%91%E5%B1%8F-R7000P/pictures/udd.png" alt="avatar"><br>这里推荐我用460，开始安装：<br><code>sudo add-apt-repository ppa:graphics-drivers/ppa</code><br><code>sudo apt update</code><br><code>sudo apt-get install nvidia-460</code><br><code>sudo apt-get install mesa-common-dev</code><br><code>sudo apt-get install freeglut3-dev</code><br>验证：<br><code>nvidia-smi</code><br><img src="/2021/02/12/ubuntu18-04%E8%BF%9B%E5%85%A5%E7%B3%BB%E7%BB%9F%E9%BB%91%E5%B1%8F-R7000P/pictures/smi.png" alt="avatar"><br>出现框框则安装成功。<br>重启<br><code>reboot</code></p>
+</li>
+<li><p>再次开机发现又卡在开机界面了。重启，进BIOS，切换成独立显卡模式就OK了。 </p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/02/Vim%E6%8F%92%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/qifei.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wadekiny">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/01/02/Vim%E6%8F%92%E4%BB%B6/" itemprop="url">Vim插件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-02T15:26:58+08:00">
+                2021-01-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>airline的图标需要安装nerd font字体</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/01/vim%E4%B8%AD%E7%9A%84buffer-window-tab/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/qifei.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wadekiny">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/01/01/vim%E4%B8%AD%E7%9A%84buffer-window-tab/" itemprop="url">vim中的buffer window tab</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-01T20:53:33+08:00">
+                2021-01-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="buffer-window-tab-分别是什么"><a href="#buffer-window-tab-分别是什么" class="headerlink" title="buffer  window  tab 分别是什么"></a>buffer  window  tab 分别是什么</h2><p><strong>参考vim的help文件</strong><br>A buffer is the in-memory text of a file<br>A window is a viewport on a buffer<br>A tab page is a collection of windows.</p>
+<h3 id="Window"><a href="#Window" class="headerlink" title="Window:"></a>Window:</h3><p>A window is a viewport onto a buffer. You can use mutiple windows on one buffer, or several windows on different buffers.</p>
+<p>A screen contains one or more windows, separated by status lines and with the<br>command line at the bottom.</p>
+<p>for example:<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">             screen</span><br><span class="line">+-------------------------------+</span><br><span class="line">|<span class="string"> window 1      </span>|<span class="string"> window 2      </span>|</span><br><span class="line">|<span class="string">               </span>|<span class="string">               </span>|</span><br><span class="line">|<span class="string">               </span>|<span class="string">               </span>|</span><br><span class="line">|<span class="string">= status line =</span>|<span class="string">= status line =</span>|</span><br><span class="line">|<span class="string"> window 3                      </span>|</span><br><span class="line">|<span class="string">                               </span>|</span><br><span class="line">|<span class="string">                               </span>|</span><br><span class="line">|<span class="string">==== status line ==============</span>|</span><br><span class="line">|<span class="string">command line                   </span>|</span><br><span class="line">+-------------------------------+</span><br></pre></td></tr></table></figure></p>
+<h3 id="Buffer"><a href="#Buffer" class="headerlink" title="Buffer"></a>Buffer</h3><p>A buffer is a file loaded into memory for editing. The original file remains unchanged until you write the buffer to the file.</p>
+<p>A buffer can be in one of three states:</p>
+<ol>
+<li>active: the buffer is displayed in a window. If there is a file for this buffer, it has been read into the buffer. The buffer may have been modified since then and thus be different from the file.</li>
+<li>hidden: the buffer is not displayed. If ther is a file for this buffer, it has been read into the buffer. Otherwise it is the same as an active buffer, you just cannot see it.</li>
+<li>inactive: the buffer is not displayed and does not contain anything. Options for the buffer are remembered if the file was once loaded. It can contain marks from the shada file. But the buffer doesn&#39;t contain text.</li>
+</ol>
+<p>In brief:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>state</th>
+<th>displayed in window</th>
+<th>loaded</th>
+<th>&quot;:buffers&quot; show</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>active</td>
+<td>yes</td>
+<td>yes</td>
+<td>&#39;a&#39;</td>
+</tr>
+<tr>
+<td>hidden</td>
+<td>no</td>
+<td>yes</td>
+<td>&#39;h&#39;</td>
+</tr>
+<tr>
+<td>inactive</td>
+<td>no</td>
+<td>no</td>
+<td>&#39; &#39;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="Tab"><a href="#Tab" class="headerlink" title="Tab"></a>Tab</h3><p>A tab page holds one or more windows.  You can easily switch between tab pages, so that you have several collections of windows to work on different things.</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>操作文件实际上是操作各个buffer（当新打开一个buffer的时候它不对应任何文件），buffer客观存在（活动、非活动、隐藏），想要看到buffer的内容需要使用window</li>
+<li>window实际上是buffer的视窗，想要看到buffer需要通过window，一个window对应一个buffer；也可以同时用多个window看一个buffer（比如需要对比一个文件的两个不同位置），对buffer的修改同时有效</li>
+<li>一个tab可以整合多个window，多个window构成一个tab</li>
+</ul>
+<hr>
+<h2 id="vim-中-buffer-window-tab-的操作"><a href="#vim-中-buffer-window-tab-的操作" class="headerlink" title="vim 中 buffer  window  tab 的操作"></a>vim 中 buffer  window  tab 的操作</h2><h3 id="buffer"><a href="#buffer" class="headerlink" title="buffer"></a>buffer</h3><h4 id="缓冲区列表"><a href="#缓冲区列表" class="headerlink" title="缓冲区列表"></a>缓冲区列表</h4><ol>
+<li><code>:ls</code></li>
+<li><code>:buffers</code></li>
+</ol>
+<h4 id="切换缓冲区"><a href="#切换缓冲区" class="headerlink" title="切换缓冲区"></a>切换缓冲区</h4><ol>
+<li>上一个　<code>:bp</code></li>
+<li>下一个　<code>:bn</code></li>
+<li>指定　<code>:b[index]</code></li>
+</ol>
+<h4 id="删除缓冲区"><a href="#删除缓冲区" class="headerlink" title="删除缓冲区"></a>删除缓冲区</h4><ol>
+<li>删除当前　<code>:bd</code></li>
+<li>删除指定　<code>:bd[index]</code></li>
+</ol>
+<h3 id="window"><a href="#window" class="headerlink" title="window"></a>window</h3><h4 id="切分窗口"><a href="#切分窗口" class="headerlink" title="切分窗口"></a>切分窗口</h4><ol>
+<li>水平切分<br> 命令：<code>:sp file</code><br> 快捷键：<code>&lt;Ctrl-w&gt; + s</code> </li>
+<li>垂直切分<br> 命令： <code>:vsp file</code><br> 快捷键：<code>&lt;Ctrl-w&gt; + v</code></li>
+</ol>
+<h4 id="关闭窗口"><a href="#关闭窗口" class="headerlink" title="关闭窗口"></a>关闭窗口</h4><ol>
+<li>关闭活动窗口<br> 命令： <code>:clo  或者 :q</code><br> 快捷键：<code>&lt;Ctrl-w&gt; + c</code></li>
+<li>关闭其他窗口<br> 命令： <code>:on</code><br> 快捷键：<code>&lt;Ctrl-w&gt; + o</code></li>
+</ol>
+<h4 id="切换窗口"><a href="#切换窗口" class="headerlink" title="切换窗口"></a>切换窗口</h4><ol>
+<li>窗口间循环切换 <code>&lt;Ctrl-w&gt; + w</code></li>
+<li>切换到左边窗口 <code>&lt;Ctrl-w&gt; + h</code></li>
+<li>切换到上边窗口 <code>&lt;Ctrl-w&gt; + j</code></li>
+<li>切换到下边窗口 <code>&lt;Ctrl-w&gt; + k</code></li>
+<li>切换到右边窗口 <code>&lt;Ctrl-w&gt; + l</code></li>
+</ol>
+<h4 id="调整窗口"><a href="#调整窗口" class="headerlink" title="调整窗口"></a>调整窗口</h4><ol>
+<li>增加活动窗口宽度      <code>:vertical res +10</code> </li>
+<li>最大化活动窗口的宽度  <code>&lt;Ctrl-W&gt; + |</code> </li>
+<li>使所有窗口等宽等高    <code>&lt;Ctrl-W&gt; + =</code> </li>
+<li>设置活动窗口高度为N行 <code>[N] + &lt;Ctrl-W&gt; + _</code> </li>
+<li>设置活动窗口宽度为N列 <code>[N] + &lt;Ctrl-W&gt; + |</code> </li>
+<li>增加活动窗口高度      <code>:res +10</code> </li>
+</ol>
+<h3 id="tab"><a href="#tab" class="headerlink" title="tab"></a>tab</h3><ol>
+<li>在新标签页中打开 {filename}         <code>:tabe(dit) [filename]</code>    </li>
+<li>关闭当前标签页及其中的所有窗口      <code>:tabc(lose)</code>  </li>
+<li>只保留活动标签页，关闭所有其他标签页<code>:tabo(nly) [filename]</code>    </li>
+<li>切换到编号为 {N} 的标签页           <code>:tabn(ext) [N&#125;</code>  </li>
+<li>切换到下一标签页                    <code>:tabn(ext)</code>  </li>
+<li>切换到上一标签页                    <code>:tabp(revious)</code>  </li>
+</ol>
+<h2 id><a href="#" class="headerlink" title="---"></a>---</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/01/ubuntu%E4%B8%8B%E6%89%93%E5%8C%85%E4%B8%8E%E5%8E%8B%E7%BC%A9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/qifei.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wadekiny">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/01/01/ubuntu%E4%B8%8B%E6%89%93%E5%8C%85%E4%B8%8E%E5%8E%8B%E7%BC%A9/" itemprop="url">ubuntu下打包与压缩</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-01T15:53:14+08:00">
+                2021-01-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>linux系统经常使用tar进行归档打包（tar仅仅只能打包），再用gzip，xzip，bzip2等方式压缩（仅仅只能压缩一个文件）<br>详情可在终端下：<code>tar -?</code></p>
+<h2 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h2><p>用法：tar [options...] [file]...<br>示例：<br><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tar -cf archieve.tar foo <span class="built_in">bar</span> <span class="meta">#从文件 foo 和 bar 创建归档文件</span></span><br><span class="line">tar -tvf archive.tar         <span class="meta">#详细列举归档文件 archive.tar</span></span><br><span class="line">tar -xf archive.tar          <span class="meta">#解开归档文件 archive.tar</span></span><br></pre></td></tr></table></figure><br>主要操作模式：<br><figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">-</span><span class="comment">A</span><span class="string">,</span> --<span class="comment">catenate</span><span class="string">,</span> --<span class="comment">concatenate</span>   <span class="comment">追加</span> <span class="comment">tar</span> <span class="comment">文件至归档</span></span><br><span class="line"><span class="comment"></span><span class="literal">-</span><span class="comment">c</span><span class="string">,</span> --<span class="comment">create</span>               <span class="comment">创建一个新归档</span></span><br><span class="line"><span class="comment"></span><span class="literal">-</span><span class="comment">d</span><span class="string">,</span> --<span class="comment">diff</span><span class="string">,</span> --<span class="comment">compare</span>      <span class="comment">找出归档和文件系统的差异</span></span><br><span class="line"><span class="comment"></span>    --<span class="comment">delete</span>               <span class="comment">从归档(非磁带！)中删除</span></span><br><span class="line"><span class="comment"></span><span class="literal">-</span><span class="comment">r</span><span class="string">,</span> --<span class="comment">append</span>               <span class="comment">追加文件至归档结尾</span></span><br><span class="line"><span class="comment"></span><span class="literal">-</span><span class="comment">t</span><span class="string">,</span> --<span class="comment">list</span>                 <span class="comment">列出归档内容</span></span><br><span class="line"><span class="comment"></span>    --<span class="comment">test</span><span class="literal">-</span><span class="comment">label</span>           <span class="comment">测试归档卷标并退出</span></span><br><span class="line"><span class="comment"></span><span class="literal">-</span><span class="comment">u</span><span class="string">,</span> --<span class="comment">update</span>               <span class="comment">仅追加比归档中副本更新的文件</span></span><br><span class="line"><span class="comment"></span><span class="literal">-</span><span class="comment">x</span><span class="string">,</span> --<span class="comment">extract</span><span class="string">,</span> --<span class="comment">get</span>       <span class="comment">从归档中解出文件</span></span><br><span class="line"><span class="comment"></span></span><br></pre></td></tr></table></figure><br>提示性输出：<br><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-v, <span class="comment">--verbose              详细地列出处理的文件</span></span><br><span class="line">    <span class="comment">--warning=KEYWORD      警告控制:</span></span><br></pre></td></tr></table></figure><br>压缩选项：<br><figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">-</span><span class="comment">a</span><span class="string">,</span> --<span class="comment">auto</span><span class="literal">-</span><span class="comment">compress</span>              <span class="comment">使用归档后缀名来决定压缩程序</span></span><br><span class="line"><span class="comment"></span><span class="literal">-</span><span class="comment">I</span><span class="string">,</span> --<span class="comment">use</span><span class="literal">-</span><span class="comment">compress</span><span class="literal">-</span><span class="comment">program=PROG</span></span><br><span class="line"><span class="comment"></span>                                 <span class="comment">通过</span> <span class="comment">PROG</span> <span class="comment">过滤(必须是能接受</span> <span class="literal">-</span><span class="comment">d</span></span><br><span class="line"><span class="comment"></span>                                 <span class="comment">选项的程序)</span></span><br><span class="line"><span class="comment"></span><span class="literal">-</span><span class="comment">j</span><span class="string">,</span> --<span class="comment">bzip2</span>                      <span class="comment">通过</span> <span class="comment">bzip2</span> <span class="comment">过滤归档</span></span><br><span class="line"><span class="comment"></span><span class="literal">-</span><span class="comment">J</span><span class="string">,</span> --<span class="comment">xz</span>                         <span class="comment">通过</span> <span class="comment">xz</span> <span class="comment">过滤归档</span></span><br><span class="line"><span class="comment"></span>    --<span class="comment">lzip</span>                       <span class="comment">通过</span> <span class="comment">lzip</span> <span class="comment">过滤归档</span></span><br><span class="line"><span class="comment"></span>    --<span class="comment">lzma</span>                       <span class="comment">通过</span> <span class="comment">xz</span> <span class="comment">过滤归档</span></span><br><span class="line"><span class="comment"></span>    --<span class="comment">lzop</span>                       <span class="comment">通过</span> <span class="comment">xz</span> <span class="comment">过滤归档</span></span><br><span class="line"><span class="comment"></span>    --<span class="comment">no</span><span class="literal">-</span><span class="comment">auto</span><span class="literal">-</span><span class="comment">compress</span>           <span class="comment">不使用归档后缀名来决定压缩程序</span></span><br><span class="line"><span class="comment"></span><span class="literal">-</span><span class="comment">z</span><span class="string">,</span> --<span class="comment">gzip</span><span class="string">,</span> --<span class="comment">gunzip</span><span class="string">,</span> --<span class="comment">ungzip</span>   <span class="comment">通过</span> <span class="comment">gzip</span> <span class="comment">过滤归档</span></span><br><span class="line"><span class="comment"></span><span class="literal">-</span><span class="comment">Z</span><span class="string">,</span> --<span class="comment">compress</span><span class="string">,</span> --<span class="comment">uncompress</span>     <span class="comment">通过</span> <span class="comment">compress</span> <span class="comment">过滤归档</span></span><br></pre></td></tr></table></figure></p>
+<p>总结：</p>
+<ul>
+<li>*.tar 用 tar -xvf 解压</li>
+<li>*.gz 用 gzip -d或者gunzip 解压</li>
+<li><em>.tar.gz和</em>.tgz 用 tar -xzf 解压</li>
+<li>*.bz2 用 bzip2 -d或者用bunzip2 解压</li>
+<li>*.tar.bz2用tar -xjf 解压</li>
+<li>*.Z 用 uncompress 解压</li>
+<li>*.tar.Z 用tar -xZf 解压</li>
+<li>*.rar 用 unrar e解压</li>
+<li>*.zip 用 unzip 解压</li>
+</ul>
+<h2 id><a href="#" class="headerlink" title="---"></a>---</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/31/ubuntu18-04%E7%BE%8E%E5%8C%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/qifei.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wadekiny">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/12/31/ubuntu18-04%E7%BE%8E%E5%8C%96/" itemprop="url">ubuntu18.04美化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-31T19:09:45+08:00">
+                2020-12-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="安装gnome-tweaks："><a href="#安装gnome-tweaks：" class="headerlink" title="安装gnome-tweaks："></a>安装gnome-tweaks：</h2><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt <span class="keyword">install</span> gnome-tweak-tool  </span><br><span class="line">sudo apt <span class="keyword">install</span> gnome-shell-extensions</span><br></pre></td></tr></table></figure>
+<p>gnome-tweak-tool是主要工具，另外可以安装一些其他的扩展</p>
+<h2 id="美化图标，主题，shell"><a href="#美化图标，主题，shell" class="headerlink" title="美化图标，主题，shell"></a>美化图标，主题，shell</h2><p>可以从<a target="_blank" rel="noopener" href="https://www.pling.com/browse/cat/135/ord/rating">https://www.pling.com/browse/cat/135/ord/rating</a><br>上下载喜欢的主题图标，解压到<code>/usr/share/icons</code><br>例如：</p>
+<ol>
+<li>已经下载下来图标tela</li>
+<li>将tela文件夹放到<code>/usr/share/icons</code></li>
+<li>终端下<code>gnome-tweaks</code></li>
+<li>在apperance-&gt;themes-&gt;icons选择tela主题图标</li>
+</ol>
+<p>主题，shell这些都类似，要自定义shell，需要打开extensions中的User themes。</p>
+<h2 id="好用的扩展dash-to-panel"><a href="#好用的扩展dash-to-panel" class="headerlink" title="好用的扩展dash to panel"></a>好用的扩展dash to panel</h2><p>参考了：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/feipeng8848/p/12808128.html">https://www.cnblogs.com/feipeng8848/p/12808128.html</a><br>没有和dash to dock 一起使用，之前用dash to dock 也不觉得有多方便。<br>而且状态栏放在最上面每次关浏览器还要瞄准那个X</p>
+<p>效果如图<br><img src="/2020/12/31/ubuntu18-04%E7%BE%8E%E5%8C%96/pictures/dtp.png" alt="avatar"></p>
+<ol>
+<li>到这里：<a target="_blank" rel="noopener" href="https://extensions.gnome.org/extension/1160/dash-to-panel/">https://extensions.gnome.org/extension/1160/dash-to-panel/</a></li>
+<li>右边的off点成on，就装上了</li>
+</ol>
+<p><img src="/2020/12/31/ubuntu18-04%E7%BE%8E%E5%8C%96/pictures/dtpp.png" alt="avatar"></p>
+<ol>
+<li>然后就可以再gnome-tweaks里找到它了。</li>
+</ol>
+<p><img src="/2020/12/31/ubuntu18-04%E7%BE%8E%E5%8C%96/pictures/dtpg.png" alt="avatar"></p>
+<h2 id="单独更改Alacritty的图标"><a href="#单独更改Alacritty的图标" class="headerlink" title="单独更改Alacritty的图标"></a>单独更改Alacritty的图标</h2><p>感觉alacritty的图标有点丑，怎么说<br>感觉tela主题的terminal图标就可以</p>
+<ol>
+<li>先把tela主题的terminal图标复制到要改的图标所在目录</li>
+<li>切换到所在目录</li>
+<li>给旧图标备份</li>
+<li>改新图标名字</li>
+</ol>
+<p>终端下操作：<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo cp <span class="regexp">/usr/</span>share<span class="regexp">/icons/</span>tela<span class="regexp">/scalable/</span>apps<span class="regexp">/terminal.svg  /u</span>sr<span class="regexp">/share/</span>pixmaps</span><br><span class="line">cd <span class="regexp">/usr/</span>share/pixmaps</span><br><span class="line">sudo mv com.alacritty.Alacritty.svg com.alacritty.Alacrittybackup.svg</span><br><span class="line">sudo mv terminal.svg com.alacritty.Alacritty2.svg</span><br></pre></td></tr></table></figure></p>
+<h2 id="动态桌面壁纸livewallpaper"><a href="#动态桌面壁纸livewallpaper" class="headerlink" title="动态桌面壁纸livewallpaper"></a>动态桌面壁纸livewallpaper</h2><h2 id><a href="#" class="headerlink" title></a><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo<span class="built_in"> add-apt-repository </span>ppa:fyrmir/livewallpaper-daily</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install livewallpaper</span><br><span class="line">sudo apt install livewallpaper-config livewallpaper-indicator</span><br><span class="line"></span><br></pre></td></tr></table></figure></h2><hr>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/">&lt;</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/qifei.png"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/archives">
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tianyong Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+</body>
+</html>

@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="有关python的一些特性, 参考了 python官方文档 和《Fluent Python》">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python学习笔记">
+<meta property="og:url" content="http://example.com/2021/05/30/program-language/python-language/index.html">
+<meta property="og:site_name" content="Wadekiny&#39;s Blog">
+<meta property="og:description" content="有关python的一些特性, 参考了 python官方文档 和《Fluent Python》">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/python-language/VAR.png">
+<meta property="og:image" content="http://example.com/python-language/pyclosure.png">
+<meta property="article:published_time" content="2021-05-30T05:07:43.000Z">
+<meta property="article:modified_time" content="2023-01-12T16:47:15.753Z">
+<meta property="article:author" content="Wadekiny">
+<meta property="article:tag" content="language">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/python-language/VAR.png">
+
+
+<link rel="canonical" href="http://example.com/2021/05/30/program-language/python-language/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2021/05/30/program-language/python-language/","path":"2021/05/30/program-language/python-language/","title":"python学习笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>python学习笔记 | Wadekiny's Blog</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Wadekiny's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">32</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">51</span></a></li><li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>Schedule</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Commonweal 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container"></div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container">
+  <div class="algolia-stats"><hr></div>
+  <div class="algolia-hits"></div>
+  <div class="algolia-pagination"></div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-python%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">第一章 python数据模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F"><span class="nav-number">1.1.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E5%8F%98%E7%B1%BB%E5%9E%8B%E5%92%8C%E4%B8%8D%E5%8F%AF%E5%8F%98%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.1.1.</span> <span class="nav-text">可变类型和不可变类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#is-%E5%92%8C-x3D-x3D"><span class="nav-number">1.1.2.</span> <span class="nav-text">is 和 &#x3D;&#x3D;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%B1%E5%A4%8D%E5%88%B6%E5%92%8C%E6%B5%85%E5%A4%8D%E5%88%B6"><span class="nav-number">1.1.3.</span> <span class="nav-text">深复制和浅复制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">特殊方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A2%9E%E9%87%8F%E8%B5%8B%E5%80%BC"><span class="nav-number">1.3.</span> <span class="nav-text">增量赋值</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E5%BA%8F%E5%88%97-sequences"><span class="nav-number">2.</span> <span class="nav-text">第二章 序列 (sequences)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%97%E8%A1%A8%E6%8E%A8%E5%AF%BC%E5%BC%8F%E5%92%8C%E7%94%9F%E6%88%90%E5%99%A8%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">2.1.</span> <span class="nav-text">列表推导式和生成器表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%97%E8%A1%A8%E6%8E%A8%E5%AF%BC%E5%BC%8F"><span class="nav-number">2.1.1.</span> <span class="nav-text">列表推导式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%99%A8%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">2.1.2.</span> <span class="nav-text">生成器表达式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%83%E7%BB%84%E7%9A%84%E7%9B%B8%E5%AF%B9%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%80%A7"><span class="nav-number">2.2.</span> <span class="nav-text">元组的相对不可变性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%83%E7%BB%84%E6%8B%86%E5%8C%85"><span class="nav-number">2.3.</span> <span class="nav-text">元组拆包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%98-%E2%80%98-%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">2.3.1.</span> <span class="nav-text">‘*‘ 运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B5%8C%E5%A5%97%E5%85%83%E7%BB%84%E6%8B%86%E5%8C%85"><span class="nav-number">2.3.2.</span> <span class="nav-text">嵌套元组拆包</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B7%E5%90%8D%E5%85%83%E7%BB%84-namedtuple"><span class="nav-number">2.4.</span> <span class="nav-text">具名元组(namedtuple)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%87%E7%89%87"><span class="nav-number">2.5.</span> <span class="nav-text">切片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E5%BA%8F%E5%88%97%E4%BD%BF%E7%94%A8-%E5%92%8C"><span class="nav-number">2.6.</span> <span class="nav-text">(((对序列使用+ 和 *</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F"><span class="nav-number">2.7.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%85%B6%E4%BB%96%E7%9A%84%E5%BA%8F%E5%88%97%E7%BB%93%E6%9E%84"><span class="nav-number">2.8.</span> <span class="nav-text">一些其他的序列结构</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E5%AD%97%E5%85%B8%E5%92%8C%E9%9B%86%E5%90%88"><span class="nav-number">3.</span> <span class="nav-text">第三章 字典和集合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%A3%E5%88%97%EF%BC%88%E5%93%88%E5%B8%8C%EF%BC%89"><span class="nav-number">3.1.</span> <span class="nav-text">散列（哈希）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%95%E4%B8%BA%E5%8F%AF%E6%95%A3%E5%88%97%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%9F"><span class="nav-number">3.1.1.</span> <span class="nav-text">(((何为可散列的数据类型？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%AD%97%E5%85%B8"><span class="nav-number">3.2.</span> <span class="nav-text">创建字典</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E5%85%B8%E6%8E%A8%E5%AF%BC%E5%BC%8F"><span class="nav-number">3.2.1.</span> <span class="nav-text">字典推导式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E6%89%BE%E4%B8%8D%E5%88%B0%E7%9A%84%E9%94%AE"><span class="nav-number">3.3.</span> <span class="nav-text">处理找不到的键</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#get"><span class="nav-number">3.3.1.</span> <span class="nav-text">get</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#setdefault"><span class="nav-number">3.3.2.</span> <span class="nav-text">setdefault</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#missing"><span class="nav-number">3.3.3.</span> <span class="nav-text">__missing__</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#defaultdict"><span class="nav-number">3.3.4.</span> <span class="nav-text">defaultdict</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E5%85%B8%E7%9A%84%E5%8F%98%E7%A7%8D"><span class="nav-number">3.4.</span> <span class="nav-text">字典的变种</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF-UserDict"><span class="nav-number">3.4.1.</span> <span class="nav-text">继承 UserDict</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1%E5%9F%BA%E7%B1%BB%E6%8F%90%E4%BE%9B%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">3.5.</span> <span class="nav-text">抽象基类提供的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%98%A0%E5%B0%84%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.6.</span> <span class="nav-text">不可变映射类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%86%E5%90%88"><span class="nav-number">3.7.</span> <span class="nav-text">集合</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E5%87%BD%E6%95%B0"><span class="nav-number">4.</span> <span class="nav-text">第四章 函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E8%B0%83%E7%94%A8%E5%AF%B9%E8%B1%A1"><span class="nav-number">4.1.</span> <span class="nav-text">可调用对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B1%E4%BA%AB%E4%BC%A0%E5%8F%82"><span class="nav-number">4.2.</span> <span class="nav-text">共享传参</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-number">4.3.</span> <span class="nav-text">作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#global"><span class="nav-number">4.3.1.</span> <span class="nav-text">global</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nonlocal"><span class="nav-number">4.3.2.</span> <span class="nav-text">nonlocal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B5%8C%E5%A5%97%E5%87%BD%E6%95%B0"><span class="nav-number">4.3.3.</span> <span class="nav-text">嵌套函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AD%E5%8C%85-closure"><span class="nav-number">4.3.4.</span> <span class="nav-text">闭包 (closure)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#args-kargs"><span class="nav-number">4.4.</span> <span class="nav-text">*args, **kargs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E8%A7%A3"><span class="nav-number">4.5.</span> <span class="nav-text">注解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0-%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="nav-number">5.</span> <span class="nav-text">第五章 装饰器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A3%85%E9%A5%B0%E5%99%A8%E4%B8%8D%E4%BC%A0%E5%8F%82%EF%BC%88%E4%B8%A4%E5%B1%82%EF%BC%89"><span class="nav-number">5.1.</span> <span class="nav-text">装饰器不传参（两层）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A3%85%E9%A5%B0%E5%99%A8%E5%AE%9A%E4%B9%89"><span class="nav-number">5.1.1.</span> <span class="nav-text">装饰器定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E4%BD%BF%E7%94%A8%E8%AF%AD%E6%B3%95%E7%B3%96%E7%9A%84%E7%94%A8%E6%B3%95"><span class="nav-number">5.1.2.</span> <span class="nav-text">不使用语法糖的用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E8%AF%AD%E6%B3%95%E7%B3%96"><span class="nav-number">5.1.3.</span> <span class="nav-text">使用语法糖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%88%E6%9E%9C"><span class="nav-number">5.1.4.</span> <span class="nav-text">效果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A3%85%E9%A5%B0%E5%99%A8%E4%BC%A0%E5%8F%82%EF%BC%88%E4%B8%89%E5%B1%82%EF%BC%89"><span class="nav-number">5.2.</span> <span class="nav-text">装饰器传参（三层）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A3%85%E9%A5%B0%E5%99%A8%E5%AE%9A%E4%B9%89-1"><span class="nav-number">5.2.1.</span> <span class="nav-text">装饰器定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E4%BD%BF%E7%94%A8%E8%AF%AD%E6%B3%95%E7%B3%96%E7%9A%84%E7%94%A8%E6%B3%95-1"><span class="nav-number">5.2.2.</span> <span class="nav-text">不使用语法糖的用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E8%AF%AD%E6%B3%95%E7%B3%96-1"><span class="nav-number">5.2.3.</span> <span class="nav-text">使用语法糖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%88%E6%9E%9C-1"><span class="nav-number">5.2.4.</span> <span class="nav-text">效果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E7%BD%AE%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="nav-number">5.3.</span> <span class="nav-text">内置装饰器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#functools"><span class="nav-number">5.3.1.</span> <span class="nav-text">functools</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#wraps"><span class="nav-number">5.3.1.1.</span> <span class="nav-text">wraps</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lru-cache"><span class="nav-number">5.3.1.2.</span> <span class="nav-text">lru_cache</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#singledispatch"><span class="nav-number">5.3.1.3.</span> <span class="nav-text">singledispatch</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E4%BA%8E%E8%A3%85%E9%A5%B0%E6%96%B9%E6%B3%95%E7%9A%84%E5%87%BD%E6%95%B0"><span class="nav-number">5.3.2.</span> <span class="nav-text">用于装饰方法的函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#property"><span class="nav-number">5.3.2.1.</span> <span class="nav-text">property</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#staticmethod-%E5%92%8C-classmethod"><span class="nav-number">5.3.2.2.</span> <span class="nav-text">staticmethod 和 classmethod</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%87%E5%BF%98"><span class="nav-number">6.</span> <span class="nav-text">备忘</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pyi%EF%BC%8C%E6%A8%A1%E5%9D%97%EF%BC%8C%E5%A4%9A%E6%96%87%E4%BB%B6%E5%8F%98%E6%88%90"><span class="nav-number">7.</span> <span class="nav-text">pyi，模块，多文件变成</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B1%BB"><span class="nav-number">8.</span> <span class="nav-text">类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF"><span class="nav-number">8.1.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E6%80%81"><span class="nav-number">8.2.</span> <span class="nav-text">多态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E6%96%B9%E6%B3%95%EF%BC%88%E6%96%B9%E6%B3%95%E5%89%8D%E5%90%8E%E6%9C%89%E5%8F%8C%E4%B8%8B%E5%88%92%E7%BA%BF%EF%BC%89"><span class="nav-number">8.3.</span> <span class="nav-text">特殊方法（方法前后有双下划线）</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Wadekiny</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/30/program-language/python-language/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Wadekiny">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wadekiny's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="python学习笔记 | Wadekiny's Blog">
+      <meta itemprop="description" content="有关python的一些特性, 参考了 python官方文档 和《Fluent Python》">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          python学习笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-05-30 13:07:43" itemprop="dateCreated datePublished" datetime="2021-05-30T13:07:43+08:00">2021-05-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-01-13 00:47:15" itemprop="dateModified" datetime="2023-01-13T00:47:15+08:00">2023-01-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/language/" itemprop="url" rel="index"><span itemprop="name">language</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">有关python的一些特性, 参考了 python官方文档 和《Fluent Python》</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="第一章-python数据模型"><a href="#第一章-python数据模型" class="headerlink" title="第一章 python数据模型"></a>第一章 python数据模型</h1><p>官方文档：<a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3.8/reference/datamodel.html">https://docs.python.org/zh-cn/3.8/reference/datamodel.html</a><br>python 的一切数据类型都是类</p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>Python 变量是引用式变量，创建对象之后才会把变量分配给对象。<br><img src="/./python-language/VAR.png" alt="avatar"></p>
+<h3 id="可变类型和不可变类型"><a href="#可变类型和不可变类型" class="headerlink" title="可变类型和不可变类型"></a>可变类型和不可变类型</h3><ul>
+<li><p>可变：列表、字典、集合</p>
+</li>
+<li><p>不可变：数字、字符串、元组</p>
+</li>
+</ul>
+<h3 id="is-和-x3D-x3D"><a href="#is-和-x3D-x3D" class="headerlink" title="is 和 &#x3D;&#x3D;"></a>is 和 &#x3D;&#x3D;</h3><p>&#x3D;&#x3D; 运算符比较两个对象的值，is 比较对象的标识。</p>
+<h3 id="深复制和浅复制"><a href="#深复制和浅复制" class="headerlink" title="深复制和浅复制"></a>深复制和浅复制</h3><table>
+<thead>
+<tr>
+<th>↓与源容器相比↓</th>
+<th>copy.copy</th>
+<th>copy.deepcopy</th>
+<th>&#x3D;</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>id</strong></td>
+<td>不同</td>
+<td>不同</td>
+<td>相同</td>
+</tr>
+<tr>
+<td><strong>内容</strong></td>
+<td>复制源容器中元素的引用</td>
+<td>创建完全独立的对象</td>
+<td>完全相同</td>
+</tr>
+</tbody></table>
+<h2 id="特殊方法"><a href="#特殊方法" class="headerlink" title="特殊方法"></a>特殊方法</h2><p>为保证行为的一致性，python 解释器碰到特殊的句法时，会使用**特殊方法(special method)**激活一些基本的对象操作，这些方法以双下划线开头结尾，例如：<code>__getitem__()</code>，解释器会把 <code>my_collection[key]</code> 改为调用 <code>my_collection.__getitem__()</code></p>
+<p><strong>special method</strong> 的别名：<strong>magic method</strong>, <strong>dunder method</strong></p>
+<p>很多时候，特殊方法的调用是隐式的，是为了被 Python 解释器调用的，比如: <code>for i in x</code>, 其背后用的是 <code>iter(x)</code>, 再背后是<code>x.__iter__()</code>。前提是这个方法在 x 中被实现了。</p>
+<p>通过内置函数 (len, iter, str, …) 来使用特殊方法是最好的选择</p>
+<p>官方文档给出了众多特殊方法，利用这些特殊方法，可以构建自己的数据（对象）模型，而能够使用python的内置方法、算术运算、位运算和比较操作等等</p>
+<h2 id="增量赋值"><a href="#增量赋值" class="headerlink" title="增量赋值"></a>增量赋值</h2><p>运算符 +&#x3D; 和 *&#x3D; 的效果取决于第一个操作对象。</p>
+<p>对于 +&#x3D; :<br>如果操作对象实现了 __iadd__ (用于就地加法), 就会调用他。如果没有实现，Python 会退一步调用 __add__ (先计算出结果，得到一个新的对象，然后再赋值)<br>(可变序列一般都实现了__iadd__)</p>
+<hr>
+<h1 id="第二章-序列-sequences"><a href="#第二章-序列-sequences" class="headerlink" title="第二章 序列 (sequences)"></a>第二章 序列 (sequences)</h1><p>序列：有序，可索引</p>
+<p>Python 标准库用 C 实现了丰富的序列类型：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>容器序列(Container sequences)<br>存放引用，类型可不同</th>
+<th>扁平序列(Flat sequences)<br>存放数据，内存连续，类型相同</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>可变序列(Mutable sequences)</strong></td>
+<td>list, collections.deque</td>
+<td>bytearry, memoryview, array.array</td>
+</tr>
+<tr>
+<td><strong>不可变序列(Immutable sequences)</strong></td>
+<td>tuple</td>
+<td>str, bytes</td>
+</tr>
+</tbody></table>
+<h2 id="列表推导式和生成器表达式"><a href="#列表推导式和生成器表达式" class="headerlink" title="列表推导式和生成器表达式"></a>列表推导式和生成器表达式</h2><p>List Comprehensions(listcomps) and Genderator Expressions(genexps)</p>
+<p>listcomps 和 genexps 长得极其相似。<br>listcomps: 用方括号包住表达式，一次生成所有数据<br>genexps: 用圆括号包住表达式，背后遵守了迭代器协议，一次只生成一个数据</p>
+<h3 id="列表推导式"><a href="#列表推导式" class="headerlink" title="列表推导式"></a>列表推导式</h3><p>列表推导式的作用只有一个作用：生成列表</p>
+<p>列表推导式的用法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">string = <span class="string">&quot;I can fly&quot;</span></span><br><span class="line">new_list = [i <span class="keyword">for</span> i <span class="keyword">in</span> string]</span><br><span class="line">new_list1 = [i+<span class="string">&quot;1&quot;</span> <span class="keyword">for</span> i <span class="keyword">in</span> string]</span><br><span class="line">new_list2 = [<span class="built_in">ord</span>(i) <span class="keyword">for</span> i <span class="keyword">in</span> string]</span><br><span class="line"><span class="built_in">print</span>(new_list)</span><br><span class="line"><span class="built_in">print</span>(new_list1)</span><br><span class="line"><span class="built_in">print</span>(new_list2)</span><br><span class="line"></span><br><span class="line">color = [<span class="string">&quot;black&quot;</span>, <span class="string">&quot;white&quot;</span>]</span><br><span class="line">size = [<span class="string">&quot;S&quot;</span>, <span class="string">&quot;M&quot;</span>, <span class="string">&quot;L&quot;</span>]</span><br><span class="line"></span><br><span class="line">shirt = [(i, j) <span class="keyword">for</span> i <span class="keyword">in</span> color</span><br><span class="line">                    <span class="keyword">for</span> j <span class="keyword">in</span> size]</span><br><span class="line"><span class="built_in">print</span>(shirt)</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[&#x27;I&#x27;, &#x27; &#x27;, &#x27;c&#x27;, &#x27;a&#x27;, &#x27;n&#x27;, &#x27; &#x27;, &#x27;f&#x27;, &#x27;l&#x27;, &#x27;y&#x27;]</span><br><span class="line">[&#x27;I1&#x27;, &#x27; 1&#x27;, &#x27;c1&#x27;, &#x27;a1&#x27;, &#x27;n1&#x27;, &#x27; 1&#x27;, &#x27;f1&#x27;, &#x27;l1&#x27;, &#x27;y1&#x27;]</span><br><span class="line">[73, 32, 99, 97, 110, 32, 102, 108, 121]</span><br><span class="line">[(&#x27;black&#x27;, &#x27;S&#x27;), (&#x27;black&#x27;, &#x27;M&#x27;), (&#x27;black&#x27;, &#x27;L&#x27;), (&#x27;white&#x27;, &#x27;S&#x27;),</span><br><span class="line">&#x27;white&#x27;, &#x27;M&#x27;), (&#x27;white&#x27;, &#x27;L&#x27;)]</span><br></pre></td></tr></table></figure>
+
+<h3 id="生成器表达式"><a href="#生成器表达式" class="headerlink" title="生成器表达式"></a>生成器表达式</h3><p>用于初始化其他序列类型，可以逐个产出元素。<br>如果用列表推导初始化元组这些其他的数据类型，会先建立一个完整的列表，再把列表传到某个构造函数里</p>
+<p>用生成器表达式初始化元组：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>string = <span class="string">&quot;i can fly&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>(char <span class="keyword">for</span> char <span class="keyword">in</span> string)</span><br><span class="line">&lt;generator <span class="built_in">object</span> &lt;genexpr&gt; at <span class="number">0x7f7a5bac17d8</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">tuple</span>(<span class="built_in">ord</span>(char) <span class="keyword">for</span> char <span class="keyword">in</span> string)</span><br><span class="line">(<span class="number">105</span>, <span class="number">32</span>, <span class="number">99</span>, <span class="number">97</span>, <span class="number">110</span>, <span class="number">32</span>, <span class="number">102</span>, <span class="number">108</span>, <span class="number">121</span>)</span><br></pre></td></tr></table></figure>
+
+<p>如果 genexps 是一个函数调用过程中的唯一参数，就不需要再用括号把它围起来</p>
+<p>用生成器表达式实现一个笛卡尔积：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> tshirt <span class="keyword">in</span> (<span class="string">&quot;%s %s&quot;</span>%(c,s) <span class="keyword">for</span> c <span class="keyword">in</span> colors <span class="keyword">for</span> s <span class="keyword">in</span> sizes):</span><br><span class="line">    <span class="built_in">print</span>(tshirt)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;-&quot;</span>*<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> colors:</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> sizes:</span><br><span class="line">        <span class="built_in">print</span>(i, j)</span><br></pre></td></tr></table></figure>
+
+<p>输出结果</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">black S</span><br><span class="line">black M</span><br><span class="line">black L</span><br><span class="line">white S</span><br><span class="line">white M</span><br><span class="line">white L</span><br><span class="line">----------</span><br><span class="line">black S</span><br><span class="line">black M</span><br><span class="line">black L</span><br><span class="line">white S</span><br><span class="line">white M</span><br><span class="line">white L</span><br></pre></td></tr></table></figure>
+
+<h2 id="元组的相对不可变性"><a href="#元组的相对不可变性" class="headerlink" title="元组的相对不可变性"></a>元组的相对不可变性</h2><p>元组中不可变的是元素的标识(id), 而元组的值会随着引用的可变对象的变化而变化</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>tu = (<span class="number">1</span>,<span class="number">2</span>,[<span class="number">3</span>,<span class="number">4</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>tu[<span class="number">0</span>] = <span class="number">2</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">TypeError: <span class="string">&#x27;tuple&#x27;</span> <span class="built_in">object</span> does <span class="keyword">not</span> support item assignment</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>tu[-<span class="number">1</span>].append(<span class="number">10</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>tu</span><br><span class="line">(<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>, <span class="number">4</span>, <span class="number">10</span>])</span><br></pre></td></tr></table></figure>
+
+<h2 id="元组拆包"><a href="#元组拆包" class="headerlink" title="元组拆包"></a>元组拆包</h2><p>元组拆包可以应用到任何可迭代对象上</p>
+<h3 id="‘-‘-运算符"><a href="#‘-‘-运算符" class="headerlink" title="‘*‘ 运算符"></a>‘*‘ 运算符</h3><ol>
+<li><strong>用于把可迭代对象拆开作为函数的参数</strong></li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">SumAndMinus</span>(<span class="params">a,b</span>):</span><br><span class="line">    <span class="keyword">return</span> a+b, a-b</span><br><span class="line"></span><br><span class="line">para = (<span class="number">1</span>,<span class="number">19</span>)</span><br><span class="line"><span class="built_in">print</span>(SumAndMinus(*para))</span><br><span class="line"></span><br><span class="line"><span class="comment">#输出：</span></span><br><span class="line"><span class="comment">#(20, -18)</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>用于处理拆包剩余的元素</strong></li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">a,b,*rest = <span class="built_in">range</span>(<span class="number">10</span>)</span><br><span class="line"><span class="built_in">print</span>(a,b,rest)</span><br><span class="line"></span><br><span class="line">a,b,*rest,c,d = <span class="built_in">range</span>(<span class="number">10</span>)</span><br><span class="line"><span class="built_in">print</span>(a,b,rest,c,d)</span><br><span class="line"></span><br><span class="line">*rest,a,b = <span class="built_in">range</span>(<span class="number">10</span>)</span><br><span class="line"><span class="built_in">print</span>(rest,a,b)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(rest))</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0 1 [2, 3, 4, 5, 6, 7, 8, 9]</span><br><span class="line">0 1 [2, 3, 4, 5, 6, 7] 8 9</span><br><span class="line">[0, 1, 2, 3, 4, 5, 6, 7] 8 9</span><br><span class="line">&lt;class &#x27;list&#x27;&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="嵌套元组拆包"><a href="#嵌套元组拆包" class="headerlink" title="嵌套元组拆包"></a>嵌套元组拆包</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">para = (<span class="string">&quot;China&quot;</span>, <span class="string">&quot;HDU&quot;</span>, <span class="number">20</span>, (<span class="string">&quot;Dad&quot;</span>, <span class="string">&quot;Mom&quot;</span>))</span><br><span class="line"></span><br><span class="line">nationality, university, age, (father, mother) = para</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(nationality, university, age, (father, mother))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出</span></span><br><span class="line"><span class="comment"># China HDU 20 (&#x27;Dad&#x27;, &#x27;Mom&#x27;)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="具名元组-namedtuple"><a href="#具名元组-namedtuple" class="headerlink" title="具名元组(namedtuple)"></a>具名元组(namedtuple)</h2><p>collections.namedtuple 是一个工厂函数，可以用来构建一个 <strong>带字段名的元组</strong> 和一个 <strong>有名字的类</strong></p>
+<p>创建一个具名元组需要两个参数:</p>
+<ol>
+<li>类名</li>
+<li>类的各个字段的名字，可由 数个字符串组成的可迭代对象 或 空格分开的字符串</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>Point = namedtuple(<span class="string">&#x27;Point&#x27;</span>, [<span class="string">&#x27;x&#x27;</span>, <span class="string">&#x27;y&#x27;</span>]) <span class="comment"># (&#x27;Point&#x27;, &#x27;x y&#x27;) is ok</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Point.__doc__                   <span class="comment"># docstring for the new class</span></span><br><span class="line"><span class="string">&#x27;Point(x, y)&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>p = Point(<span class="number">11</span>, y=<span class="number">22</span>)             <span class="comment"># instantiate with positional args or keywords</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>p[<span class="number">0</span>] + p[<span class="number">1</span>]                     <span class="comment"># indexable like a plain tuple</span></span><br><span class="line"><span class="number">33</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x, y = p                        <span class="comment"># unpack like a regular tuple</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x, y</span><br><span class="line">(<span class="number">11</span>, <span class="number">22</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>p.x + p.y                       <span class="comment"># fields also accessible by name</span></span><br><span class="line"><span class="number">33</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d = p._asdict()                 <span class="comment"># convert to a dictionary</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d[<span class="string">&#x27;x&#x27;</span>]</span><br><span class="line"><span class="number">11</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Point(**d)                      <span class="comment"># convert from a dictionary</span></span><br><span class="line">Point(x=<span class="number">11</span>, y=<span class="number">22</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>p._replace(x=<span class="number">100</span>)               <span class="comment"># _replace() is like str.replace() but targets named fields</span></span><br><span class="line">Point(x=<span class="number">100</span>, y=<span class="number">22</span>)</span><br></pre></td></tr></table></figure>
+
+<p>访问信息的方法：</p>
+<ol>
+<li>var[i]</li>
+<li>var[‘key’]</li>
+<li>var.key</li>
+</ol>
+<p>具名元组的属性和方法：</p>
+<ol>
+<li>_fields 属性是一个包含这个类所有字段名称的元组</li>
+<li>_make() 接受一个可迭代对象生成类的实例</li>
+<li>_asdict() 返回信息</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>People = namedtuple(<span class="string">&#x27;People&#x27;</span>,<span class="string">&#x27;name age&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>People._fields</span><br><span class="line">(<span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;age&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Dinan = (<span class="string">&#x27;SYD&#x27;</span>,<span class="number">22</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dinan = People._make(Dinan)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dinan</span><br><span class="line">People(name=<span class="string">&#x27;SYD&#x27;</span>, age=<span class="number">22</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dinan._asdict()</span><br><span class="line">OrderedDict([(<span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;SYD&#x27;</span>), (<span class="string">&#x27;age&#x27;</span>, <span class="number">22</span>)])</span><br></pre></td></tr></table></figure>
+
+<h2 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h2><p>a:b:c 这种用法只能作为索引或者下标用在 [] 中来返回一个切片对象 slice(a,b,c)<br>对 seq[start:stop:step] 进行求值时，python 会调用 seq.__getitem__(slice(start, stop, step))</p>
+<p>切片也可以命名：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>string = <span class="string">&#x27;Can you tell me how much the shirt is? it is 9.15&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>asking = <span class="built_in">slice</span>(<span class="number">0</span>,<span class="number">37</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>string[asking]</span><br><span class="line"><span class="string">&#x27;Can you tell me how much the shirt is&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>anwser = <span class="built_in">slice</span>(<span class="number">39</span>,<span class="built_in">len</span>(string))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>string[anwser]</span><br><span class="line"><span class="string">&#x27;it is 9.15&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>asking, anwser</span><br><span class="line">(<span class="built_in">slice</span>(<span class="number">0</span>, <span class="number">37</span>, <span class="literal">None</span>), <span class="built_in">slice</span>(<span class="number">39</span>, <span class="number">49</span>, <span class="literal">None</span>))</span><br></pre></td></tr></table></figure>
+
+<p>切片也可赋值</p>
+<h2 id="对序列使用-和"><a href="#对序列使用-和" class="headerlink" title="(((对序列使用+ 和 *"></a>(((对序列使用+ 和 *</h2><p>注意FP ** 第八章**, 可变对象背后的原理和陷阱</p>
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><p>暂不需要，对应FP 2.7 2.8 </p>
+<h2 id="一些其他的序列结构"><a href="#一些其他的序列结构" class="headerlink" title="一些其他的序列结构"></a>一些其他的序列结构</h2><ul>
+<li><p>数组<br>如果需要一个只包含数字的列表，array.array 比 list 更高效</p>
+</li>
+<li><p>内存视图(memoryview)</p>
+</li>
+<li><p>NumPy and SciPy</p>
+</li>
+<li><p>双向队列(deque)</p>
+</li>
+</ul>
+<hr>
+<h1 id="第三章-字典和集合"><a href="#第三章-字典和集合" class="headerlink" title="第三章 字典和集合"></a>第三章 字典和集合</h1><p>在python官方术语对照表中：<br>字典是一个关联数组，其中的任意键都映射到相应的值。键可以是任何具有 __hash__() 和 __eq__() 方法的对象。</p>
+<h2 id="散列（哈希）"><a href="#散列（哈希）" class="headerlink" title="散列（哈希）"></a>散列（哈希）</h2><p>Hash算法可以将一个数据转换为一个标志，这个标志和源数据的每一个字节都有十分紧密的关系。Hash算法还具有一个特点，就是很难找到逆向规律。</p>
+<p>Python 标准库里所有的映射类型都是用 dict 实现的，因此有个共同限制：只有可散列的数据类型才能用作这些映射里的键。</p>
+<h3 id="何为可散列的数据类型？"><a href="#何为可散列的数据类型？" class="headerlink" title="(((何为可散列的数据类型？"></a>(((何为可散列的数据类型？</h3><h2 id="创建字典"><a href="#创建字典" class="headerlink" title="创建字典"></a>创建字典</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="built_in">dict</span>(one=<span class="number">1</span>, two=<span class="number">2</span>, three=<span class="number">3</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = &#123;<span class="string">&#x27;one&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;two&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;three&#x27;</span>: <span class="number">3</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c = <span class="built_in">dict</span>(<span class="built_in">zip</span>([<span class="string">&#x27;one&#x27;</span>, <span class="string">&#x27;two&#x27;</span>, <span class="string">&#x27;three&#x27;</span>], [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d = <span class="built_in">dict</span>([(<span class="string">&#x27;two&#x27;</span>, <span class="number">2</span>), (<span class="string">&#x27;one&#x27;</span>, <span class="number">1</span>), (<span class="string">&#x27;three&#x27;</span>, <span class="number">3</span>)])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>e = <span class="built_in">dict</span>(&#123;<span class="string">&#x27;three&#x27;</span>: <span class="number">3</span>, <span class="string">&#x27;one&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;two&#x27;</span>: <span class="number">2</span>&#125;)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a == b == c == d == e</span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="字典推导式"><a href="#字典推导式" class="headerlink" title="字典推导式"></a>字典推导式</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">my_dict = &#123;key:value <span class="keyword">for</span> key,value <span class="keyword">in</span> <span class="built_in">dict</span>.items() <span class="keyword">if</span> condition&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="处理找不到的键"><a href="#处理找不到的键" class="headerlink" title="处理找不到的键"></a>处理找不到的键</h2><h3 id="get"><a href="#get" class="headerlink" title="get"></a>get</h3><p>可以通过 my_dict.get(key) 来获取键对应的值，如果找不到这个键，python 也不会抛出异常</p>
+<h3 id="setdefault"><a href="#setdefault" class="headerlink" title="setdefault"></a>setdefault</h3><p>修改键对应的值时，如果有这样的需求：</p>
+<ol>
+<li>每个键对应一个列表</li>
+<li>键不存在时，创建这个键，对应的值为一个空列表，然后在列表上增加一个元素</li>
+<li>键存在时，在对应的列表上增加一个元素</li>
+</ol>
+<p>这时不能直接通过<code>my_dict[key] = value</code>的方法赋值（键存在则覆盖它的值，不存在则创建）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 效果一样的两种方法</span></span><br><span class="line"><span class="comment"># 方法1（推荐）</span></span><br><span class="line">my_dict.setdefault(key, []).append(new_value)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法2</span></span><br><span class="line"><span class="keyword">if</span> key <span class="keyword">not</span> <span class="keyword">in</span> my_dict:</span><br><span class="line">    my_dict[key] = []</span><br><span class="line">my_dict[key].append(new_value)</span><br></pre></td></tr></table></figure>
+
+<h3 id="missing"><a href="#missing" class="headerlink" title="__missing__"></a>__missing__</h3><p>所有的映射类型在处理找不到的键的时候，都会牵扯到 __missing__ 方法，基类 dict 并没有定义这个方法。如果继承 dict 的类提供了 __missing__ 方法，那么在 __getitem__ 找不到键时，python会自动调用它，__missing__ 只会被 __getitem__ 调用 </p>
+<p>另外：k in d 这个操作会调用 __contains__，如果在这个方法中使用 k in my_dict, 会导致 __contains__ 递归调用</p>
+<h3 id="defaultdict"><a href="#defaultdict" class="headerlink" title="defaultdict"></a>defaultdict</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line">index = collections.defaultdict(<span class="built_in">list</span>)</span><br><span class="line">index[word].append(value)</span><br></pre></td></tr></table></figure>
+
+<p>作用：把 list 构造方法作为 default_factory 来创建一个 defaultdict. 如果 index 没有 word 键，会调用 default_factory, 返回值（空列表）赋给 index[word]</p>
+<p>如果创建 defaultdict 时没有指定 default_factory，找不到键时会出发 KeyError</p>
+<h2 id="字典的变种"><a href="#字典的变种" class="headerlink" title="字典的变种"></a>字典的变种</h2><ul>
+<li>collections.defaultdict</li>
+<li>collections.OrderdDict</li>
+<li>collections.ChainMap</li>
+<li>collections.Counter</li>
+<li>collections.UserDict</li>
+</ul>
+<h3 id="继承-UserDict"><a href="#继承-UserDict" class="headerlink" title="继承 UserDict"></a>继承 UserDict</h3><p>创造自定义映射类型时，以 UserDict 为基类有一些好处。UserDict 并不是 dict 的子类，但 UserDict 中有一个叫做 data 的属性（最终存储数据的地方），是 dict 的实例。</p>
+<p>分别用两种父类，把非字符串的键转换为字符串：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">StrKeyDict0</span>(<span class="title class_ inherited__">dict</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__missing__</span>(<span class="params">self, key</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(key, <span class="built_in">str</span>)</span><br><span class="line">            <span class="keyword">raise</span> KeyError(key)</span><br><span class="line">        <span class="keyword">return</span> self[<span class="built_in">str</span>(key)]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get</span>(<span class="params">self, key default=<span class="literal">None</span></span>):</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">return</span> self[key]</span><br><span class="line">        <span class="keyword">except</span> KeyError:</span><br><span class="line">            <span class="keyword">return</span> default</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__contains__</span>(<span class="params">self, key</span>):</span><br><span class="line">        <span class="keyword">return</span> key <span class="keyword">in</span> self.keys() <span class="keyword">or</span> <span class="built_in">str</span>(key) <span class="keyword">in</span> self.keys()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">StrKeyDcit</span>(collections.UserDict):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__missing__</span>(<span class="params">self, key</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(key, <span class="built_in">str</span>):</span><br><span class="line">            <span class="keyword">raise</span> KeyError(key)</span><br><span class="line">        <span class="keyword">return</span> self[<span class="built_in">str</span>(key)]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__contains__</span>(<span class="params">self, key</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">str</span>(key) <span class="keyword">in</span> self.data</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__setitem__</span>(<span class="params">self, key, item</span>):</span><br><span class="line">        self.data[<span class="built_in">str</span>(key)] = item</span><br></pre></td></tr></table></figure>
+
+<h2 id="抽象基类提供的方法"><a href="#抽象基类提供的方法" class="headerlink" title="抽象基类提供的方法"></a>抽象基类提供的方法</h2><ul>
+<li>MutableMapping.update</li>
+<li>Mapping.get</li>
+</ul>
+<h2 id="不可变映射类型"><a href="#不可变映射类型" class="headerlink" title="不可变映射类型"></a>不可变映射类型</h2><p>标准库里所有的映射类型都是可变的，python3.3 开始，type 模块中引入了一个封装类名 MappingProxyType<br>如果给这个类一个映射，会返回一个只读的映射视图。它是动态的，原映射做出改变时，视图也会跟着改变；但不能通过视图改变原映射。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> types <span class="keyword">import</span> MappingProxyType</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>my_dict = &#123;<span class="string">&#x27;1&#x27;</span>:<span class="string">&#x27;A&#x27;</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>my_dict</span><br><span class="line">&#123;<span class="string">&#x27;1&#x27;</span>: <span class="string">&#x27;A&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>my_proxy = MappingProxyType(my_dict)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>my_proxy</span><br><span class="line">mappingproxy(&#123;<span class="string">&#x27;1&#x27;</span>: <span class="string">&#x27;A&#x27;</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>my_proxy[<span class="string">&#x27;1&#x27;</span>] = <span class="number">10</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">TypeError: <span class="string">&#x27;mappingproxy&#x27;</span> <span class="built_in">object</span> does <span class="keyword">not</span> support item assignment</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>my_proxy[<span class="string">&#x27;1&#x27;</span>]</span><br><span class="line"><span class="string">&#x27;A&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>my_dict[<span class="string">&#x27;1&#x27;</span>] = <span class="number">10</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>my_proxy</span><br><span class="line">mappingproxy(&#123;<span class="string">&#x27;1&#x27;</span>: <span class="number">10</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><p>暂不需要，对应FP 3.8</p>
+<hr>
+<h1 id="第四章-函数"><a href="#第四章-函数" class="headerlink" title="第四章 函数"></a>第四章 函数</h1><p>python中，函数也可看做一个对象，函数对象本身就是 function 类的实例。</p>
+<h2 id="可调用对象"><a href="#可调用对象" class="headerlink" title="可调用对象"></a>可调用对象</h2><p>除了用户定义的函数，调用运算符（即()）还可应用到其他对象上，可以使用内置的 <code>callable()</code> 函数判断。python 数据模型文档列出了 7 种可调用的对象</p>
+<ol>
+<li>用户定义的函数：使用 def 或 lambda 表达式创建</li>
+<li>内置函数：使用 C 语言实现的函数，如 <code>len</code>, <code>time.strftime</code></li>
+<li>内置方法：使用 C 语言实现的方法，如 <code>dict.get</code></li>
+<li>方法：在类的定义体中定义的函数</li>
+<li>类：调用类时， 先运行<code>__new__</code>方法创建一个实例，然后用<code>__init__</code>方法初始化实例。</li>
+<li>类的实例：如果类定义了<code>__call__</code>方法</li>
+<li>生成器函数：使用 yield 关键字的函数或方法。</li>
+</ol>
+<h2 id="共享传参"><a href="#共享传参" class="headerlink" title="共享传参"></a>共享传参</h2><p>Python中，函数内部的形参是实参的别名。可变类型作为参数时，可能会被函数内部改动</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">def</span> <span class="title function_">f</span>(<span class="params">a,b</span>):</span><br><span class="line"><span class="meta">... </span>    a += b</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">return</span> a</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x = <span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y = <span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f(x,y)</span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x,y</span><br><span class="line">(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">1</span>,<span class="number">2</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = [<span class="number">3</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f(a,b)</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a,b</span><br><span class="line">([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">3</span>])</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = (<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = (<span class="number">3</span>,)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f(a,b)</span><br><span class="line">(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a,b</span><br><span class="line">((<span class="number">1</span>, <span class="number">2</span>), (<span class="number">3</span>,))</span><br></pre></td></tr></table></figure>
+
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>python中，只有在函数内的变量才是局部变量，其他都是全局变量。要访问外层的变量，可以使用 global 和 nonlocal 关键字，应放在函数最开头。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>无关键字</th>
+<th>global</th>
+<th>nonlocal</th>
+<th>找不到变量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>读取</strong></td>
+<td>由内向外寻找</td>
+<td>寻找全局变量</td>
+<td>由内向外寻找，到最后一层函数为止</td>
+<td>报错</td>
+</tr>
+<tr>
+<td><strong>修改</strong></td>
+<td>内部寻找</td>
+<td>寻找全局变量</td>
+<td>由内向外寻找，到最后一层函数为止</td>
+<td>在修改位置创建</td>
+</tr>
+</tbody></table>
+<h3 id="global"><a href="#global" class="headerlink" title="global"></a>global</h3><p>函数内部想要修改全局变量，需要使用 global 关键字，如果使用在一级函数内使用 nonlocal, CPython会报错</p>
+<ol>
+<li>要在函数中使用全局变量，如果只是读取而不做修改，可以不使用 global 关键字</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">g_name = <span class="string">&quot;global&quot;</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">Greet</span>():</span><br><span class="line">    <span class="built_in">print</span>(g_name)</span><br><span class="line">Greet()</span><br><span class="line"><span class="comment"># 输出：</span></span><br><span class="line"><span class="comment"># global</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>如果要修改全局变量，需要添加 global 关键字，否则会创建局部变量。<br>修改全局变量的正确用法：</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">g_name = <span class="string">&quot;global&quot;</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">Greet</span>():</span><br><span class="line">    <span class="keyword">global</span> g_name</span><br><span class="line">    g_name = <span class="string">&quot;from global&quot;</span></span><br><span class="line">    <span class="built_in">print</span>(g_name)</span><br><span class="line">Greet()</span><br><span class="line"><span class="comment"># 输出：</span></span><br><span class="line"><span class="comment"># from global</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>如果想先读取全局变量（不使用 global 关键字），再创建局部变量，例如：</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">g_name = <span class="string">&quot;global&quot;</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">Greet</span>():</span><br><span class="line">    <span class="comment">#global g_name</span></span><br><span class="line">    <span class="built_in">print</span>(g_name)</span><br><span class="line">    g_name = <span class="string">&quot;in funciton&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># CPython报错：</span></span><br><span class="line"><span class="comment"># UnboundLocalError: local variable &#x27;g_name&#x27; referenced before assignment</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="nonlocal"><a href="#nonlocal" class="headerlink" title="nonlocal"></a>nonlocal</h3><p>函数嵌套定义时，内部函数想要修改外部函数的变量，需要使用 nonlocal关键字，其大致与 global 使用方法相同。<br>在内部函数中，如果没用 nonlocal, 用的是 global, 则会从全局变量中寻找</p>
+<p>测试代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">Greet</span>():</span><br><span class="line">    hi = <span class="string">&quot;hi&quot;</span></span><br><span class="line">    hello = <span class="string">&quot;hello&quot;</span></span><br><span class="line">    keep = <span class="literal">True</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">One</span>():</span><br><span class="line">        <span class="keyword">nonlocal</span> hi</span><br><span class="line">        hi = <span class="number">1</span></span><br><span class="line">        hello = <span class="number">1</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;in One:  &quot;</span>,hi,hello,keep)</span><br><span class="line"></span><br><span class="line">    One()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;in Greet:&quot;</span>, hi,hello,keep)</span><br><span class="line">    <span class="keyword">return</span> One</span><br><span class="line"></span><br><span class="line">Greet()</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">in One:   1 1 True</span><br><span class="line">in Greet: 1 hello True</span><br></pre></td></tr></table></figure>
+
+<h3 id="嵌套函数"><a href="#嵌套函数" class="headerlink" title="嵌套函数"></a>嵌套函数</h3><p>嵌套函数的内部函数有其生命周期，在其外部函数的内才可以调用</p>
+<p>例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">A</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;A&quot;</span>)</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">B</span>():</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;B&quot;</span>)</span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">C</span>():</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;C&quot;</span>)</span><br><span class="line">    B()</span><br><span class="line">    C()  <span class="comment"># NameError: name &#x27;C&#x27; is not defined</span></span><br><span class="line">A()</span><br></pre></td></tr></table></figure>
+
+<h3 id="闭包-closure"><a href="#闭包-closure" class="headerlink" title="闭包 (closure)"></a>闭包 (closure)</h3><blockquote>
+<p>Fluent Python: a closure is function with an extended scope that encompasses non-global variables referenced in the body of the function but not defined there</p>
+</blockquote>
+<p>闭包是指延伸了作用域的函数，其中包含：在函数定义体中的引用、但是不在定义体中定义的非全局变量</p>
+<p>闭包是在<strong>作用域外部</strong>能够访问<strong>作用域内部</strong>的函数</p>
+<p>online python tutor:<br><img src="/./python-language/pyclosure.png" alt="avatar"></p>
+<p>可以看到虽然 outer() 函数已经运行结束，outer 内部的变量 x,y,fake_static,inner 在 inner() 内引用了，这些局部变量没有被销毁，而被保留了下来(可视化图中的 f1:outer)，在调用 inner() 时能够间接地访问这些值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看函数可用的变量</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">outer</span>():</span><br><span class="line">    x = <span class="number">0</span></span><br><span class="line">    y = <span class="number">1.5</span></span><br><span class="line">    fake_static = <span class="number">0</span></span><br><span class="line">    name = <span class="string">&quot;outer&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">inner</span>():</span><br><span class="line">        <span class="keyword">nonlocal</span> x, fake_static</span><br><span class="line">        tt = <span class="string">&quot;mytt&quot;</span></span><br><span class="line">        x += <span class="number">1</span></span><br><span class="line">        fake_static += <span class="number">2</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;inner():&quot;</span>,<span class="string">&quot;x y&quot;</span>, x, y, tt)</span><br><span class="line">        <span class="keyword">if</span> x == <span class="number">1</span>:</span><br><span class="line">            inner()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> inner</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">counter = outer()</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(counter.__code__.co_freevars)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> counter.__closure__:</span><br><span class="line">    <span class="built_in">print</span>(i.cell_contents)</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(&#x27;fake_static&#x27;, &#x27;inner&#x27;, &#x27;x&#x27;, &#x27;y&#x27;)</span><br><span class="line">0</span><br><span class="line">&lt;function outer.&lt;locals&gt;.inner at 0x7f1384fc16a8&gt;</span><br><span class="line">0</span><br><span class="line">1.5</span><br></pre></td></tr></table></figure>
+
+<p><strong>闭包的作用</strong></p>
+<ol>
+<li><p>在上例中，以 fake_static 为例。使用 inner() 可以修改 fake_static 的值，而fake_static 又不是全局变量，相对比较安全，不会被其他函数修改。类似 C语言中函数内的 static 变量，全局存在，但仅能在函数内修改。</p>
+</li>
+<li><p>实现一个简单的“类”，外层函数的变量视作属性，内层函数视作方法。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">OddClass</span>(<span class="params">number</span>):</span><br><span class="line"> _attribute = number</span><br><span class="line"></span><br><span class="line"> <span class="keyword">def</span> <span class="title function_">SetAttribute</span>(<span class="params">num</span>):</span><br><span class="line">     <span class="keyword">nonlocal</span> _attribute</span><br><span class="line">     _attribute = num</span><br><span class="line"></span><br><span class="line"> <span class="keyword">def</span> <span class="title function_">GetAttribute</span>():</span><br><span class="line">     <span class="keyword">return</span> _attribute</span><br><span class="line"></span><br><span class="line"> <span class="keyword">return</span> SetAttribute, GetAttribute</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>set_odd, get_odd &#x3D; OddClass(100)</p>
+<p>print(get_odd())<br>set_odd(10.5)<br>print(get_odd())</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输出：</span><br><span class="line">```text</span><br><span class="line">100</span><br><span class="line">10.5</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>用于装饰器</li>
+</ol>
+<h2 id="args-kargs"><a href="#args-kargs" class="headerlink" title="*args, **kargs"></a>*args, **kargs</h2><p>*args 可以把多个无名参数打包成一个tuple<br>**kargs 可以把多个关键字参数打包成一个dict<br>使用时可不全写，但要确保顺序正确： <code>function(arg_a,arg_b,..., *args, **kargs)</code></p>
+<p>举例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">function</span>(<span class="params">a, b, c, *args, **kargs</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;=====type=====&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">type</span>(a),<span class="built_in">type</span>(b),<span class="built_in">type</span>(c))</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">type</span>(args))</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">type</span>(kargs))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;=====type=====\n&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;args:&quot;</span>, args)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;\nkargs:&quot;</span>, kargs)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;-&quot;</span>*<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;len(args) =&quot;</span>, <span class="built_in">len</span>(args))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(args)):</span><br><span class="line">        <span class="built_in">print</span>(args[i])</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;-&quot;</span>*<span class="number">10</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;len(kargs) =&quot;</span>, <span class="built_in">len</span>(kargs))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> kargs:</span><br><span class="line">        <span class="built_in">print</span>(i)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;-&quot;</span>*<span class="number">10</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;kargs.get(\&quot;day\&quot;) =&quot;</span>, kargs.get(<span class="string">&quot;day&quot;</span>))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;kargs.get(\&quot;time\&quot;) =&quot;</span>, kargs.get(<span class="string">&quot;time&quot;</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">function(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>, <span class="number">10</span>,<span class="number">27</span>,<span class="string">&quot;how to say&quot;</span>, qifei=<span class="number">1</span>,zhuiji=<span class="literal">False</span>,time=<span class="string">&quot;2021.5.31&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">=====type=====</span><br><span class="line">&lt;class &#x27;int&#x27;&gt; &lt;class &#x27;int&#x27;&gt; &lt;class &#x27;int&#x27;&gt;</span><br><span class="line">&lt;class &#x27;tuple&#x27;&gt;</span><br><span class="line">&lt;class &#x27;dict&#x27;&gt;</span><br><span class="line">=====type=====</span><br><span class="line"></span><br><span class="line">args: (10, 27, &#x27;how to say&#x27;)</span><br><span class="line"></span><br><span class="line">kargs: &#123;&#x27;qifei&#x27;: 1, &#x27;zhuiji&#x27;: False, &#x27;time&#x27;: &#x27;2021.5.31&#x27;&#125;</span><br><span class="line">----------</span><br><span class="line">len(args) = 3</span><br><span class="line">10</span><br><span class="line">27</span><br><span class="line">how to say</span><br><span class="line">----------</span><br><span class="line">len(kargs) = 3</span><br><span class="line">qifei</span><br><span class="line">zhuiji</span><br><span class="line">time</span><br><span class="line">----------</span><br><span class="line">kargs.get(&quot;day&quot;) = None</span><br><span class="line">kargs.get(&quot;time&quot;) = 2021.5.31</span><br></pre></td></tr></table></figure>
+
+<h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">clip</span>(<span class="params">text:<span class="built_in">str</span>, max_len:<span class="string">&#x27;int &gt; 0&#x27;</span>=<span class="number">80</span></span>) -&gt; <span class="built_in">str</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;a function&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>Python 对注解做的唯一事情是把他们存储在函数的<code>__annotations__</code>属性里<br>只有<code>inspect.signature()</code>函数知道怎么提取注解</p>
+<hr>
+<h1 id="第五章-装饰器"><a href="#第五章-装饰器" class="headerlink" title="第五章 装饰器"></a>第五章 装饰器</h1><p>装饰器是可调用的对象，在被装饰函数定义之后立即运行（语法糖）</p>
+<h2 id="装饰器不传参（两层）"><a href="#装饰器不传参（两层）" class="headerlink" title="装饰器不传参（两层）"></a>装饰器不传参（两层）</h2><h3 id="装饰器定义"><a href="#装饰器定义" class="headerlink" title="装饰器定义"></a>装饰器定义</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time </span><br><span class="line"></span><br><span class="line"><span class="comment">#装饰器不传参，只用写两层</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">TimerDecorator</span>(<span class="params">Func</span>):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">ImprovedFunction</span>(<span class="params">*args, **kargs</span>): <span class="comment">#增强后的函数</span></span><br><span class="line">        start_time = time.clock()</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;&lt;wrapper_head is here&gt;, start_time is %f&quot;</span> %start_time)</span><br><span class="line"></span><br><span class="line">        ret = Func(*args, **kargs) <span class="comment">#原始函数</span></span><br><span class="line"></span><br><span class="line">        end_time = time.clock()</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;&lt;wrapper_tail is here&gt;, end_time is %f&quot;</span> %end_time)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;&lt;cost in time&gt;: &quot;</span>, end_time - start_time)</span><br><span class="line">        <span class="keyword">return</span> ret</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ImprovedFunction</span><br></pre></td></tr></table></figure>
+
+<h3 id="不使用语法糖的用法"><a href="#不使用语法糖的用法" class="headerlink" title="不使用语法糖的用法"></a>不使用语法糖的用法</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#原始函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">EvenCounter</span>(<span class="params"></span></span><br><span class="line"><span class="params">        min_num: <span class="built_in">int</span> = <span class="number">0</span>,</span></span><br><span class="line"><span class="params">        max_num: <span class="built_in">int</span> = <span class="number">10</span>**<span class="number">6</span>,</span></span><br><span class="line"><span class="params">        </span>):</span><br><span class="line"></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(min_num, max_num):</span><br><span class="line">        <span class="keyword">if</span> i%<span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">            count += <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot; this is OriginalFunction, count is %d&quot;</span> %count)</span><br><span class="line">    <span class="keyword">return</span> count</span><br><span class="line"></span><br><span class="line"><span class="comment">#不用语法糖，调用TimerDecorator来增强原始的EvenCounter</span></span><br><span class="line">Function = TimerDecorator(EvenCounter)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用函数</span></span><br><span class="line"></span><br><span class="line">num = Function(max_num = <span class="number">10</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;\nCalled ImprovedFunction&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;return num is &quot;</span>, num)</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用语法糖"><a href="#使用语法糖" class="headerlink" title="使用语法糖"></a>使用语法糖</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 原始函数</span></span><br><span class="line"><span class="comment"># 添加@xxx</span></span><br><span class="line"><span class="meta">@TimerDecorator</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">EvenCounter</span>(<span class="params"></span></span><br><span class="line"><span class="params">        min_num: <span class="built_in">int</span> = <span class="number">0</span>,</span></span><br><span class="line"><span class="params">        max_num: <span class="built_in">int</span> = <span class="number">10</span>**<span class="number">6</span>,</span></span><br><span class="line"><span class="params">        </span>):</span><br><span class="line"></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(min_num, max_num):</span><br><span class="line">        <span class="keyword">if</span> i%<span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">            count += <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot; this is OriginalFunction, count is %d&quot;</span> %count)</span><br><span class="line">    <span class="keyword">return</span> count</span><br><span class="line"></span><br><span class="line"><span class="comment"># 直接用原始函数的名字就行 </span></span><br><span class="line">num = EvenCounter(max_num = <span class="number">10</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;\nCalled ImprovedFunction&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;return num is &quot;</span>, num)</span><br></pre></td></tr></table></figure>
+
+<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p>两种使用方法效果一样, 终端输出如下:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;wrapper_head is here&gt;, start_time is 0.022420</span><br><span class="line"> this is OriginalFunction, count is 5</span><br><span class="line">&lt;wrapper_tail is here&gt;, end_time is 0.022449</span><br><span class="line">&lt;cost in time&gt;:  2.9000000000001247e-05</span><br><span class="line"></span><br><span class="line">Called ImprovedFunction</span><br><span class="line">return num is  5</span><br></pre></td></tr></table></figure>
+
+<h2 id="装饰器传参（三层）"><a href="#装饰器传参（三层）" class="headerlink" title="装饰器传参（三层）"></a>装饰器传参（三层）</h2><h3 id="装饰器定义-1"><a href="#装饰器定义-1" class="headerlink" title="装饰器定义"></a>装饰器定义</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不用语法糖，可以只写两层</span></span><br><span class="line"><span class="comment"># 用语法糖，写三层</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">LogDecorator</span>(<span class="params"></span></span><br><span class="line"><span class="params">        text: <span class="built_in">str</span> = <span class="string">&quot;LOG&quot;</span>,</span></span><br><span class="line"><span class="params">        num: <span class="built_in">int</span> = <span class="number">1</span>,</span></span><br><span class="line"><span class="params">        </span>):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, num):</span><br><span class="line">        <span class="built_in">print</span>(text)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">Decorator</span>(<span class="params">Func</span>):</span><br><span class="line"></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">ImprovedFunction</span>(<span class="params">*args, **kargs</span>): <span class="comment">#增强后的函数</span></span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;in ImprovedFunction&quot;</span>, text)</span><br><span class="line">            start_time = time.clock()</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;&lt;wrapper_head is here&gt;, start_time is %f&quot;</span> %start_time)</span><br><span class="line"></span><br><span class="line">            ret = Func(*args, **kargs) <span class="comment">#原始函数</span></span><br><span class="line"></span><br><span class="line">            end_time = time.clock()</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;&lt;wrapper_tail is here&gt;, end_time is %f&quot;</span> %end_time)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;&lt;cost in time&gt;: &quot;</span>, end_time - start_time)</span><br><span class="line">            <span class="keyword">return</span> ret</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> ImprovedFunction</span><br><span class="line">    <span class="keyword">return</span> Decorator</span><br></pre></td></tr></table></figure>
+
+<h3 id="不使用语法糖的用法-1"><a href="#不使用语法糖的用法-1" class="headerlink" title="不使用语法糖的用法"></a>不使用语法糖的用法</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">OddCounter</span>(<span class="params"></span></span><br><span class="line"><span class="params">        min_num: <span class="built_in">int</span> = <span class="number">0</span>,</span></span><br><span class="line"><span class="params">        max_num: <span class="built_in">int</span> = <span class="number">10</span>**<span class="number">5</span>,</span></span><br><span class="line"><span class="params">        </span>):</span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(min_num, max_num):</span><br><span class="line">        <span class="keyword">if</span> i%<span class="number">2</span> != <span class="number">0</span>:</span><br><span class="line">            count += <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot; this is OriginalFunction, count is %d&quot;</span> %count)</span><br><span class="line">    <span class="keyword">return</span> count</span><br><span class="line"></span><br><span class="line"><span class="comment">#不用语法糖</span></span><br><span class="line">Function = (LogDecorator(<span class="string">&quot;2021.5.30&quot;</span>, <span class="number">2</span>))(OddCounter)</span><br><span class="line">Function()</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用语法糖-1"><a href="#使用语法糖-1" class="headerlink" title="使用语法糖"></a>使用语法糖</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@LogDecorator(<span class="params">text=<span class="string">&quot;2021.5.30&quot;</span>,num=<span class="number">2</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">OddCounter</span>(<span class="params"></span></span><br><span class="line"><span class="params">        min_num: <span class="built_in">int</span> = <span class="number">0</span>,</span></span><br><span class="line"><span class="params">        max_num: <span class="built_in">int</span> = <span class="number">10</span>**<span class="number">5</span>,</span></span><br><span class="line"><span class="params">        </span>):</span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(min_num, max_num):</span><br><span class="line">        <span class="keyword">if</span> i%<span class="number">2</span> != <span class="number">0</span>:</span><br><span class="line">            count += <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot; this is OriginalFunction, count is %d&quot;</span> %count)</span><br><span class="line">    <span class="keyword">return</span> count</span><br><span class="line"></span><br><span class="line"><span class="comment"># 同理，直接使用原函数名</span></span><br><span class="line">OddCounter()</span><br></pre></td></tr></table></figure>
+
+<h3 id="效果-1"><a href="#效果-1" class="headerlink" title="效果"></a>效果</h3><p>两种使用方法效果一样, 终端输出如下:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">2021.5.30</span><br><span class="line">2021.5.30</span><br><span class="line">in ImprovedFunction 2021.5.30</span><br><span class="line">&lt;wrapper_head is here&gt;, start_time is 0.023687</span><br><span class="line"> this is OriginalFunction, count is 50000</span><br><span class="line">&lt;wrapper_tail is here&gt;, end_time is 0.028648</span><br><span class="line">&lt;cost in time&gt;:  0.004961</span><br></pre></td></tr></table></figure>
+
+<h2 id="内置装饰器"><a href="#内置装饰器" class="headerlink" title="内置装饰器"></a>内置装饰器</h2><h3 id="functools"><a href="#functools" class="headerlink" title="functools"></a>functools</h3><h4 id="wraps"><a href="#wraps" class="headerlink" title="wraps"></a>wraps</h4><p>@functools.wraps：增强后函数遮盖了被装饰函数的 __name__ 和 __doc__, 这个装饰器把相关属性从被装饰函数复制到增强后函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">Deco</span>(<span class="params">func</span>):</span><br><span class="line">    <span class="comment"># @functools.wraps(func)  去掉注释后，输出为 &#x27;MyPrint&#x27;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">ImporvedFunction</span>():</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Improving...&quot;</span>)</span><br><span class="line">        func()</span><br><span class="line">    <span class="keyword">return</span> ImporvedFunction</span><br><span class="line"></span><br><span class="line"><span class="meta">@Deco</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">MyPrint</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;MyPrint is running&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(MyPrint.__name__)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出</span></span><br><span class="line"><span class="comment"># ImporvedFunction</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="lru-cache"><a href="#lru-cache" class="headerlink" title="lru_cache"></a>lru_cache</h4><p>@functools.lru_cache(maxsize&#x3D;128, typed&#x3D;False)：把耗时的函数结果保存起来，避免传入相同的参数时重复计算<br>maxsize: 指定存出多少个调用的结果，为了得到最佳性能，maxsize 应设为 2 的幂<br>typed: 如果为 True, 把不同参数类型得到的结果分开保存，比如 1(int) 和 1.0(float) 分开保存</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="comment"># 使用递归================================================================</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">Fibonacci</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="keyword">if</span> n &lt; <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> n</span><br><span class="line">    <span class="keyword">return</span> Fibonacci(n-<span class="number">1</span>) + Fibonacci(n-<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">start_time = time.clock()</span><br><span class="line"><span class="built_in">print</span>(Fibonacci(<span class="number">30</span>))</span><br><span class="line">end_time = time.clock()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;[recursion time]&quot;</span>, end_time - start_time)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用循环 + 数组=========================================================</span></span><br><span class="line"><span class="keyword">from</span> array <span class="keyword">import</span> array</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">LoopFibonacci</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="keyword">if</span> n &lt; <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> n</span><br><span class="line">    fibo = array(<span class="string">&#x27;i&#x27;</span>)</span><br><span class="line">    fibo.append(<span class="number">0</span>)</span><br><span class="line">    fibo.append(<span class="number">1</span>)</span><br><span class="line">    index = <span class="number">2</span></span><br><span class="line">    <span class="keyword">while</span> index &lt;= n:</span><br><span class="line">        fibo.append(fibo[index-<span class="number">1</span>] + fibo[index-<span class="number">2</span>])</span><br><span class="line">        index += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> fibo[-<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">start_time = time.clock()</span><br><span class="line"><span class="built_in">print</span>(LoopFibonacci(<span class="number">30</span>))</span><br><span class="line">end_time = time.clock()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;[loop time]&quot;</span>, end_time - start_time)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用装饰器 + 递归=======================================================</span></span><br><span class="line"><span class="meta">@functools.lru_cache()</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">DecoFibonacci</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="keyword">if</span> n &lt; <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> n</span><br><span class="line">    <span class="keyword">return</span> DecoFibonacci(n-<span class="number">1</span>) + DecoFibonacci(n-<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">start_time = time.clock()</span><br><span class="line"><span class="built_in">print</span>(DecoFibonacci(<span class="number">30</span>))</span><br><span class="line">end_time = time.clock()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;[lru_cache + recursion time]&quot;</span>, end_time - start_time)</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">832040</span><br><span class="line">[recursion time] 0.173533</span><br><span class="line">832040</span><br><span class="line">[loop time] 1.7000000000017e-05</span><br><span class="line">832040</span><br><span class="line">[lru_cache + recursion time] 1.4999999999987246e-05</span><br></pre></td></tr></table></figure>
+
+<h4 id="singledispatch"><a href="#singledispatch" class="headerlink" title="singledispatch"></a>singledispatch</h4><p>@functools.singledispatch：把整体方案拆分成多个模块，使用 @singledispatch 装饰的普通函数会变成泛函数 (generic function)：根据第一个参数的类型，以不同方式执行相同操作的一组函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> singledispatch</span><br><span class="line"></span><br><span class="line"><span class="meta">@singledispatch</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">MyPrint</span>(<span class="params">obj</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;MyPrint&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">@MyPrint.register(<span class="params"><span class="built_in">str</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">_</span>(<span class="params">text</span>):        <span class="comment"># 其名称无关紧要</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;In register-str&quot;</span>,text)</span><br><span class="line"></span><br><span class="line"><span class="meta">@MyPrint.register(<span class="params"><span class="built_in">tuple</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">_</span>(<span class="params">seq</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;In register-tuple&quot;</span>,seq)</span><br><span class="line"></span><br><span class="line"><span class="meta">@MyPrint.register(<span class="params"><span class="built_in">int</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">_</span>(<span class="params">num</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;In register-int&quot;</span>,num)</span><br><span class="line"></span><br><span class="line">MyPrint(<span class="number">1</span>)</span><br><span class="line">MyPrint((<span class="number">1</span>,<span class="number">2</span>))</span><br><span class="line">MyPrint(<span class="string">&quot;dinanwang&quot;</span>)</span><br><span class="line">MyPrint([<span class="number">1</span>,<span class="number">2</span>])</span><br><span class="line">MyPrint(<span class="number">1.4</span>)</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In register-int 1</span><br><span class="line">In register-tuple (1, 2)</span><br><span class="line">In register-str dinanwang</span><br><span class="line">MyPrint</span><br><span class="line">MyPrint</span><br></pre></td></tr></table></figure>
+
+<h3 id="用于装饰方法的函数"><a href="#用于装饰方法的函数" class="headerlink" title="用于装饰方法的函数"></a>用于装饰方法的函数</h3><p>@property @classmethod @staticmethod</p>
+<p>先定义一个 Circle 类</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Circle</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params"></span></span><br><span class="line"><span class="params">            self, </span></span><br><span class="line"><span class="params">            r: <span class="built_in">float</span>=<span class="number">1.0</span>,</span></span><br><span class="line"><span class="params">            color: <span class="built_in">str</span>=<span class="string">&quot;black&quot;</span></span></span><br><span class="line"><span class="params">            </span>):</span><br><span class="line">        self._r = r        </span><br><span class="line">        self._color = color</span><br></pre></td></tr></table></figure>
+
+<h4 id="property"><a href="#property" class="headerlink" title="property"></a>property</h4><p>@property 一些特点：</p>
+<ol>
+<li>用在类上，能把一个类的方法变成类的属性</li>
+<li>用了@property，就不能再当函数调用，只能当做属性</li>
+<li>第一个参数是仍然是self</li>
+<li>如果无返回值，就是none</li>
+<li>实际上偷偷运行了函数，所以能自动更新某些内容</li>
+</ol>
+<p>有两种方法使用这个特性, 在Circle类内，分别对 r 和 color 使用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 1. 分别用三次装饰器</span></span><br><span class="line"><span class="comment"># 方法和属性不能重名</span></span><br><span class="line"><span class="meta">@property</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">r</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="keyword">return</span> self._r</span><br><span class="line"></span><br><span class="line"><span class="meta">@r.setter</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">r</span>(<span class="params">self, value</span>):</span><br><span class="line">    self._r = value</span><br><span class="line"></span><br><span class="line"><span class="meta">@r.deleter</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">r</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="keyword">del</span> self._r</span><br><span class="line"></span><br><span class="line"><span class="comment">## 2. 合体</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">GetColor</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="keyword">return</span> self._color</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">SetColor</span>(<span class="params">self, color</span>):</span><br><span class="line">    self._color = color</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">DelColor</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="keyword">del</span> self._color </span><br><span class="line"></span><br><span class="line">color = <span class="built_in">property</span>(GetColor, SetColor, DelColor)</span><br></pre></td></tr></table></figure>
+
+<p>使用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;ins.r =&quot;</span>, ins.r)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;ins.S =&quot;</span>, ins.S)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Let ins.r = 1.5&quot;</span>)</span><br><span class="line">ins.r = <span class="number">1.5</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;ins.r =&quot;</span>, ins.r)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;ins.S =&quot;</span>, ins.S)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ins.r = 10</span><br><span class="line">ins.S = 314.1592653589793</span><br><span class="line">Let ins.r = 1.5</span><br><span class="line">ins.r = 1.5</span><br><span class="line">ins.S = 7.0685834705770345</span><br></pre></td></tr></table></figure>
+
+<h4 id="staticmethod-和-classmethod"><a href="#staticmethod-和-classmethod" class="headerlink" title="staticmethod 和 classmethod"></a>staticmethod 和 classmethod</h4><table>
+<thead>
+<tr>
+<th></th>
+<th>instance method</th>
+<th>@classmethod</th>
+<th>@staticmethod</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>instance_name.method</strong></td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><strong>class_name.method</strong></td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><strong>first parameter</strong></td>
+<td>self(instance)</td>
+<td>self(class)</td>
+<td>any(no self)</td>
+</tr>
+</tbody></table>
+<p>在Circle类内定义这几种方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 实例方法（instance method）</span></span><br><span class="line"><span class="comment"># 只能通过实例调用</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">CalC</span>(<span class="params">self</span>):</span><br><span class="line">    c = <span class="number">2</span> * math.pi * self._r</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;c is &quot;</span>, c, <span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> c</span><br><span class="line"></span><br><span class="line"><span class="comment"># 静态方法（static method）</span></span><br><span class="line"><span class="comment"># 和用普通函数没什么两样，只是调用时要用类名或实例名</span></span><br><span class="line"><span class="meta">@staticmethod</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">SPrint</span>(<span class="params">text</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;staticmethod: %s\n&quot;</span> %text)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 类方法（class method）</span></span><br><span class="line"><span class="comment"># 需要传入类名，可判断是父类还是子类调用的</span></span><br><span class="line"><span class="meta">@classmethod</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">CPrint</span>(<span class="params">cls, text</span>):</span><br><span class="line">    <span class="built_in">print</span>(cls, <span class="string">&quot;classmethod: %s\n&quot;</span> %text)</span><br></pre></td></tr></table></figure>
+
+<p>调用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ins = Circle(<span class="number">10</span>,<span class="string">&quot;white&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># instance method</span></span><br><span class="line">ins.CalC()</span><br><span class="line"><span class="comment"># class method</span></span><br><span class="line">Circle.CPrint(<span class="string">&quot;circle call cprint&quot;</span>)</span><br><span class="line">ins.CPrint(<span class="string">&quot;ins call cprint&quot;</span>)</span><br><span class="line"><span class="comment"># static method</span></span><br><span class="line">Circle.SPrint(<span class="string">&quot;circle call sprint&quot;</span>)</span><br><span class="line">ins.SPrint(<span class="string">&quot;ins call sprint&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">c is  62.83185307179586</span><br><span class="line"></span><br><span class="line">&lt;class &#x27;__main__.Circle&#x27;&gt; classmethod: circle call cprint</span><br><span class="line"></span><br><span class="line">&lt;class &#x27;__main__.Circle&#x27;&gt; classmethod: ins call cprint</span><br><span class="line"></span><br><span class="line">staticmethod: circle call sprint</span><br><span class="line"></span><br><span class="line">staticmethod: ins call sprint</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="备忘"><a href="#备忘" class="headerlink" title="备忘"></a>备忘</h1><p>module package import</p>
+<p>super<br>tensor or Tensor</p>
+<p>python静态变量</p>
+<p>子类扩展父类方法（不仅仅是重写）<br>内置函数，内置属性<br>特殊函数<br>特殊属性<br>isintance, issubclass, type</p>
+<p>plt使用<br>zip<br>enumerate<br>for i, (ax, img) in enumerate(zip(axes, imgs)):<br>反向传播 链式求导过程<br><strong>slot</strong> 动态扩展<br>python3 -m ipdb xxx.py</p>
+<h1 id="pyi，模块，多文件变成"><a href="#pyi，模块，多文件变成" class="headerlink" title="pyi，模块，多文件变成"></a>pyi，模块，多文件变成</h1><h1 id="类"><a href="#类" class="headerlink" title="类"></a>类</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用collections模块</span></span><br><span class="line"><span class="keyword">import</span> collections</span><br><span class="line">card = collections.namedtuple(<span class="string">&quot;card&quot;</span>, [<span class="string">&quot;rank&quot;</span>, <span class="string">&quot;suit&quot;</span>])</span><br><span class="line"><span class="comment"># 可以这样创建一个只有少数属性而无方法的类</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>python支持多继承，</p>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><h2 id="特殊方法（方法前后有双下划线）"><a href="#特殊方法（方法前后有双下划线）" class="headerlink" title="特殊方法（方法前后有双下划线）"></a>特殊方法（方法前后有双下划线）</h2><p>雷属性，实例属性</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/language/" rel="tag"># language</a>
+              <a href="/tags/python/" rel="tag"># python</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/05/14/deeplearning-pytorch/pytorch-dataset/" rel="prev" title="pytorch-dataset">
+                  <i class="fa fa-chevron-left"></i> pytorch-dataset
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/06/09/linux-ubuntu/ubuntu-firefox-video/" rel="next" title="ubuntu下firefox不能播放视频">
+                  ubuntu下firefox不能播放视频 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wadekiny</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/4.14.3/algoliasearch-lite.umd.js" integrity="sha256-dyJcbGuYfdzNfifkHxYVd/rzeR6SLLcDFYEidcybldM=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/4.49.2/instantsearch.production.min.js" integrity="sha256-Nu8yqoXoRZEVYyZf4/eY1V4FsenbiCw85RY3gWjN3zQ=" crossorigin="anonymous"></script><script src="/js/third-party/search/algolia-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

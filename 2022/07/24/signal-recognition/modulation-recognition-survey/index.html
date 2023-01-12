@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="modulation-recognition-survey.md">
+<meta property="og:type" content="article">
+<meta property="og:title" content="无线电信号检测识别的两篇综述">
+<meta property="og:url" content="http://example.com/2022/07/24/signal-recognition/modulation-recognition-survey/index.html">
+<meta property="og:site_name" content="Wadekiny&#39;s Blog">
+<meta property="og:description" content="modulation-recognition-survey.md">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/modulation-recognition-survey/ieee.png">
+<meta property="og:image" content="http://example.com/modulation-recognition-survey/ieeeaccess.png">
+<meta property="og:image" content="http://example.com/modulation-recognition-survey/AMRmethod.png">
+<meta property="og:image" content="http://example.com/modulation-recognition-survey/constellation.png">
+<meta property="og:image" content="http://example.com/modulation-recognition-survey/constellation2.png">
+<meta property="og:image" content="http://example.com/modulation-recognition-survey/eye_diagrams.png">
+<meta property="og:image" content="http://example.com/modulation-recognition-survey/fpimages.png">
+<meta property="og:image" content="http://example.com/modulation-recognition-survey/af.png">
+<meta property="og:image" content="http://example.com/modulation-recognition-survey/afimages.png">
+<meta property="og:image" content="http://example.com/modulation-recognition-survey/caf.png">
+<meta property="og:image" content="http://example.com/modulation-recognition-survey/scf.png">
+<meta property="og:image" content="http://example.com/modulation-recognition-survey/scfimages.png">
+<meta property="og:image" content="http://example.com/modulation-recognition-survey/cces.png">
+<meta property="og:image" content="http://example.com/modulation-recognition-survey/asb.png">
+<meta property="og:image" content="http://example.com/modulation-recognition-survey/iqseq.png">
+<meta property="og:image" content="http://example.com/modulation-recognition-survey/ap.png">
+<meta property="og:image" content="http://example.com/modulation-recognition-survey/fft.png">
+<meta property="og:image" content="http://example.com/modulation-recognition-survey/ah.png">
+<meta property="article:published_time" content="2022-07-24T06:11:29.000Z">
+<meta property="article:modified_time" content="2023-01-12T16:47:15.763Z">
+<meta property="article:author" content="Wadekiny">
+<meta property="article:tag" content="paper">
+<meta property="article:tag" content="deeplearning">
+<meta property="article:tag" content="radio-signal">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/modulation-recognition-survey/ieee.png">
+
+
+<link rel="canonical" href="http://example.com/2022/07/24/signal-recognition/modulation-recognition-survey/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/07/24/signal-recognition/modulation-recognition-survey/","path":"2022/07/24/signal-recognition/modulation-recognition-survey/","title":"无线电信号检测识别的两篇综述"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>无线电信号检测识别的两篇综述 | Wadekiny's Blog</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Wadekiny's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">32</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">51</span></a></li><li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>Schedule</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Commonweal 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container"></div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container">
+  <div class="algolia-stats"><hr></div>
+  <div class="algolia-hits"></div>
+  <div class="algolia-pagination"></div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%86%E5%88%AB%E8%BF%87%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">识别过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E5%8F%B7%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">信号的表示方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#I-%E7%89%B9%E5%BE%81%E8%A1%A8%E7%A4%BA"><span class="nav-number">2.1.</span> <span class="nav-text">I 特征表示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B4%AF%E7%A7%AF%E9%87%8F%E7%89%B9%E5%BE%81-Cumulants-Features"><span class="nav-number">2.1.1.</span> <span class="nav-text">累积量特征 Cumulants Features</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%91%E8%B0%B1%E7%89%B9%E5%BE%81-Spectral-Features"><span class="nav-number">2.1.2.</span> <span class="nav-text">频谱特征 Spectral Features</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%86%E5%BD%A2%E7%89%B9%E5%BE%81-Circular-Features"><span class="nav-number">2.1.3.</span> <span class="nav-text">圆形特征 Circular Features</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#II-%E5%9B%BE%E5%83%8F%E8%A1%A8%E7%A4%BA"><span class="nav-number">2.2.</span> <span class="nav-text">II 图像表示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%9F%E5%BA%A7%E5%9B%BE-Constellation-Diagram"><span class="nav-number">2.2.1.</span> <span class="nav-text">星座图 Constellation Diagram</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9C%BC%E5%9B%BE-Eye-Diagram"><span class="nav-number">2.2.2.</span> <span class="nav-text">眼图 Eye Diagram</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E5%BE%81%E7%82%B9%E5%9B%BE-Feature-Poing-Image"><span class="nav-number">2.2.3.</span> <span class="nav-text">特征点图 Feature Poing Image</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E7%B3%8A%E5%87%BD%E6%95%B0%E5%9B%BE-Ambiguity-Function-Image"><span class="nav-number">2.2.4.</span> <span class="nav-text">模糊函数图 Ambiguity Function Image</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%91%E8%B0%B1%E7%9B%B8%E5%85%B3%E5%87%BD%E6%95%B0%E5%9B%BE-Spectral-Correlation-Function-Image"><span class="nav-number">2.2.5.</span> <span class="nav-text">频谱相关函数图 Spectral Correlation Function Image</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E7%9B%B8%E5%85%B3%E7%86%B5%E9%A2%91%E8%B0%B1%E5%9B%BE-Cyclic-Correntropy-Spectrum-Graph"><span class="nav-number">2.2.6.</span> <span class="nav-text">循环相关熵频谱图 Cyclic Correntropy Spectrum Graph</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8C%E9%A2%91%E8%B0%B1%E5%9B%BE-Bispectrum-Graph"><span class="nav-number">2.2.7.</span> <span class="nav-text">双频谱图 Bispectrum Graph</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#III-%E5%BA%8F%E5%88%97%E8%A1%A8%E7%A4%BA"><span class="nav-number">2.3.</span> <span class="nav-text">III 序列表示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#IQ%E4%BF%A1%E5%8F%B7%E5%BA%8F%E5%88%97-In-Phase-and-Quadrature-Sequences"><span class="nav-number">2.3.1.</span> <span class="nav-text">IQ信号序列 In-Phase and Quadrature Sequences</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%AF%E5%B9%85%E5%92%8C%E7%9B%B8%E4%BD%8D%E5%BA%8F%E5%88%97-Amplitude-and-Phase-Sequences"><span class="nav-number">2.3.2.</span> <span class="nav-text">振幅和相位序列 Amplitude and Phase Sequences</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%BA%8F%E5%88%97-Fast-Fourier-Transformation-Sequences"><span class="nav-number">2.3.3.</span> <span class="nav-text">快速傅里叶变换序列 Fast Fourier Transformation Sequences</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%AF%E5%B9%85%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%BA%8F%E5%88%97-Amplitude-Histogram-Sequences"><span class="nav-number">2.3.4.</span> <span class="nav-text">振幅直方图序列 Amplitude Histogram Sequences</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IV-%E7%BB%BC%E5%90%88%E8%A1%A8%E7%A4%BA"><span class="nav-number">2.4.</span> <span class="nav-text">IV 综合表示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-number">3.</span> <span class="nav-text">数据集</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RadioML-2016-10A-DATASET"><span class="nav-number">3.1.</span> <span class="nav-text">RadioML 2016.10A DATASET</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RadioML-2018-01A-DATASET"><span class="nav-number">3.2.</span> <span class="nav-text">RadioML 2018.01A DATASET</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HisarMod2019-1-DATASET"><span class="nav-number">3.3.</span> <span class="nav-text">HisarMod2019.1 DATASET</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">基于机器学习的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">5.</span> <span class="nav-text">基于深度学习的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8ECNN%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">5.1.</span> <span class="nav-text">基于CNN的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8ERNN-LSTM%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">5.2.</span> <span class="nav-text">基于RNN,LSTM的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8EDNN%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">5.3.</span> <span class="nav-text">基于DNN的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E8%87%AA%E5%8A%A8%E7%BC%96%E7%A0%81%E5%99%A8-AE"><span class="nav-number">5.4.</span> <span class="nav-text">基于自动编码器(AE)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%91%E6%88%98%E5%92%8C%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91"><span class="nav-number">6.</span> <span class="nav-text">挑战和研究方向</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Wadekiny</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/24/signal-recognition/modulation-recognition-survey/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Wadekiny">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wadekiny's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="无线电信号检测识别的两篇综述 | Wadekiny's Blog">
+      <meta itemprop="description" content="modulation-recognition-survey.md">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          无线电信号检测识别的两篇综述
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-07-24 14:11:29" itemprop="dateCreated datePublished" datetime="2022-07-24T14:11:29+08:00">2022-07-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-01-13 00:47:15" itemprop="dateModified" datetime="2023-01-13T00:47:15+08:00">2023-01-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/paper/" itemprop="url" rel="index"><span itemprop="name">paper</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">modulation-recognition-survey.md</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><img src="/./modulation-recognition-survey/ieee.png" alt="ieeetransactions..."><br><img src="/./modulation-recognition-survey/ieeeaccess.png" alt="ieeeaccess"></p>
+<h2 id="识别过程"><a href="#识别过程" class="headerlink" title="识别过程"></a>识别过程</h2><p><img src="/./modulation-recognition-survey/AMRmethod.png" alt="AMRmethod"></p>
+<h2 id="信号的表示方法"><a href="#信号的表示方法" class="headerlink" title="信号的表示方法"></a>信号的表示方法</h2><h3 id="I-特征表示"><a href="#I-特征表示" class="headerlink" title="I 特征表示"></a>I 特征表示</h3><p>特征表示最初是为调制分类的FB(feature-based)算法开发的。它提取多个特征来表示接收到的信号(提取特征的数量通常小于接收信号的长度)。</p>
+<p>优点：</p>
+<ul>
+<li>通过特征表示对接收到的信号进行压缩，这允许利用具有更少神经元&#x2F;层的简单DNN</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>信号特征的计算会产生额外的计算复杂性</li>
+<li>需要根据候选调制集选择适当的特征，这需要大量的专业知识和经验</li>
+<li>在将原始信号转换为特征时，可能会丢失一些关键信息，从而影响调制分类的性能。</li>
+</ul>
+<h4 id="累积量特征-Cumulants-Features"><a href="#累积量特征-Cumulants-Features" class="headerlink" title="累积量特征 Cumulants Features"></a>累积量特征 Cumulants Features</h4><h4 id="频谱特征-Spectral-Features"><a href="#频谱特征-Spectral-Features" class="headerlink" title="频谱特征 Spectral Features"></a>频谱特征 Spectral Features</h4><h4 id="圆形特征-Circular-Features"><a href="#圆形特征-Circular-Features" class="headerlink" title="圆形特征 Circular Features"></a>圆形特征 Circular Features</h4><h3 id="II-图像表示"><a href="#II-图像表示" class="headerlink" title="II 图像表示"></a>II 图像表示</h3><p>图像表示的思想是将接收到的信号转换为图像，通过图像识别完成调制分类任务。现有的DNN和DL图像识别框架可以直接用于具有图像表示的调制分类。</p>
+<p>优点：</p>
+<ul>
+<li>易于实现</li>
+<li>受利于CV的发展</li>
+<li>避免了手动提取特征</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>成图像仍然需要一些计算</li>
+<li>需要复杂的DNN来学习图像的特征。</li>
+</ul>
+<h4 id="星座图-Constellation-Diagram"><a href="#星座图-Constellation-Diagram" class="headerlink" title="星座图 Constellation Diagram"></a>星座图 Constellation Diagram</h4><p><img src="/./modulation-recognition-survey/constellation.png" alt="constellation"><br><img src="/./modulation-recognition-survey/constellation2.png" alt="constellation2"></p>
+<h4 id="眼图-Eye-Diagram"><a href="#眼图-Eye-Diagram" class="headerlink" title="眼图 Eye Diagram"></a>眼图 Eye Diagram</h4><p>捕获的波形进行叠加得到眼图，可以反映信号的整体信息。</p>
+<p><img src="/./modulation-recognition-survey/eye_diagrams.png" alt="eye_diagrams"></p>
+<h4 id="特征点图-Feature-Poing-Image"><a href="#特征点图-Feature-Poing-Image" class="headerlink" title="特征点图 Feature Poing Image"></a>特征点图 Feature Poing Image</h4><p>由信号特征生成，比如 HOCs(高阶累积量), PAR（峰均比）等，通过公式转换，画在复平面上。</p>
+<p><img src="/./modulation-recognition-survey/fpimages.png" alt="fpimages"></p>
+<h4 id="模糊函数图-Ambiguity-Function-Image"><a href="#模糊函数图-Ambiguity-Function-Image" class="headerlink" title="模糊函数图 Ambiguity Function Image"></a>模糊函数图 Ambiguity Function Image</h4><p><img src="/./modulation-recognition-survey/af.png" alt="af"></p>
+<p>y是接收到的连续信号，*代表共轭，$\omega$代表频率偏移，$\tau$ 代表时间延迟，不同的调制方式有不同的模糊函数图</p>
+<p><img src="/./modulation-recognition-survey/afimages.png" alt="afimages"></p>
+<h4 id="频谱相关函数图-Spectral-Correlation-Function-Image"><a href="#频谱相关函数图-Spectral-Correlation-Function-Image" class="headerlink" title="频谱相关函数图 Spectral Correlation Function Image"></a>频谱相关函数图 Spectral Correlation Function Image</h4><p>调制信号的周期特征由循环自相关函数(CAF)和谱相关函数(SCF)描述，SCF通过傅里叶变换从CAF导出，SCF是关于数字频率f和循环频率$\alpha$的二元函数，通过(29)导出SCF矩阵，取SCF矩阵的绝对值作为图像，就是SCF图。</p>
+<p><img src="/./modulation-recognition-survey/caf.png" alt="caf"><br><img src="/./modulation-recognition-survey/scf.png" alt="scf"></p>
+<p><img src="/./modulation-recognition-survey/scfimages.png" alt="scfimages"></p>
+<h4 id="循环相关熵频谱图-Cyclic-Correntropy-Spectrum-Graph"><a href="#循环相关熵频谱图-Cyclic-Correntropy-Spectrum-Graph" class="headerlink" title="循环相关熵频谱图 Cyclic Correntropy Spectrum Graph"></a>循环相关熵频谱图 Cyclic Correntropy Spectrum Graph</h4><p><img src="/./modulation-recognition-survey/cces.png" alt="cces"></p>
+<h4 id="双频谱图-Bispectrum-Graph"><a href="#双频谱图-Bispectrum-Graph" class="headerlink" title="双频谱图 Bispectrum Graph"></a>双频谱图 Bispectrum Graph</h4><p><img src="/./modulation-recognition-survey/asb.png" alt="asb"></p>
+<h3 id="III-序列表示"><a href="#III-序列表示" class="headerlink" title="III 序列表示"></a>III 序列表示</h3><p>序列表示是一种直观的信号表示，因为信号是按顺序接收的。</p>
+<p>优点：</p>
+<ul>
+<li>IQ序列、AP序列等序列可以很容易地导出，只需很少的计算。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>如果网络设计不当，训练过程可能很难收敛</li>
+</ul>
+<h4 id="IQ信号序列-In-Phase-and-Quadrature-Sequences"><a href="#IQ信号序列-In-Phase-and-Quadrature-Sequences" class="headerlink" title="IQ信号序列 In-Phase and Quadrature Sequences"></a>IQ信号序列 In-Phase and Quadrature Sequences</h4><ul>
+<li>使用IQ信号样本进行分类 </li>
+<li>IQ 表现了信号的幅值和相位变化。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法(2)</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[41]access</td>
+<td>在正交频分复用系统中消除相位偏移的影响<br>eliminating the bad effects of PO in uncooperative OFDM systems</td>
+</tr>
+<tr>
+<td>[6]</td>
+<td>从长符号率信号中提取特征，但是要求较高的信噪比</td>
+</tr>
+<tr>
+<td>[42]access</td>
+<td>多流结构，增加网络宽度，获取更有价值的特征</td>
+</tr>
+<tr>
+<td>[43]access</td>
+<td><strong>学习盲信道识别和AMR，使用两个CNN来弥补在同一信道上分类的缺陷</strong>，第一个用来识别是LOS还是NLOS，第二个用来分类</td>
+</tr>
+<tr>
+<td>[44]</td>
+<td>对CNN、RNN、inception模块和卷积长短期DNN（CLDNN）进行了比较研究</td>
+</tr>
+<tr>
+<td>[45]</td>
+<td>2CNNs &amp; dropout 代替 pooling, 提高分类精度</td>
+</tr>
+<tr>
+<td>[46]access</td>
+<td>CNN+LSTM</td>
+</tr>
+<tr>
+<td>[47]access</td>
+<td>消耗内存少，对信噪比的变化有更高的鲁棒性</td>
+</tr>
+<tr>
+<td>[48]</td>
+<td>试用于不同的噪声体系，计算复杂度较低，模型比较小，减少了计算时间，可接受的性能损失下减少了所需的设备存储器</td>
+</tr>
+<tr>
+<td>[49]access</td>
+<td>解决CNN输入大小不一样的问题，并充分利用完整的信号<strong>突发</strong>。探索了三种容和方法：基于投票、基于置信度、基于特征</td>
+</tr>
+<tr>
+<td>[50]</td>
+<td>图映射CNN转换接收到的信号为图形，CNN提取特征，GCN分类</td>
+</tr>
+</tbody></table>
+<p><img src="/./modulation-recognition-survey/iqseq.png" alt="iqseq"></p>
+<h4 id="振幅和相位序列-Amplitude-and-Phase-Sequences"><a href="#振幅和相位序列-Amplitude-and-Phase-Sequences" class="headerlink" title="振幅和相位序列 Amplitude and Phase Sequences"></a>振幅和相位序列 Amplitude and Phase Sequences</h4><p><img src="/./modulation-recognition-survey/ap.png" alt="ap"></p>
+<h4 id="快速傅里叶变换序列-Fast-Fourier-Transformation-Sequences"><a href="#快速傅里叶变换序列-Fast-Fourier-Transformation-Sequences" class="headerlink" title="快速傅里叶变换序列 Fast Fourier Transformation Sequences"></a>快速傅里叶变换序列 Fast Fourier Transformation Sequences</h4><p><img src="/./modulation-recognition-survey/fft.png" alt="fft"></p>
+<h4 id="振幅直方图序列-Amplitude-Histogram-Sequences"><a href="#振幅直方图序列-Amplitude-Histogram-Sequences" class="headerlink" title="振幅直方图序列 Amplitude Histogram Sequences"></a>振幅直方图序列 Amplitude Histogram Sequences</h4><p><img src="/./modulation-recognition-survey/ah.png" alt="ah"></p>
+<h3 id="IV-综合表示"><a href="#IV-综合表示" class="headerlink" title="IV 综合表示"></a>IV 综合表示</h3><ul>
+<li>组合表示使用多个特征、图像或序列的组合来表示接收到的信号。它能够综合多种表示的优点，获得更好的分类性能。</li>
+<li>多个表示应该尽可能不相关。</li>
+<li>多个表示方法的缺陷可能会累积并发挥主导作用，反而会削弱分类性能。</li>
+</ul>
+<h2 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h2><h3 id="RadioML-2016-10A-DATASET"><a href="#RadioML-2016-10A-DATASET" class="headerlink" title="RadioML 2016.10A DATASET"></a>RadioML 2016.10A DATASET</h3><ul>
+<li>合成数据集：<strong>RadioML 2016.10A</strong> </li>
+<li>GNU’s Not Unix (GNU) Radio生成的</li>
+<li>包括8种数字调制和3种模拟调制</li>
+<li>20个不同信噪比的220k信号，20*11*1k</li>
+<li>是<strong>RadioML 2016.04C</strong>的一个更干净，更规范的版本</li>
+<li>更大的数据集：<strong>RadioML 2016.10B</strong></li>
+</ul>
+<h3 id="RadioML-2018-01A-DATASET"><a href="#RadioML-2018-01A-DATASET" class="headerlink" title="RadioML 2018.01A DATASET"></a>RadioML 2018.01A DATASET</h3><ul>
+<li><p>它包括在空中测量的24个数字和模拟调制方案，(在广泛的信噪比值范围内传播)。</p>
+</li>
+<li><p>包含了超过250万个信号</p>
+</li>
+</ul>
+<h3 id="HisarMod2019-1-DATASET"><a href="#HisarMod2019-1-DATASET" class="headerlink" title="HisarMod2019.1 DATASET"></a>HisarMod2019.1 DATASET</h3><ul>
+<li>通过5种不同的无线信道生成（ideal, static, Rayleigh, Rician, and Nakagami–m）</li>
+<li>MATLAB2017生成</li>
+<li>包含780K个IQ样本，信噪比范围和<strong>RadioML 2016.10B</strong>一样</li>
+</ul>
+<h2 id="基于机器学习的方法"><a href="#基于机器学习的方法" class="headerlink" title="基于机器学习的方法"></a>基于机器学习的方法</h2><h2 id="基于深度学习的方法"><a href="#基于深度学习的方法" class="headerlink" title="基于深度学习的方法"></a>基于深度学习的方法</h2><h3 id="基于CNN的方法"><a href="#基于CNN的方法" class="headerlink" title="基于CNN的方法"></a>基于CNN的方法</h3><h3 id="基于RNN-LSTM的方法"><a href="#基于RNN-LSTM的方法" class="headerlink" title="基于RNN,LSTM的方法"></a>基于RNN,LSTM的方法</h3><h3 id="基于DNN的方法"><a href="#基于DNN的方法" class="headerlink" title="基于DNN的方法"></a>基于DNN的方法</h3><h3 id="基于自动编码器-AE"><a href="#基于自动编码器-AE" class="headerlink" title="基于自动编码器(AE)"></a>基于自动编码器(AE)</h3><h2 id="挑战和研究方向"><a href="#挑战和研究方向" class="headerlink" title="挑战和研究方向"></a>挑战和研究方向</h2><p>存在的局限：</p>
+<ol>
+<li>需要先验信息</li>
+<li>仅限于少数调制方案</li>
+<li>计算复杂性较高，不能用于实时应用</li>
+<li>需要较高的<strong>信噪比</strong></li>
+</ol>
+<p>方向：</p>
+<ul>
+<li>提高分类器在较大<strong>信噪比范围</strong>内的鲁棒性</li>
+<li>在信号预处理阶段使用降噪算法</li>
+<li>对于不同长度输入的处理</li>
+<li>数据集以及数据增广的方法</li>
+<li>半监督和无监督</li>
+<li>对于未知调制类型的处理</li>
+<li>应用于实际硬件设备上，需要更高的精确度和更小的复杂度</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/paper/" rel="tag"># paper</a>
+              <a href="/tags/deeplearning/" rel="tag"># deeplearning</a>
+              <a href="/tags/radio-signal/" rel="tag"># radio-signal</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/07/20/3dface-paper/3dfacereconstruction-abstracts/" rel="prev" title="3D人脸重建论文综述汇总">
+                  <i class="fa fa-chevron-left"></i> 3D人脸重建论文综述汇总
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/07/24/signal-recognition/radio-abstract/" rel="next" title="无线电信号识别论文摘要整合">
+                  无线电信号识别论文摘要整合 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wadekiny</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/4.14.3/algoliasearch-lite.umd.js" integrity="sha256-dyJcbGuYfdzNfifkHxYVd/rzeR6SLLcDFYEidcybldM=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/4.49.2/instantsearch.production.min.js" integrity="sha256-Nu8yqoXoRZEVYyZf4/eY1V4FsenbiCw85RY3gWjN3zQ=" crossorigin="anonymous"></script><script src="/js/third-party/search/algolia-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

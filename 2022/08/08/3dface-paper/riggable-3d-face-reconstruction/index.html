@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="(CVPR2021)通过网络内部的优化器迭代优化&#39;face rig&#39;：riggable-3d-face-reconstruction.md">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Riggable 3D Face Reconstruction via In-Network Optimization">
+<meta property="og:url" content="http://example.com/2022/08/08/3dface-paper/riggable-3d-face-reconstruction/index.html">
+<meta property="og:site_name" content="Wadekiny&#39;s Blog">
+<meta property="og:description" content="(CVPR2021)通过网络内部的优化器迭代优化&#39;face rig&#39;：riggable-3d-face-reconstruction.md">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/riggable-3d-face-reconstruction/rig-frame.png">
+<meta property="og:image" content="http://example.com/riggable-3d-face-reconstruction/imagefeatureextraction.png">
+<meta property="og:image" content="http://example.com/riggable-3d-face-reconstruction/neutral-shape.png">
+<meta property="og:image" content="http://example.com/riggable-3d-face-reconstruction/expression-def.png">
+<meta property="og:image" content="http://example.com/riggable-3d-face-reconstruction/alb.png">
+<meta property="og:image" content="http://example.com/riggable-3d-face-reconstruction/loss.png">
+<meta property="article:published_time" content="2022-08-08T08:08:50.000Z">
+<meta property="article:modified_time" content="2023-01-12T16:47:15.713Z">
+<meta property="article:author" content="Wadekiny">
+<meta property="article:tag" content="paper">
+<meta property="article:tag" content="3Dface">
+<meta property="article:tag" content="deeplearning">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/riggable-3d-face-reconstruction/rig-frame.png">
+
+
+<link rel="canonical" href="http://example.com/2022/08/08/3dface-paper/riggable-3d-face-reconstruction/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/08/08/3dface-paper/riggable-3d-face-reconstruction/","path":"2022/08/08/3dface-paper/riggable-3d-face-reconstruction/","title":"Riggable 3D Face Reconstruction via In-Network Optimization"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Riggable 3D Face Reconstruction via In-Network Optimization | Wadekiny's Blog</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Wadekiny's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">32</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">51</span></a></li><li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>Schedule</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Commonweal 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container"></div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container">
+  <div class="algolia-stats"><hr></div>
+  <div class="algolia-hits"></div>
+  <div class="algolia-pagination"></div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CVPR-2021"><span class="nav-number">1.</span> <span class="nav-text">CVPR 2021</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">2.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFface-rig"><span class="nav-number">2.1.</span> <span class="nav-text">什么是face rig</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E9%80%82%E5%AE%9A%E6%80%A7%E9%97%AE%E9%A2%98"><span class="nav-number">2.2.</span> <span class="nav-text">什么是适定性问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%88%E5%89%8D%E5%B7%A5%E4%BD%9C%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">2.3.</span> <span class="nav-text">先前工作存在的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E6%96%87%E8%B4%A1%E7%8C%AE"><span class="nav-number">2.4.</span> <span class="nav-text">本文贡献</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E6%96%87%E6%80%9D%E8%B7%AF"><span class="nav-number">2.5.</span> <span class="nav-text">本文思路</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Method"><span class="nav-number">3.</span> <span class="nav-text">Method</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Face-Rig-Parameterization"><span class="nav-number">3.1.</span> <span class="nav-text">Face Rig Parameterization</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96"><span class="nav-number">3.1.1.</span> <span class="nav-text">特征提取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E6%80%A7mesh"><span class="nav-number">3.1.2.</span> <span class="nav-text">中性mesh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A8%E6%83%85mesh"><span class="nav-number">3.1.3.</span> <span class="nav-text">表情mesh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E5%B0%84%E7%8E%87%E9%A2%9C%E8%89%B2"><span class="nav-number">3.1.4.</span> <span class="nav-text">反射率颜色</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Learnable-Optimization"><span class="nav-number">3.2.</span> <span class="nav-text">Learnable Optimization</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Reconstruction-from-parameters"><span class="nav-number">3.2.1.</span> <span class="nav-text">Reconstruction from parameters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Energy-Formulation"><span class="nav-number">3.2.2.</span> <span class="nav-text">Energy Formulation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#optimization"><span class="nav-number">3.2.3.</span> <span class="nav-text">optimization</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LOSS"><span class="nav-number">3.3.</span> <span class="nav-text">LOSS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dataset"><span class="nav-number">3.4.</span> <span class="nav-text">Dataset</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Wadekiny</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/08/3dface-paper/riggable-3d-face-reconstruction/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Wadekiny">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wadekiny's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Riggable 3D Face Reconstruction via In-Network Optimization | Wadekiny's Blog">
+      <meta itemprop="description" content="(CVPR2021)通过网络内部的优化器迭代优化'face rig'：riggable-3d-face-reconstruction.md">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Riggable 3D Face Reconstruction via In-Network Optimization
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-08-08 16:08:50" itemprop="dateCreated datePublished" datetime="2022-08-08T16:08:50+08:00">2022-08-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-01-13 00:47:15" itemprop="dateModified" datetime="2023-01-13T00:47:15+08:00">2023-01-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/paper/" itemprop="url" rel="index"><span itemprop="name">paper</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">(CVPR2021)通过网络内部的优化器迭代优化'face rig'：riggable-3d-face-reconstruction.md</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="CVPR-2021"><a href="#CVPR-2021" class="headerlink" title="CVPR 2021"></a>CVPR 2021</h1><h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><h2 id="什么是face-rig"><a href="#什么是face-rig" class="headerlink" title="什么是face rig"></a>什么是face rig</h2><ul>
+<li><p>在动画制作中，rigging是将不同身体部分绑定起来，从而更好地控制动画人物的运动。</p>
+</li>
+<li><p>这里的riggable，应该是可控制的意思，区别于静态重建(只考虑输入图像的重建)，一个riggable 3d face 可以被其他变量控制，如其他人脸，声音等等</p>
+</li>
+<li><p>该face rig可以用于角色动画，如人脸重定目标(retarget)和语音木偶(voice puppertry)。也可以用于3D人脸跟踪，作为个性化的先验知识，以缓解跟踪难度。</p>
+</li>
+<li><p>face rig是一个个性化的参数模型，可以生成一个特定人物在不同表情下的face</p>
+</li>
+<li><p>face rig: 一个参数化模型，输入表情参数 $\beta$,输出一个相应的3D mesh</p>
+<ul>
+<li>$(V,A)&#x3D;Rig(\beta)$,V代表网格顶点，A代表反射率颜色。</li>
+</ul>
+</li>
+</ul>
+<h2 id="什么是适定性问题"><a href="#什么是适定性问题" class="headerlink" title="什么是适定性问题"></a>什么是适定性问题</h2><p>适定性问题，满足：</p>
+<ol>
+<li>解存在</li>
+<li>解唯一</li>
+<li>解稳定</li>
+</ol>
+<p>通过2D人脸生成3D人脸，和2dpose-&gt;3dpose一样，解不唯一，是不适定性问题。</p>
+<h2 id="先前工作存在的问题"><a href="#先前工作存在的问题" class="headerlink" title="先前工作存在的问题"></a>先前工作存在的问题</h2><ul>
+<li><p>由于问题的不适定性，face rig 模型通常难以优化</p>
+</li>
+<li><p>基于三维数据的方法：严重依赖于专用设备（如密集摄像机&#x2F;照明阵列和深度传感器）提供的3D数据，这限制了应用领域。</p>
+</li>
+<li><p>基于传统方法：这类算法通常使用低维参数面部模型作为先验，使用面部模型(3dmm,multi-linear)来约束这个不适定性问题。通过优化器来求解这些模型的参数。但无法捕捉到精确的面部特征，在此基础上的改进需要很多额外的部件，模型比较脆弱，效率相对较低。</p>
+</li>
+<li><p>基于深度学习：大部分专注于静态重建而不是个性化的 face rig。</p>
+</li>
+</ul>
+<h2 id="本文贡献"><a href="#本文贡献" class="headerlink" title="本文贡献"></a>本文贡献</h2><ul>
+<li><p>将深度学习，optimization 和 face rig结合。</p>
+</li>
+<li><p>提出了一种基于单目图像的face rig重建方法。(支持视频输入)</p>
+</li>
+<li><p>通过估计个性化的face rig，使得本方法比静态重建(static reconstructions)表现要好，并且实现了下游应用，如视频重定向。</p>
+</li>
+<li><p>与之前直接回归Rig参数的方法不同，本文的in-network optimization 迭代求解rig参数，并受到第一原则(first-principles) 的约束(e.g. multi-view consistency, landmark alignment, and photo-metric reconstruction)。获得了更好的几何精度和泛化能力</p>
+</li>
+</ul>
+<h2 id="本文思路"><a href="#本文思路" class="headerlink" title="本文思路"></a>本文思路</h2><ul>
+<li><p>联合估计具有个性化的个性化的 “人脸 rig” 和每幅图图像的参数（包括表情，姿势，照明），有监督</p>
+</li>
+<li><p>设计了一个端到端网络，嵌入了一个可微的网络优化器</p>
+<ul>
+<li><p>decoder, Face Rig Parameterization 基于输入图像，将face rig 参数化为 rig code，来control the person-specific aspects (面貌？)</p>
+</li>
+<li><p>learnable optimization，用于估计rig code 和 每幅图的参数</p>
+</li>
+</ul>
+</li>
+<li><p>在网络优化中，显式地强制来自第一原理的约束，引入了比基于回归的方法更多的先验知识。最后，利用深度学习中的数据驱动先验约束不适定单目设置，缓解优化难度。</p>
+</li>
+<li><p>本文的方法：不是直接回归，而是使用’in-network optimization governed by the first-principles’这个额外的约束，加上深度学习学到的东西，提供了提高几何精度和泛化能力的潜力，同时解决了线性人脸模型表达能力有限的缺点</p>
+</li>
+</ul>
+<h1 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h1><p>网络有三级，这是一级的示意图，重复三次就是本文的网络结构。</p>
+<ul>
+<li>Face Rig Parameterization: 参数化 face rig 为一个可优化的编码$\alpha^l$, to control the person-specific aspects</li>
+<li>Learnable Optimization：迭代更新$\alpha^l$和每幅图的参数(表情，姿态，照明)</li>
+</ul>
+<p><img src="/./riggable-3d-face-reconstruction/rig-frame.png" alt="rig-frame"></p>
+<p>在1个阶段中主要有四个参数(共有3个阶段)：</p>
+<ol>
+<li>Rig Code $\alpha^l$ </li>
+<li>lighting $\gamma$ 每幅输入图像都有这个参数</li>
+<li>pose $P$ 每幅输入图像都有这个参数</li>
+<li>expression $\beta$ 每幅输入图像都有这个参数</li>
+</ol>
+<h2 id="Face-Rig-Parameterization"><a href="#Face-Rig-Parameterization" class="headerlink" title="Face Rig Parameterization"></a>Face Rig Parameterization</h2><p>生成mesh的方法：</p>
+<table>
+<thead>
+<tr>
+<th>face rig</th>
+<th>face rig parameterization (本文)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$(V,A)&#x3D;Rig(\beta)$</td>
+<td>$(V,A) &#x3D; Rig(\beta;\alpha,{I_i},{\hat{V}^{old}_i})$</td>
+</tr>
+<tr>
+<td>V代表网格顶点，A代表反射率颜色,$\beta$是表情参数</td>
+<td>V代表网格顶点，A代表反射率颜色,$\beta$是表情参数</td>
+</tr>
+<tr>
+<td></td>
+<td>$I_i$为输入图像</td>
+</tr>
+<tr>
+<td></td>
+<td>$\hat V_i^{old}$是之前的重建结果，<cr>每一幅图都有一个重建结果,<cr> <strong>目的是将图像映射到UV空间</strong></td>
+</tr>
+<tr>
+<td></td>
+<td>同时更新$\alpha^l$</td>
+</tr>
+</tbody></table>
+<p>在face rig parameterization内部，主要有4个部件，每个部件有3个阶段</p>
+<ul>
+<li>特征提取：image feature extraction</li>
+<li>生成中性mesh(静态)：neutral shape decoding</li>
+<li>生成表情mesh(动态)：expression deformation decoding</li>
+<li>反射率颜色解码：albedo decoding</li>
+</ul>
+<h3 id="特征提取"><a href="#特征提取" class="headerlink" title="特征提取"></a>特征提取</h3><ul>
+<li><p>输入：</p>
+<ul>
+<li><p>N张图片</p>
+</li>
+<li><p>N个上一级重建结果(这个是从哪来的？)</p>
+</li>
+</ul>
+</li>
+<li><p>过程：用N个共享权重的网络提取特征，最大池化合在一起，经过残差块，得到$F_{uv}$</p>
+</li>
+<li><p>目的： 提取出一个UV特征图 $F_{uv}$, 对输入图像进行编码，用于后面的解码</p>
+</li>
+</ul>
+<p><img src="/./riggable-3d-face-reconstruction/imagefeatureextraction.png" alt="imagefeatureextraction"></p>
+<h3 id="中性mesh"><a href="#中性mesh" class="headerlink" title="中性mesh"></a>中性mesh</h3><ul>
+<li><p>输入：</p>
+<ul>
+<li>UV特征图</li>
+<li>netural shape code $\alpha_{ns}$, 是$\alpha$ 中的一部分</li>
+</ul>
+</li>
+<li><p>过程： CNN</p>
+</li>
+<li><p>目的：</p>
+<ul>
+<li>计算一个neutral shape $V_{ns}$: 3D face mesh in neutral expression</li>
+</ul>
+</li>
+<li><p>公式定义：</p>
+<p>  $$<br>  V_{ns} &#x3D; \overline V + B_{bfm}\alpha_{ns}^1 + \sum_{l&#x3D;1}^3F_{ns}^l(\alpha_{ns}^l; F_{uv}^l)<br>  $$</p>
+<p>  在第一个阶段，使用了BFM模型。$\overline V , B_{bfm}$ 分别是平均人脸mesh和PCA中的基</p>
+<blockquote>
+<p>A 3d face model for pose and illumination invariant face recognition. In 2009 Sixth IEEE International Conference on Advanced Video and Signal Based Surveillance, pages 296–301, 2009. 4, 5</p>
+</blockquote>
+</li>
+</ul>
+<p><img src="/./riggable-3d-face-reconstruction/neutral-shape.png" alt="neutral-shape"></p>
+<h3 id="表情mesh"><a href="#表情mesh" class="headerlink" title="表情mesh"></a>表情mesh</h3><ul>
+<li><p>输入：</p>
+<ul>
+<li>UV特征图 $F_{uv}^{l}$</li>
+<li>$\alpha_{exp}^{l} \in \alpha^l$</li>
+<li>$\beta$</li>
+</ul>
+</li>
+<li><p>过程：使用三个子网络来获取 $D_{exp}$</p>
+</li>
+<li><p>目的：<br>  计算在中性mesh上点的位移 $D_{exp}$</p>
+</li>
+<li><p>公式：<br>  $$<br>  D_{exp} &#x3D; F_{exp_cnn}(F_{exp_mlp}(\beta;\theta_{mlp}))\</p>
+<p>  \theta_{mlp} &#x3D; F_{exp}(\alpha_{exp};F_{uv})<br>  $$</p>
+<p>  在第一个阶段，使用了Facewarehouse模型，所以最终公式变为：</p>
+<p>  $$<br>  D_{exp} &#x3D; B_{exp}F_{exp_mlp}^1(\beta;\theta_{mlp}^1) + \sum_{l&#x3D;2}^3 F_{exp_cnn}(F_{exp_mlp}(\beta;\theta_{mlp}))\<br>  $$</p>
+<blockquote>
+<p>Facewarehouse: A 3d facial expression database for visual computing. IEEE Trans. Vis. Comput. Graph., 20(3):413–425, 2013. 1, 2, 4</p>
+</blockquote>
+</li>
+</ul>
+<p><img src="/./riggable-3d-face-reconstruction/expression-def.png" alt="expression-def"></p>
+<ul>
+<li>最终mesh的表达方式：$V &#x3D; V_{ns} + D_{exp}$</li>
+</ul>
+<h3 id="反射率颜色"><a href="#反射率颜色" class="headerlink" title="反射率颜色"></a>反射率颜色</h3><ul>
+<li><p>输入：</p>
+<ul>
+<li><p>UV图$F_{uv}$</p>
+</li>
+<li><p>反射率编码 albedo code: $\alpha_{alb}$</p>
+</li>
+</ul>
+</li>
+<li><p>过程：</p>
+<ul>
+<li>由于只有少量的高频细节会随着表情变化，首先在前两个阶段估计静态反射率，在第三阶段添加一个额外组件</li>
+</ul>
+</li>
+<li><p>公式：</p>
+<p>  <img src="/./riggable-3d-face-reconstruction/alb.png" alt="alb"></p>
+<blockquote>
+<p>bfm</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="Learnable-Optimization"><a href="#Learnable-Optimization" class="headerlink" title="Learnable Optimization"></a>Learnable Optimization</h2><h3 id="Reconstruction-from-parameters"><a href="#Reconstruction-from-parameters" class="headerlink" title="Reconstruction from parameters"></a>Reconstruction from parameters</h3><p>经过$(V,A) &#x3D; Rig(\beta;\alpha,{I_i},{\hat{V}^{old}_i})$后，得到了一个mesh，将这个mesh投影到图片上，用<strong>现有的模型</strong>渲染光照效果</p>
+<blockquote>
+<p>A signal-processing framework for inverse rendering. In Proceedings of the 28th annual conference on Computer graphics and interactive techniques, pages 117–128, 2001. 5</p>
+</blockquote>
+<h3 id="Energy-Formulation"><a href="#Energy-Formulation" class="headerlink" title="Energy Formulation"></a>Energy Formulation</h3><h3 id="optimization"><a href="#optimization" class="headerlink" title="optimization"></a>optimization</h3><ol>
+<li><p>去掉所有rig decoders，得到一个初始的重建结果。p参数由预训练的模型回归出来,$\gamma$由公式计算出来</p>
+<blockquote>
+<p>Deep facial non-rigid multi-view stereo. In IEEE Conf. Comput. Vis. Pattern Recog., pages 5850–5860, 2020. 2, 3, 4, 5, 6, 7</p>
+</blockquote>
+</li>
+<li><p>多阶段中的一个阶段</p>
+<ol>
+<li>input images and per-image meshes</li>
+<li>extract UV feature</li>
+<li></li>
+</ol>
+</li>
+</ol>
+<h2 id="LOSS"><a href="#LOSS" class="headerlink" title="LOSS"></a>LOSS</h2><p><img src="/./riggable-3d-face-reconstruction/loss.png" alt="loss"></p>
+<h2 id="Dataset"><a href="#Dataset" class="headerlink" title="Dataset"></a>Dataset</h2><ul>
+<li>Stirling&#x2F;ESRC 3D<ul>
+<li>100+ subjects</li>
+<li>8 expression</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/paper/" rel="tag"># paper</a>
+              <a href="/tags/3Dface/" rel="tag"># 3Dface</a>
+              <a href="/tags/deeplearning/" rel="tag"># deeplearning</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/07/30/classical-paper/gan/" rel="prev" title="GAN:Generative Adversarial Net">
+                  <i class="fa fa-chevron-left"></i> GAN:Generative Adversarial Net
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/08/10/3dface-paper/gcn-3d-face-reconstruction/" rel="next" title="Towards High-Fidelity 3D Face Reconstruction from In-the-Wild Images Using Graph Convolutional Networks">
+                  Towards High-Fidelity 3D Face Reconstruction from In-the-Wild Images Using Graph Convolutional Networks <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wadekiny</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/4.14.3/algoliasearch-lite.umd.js" integrity="sha256-dyJcbGuYfdzNfifkHxYVd/rzeR6SLLcDFYEidcybldM=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/4.49.2/instantsearch.production.min.js" integrity="sha256-Nu8yqoXoRZEVYyZf4/eY1V4FsenbiCw85RY3gWjN3zQ=" crossorigin="anonymous"></script><script src="/js/third-party/search/algolia-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

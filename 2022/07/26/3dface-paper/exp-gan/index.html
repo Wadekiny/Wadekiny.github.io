@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="(ACCV2022,s)通过GAN生成可以控制表情的人脸：exp-gan.md">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Exp-GAN:3D-Aware Facial Image Generation with Expression Control">
+<meta property="og:url" content="http://example.com/2022/07/26/3dface-paper/exp-gan/index.html">
+<meta property="og:site_name" content="Wadekiny&#39;s Blog">
+<meta property="og:description" content="(ACCV2022,s)通过GAN生成可以控制表情的人脸：exp-gan.md">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/exp-gan/frame.png">
+<meta property="article:published_time" content="2022-07-26T06:11:39.000Z">
+<meta property="article:modified_time" content="2023-01-12T16:47:15.713Z">
+<meta property="article:author" content="Wadekiny">
+<meta property="article:tag" content="paper">
+<meta property="article:tag" content="3Dface">
+<meta property="article:tag" content="deeplearning">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/exp-gan/frame.png">
+
+
+<link rel="canonical" href="http://example.com/2022/07/26/3dface-paper/exp-gan/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/07/26/3dface-paper/exp-gan/","path":"2022/07/26/3dface-paper/exp-gan/","title":"Exp-GAN:3D-Aware Facial Image Generation with Expression Control"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Exp-GAN:3D-Aware Facial Image Generation with Expression Control | Wadekiny's Blog</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Wadekiny's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">32</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">51</span></a></li><li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>Schedule</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Commonweal 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container"></div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container">
+  <div class="algolia-stats"><hr></div>
+  <div class="algolia-hits"></div>
+  <div class="algolia-pagination"></div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Wadekiny</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/26/3dface-paper/exp-gan/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Wadekiny">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wadekiny's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Exp-GAN:3D-Aware Facial Image Generation with Expression Control | Wadekiny's Blog">
+      <meta itemprop="description" content="(ACCV2022,s)通过GAN生成可以控制表情的人脸：exp-gan.md">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Exp-GAN:3D-Aware Facial Image Generation with Expression Control
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-07-26 14:11:39" itemprop="dateCreated datePublished" datetime="2022-07-26T14:11:39+08:00">2022-07-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-01-13 00:47:15" itemprop="dateModified" datetime="2023-01-13T00:47:15+08:00">2023-01-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/paper/" itemprop="url" rel="index"><span itemprop="name">paper</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">(ACCV2022,s)通过GAN生成可以控制表情的人脸：exp-gan.md</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <ul>
+<li><p>人脸图像生成器</p>
+</li>
+<li><p>显式控制面部表情</p>
+</li>
+<li><p>与之前的 3D aware GANs不同</p>
+</li>
+<li><p>支持面部形状和表情的细粒度控制(形状和表情是从姿态(pose)中分离出来的)</p>
+</li>
+<li><p>提出了一种新的混合方法，</p>
+</li>
+<li><p>采用具有神经纹理的三维可变模型作为面部区域<br>  a 3D morphablble model (3DMM) with neural textures for the facial region</p>
+</li>
+<li><p>采用具有多视角一致性的神经辐射场作为费面部区域<br>  a neural radiance field (NeRF) for non-facial regions with multi-view consistency.</p>
+</li>
+<li><p>NeRF包含非面部区域的提及特征</p>
+</li>
+<li><p>两种特征单独生成，在之后融合</p>
+</li>
+<li><p>我们还提出了一种训练方案，鼓励生成的图像如实反映对形状和表情的控制。实验结果表明，该方法成功地合成了具有细粒度控制的真实视图一致的人脸图像。</p>
+</li>
+<li><p>Exp GAN学习合成从身份和相机姿势中分离出来的各种面部表情</p>
+</li>
+</ul>
+<p>近年来，基于生成模型（如生成对抗网络）的合成图像的照片真实感显著增加。为了更直观地控制包括面部形状和表情在内的语义属性，提出了几种将面部的3D可变形模型（3DMM）应用于2D GAN框架的方法[10、13、16]。在[13，16]中，渲染3D人脸网格，将人脸形状和表情的各种信息（RGB、法线、神经特征）注入生成器。然而，尽管使用了3D人脸网格模型，但由于2D GAN框架缺乏多视图一致性，他们的结果显示面部表情和其他属性（如相机姿势和身份）之间存在纠缠。</p>
+<p>已经提出了3D感知GAN来合成具有多视图一致性的高保真人脸图像[17-22]。一般来说，3D感知GAN学习生成隐式体积特征场，该特征场可以通过体绘制实现为图像。由于隐式体积特征已经包含3D信息，因此可以成功训练3Daware GAN以生成具有多视图一致性的人脸图像。然而，据我们所知，尚未考虑在3D感知GANs中对面部形状和表情的控制。</p>
+<p>本文提出了Exp-GAN，这是一种3D感知人脸图像生成器，它为我们提供了对具有多视图一致性的人脸形状和表情的显式控制。具体来说，Exp-GAN学习合成从身份和摄像机姿势中分离出来的各种面部表情，如图1所示。为了实现这一点，Exp-GAN采用了一种混合方法，将人脸的3D可变形模型（3DMM）和3D感知GAN结合到单个条件GAN框架中，该框架可以使用2D人脸图像集合进行训练。3DMM允许我们对面部形状和表情进行细粒度和直观的控制，而3D感知GAN支持多视图一致的照片真实感图像合成。</p>
+<p>具体来说，Exp-GAN分别使用神经面部生成器和神经体积生成器来合成面部和非面部部分。神经人脸生成器采用具有神经纹理的3DMM来合成真实且多视图一致的人脸的特征，该特征充分反映了用户对混合形状系数给出的面部表情和形状的控制。神经体积生成器采用3D感知的GAN方法来生成体积特征，支持具有多视图一致性的多样化和逼真的图像合成。为了无缝集成两个单独生成的特征，我们还介绍了一种基于NeRF的体绘制过程的特征集成方法[23]。最后，我们提出了一种基于混合形状系数与鉴别器回归的训练方案，用于根据用户控制参数进行可靠的图像合成。</p>
+<p>我们的经验表明，Exp-GAN可以生成各种表情、姿势和人脸形状。我们还表明，与以前使用2D样式提供表达控制的工作相比，该方法定量地改进了结果。我们的贡献可以总结如下：–我们提出了Exp-GAN，第一个3D感知人脸图像生成器，以实现多视图一致性和对面部表情的细粒度控制我们提出了基于3DMMs的具有面部表情控制的3D感知GAN的几何显式调节我们的混合方法结合了3DMM和体积特征来合成面部和非面部区域，并采用了一种新的深度集成方法来无缝集成单独合成的特征我们还提出了一种新的训练方案，利用具有回归分支的鉴别器来训练我们的网络，以忠实地反映用户控制。</p>
+<p>网络结构-四部分：</p>
+<ol>
+<li>神经脸部生成器</li>
+<li>神经体积生成器</li>
+<li>图像合成模块</li>
+<li>判别模块</li>
+</ol>
+<p>对于框架的合成部分，使用了基于StyleGAN2的生成器<br><img src="/./exp-gan/frame.png" alt="frame"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/paper/" rel="tag"># paper</a>
+              <a href="/tags/3Dface/" rel="tag"># 3Dface</a>
+              <a href="/tags/deeplearning/" rel="tag"># deeplearning</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/07/24/signal-recognition/radio-abstract/" rel="prev" title="无线电信号识别论文摘要整合">
+                  <i class="fa fa-chevron-left"></i> 无线电信号识别论文摘要整合
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/07/30/classical-paper/gan/" rel="next" title="GAN:Generative Adversarial Net">
+                  GAN:Generative Adversarial Net <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wadekiny</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/4.14.3/algoliasearch-lite.umd.js" integrity="sha256-dyJcbGuYfdzNfifkHxYVd/rzeR6SLLcDFYEidcybldM=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/4.49.2/instantsearch.production.min.js" integrity="sha256-Nu8yqoXoRZEVYyZf4/eY1V4FsenbiCw85RY3gWjN3zQ=" crossorigin="anonymous"></script><script src="/js/third-party/search/algolia-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

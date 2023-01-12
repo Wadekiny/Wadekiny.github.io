@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="(CVPR2020)通过GCN细化3DMM mesh：gcn-3d-face-reconstruction.md">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Towards High-Fidelity 3D Face Reconstruction from In-the-Wild Images Using Graph Convolutional Networks">
+<meta property="og:url" content="http://example.com/2022/08/10/3dface-paper/gcn-3d-face-reconstruction/index.html">
+<meta property="og:site_name" content="Wadekiny&#39;s Blog">
+<meta property="og:description" content="(CVPR2020)通过GCN细化3DMM mesh：gcn-3d-face-reconstruction.md">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/home/wadekiny/face-reconstruction/gcn-3d-face-reconstruction/approach.png">
+<meta property="og:image" content="http://example.com/home/wadekiny/face-reconstruction/gcn-3d-face-reconstruction/rendering.png">
+<meta property="og:image" content="http://example.com/home/wadekiny/face-reconstruction/gcn-3d-face-reconstruction/loss1.png">
+<meta property="og:image" content="http://example.com/home/wadekiny/face-reconstruction/gcn-3d-face-reconstruction/vertex-loss.png">
+<meta property="og:image" content="http://example.com/gcn-3d-face-reconstruction/adloss.png">
+<meta property="og:image" content="http://example.com/home/wadekiny/face-reconstruction/gcn-3d-face-reconstruction/result.png">
+<meta property="og:image" content="http://example.com/home/wadekiny/face-reconstruction/gcn-3d-face-reconstruction/ablation.png">
+<meta property="article:published_time" content="2022-08-10T08:46:07.000Z">
+<meta property="article:modified_time" content="2023-01-12T16:47:15.713Z">
+<meta property="article:author" content="Wadekiny">
+<meta property="article:tag" content="paper">
+<meta property="article:tag" content="3Dface">
+<meta property="article:tag" content="deeplearning">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/home/wadekiny/face-reconstruction/gcn-3d-face-reconstruction/approach.png">
+
+
+<link rel="canonical" href="http://example.com/2022/08/10/3dface-paper/gcn-3d-face-reconstruction/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/08/10/3dface-paper/gcn-3d-face-reconstruction/","path":"2022/08/10/3dface-paper/gcn-3d-face-reconstruction/","title":"Towards High-Fidelity 3D Face Reconstruction from In-the-Wild Images Using Graph Convolutional Networks"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Towards High-Fidelity 3D Face Reconstruction from In-the-Wild Images Using Graph Convolutional Networks | Wadekiny's Blog</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Wadekiny's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">32</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">51</span></a></li><li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>Schedule</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Commonweal 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container"></div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container">
+  <div class="algolia-stats"><hr></div>
+  <div class="algolia-hits"></div>
+  <div class="algolia-pagination"></div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CVPR2020"><span class="nav-number">1.</span> <span class="nav-text">CVPR2020</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-number">2.</span> <span class="nav-text">introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#approach"><span class="nav-number">3.</span> <span class="nav-text">approach</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Regressor-and-FaceNet"><span class="nav-number">3.1.</span> <span class="nav-text">Regressor and FaceNet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PCA"><span class="nav-number">3.2.</span> <span class="nav-text">PCA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Texture-Refinement-GCN"><span class="nav-number">3.3.</span> <span class="nav-text">Texture Refinement (GCN)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rendering"><span class="nav-number">3.4.</span> <span class="nav-text">Rendering</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Discriminator"><span class="nav-number">3.5.</span> <span class="nav-text">Discriminator</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LOSS"><span class="nav-number">4.</span> <span class="nav-text">LOSS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Result"><span class="nav-number">5.</span> <span class="nav-text">Result</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Wadekiny</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/10/3dface-paper/gcn-3d-face-reconstruction/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Wadekiny">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wadekiny's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Towards High-Fidelity 3D Face Reconstruction from In-the-Wild Images Using Graph Convolutional Networks | Wadekiny's Blog">
+      <meta itemprop="description" content="(CVPR2020)通过GCN细化3DMM mesh：gcn-3d-face-reconstruction.md">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Towards High-Fidelity 3D Face Reconstruction from In-the-Wild Images Using Graph Convolutional Networks
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-08-10 16:46:07" itemprop="dateCreated datePublished" datetime="2022-08-10T16:46:07+08:00">2022-08-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-01-13 00:47:15" itemprop="dateModified" datetime="2023-01-13T00:47:15+08:00">2023-01-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/paper/" itemprop="url" rel="index"><span itemprop="name">paper</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">(CVPR2020)通过GCN细化3DMM mesh：gcn-3d-face-reconstruction.md</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="CVPR2020"><a href="#CVPR2020" class="headerlink" title="CVPR2020"></a>CVPR2020</h1><h1 id="introduction"><a href="#introduction" class="headerlink" title="introduction"></a>introduction</h1><p>问题：</p>
+<ul>
+<li>基于3DMM的方法在面部纹理的重建上缺乏缺乏细节，这是因为从3DMM计算的纹理无法捕捉输入图像的面部细节。</li>
+<li>基于高分辨率UV图的方法需要数据库难以获得</li>
+</ul>
+<p>本文：第一个使用图卷积网络从单个图像生成高保真人脸纹理的工作,在3DMM的基础之上，单视图重建具有高保真纹理的三维人脸，无需捕获大规模人脸人脸数据库</p>
+<p>主要思想：<br>利用输入图像中的面部细节，将其他方法得到的3DMM模型输入到GCN进行细化，重建3DMM网格顶点颜色(detailed colors)， 而不是重建UV图。</p>
+<p>网络结构：由粗糙到精细，结合了3DMM和GCN</p>
+<ul>
+<li><p>一个CNN用于从2D图像回归出3DMM的参数。将参数输入到PCA模型，计算形状和纹理，随后送入GCN</p>
+</li>
+<li><p>使用预训练的CNN从图像中提取人脸特征，随后送入GCN</p>
+</li>
+<li><p>使用3个GCN模型来细化面部纹理</p>
+</li>
+<li><p>采用了<strong>可微渲染层</strong>来实现自监督训练，并在使用<strong>GAN损失</strong>的情况下进一步改进了结果</p>
+<ul>
+<li>3D重建结果投影到2D，与原图比较。</li>
+</ul>
+<blockquote>
+<p>Unsupervised training for 3d morphable model regression. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pages 8377–8386, 2018.</p>
+</blockquote>
+<blockquote>
+<p>Improved training of wasserstein gans. In Advances in neural information processing systems, pages 5767–5777, 2017.</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="approach"><a href="#approach" class="headerlink" title="approach"></a>approach</h1><p><img src="/./home/wadekiny/face-reconstruction/gcn-3d-face-reconstruction/approach.png" alt="approach"></p>
+<h2 id="Regressor-and-FaceNet"><a href="#Regressor-and-FaceNet" class="headerlink" title="Regressor and FaceNet"></a>Regressor and FaceNet</h2><p>是预训练好的模型，其中</p>
+<ul>
+<li><p><em>Regressor</em>: </p>
+<blockquote>
+<p>Accurate 3d face reconstruction with weakly-supervised learning: From single image to image set. In IEEE Computer Vision and Pattern Recognition Workshops, 2019.</p>
+</blockquote>
+<ul>
+<li><p>用于回归<code>3DMM系数</code>(送入GCN)，<code>面部姿势，照明参数</code>(用于渲染2D图片)</p>
+</li>
+<li><p>回归出一个257维向量 $(c_i^{80},c_e^{64},c_t^{64},p^{6},l^{27}) \in  \mathbb{R}^{257}$</p>
+</li>
+<li><p>分别表示3DMM的shape, expression, texture; pose, lighting</p>
+</li>
+<li><p>使用公式生成S和T(点集)：<br>  $$<br>  S &#x3D; S_{mean} + c_iI_{base} + c_eE_{base} \<br>  T &#x3D; T_{mean} + c_tT_{base} \<br>  \quad \<br>  S_{mean}, T_{mean}, I_{base}, T_{base} \in BFM \<br>  E_{base} \in FaceWarehouse<br>  $$<br>  其中$S_{mean},T_{mean}$是数据库中人脸的平均形状和平均纹理，$I_{base}, E_{base}, T_{base}$是人脸数据库中的人脸基(类似向量空间的基)，理论上通过这些人脸基的加权和可以得到任何人脸。</p>
+<blockquote>
+<p>A 3d face model for pose and illumination invariant face recognition. In 2009 Sixth IEEE International Conference on Advanced Video and Signal Based Surveillance, pages 296–301. Ieee, 2009</p>
+</blockquote>
+<blockquote>
+<p>Facewarehouse: A 3d facial expression database for visual computing. IEEE Transactions on Visualization and Computer Graphics, 20(3):413–425, 2013.</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p><em>FaceNet</em>: </p>
+<blockquote>
+<p>A unified embedding for face recognition and clustering. In Proceedings of the IEEE conference on computer vision and pattern recognition, pages 815–823, 2015.</p>
+</blockquote>
+<ul>
+<li><p>提取图像的特征向量</p>
+</li>
+<li><p>作用：</p>
+<ol>
+<li><p>作为embedding输入到后面的GCN Decoder中，生成网格顶点的反射率颜色</p>
+</li>
+<li><p>用来构成一个LOSS项</p>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="PCA"><a href="#PCA" class="headerlink" title="PCA"></a>PCA</h2><p>不可学习，用于将3DMM参数转化为面部形状S和粗糙的面部纹理T</p>
+<h2 id="Texture-Refinement-GCN"><a href="#Texture-Refinement-GCN" class="headerlink" title="Texture Refinement (GCN)"></a>Texture Refinement (GCN)</h2><p>与使用UV作为面部纹理表示的工作不同，本文直接操作网格顶点上的反射率RGB值</p>
+<p>$$<br>M &#x3D; (V,A),\<br>V \in \mathbb{R}^{n \times 3}, \<br>A \in {0,1}^{n\times n} \<br>$$</p>
+<p><strong>GCN Refiner GCN Decoder</strong></p>
+<ul>
+<li><p>Refiner就是一个图卷积，输入的是图结构，输出也是图结构</p>
+</li>
+<li><p>Decoder中，输入是FaceNet得到的特征向量，输出时每个顶点的RGB值。</p>
+<blockquote>
+<p>feature怎么转化成图的结构？</p>
+</blockquote>
+</li>
+<li><p>都用了残差块</p>
+</li>
+</ul>
+<p><strong>Combine Net</strong></p>
+<p>把Refiner 和 Decoder的两个图结构在channel维度上拼起来，送到一个新的图卷积中。</p>
+<h2 id="Rendering"><a href="#Rendering" class="headerlink" title="Rendering"></a>Rendering</h2><ul>
+<li>输入S，T，姿态，反射率颜色，光照。渲染出2D图像。<br><img src="/./home/wadekiny/face-reconstruction/gcn-3d-face-reconstruction/rendering.png" alt="rendering"></li>
+</ul>
+<h2 id="Discriminator"><a href="#Discriminator" class="headerlink" title="Discriminator"></a>Discriminator</h2><ul>
+<li>使用了对抗训练。判别器有6个卷积层</li>
+</ul>
+<h1 id="LOSS"><a href="#LOSS" class="headerlink" title="LOSS"></a>LOSS</h1><ul>
+<li><p>Pixel-wise Loss: 最小化输入图像和渲染图像之间的差异，由于可能有遮挡问题，所以只计算部分面部区域$M_{face}$的欧氏距离。这个面部区域是由预训练的面部分割网络获得的。</p>
+<blockquote>
+<p>(Face-to-parameter translation for game character auto-creation; Interactive facial feature localization.)</p>
+</blockquote>
+</li>
+</ul>
+<p><img src="/./home/wadekiny/face-reconstruction/gcn-3d-face-reconstruction/loss1.png" alt="loss1"></p>
+<ul>
+<li><p>Identity-Preserving Loss: 重建的3D人脸可能<strong>看起来不像</strong>输入的2D人脸，特别是在某些<strong>极端</strong>情况下。因此定义了面部特征级别下的 LOSS。</p>
+<ul>
+<li>使用FaceNet，获得输入图像和渲染的2D图像的$feature$，计算余弦距离。</li>
+</ul>
+</li>
+<li><p>Vertex-wise Loss: </p>
+<ul>
+<li>训练GCN时，由于遮挡，可能无法正确的学习到顶点上的RGB值。</li>
+<li>在GCN模块训练的早期阶段，构造顶点级别的损失函数，然后逐渐减少这个这个损失项的权重</li>
+<li>包含两组：<ol>
+<li>regressor+pca生成的T，和GCN生成的T’</li>
+<li>regressor+pca生成的T，映射回输入图像的颜色Tp，和GCN生成的T’在光照渲染下的颜色 $\tilde{T’}$(为了获得更多的面部细节)</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./home/wadekiny/face-reconstruction/gcn-3d-face-reconstruction/vertex-loss.png" alt="vertex-loss"></p>
+<ul>
+<li><p>Adversarial LOSS</p>
+<blockquote>
+<p>Improved training of wasserstein gans. In Advances in neural information processing systems, pages 5767–5777, 2017</p>
+</blockquote>
+<p>  <img src="/./gcn-3d-face-reconstruction/adloss.png" alt="adloss"></p>
+</li>
+<li><p>最终的损失函数</p>
+<p>  $$<br>  L &#x3D; \sigma_1 (L_{pix}(I,R’) + \sigma_2L_{id}(I,R’)+ \sigma_3L_{adv}) \<br>  \quad \</p>
+<ul>
+<li>\sigma_4(L_{vert}(T,T’) + L_{vert}(T_p,\tilde{T}’))\<br>  \quad \<br>  fixed:\quad \sigma_2 &#x3D; 0.2, \sigma_3 &#x3D; 0.001 \<br>  Initially:\quad \sigma_1 &#x3D;0, \sigma_4&#x3D;1  \<br>  gradually:\quad \sigma_1 &#x3D;1, \sigma_4&#x3D;0<br>  $$</li>
+</ul>
+</li>
+</ul>
+<h1 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h1><p><img src="/./home/wadekiny/face-reconstruction/gcn-3d-face-reconstruction/result.png" alt="result"></p>
+<p><img src="/./home/wadekiny/face-reconstruction/gcn-3d-face-reconstruction/ablation.png" alt="ablation"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/paper/" rel="tag"># paper</a>
+              <a href="/tags/3Dface/" rel="tag"># 3Dface</a>
+              <a href="/tags/deeplearning/" rel="tag"># deeplearning</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/08/08/3dface-paper/riggable-3d-face-reconstruction/" rel="prev" title="Riggable 3D Face Reconstruction via In-Network Optimization">
+                  <i class="fa fa-chevron-left"></i> Riggable 3D Face Reconstruction via In-Network Optimization
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/08/21/signal-recognition/semi-supervised-emitter-identification/" rel="next" title="面向非均衡类别的半监督辐射源识别方法">
+                  面向非均衡类别的半监督辐射源识别方法 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wadekiny</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/4.14.3/algoliasearch-lite.umd.js" integrity="sha256-dyJcbGuYfdzNfifkHxYVd/rzeR6SLLcDFYEidcybldM=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/4.49.2/instantsearch.production.min.js" integrity="sha256-Nu8yqoXoRZEVYyZf4/eY1V4FsenbiCw85RY3gWjN3zQ=" crossorigin="anonymous"></script><script src="/js/third-party/search/algolia-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

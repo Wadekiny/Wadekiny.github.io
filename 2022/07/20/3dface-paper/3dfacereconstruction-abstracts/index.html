@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="3dfacereconstruction-abstracts.md">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3D人脸重建论文综述汇总">
+<meta property="og:url" content="http://example.com/2022/07/20/3dface-paper/3dfacereconstruction-abstracts/index.html">
+<meta property="og:site_name" content="Wadekiny&#39;s Blog">
+<meta property="og:description" content="3dfacereconstruction-abstracts.md">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/riggable-3d-face-reconstruction/rig-frame.png">
+<meta property="og:image" content="http://example.com/3dfacereconstruction-abstracts/ganfit.png">
+<meta property="og:image" content="http://example.com/home/wadekiny/face-reconstruction/gcn-3d-face-reconstruction/approach.png">
+<meta property="og:image" content="http://example.com/3dfacereconstruction-abstracts/gcnvloss.png">
+<meta property="og:image" content="http://example.com/home/wadekiny/face-reconstruction/gcn-3d-face-reconstruction/result.png">
+<meta property="og:image" content="http://example.com/home/wadekiny/face-reconstruction/gcn-3d-face-reconstruction/ablation.png">
+<meta property="og:image" content="http://example.com/deca/unknowdeca.png">
+<meta property="og:image" content="http://example.com/deca/framework.png">
+<meta property="og:image" content="http://example.com/deca/ldc.png">
+<meta property="og:image" content="http://example.com/deca/mrf.png">
+<meta property="og:image" content="http://example.com/deca/sym.png">
+<meta property="og:image" content="http://example.com/3dfacereconstruction-abstracts/cest0.png">
+<meta property="og:image" content="http://example.com/3dfacereconstruction-abstracts/cest-frame.png">
+<meta property="og:image" content="http://example.com/3dfacereconstruction-abstracts/cest-uv.png">
+<meta property="og:image" content="http://example.com/3dfacereconstruction-abstracts/cest-result0.png">
+<meta property="og:image" content="http://example.com/3dfacereconstruction-abstracts/3d3mframe.png">
+<meta property="og:image" content="http://example.com/3dfacereconstruction-abstracts/lapframe.png">
+<meta property="og:image" content="http://example.com/3dfacereconstruction-abstracts/lapcomp.png">
+<meta property="og:image" content="http://example.com/3dfacereconstruction-abstracts/transformer.png">
+<meta property="article:published_time" content="2022-07-20T06:25:28.000Z">
+<meta property="article:modified_time" content="2023-01-12T16:47:15.693Z">
+<meta property="article:author" content="Wadekiny">
+<meta property="article:tag" content="paper">
+<meta property="article:tag" content="3Dface">
+<meta property="article:tag" content="deeplearning">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/riggable-3d-face-reconstruction/rig-frame.png">
+
+
+<link rel="canonical" href="http://example.com/2022/07/20/3dface-paper/3dfacereconstruction-abstracts/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/07/20/3dface-paper/3dfacereconstruction-abstracts/","path":"2022/07/20/3dface-paper/3dfacereconstruction-abstracts/","title":"3D人脸重建论文综述汇总"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>3D人脸重建论文综述汇总 | Wadekiny's Blog</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Wadekiny's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">32</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">51</span></a></li><li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>Schedule</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Commonweal 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container"></div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container">
+  <div class="algolia-stats"><hr></div>
+  <div class="algolia-hits"></div>
+  <div class="algolia-pagination"></div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E3DMM"><span class="nav-number">1.</span> <span class="nav-text">基于3DMM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#INORig"><span class="nav-number">1.0.1.</span> <span class="nav-text">INORig</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">相关信息</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GANFit"><span class="nav-number">1.0.2.</span> <span class="nav-text">GANFit</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF-1"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">相关信息</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3D-FACE-GCN"><span class="nav-number">1.0.3.</span> <span class="nav-text">3D-FACE-GCN</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF-2"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">相关信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">网络结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%A2%84%E8%AE%AD%E7%BB%83%E7%9A%84%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.0.3.2.1.</span> <span class="nav-text">预训练的模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#PCA"><span class="nav-number">1.0.3.2.2.</span> <span class="nav-text">PCA</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BA%B9%E7%90%86%E7%BB%86%E5%8C%96-Texture-Refinement-GCN"><span class="nav-number">1.0.3.2.3.</span> <span class="nav-text">纹理细化(Texture Refinement, GCN)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B8%B2%E6%9F%93%E5%99%A8-Rendering"><span class="nav-number">1.0.3.2.4.</span> <span class="nav-text">渲染器(Rendering)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%A4%E5%88%AB%E5%99%A8-discriminator"><span class="nav-number">1.0.3.2.5.</span> <span class="nav-text">判别器(discriminator)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="nav-number">1.0.3.3.</span> <span class="nav-text">损失函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%93%E6%9E%9C"><span class="nav-number">1.0.3.4.</span> <span class="nav-text">结果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DECA"><span class="nav-number">1.0.4.</span> <span class="nav-text">DECA</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF-3"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">相关信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.0.4.2.</span> <span class="nav-text">使用的模型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%87%A0%E4%BD%95%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.0.4.2.1.</span> <span class="nav-text">几何模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%96%E8%A7%82%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.0.4.2.2.</span> <span class="nav-text">外观模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9B%B8%E6%9C%BA%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.0.4.2.3.</span> <span class="nav-text">相机模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%85%A7%E6%98%8E%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.0.4.2.4.</span> <span class="nav-text">照明模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BA%B9%E7%90%86%E6%B8%B2%E6%9F%93"><span class="nav-number">1.0.4.2.5.</span> <span class="nav-text">纹理渲染</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95"><span class="nav-number">1.0.4.3.</span> <span class="nav-text">方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B2%97%E7%B3%99%E9%87%8D%E5%BB%BA"><span class="nav-number">1.0.4.4.</span> <span class="nav-text">粗糙重建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%86%E8%8A%82%E9%87%8D%E5%BB%BA"><span class="nav-number">1.0.4.5.</span> <span class="nav-text">细节重建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E7%BB%86%E8%8A%82"><span class="nav-number">1.0.4.6.</span> <span class="nav-text">实现细节</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B6%88%E8%9E%8D%E5%AE%9E%E9%AA%8C"><span class="nav-number">1.0.4.7.</span> <span class="nav-text">消融实验</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%86%E8%8A%82%E4%B8%80%E8%87%B4%E6%80%A7%E6%8D%9F%E5%A4%B1"><span class="nav-number">1.0.4.7.1.</span> <span class="nav-text">细节一致性损失</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ID-MRF-loss"><span class="nav-number">1.0.4.7.2.</span> <span class="nav-text">ID-MRF loss</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BD%AF%E5%AF%B9%E7%A7%B0%E6%8D%9F%E5%A4%B1"><span class="nav-number">1.0.4.7.3.</span> <span class="nav-text">软对称损失</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CEST"><span class="nav-number">1.0.5.</span> <span class="nav-text">CEST</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF-4"><span class="nav-number">1.0.5.1.</span> <span class="nav-text">相关信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CEST%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="nav-number">1.0.5.2.</span> <span class="nav-text">CEST的流程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3D3M"><span class="nav-number">1.0.6.</span> <span class="nav-text">3D3M</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF-5"><span class="nav-number">1.0.6.1.</span> <span class="nav-text">相关信息</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GCN-GAN"><span class="nav-number">1.0.7.</span> <span class="nav-text">GCN+GAN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#REDA"><span class="nav-number">1.0.8.</span> <span class="nav-text">REDA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MICA"><span class="nav-number">1.0.9.</span> <span class="nav-text">MICA</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9D%9E%E5%8F%82%E6%95%B0%E5%8C%96%E5%BB%BA%E6%A8%A1"><span class="nav-number">2.</span> <span class="nav-text">非参数化建模</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LAP"><span class="nav-number">2.0.1.</span> <span class="nav-text">LAP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF-6"><span class="nav-number">2.0.1.1.</span> <span class="nav-text">相关信息</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Transformer"><span class="nav-number">2.0.2.</span> <span class="nav-text">Transformer</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF-7"><span class="nav-number">2.0.2.1.</span> <span class="nav-text">相关信息</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UNSUP3d"><span class="nav-number">2.0.3.</span> <span class="nav-text">UNSUP3d</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8ENERF"><span class="nav-number">3.</span> <span class="nav-text">基于NERF</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HeadNeRF"><span class="nav-number">3.0.1.</span> <span class="nav-text">HeadNeRF</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%83%B3%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">想法</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Wadekiny</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/20/3dface-paper/3dfacereconstruction-abstracts/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Wadekiny">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wadekiny's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="3D人脸重建论文综述汇总 | Wadekiny's Blog">
+      <meta itemprop="description" content="3dfacereconstruction-abstracts.md">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          3D人脸重建论文综述汇总
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-07-20 14:25:28" itemprop="dateCreated datePublished" datetime="2022-07-20T14:25:28+08:00">2022-07-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-01-13 00:47:15" itemprop="dateModified" datetime="2023-01-13T00:47:15+08:00">2023-01-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/paper/" itemprop="url" rel="index"><span itemprop="name">paper</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">3dfacereconstruction-abstracts.md</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="基于3DMM"><a href="#基于3DMM" class="headerlink" title="基于3DMM"></a>基于3DMM</h1><h3 id="INORig"><a href="#INORig" class="headerlink" title="INORig"></a>INORig</h3><h4 id="相关信息"><a href="#相关信息" class="headerlink" title="相关信息"></a>相关信息</h4><ul>
+<li><p>CVPR2021: Riggable 3D Face Reconstruction via In-Network Optimization</p>
+</li>
+<li><p>无训练代码，<a target="_blank" rel="noopener" href="https://github.com/zqbai-jeremy/INORig">https://github.com/zqbai-jeremy/INORig</a></p>
+</li>
+<li><p>提供的思路：</p>
+</li>
+<li><p>自监督，面部重建，侧重于纹理</p>
+</li>
+<li><p>dataset:</p>
+</li>
+<li><p>输入：单张图片</p>
+</li>
+<li><p>损失函数：</p>
+<p>  $L &#x3D; L_{pose}+L_{recon_geo}+L_{ns_geo}+\lambda_1L_{recon_pho}+\lambda_2 L_\beta + \lambda_3L_{ns_con}$</p>
+</li>
+<li><p>提出的问题：</p>
+<ul>
+<li>大部分专注于静态重建而不是个性化的face rig</li>
+</ul>
+</li>
+<li><p>贡献：</p>
+<ul>
+<li><p>将深度学习，网络内优化 和 face rig结合。</p>
+</li>
+<li><p>提出了一种基于单目图像的face rig重建方法。(支持视频输入)</p>
+</li>
+<li><p>通过估计个性化的face rig，使得本方法比静态重建(static reconstructions)表现要好，并且实现了下游应用，如视频重定向。</p>
+</li>
+<li><p>与之前直接回归Rig参数的方法不同，本文的in-network optimization 迭代求解rig参数，并受到第一原则(first-principles) 的约束(e.g. multi-view consistency, landmark alignment, and photo-metric reconstruction)。获得了更好的几何精度和泛化能力</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./riggable-3d-face-reconstruction/rig-frame.png" alt="rig-frame"></p>
+<h3 id="GANFit"><a href="#GANFit" class="headerlink" title="GANFit"></a>GANFit</h3><h4 id="相关信息-1"><a href="#相关信息-1" class="headerlink" title="相关信息"></a>相关信息</h4><ul>
+<li><p>CVPR2019: GANFIT: Generative Adversarial Network Fitting for High Fidelity 3D Face Reconstruction</p>
+</li>
+<li><p>TPAMI 2021: Fast-GANFIT: Generative Adversarial Network for High Fidelity 3D Face Reconstruction </p>
+</li>
+<li><p>无代码，<a target="_blank" rel="noopener" href="https://github.com/barisgecer/GANFit">https://github.com/barisgecer/GANFit</a></p>
+</li>
+<li><p>提供的思路：高分辨率+gan+uv图</p>
+</li>
+<li><p>自监督，面部重建，侧重于纹理</p>
+</li>
+<li><p>dataset:</p>
+<ul>
+<li>MICC</li>
+<li>MoFA-Test</li>
+<li>300W-3D</li>
+</ul>
+</li>
+<li><p>输入：单张图片</p>
+</li>
+<li><p>损失函数：$L &#x3D; L_{id} + L_{content} + L_{pixel}+L_{landmark}$</p>
+<p>  其中,content是人脸识别网络的中间层输出损失</p>
+</li>
+<li><p>提出的问题：</p>
+</li>
+<li><p>贡献：</p>
+<ul>
+<li>大规模高分辨率基于UV图的重建(512*512)</li>
+<li>GAN和3DMM结合</li>
+<li>实现了高频细节重建</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./3dfacereconstruction-abstracts/ganfit.png" alt="ganfit"></p>
+<h3 id="3D-FACE-GCN"><a href="#3D-FACE-GCN" class="headerlink" title="3D-FACE-GCN"></a>3D-FACE-GCN</h3><h4 id="相关信息-2"><a href="#相关信息-2" class="headerlink" title="相关信息"></a>相关信息</h4><ul>
+<li><p>CVPR2020: Towards High-Fidelity 3D Face Reconstruction from In-the-Wild Images Using Graph Convolutional Networks</p>
+</li>
+<li><p>有代码，tensorflow，<a target="_blank" rel="noopener" href="https://github.com/FuxiCV/3D-Face-GCNs">https://github.com/FuxiCV/3D-Face-GCNs</a></p>
+</li>
+<li><p>提供的思路： GCN，顶点颜色</p>
+</li>
+<li><p>自监督，面部重建，侧重于纹理</p>
+</li>
+<li><p>dataset:</p>
+<ul>
+<li><p>CelebA</p>
+</li>
+<li><p>CelebA-HQ</p>
+</li>
+<li><p>MICC(3d)</p>
+</li>
+</ul>
+</li>
+<li><p>输入：单张图片</p>
+</li>
+<li><p>损失函数：<br>  $$<br>  L &#x3D; \sigma_1 (L_{pix}(I,R’) + \sigma_2L_{id}(I,R’)+ \sigma_3L_{adv}) + \sigma_4(L_{vert}(T,T’) + L_{vert}(T_p,\tilde{T}’))\<br>  \quad \<br>  fixed:\quad \sigma_2 &#x3D; 0.2, \sigma_3 &#x3D; 0.001 \<br>  Initially:\quad \sigma_1 &#x3D;0, \sigma_4&#x3D;1  \<br>  gradually:\quad \sigma_1 &#x3D;1, \sigma_4&#x3D;0<br>  $$</p>
+</li>
+<li><p>提出的问题：</p>
+<ul>
+<li>基于3DMM的方法在面部纹理的重建上缺乏缺乏细节，这是因为从3DMM计算的纹理无法捕捉输入图像的面部细节</li>
+</ul>
+</li>
+<li><p>贡献：</p>
+<ul>
+<li>第一个使用图卷积网络从单个图像生成高保真人脸纹理的工作,在3DMM的基础之上，单视图重建具有高保真纹理的三维人脸，无需大规模人脸数据集</li>
+</ul>
+</li>
+</ul>
+<h4 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h4><p>由粗糙到精细，结合了3DMM和GCN，利用输入图像中的面部细节，将其他方法得到的3DMM模型输入到GCN进行细化，重建3DMM网格顶点颜色(detailed colors)， 而不是重建UV图。</p>
+<ul>
+<li><p>一个CNN用于从2D图像回归出3DMM的参数。将参数输入到PCA模型，计算形状和纹理，随后送入GCN</p>
+</li>
+<li><p>使用预训练的CNN从图像中提取人脸特征，随后送入GCN</p>
+</li>
+<li><p>使用3个GCN模型来细化面部纹理</p>
+</li>
+<li><p>采用了<strong>可微渲染层</strong>来实现自监督训练，并在使用<strong>GAN损失</strong>的情况下进一步改进了结果</p>
+</li>
+<li><p>3D重建结果投影到2D，与原图比较。<br><img src="/./home/wadekiny/face-reconstruction/gcn-3d-face-reconstruction/approach.png" alt="approach"></p>
+</li>
+</ul>
+<h5 id="预训练的模型"><a href="#预训练的模型" class="headerlink" title="预训练的模型"></a>预训练的模型</h5><p>是预训练好的模型，其中</p>
+<ul>
+<li><p><em>Regressor</em>: </p>
+<ul>
+<li><p>用于回归<code>3DMM系数</code>(送入GCN)，<code>面部姿势，照明参数</code>(用于渲染2D图片)</p>
+</li>
+<li><p>回归出一个257维向量 $(c_i^{80},c_e^{64},c_t^{64},p^{6},l^{27}) \in  \mathbb{R}^{257}$</p>
+</li>
+<li><p>分别表示3DMM的shape, expression, texture; pose, lighting</p>
+</li>
+<li><p>使用公式生成S和T(点集)：<br>$$<br>S &#x3D; S_{mean} + c_iI_{base} + c_eE_{base} \<br>T &#x3D; T_{mean} + c_tT_{base} \<br>\quad \<br>S_{mean}, T_{mean}, I_{base}, T_{base} \in BFM \<br>E_{base} \in FaceWarehouse<br>$$<br>其中$S_{mean},T_{mean}$是数据库中人脸的平均形状和平均纹理，$I_{base}, E_{base}, T_{base}$是人脸数据库中的人脸基(类似向量空间的基)，理论上通过这些人脸基的加权和可以得到任何人脸。</p>
+</li>
+</ul>
+</li>
+<li><p><em>FaceNet</em>: </p>
+<ul>
+<li>提取图像的特征向量</li>
+</ul>
+</li>
+</ul>
+<h5 id="PCA"><a href="#PCA" class="headerlink" title="PCA"></a>PCA</h5><p>不可学习，用于将3DMM参数转化为面部形状S和粗糙的面部纹理T</p>
+<h5 id="纹理细化-Texture-Refinement-GCN"><a href="#纹理细化-Texture-Refinement-GCN" class="headerlink" title="纹理细化(Texture Refinement, GCN)"></a>纹理细化(Texture Refinement, GCN)</h5><p>与使用UV作为面部纹理表示的工作不同，本文直接操作网格顶点上的反射率RGB值</p>
+<p>$$<br>M &#x3D; (V,A),\<br>V \in \mathbb{R}^{n \times 3}, \<br>A \in {0,1}^{n\times n} \<br>$$</p>
+<p><strong>GCN Refiner GCN Decoder</strong></p>
+<ul>
+<li><p>Refiner就是一个图卷积，输入的是图结构，输出也是图结构</p>
+</li>
+<li><p>Decoder中，输入是FaceNet得到的特征向量，输出是每个顶点的RGB值。</p>
+<blockquote>
+<p>feature怎么转化成图的结构？</p>
+</blockquote>
+</li>
+<li><p>都用了残差块</p>
+</li>
+</ul>
+<p><strong>Combine Net</strong></p>
+<p>把Refiner 和 Decoder的两个图结构在channel维度上拼起来，送到一个新的图卷积中。</p>
+<h5 id="渲染器-Rendering"><a href="#渲染器-Rendering" class="headerlink" title="渲染器(Rendering)"></a>渲染器(Rendering)</h5><ul>
+<li>输入S，T，姿态，反射率颜色，光照。渲染出2D图像。</li>
+</ul>
+<h5 id="判别器-discriminator"><a href="#判别器-discriminator" class="headerlink" title="判别器(discriminator)"></a>判别器(discriminator)</h5><h4 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h4><ul>
+<li><p>Pixel-wise Loss: </p>
+<p>  最小化输入图像和渲染图像之间的差异，由于可能有遮挡问题，所以只计算部分面部区域$M_{face}$的欧氏距离。这个面部区域是由预训练的面部分割网络获得的。</p>
+</li>
+<li><p>Identity-Preserving Loss: </p>
+<p>  重建的3D人脸可能<strong>看起来不像</strong>输入的2D人脸，特别是在某些<strong>极端</strong>情况下。因此定义了面部特征级别下的 LOSS。</p>
+<blockquote>
+<p>使用FaceNet，获得输入图像和渲染的2D图像的$feature$，计算余弦距离。</p>
+</blockquote>
+</li>
+<li><p>Vertex-wise Loss: </p>
+<ul>
+<li>训练GCN时，由于遮挡，可能无法正确的学习到顶点上的RGB值。</li>
+<li>在GCN模块训练的早期阶段，构造顶点级别的损失函数，然后逐渐减少这个这个损失项的权重</li>
+<li>包含两组：<ol>
+<li>regressor+pca生成的T，和GCN生成的T’</li>
+<li>regressor+pca生成的T，映射回输入图像的颜色Tp，和GCN生成的T’在光照渲染下的颜色 $\tilde{T’}$(为了获得更多的面部细节)<br><img src="/./3dfacereconstruction-abstracts/gcnvloss.png" alt="gcnvloss"></li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>Adversarial LOSS</p>
+<ul>
+<li>对抗损失</li>
+</ul>
+</li>
+</ul>
+<h4 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h4><p><img src="/./home/wadekiny/face-reconstruction/gcn-3d-face-reconstruction/result.png" alt="result"><br><img src="/./home/wadekiny/face-reconstruction/gcn-3d-face-reconstruction/ablation.png" alt="ablation"></p>
+<h3 id="DECA"><a href="#DECA" class="headerlink" title="DECA"></a>DECA</h3><h4 id="相关信息-3"><a href="#相关信息-3" class="headerlink" title="相关信息"></a>相关信息</h4><ul>
+<li><p>SIGGRAPH2021: Learning an Animatable Detailed 3D Face ModTTel from In-The-Wild Images</p>
+</li>
+<li><p>有代码，<a target="_blank" rel="noopener" href="https://github.com/YadiraF/DECA">https://github.com/YadiraF/DECA</a></p>
+</li>
+<li><p>提供的思路：几何细节与表情有关</p>
+</li>
+<li><p>自监督，头部重建，侧重于几何形状</p>
+</li>
+<li><p>dataset:</p>
+<ul>
+<li><p>VGGFace2 [Cao et al. 2018b]</p>
+</li>
+<li><p>BUPT-Balancedface [Wang et al. 2019] </p>
+</li>
+<li><p>VoxCeleb2 [Chung et al. 2018a]</p>
+</li>
+<li><p>NoW</p>
+</li>
+<li><p>在两百万张图片(224*224)上训练</p>
+</li>
+</ul>
+</li>
+<li><p>输入：同一个人多张图片</p>
+</li>
+<li><p>损失函数：<br>  $$<br>  LOSS : L_{coarse} &#x3D; +L_{lmk}+L_{eye}+L_{pho}+L_{id}+L_{sc}+L_{reg} \<br>  loss : L_{ detail } &#x3D; L_{phoD}+L_{mrf}+L_{sym}+L_{dc}+L_{regD}<br>  $$</p>
+</li>
+<li><p>提出的问题：</p>
+<p>  提出了动态细节和静态细节的概念</p>
+</li>
+<li><p>贡献：</p>
+<ul>
+<li><p>改变表情参数，可以合成合理的几何细节(表情迁移)</p>
+</li>
+<li><p>使用一种<strong>细节一致性损失</strong>来将<strong>身份相关的细节</strong>和<strong>表情相关的细节</strong>分开</p>
+</li>
+<li><p>因为重建的是几何细节，对于遮挡，光照变化，姿势变化有鲁棒性</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="使用的模型"><a href="#使用的模型" class="headerlink" title="使用的模型"></a>使用的模型</h4><h5 id="几何模型"><a href="#几何模型" class="headerlink" title="几何模型"></a>几何模型</h5><ul>
+<li><p>FLAME</p>
+</li>
+<li><p>$M(\vec\beta,\vec\theta,\vec\psi)&#x3D;W(T_P(\vec\beta,\vec\theta,\vec\psi),\mathrm J(\vec\beta),\vec\theta,\mathcal W)$</p>
+</li>
+</ul>
+<h5 id="外观模型"><a href="#外观模型" class="headerlink" title="外观模型"></a>外观模型</h5><ul>
+<li><p>由于 FLAME 没有外观模型，所以把 BFM 的外观模型搬过来，用在 FLAME 上</p>
+</li>
+<li><p>BFM’s linear albedo subspace -&gt; FLAME UV layout</p>
+</li>
+<li><p>外观模型输出一个UV 反照率图：$A(\alpha) \in \mathbb R^{d\times d\times 3},\alpha\in \mathbb R^{|\alpha|}$</p>
+</li>
+</ul>
+<h5 id="相机模型"><a href="#相机模型" class="headerlink" title="相机模型"></a>相机模型</h5><ul>
+<li><p>将 3d mesh 投影到图片空间</p>
+</li>
+<li><p>$v &#x3D; s\Pi(M_i)+t,\quad \Pi\in\mathbb R^{2\times3},\quad M_i\in\mathbb R^3, \quad s\in\mathbb R(scale),\quad t\in\mathbb R^2(translation)$</p>
+</li>
+<li><p>用 $c$ 表示 $s,t$</p>
+</li>
+</ul>
+<h5 id="照明模型"><a href="#照明模型" class="headerlink" title="照明模型"></a>照明模型</h5><ul>
+<li><p>基于球谐函数 (Spherical Harmonics, SH, [Ramamoorthi and Hanrahan 2001])</p>
+</li>
+<li><p>有阴影的面部图像计算方法：$B(\alpha,\mathrm l,N_{uv})<em>{i,j} &#x3D; A(\alpha)</em>{i,j}\odot\sum_{k&#x3D;1}^9\mathrm l_kH_K(N)_{i,j}$</p>
+</li>
+<li><p>$A$ 是外观模型生成的UV反照率图，$N$ 是法线，$B$ 是有阴影的纹理，哈达马积后面的部分是 HS 的东西</p>
+</li>
+</ul>
+<h5 id="纹理渲染"><a href="#纹理渲染" class="headerlink" title="纹理渲染"></a>纹理渲染</h5><ul>
+<li><p>输入：$\mathrm{(\beta,\theta,\psi),\alpha,l,c}$ 分别是FLAME参数，反照率参数，照明参数，相机参数</p>
+</li>
+<li><p>$I_r &#x3D; \mathcal R(M,B,\mathrm c)$</p>
+</li>
+</ul>
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><ul>
+<li><p>发现：一些面部细节(皱纹)取决于表情，但是一些其他属性不随表情变化。</p>
+</li>
+<li><p>将面部细节分为两部分</p>
+<ul>
+<li><p><strong>静态面部细节</strong>因人而异。</p>
+</li>
+<li><p><strong>动态面部细节</strong>依赖于表情，在同一个人上也会有差异。</p>
+</li>
+</ul>
+</li>
+<li><p>重建流程分为两部分，分别是粗糙重建和细节重建</p>
+</li>
+</ul>
+<p><img src="/./deca/unknowdeca.png" alt="unknowdeca"><br><img src="/./deca/framework.png" alt="framework"></p>
+<h4 id="粗糙重建"><a href="#粗糙重建" class="headerlink" title="粗糙重建"></a>粗糙重建</h4><p>首先学习一个粗糙的重建(在flame的模型空间里)</p>
+<p>LOSS : $L_{coarse} &#x3D; +L_{lmk}+L_{eye}+L_{pho}+L_{id}+L_{sc}+L_{reg}$</p>
+<ul>
+<li><p>关键点投影损失(landmark re-projection loss)</p>
+<ul>
+<li><p>比较<strong>2D输入图像的关键点坐标</strong>和<strong>3D mesh 投影到图片空间的坐标</strong>，是绝对位置误差</p>
+</li>
+<li><p>$L_{lmk}&#x3D;\sum_{i&#x3D;1}^{68}||k_i-s\Pi(M_i)+t||_1$</p>
+</li>
+</ul>
+</li>
+<li><p>眼部闭合损失(eye closure loss)</p>
+<ul>
+<li><p>这部分损失是平移不变的，是一种相对位置误差，不容易受投影3d人脸没有对齐的影响</p>
+</li>
+<li><p>$L_{eye}&#x3D;\sum_{(i,j)\in E}||k_i-k_j-s\Pi(M_i-M_j)||$</p>
+</li>
+<li><p>$E$ 是眼睛上轮廓，下轮廓的关键点对</p>
+</li>
+</ul>
+</li>
+<li><p>渲染损失(photometric loss)</p>
+<ul>
+<li><p>$L_{pho} &#x3D; ||V_I\odot(I-I_r)||_{1,1}$ </p>
+</li>
+<li><p>$V_I$ 是面部的mask</p>
+</li>
+</ul>
+</li>
+<li><p>身份损失(identity loss)</p>
+<ul>
+<li><p>使用预训练的人脸识别网络,余弦相似度</p>
+</li>
+<li><p>$L_{id} &#x3D; 1-\dfrac{f(I)f(I_r)}{||f(I)||_2\cdot||f(I_r)||_2}$</p>
+</li>
+</ul>
+</li>
+<li><p>形状一致性损失(shape consistency loss)</p>
+<ul>
+<li><p>给一个人的两张图，应该输出相同的 FLAME 形状参数，(i.e.$\beta_i&#x3D;\beta_j$), 之前有一些工作是最小参数$\beta$之间的距离,但是效果不是特别好</p>
+</li>
+<li><p>新策略：在渲染图像 $i$ 时，将 $\beta_i$ 替换为 $\beta_j$ </p>
+</li>
+<li><p>如果模型正确估计了同一个人两幅图像中的面部形状，则交换形状参数，渲染出的图像应当难以区分。所以在渲染图像上，使用渲染损失和身份损失</p>
+</li>
+<li><p>$L_{sc} &#x3D; L_{coarse}(I_i,I_r(\beta_j,…))$</p>
+</li>
+</ul>
+</li>
+<li><p>正则化损失</p>
+<ul>
+<li>$L_{reg}$ <ul>
+<li>$E_\beta &#x3D; ||\beta||_2^2$</li>
+<li>$E_\psi &#x3D; ||\psi||_2^2$</li>
+<li>$E_\alpha &#x3D; ||\alpha||_2^2$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="细节重建"><a href="#细节重建" class="headerlink" title="细节重建"></a>细节重建</h4><p>通过细节的uv位移图$D\in[-0.01,0.01]^{d\times d}$增强粗糙的flame模型</p>
+<ol>
+<li><p>生成UV位移图</p>
+<ul>
+<li><p>将输入图像编码为128维向量 $\delta$</p>
+</li>
+<li><p>$D &#x3D; F_d(\delta,\psi,\theta_{jaw})$</p>
+</li>
+<li><p>$D\in[-0.01,0.01]^{d\times d}$</p>
+</li>
+<li><p>$\delta$ 控制静态的人物细节</p>
+</li>
+</ul>
+</li>
+<li><p>将mesh投影到UV空间，叠加细节</p>
+<ul>
+<li><p>将 mesh 和 法线转换到UV空间</p>
+</li>
+<li><p>$M’<em>{uv} &#x3D; M</em>{uv} + D \odot N_{uv}$</p>
+</li>
+</ul>
+</li>
+<li><p>根据叠加了细节的mesh，计算新的法线 $N’$</p>
+</li>
+<li><p>渲染图像</p>
+<ul>
+<li>$I’_r &#x3D; \mathcal R(M, B(\mathrm{\alpha,l},N’), c)$</li>
+</ul>
+</li>
+</ol>
+<p>Loss : $L_{ detail } &#x3D; L_{phoD}+L_{mrf}+L_{sym}+L_{dc}+L_{regD}$</p>
+<ul>
+<li><p>细节渲染损失</p>
+<ul>
+<li><p>$L_{phoD} &#x3D; ||V_I\odot(I-I_r)||_{1,1}$ </p>
+</li>
+<li><p>$V_I$ 是面部的mask</p>
+</li>
+</ul>
+</li>
+<li><p>ID-MRF 损失</p>
+<ul>
+<li><p>Implicit Diversified Markov Random Field (ID-MRF) loss [Wang et al. 2018]</p>
+</li>
+<li><p>$L_{mrf} &#x3D; 2L_M(conv4_2)+L_M(conv3_2)$</p>
+</li>
+</ul>
+</li>
+<li><p>软对称损失(soft symmetry loss)</p>
+<ul>
+<li><p>为了增加对自遮挡问题的鲁棒性，有助于解决在边界的伪影问题？</p>
+</li>
+<li><p>$L_{sym}&#x3D; ||V_{uv}\odot(D-flip(D))||_{1,1}$</p>
+</li>
+<li><p>$V_{uv}$ 是在UV空间的面部mask</p>
+</li>
+</ul>
+</li>
+<li><p>正则化损失</p>
+<ul>
+<li>$L_{regD} &#x3D; ||D||_{1,1}$</li>
+</ul>
+</li>
+<li><p>细节一致性损失(detail consistency loss)</p>
+<ul>
+<li><p>为了控制人脸，要将静态细节(毛孔，眉毛等与表情无关)和动态细节(因表情而产生的皱纹)</p>
+</li>
+<li><p>静态细节受 $\delta$ 控制，动态细节受 $\psi,\theta_{jaw}$ 控制</p>
+</li>
+<li><p>类似粗重建过程中的形状一致性损失，利用同一个人的不同照片，其静态细节应该是一致的。</p>
+</li>
+<li><p>对于同一个人的不同照片，交换$\delta$参数</p>
+</li>
+<li><p>$L_{dc} &#x3D; L_{detail}(I_i,I_r(\delta_j…))$</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="实现细节"><a href="#实现细节" class="headerlink" title="实现细节"></a>实现细节</h4><ul>
+<li>三个公开数据集：VGGFace2，BUPT-Balancedface, VoxCeleb2</li>
+<li>总共训练了200万张图像</li>
+<li>使用FAN来预测68个2d 标志点</li>
+<li>使用Pytorch3D的工具进行渲染</li>
+<li>输入图像大小：224x224</li>
+<li>uv空间大小：d&#x3D;256</li>
+</ul>
+<h4 id="消融实验"><a href="#消融实验" class="headerlink" title="消融实验"></a>消融实验</h4><h5 id="细节一致性损失"><a href="#细节一致性损失" class="headerlink" title="细节一致性损失"></a>细节一致性损失</h5><p><img src="/./deca/ldc.png" alt="ldc"></p>
+<h5 id="ID-MRF-loss"><a href="#ID-MRF-loss" class="headerlink" title="ID-MRF loss"></a>ID-MRF loss</h5><p><img src="/./deca/mrf.png" alt="mrf"></p>
+<h5 id="软对称损失"><a href="#软对称损失" class="headerlink" title="软对称损失"></a>软对称损失</h5><p><img src="/./deca/sym.png" alt="sym"></p>
+<h3 id="CEST"><a href="#CEST" class="headerlink" title="CEST"></a>CEST</h3><h4 id="相关信息-4"><a href="#相关信息-4" class="headerlink" title="相关信息"></a>相关信息</h4><ul>
+<li><p>ICCV2021: Self-Supervised 3D Face Reconstruction via Conditional Estimation</p>
+</li>
+<li><p>提供的思路：如何更好的分离3DMM参数</p>
+</li>
+<li><p>无代码</p>
+</li>
+<li><p>自监督，面部重建，侧重于纹理</p>
+</li>
+<li><p>dataset:</p>
+<ul>
+<li>VoxCeleb1</li>
+<li>300W-LP</li>
+<li>AFLW2000-3D(3d)</li>
+<li>MICC(3d)</li>
+</ul>
+</li>
+<li><p>输入: video</p>
+</li>
+<li><p>损失函数：<br>$$<br>\mathcal{L}<em>{ph} + \lambda_1 \mathcal L</em>{kp} + \lambda_2 \mathcal L_{rg} \<br>\quad \<br>\mathcal L <em>{ph} &#x3D; \dfrac{1}{N}\sum</em>{i&#x3D;1, \xi_j &#x3D; \xi_i}^N(\varepsilon(I_i,S_i,R_j,v_i,l_i,M_i) + \varepsilon(I_I,S_i,R_i^\Join,v_i,l_i,M_i ) )\<br>\quad \<br>\mathcal L_{kp} &#x3D; \dfrac 1{NN_{kp}} \sum_{i&#x3D;1}^N\sum_{j&#x3D;1}^{N_{kp}}||Q_i(k_j)-q_i(j)||<em>1 \<br>\quad \<br>\mathcal L</em>{rg} &#x3D; \dfrac 1{N}\sum_{i&#x3D;1}^N||\alpha_i||^2_2<br>$$</p>
+</li>
+<li><p>提出的问题：</p>
+<ul>
+<li><p>重建的纹理只是简单复制2d图像像素点的颜色，不能分离出照明参数，重建结果渲染的图像和输入图像很接近，但3d模型效果不好。 </p>
+</li>
+<li><p>解决办法：加入对称性损失，一致性损失。</p>
+</li>
+</ul>
+</li>
+<li><p>本文贡献：</p>
+<ul>
+<li><p>考虑了3DMM参数之间的关联性</p>
+</li>
+<li><p>按顺序推导参数</p>
+</li>
+<li><p>提出一种随机优化策略</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="CEST的流程"><a href="#CEST的流程" class="headerlink" title="CEST的流程"></a>CEST的流程</h4><ol>
+<li><p>预测视点参数。 </p>
+<p> 包括空间上的旋转，平移，缩放因子。</p>
+<p> $f_v(I;\theta_v):I\rightarrow v\in \mathbb R^7$</p>
+</li>
+<li><p>预测形状参数。</p>
+<p> 在预测形状前，排除尽可能多的视点信息是有益的，利用$\theta_v$,可以将图像对齐。</p>
+<p> $f_s(I\circ v;\theta_s):I\circ v \rightarrow \alpha \in \mathbb R^{228*1}$</p>
+</li>
+<li><p>预测反照率。</p>
+<p> 先前的工作包括：</p>
+<ul>
+<li><p>基于预定义的模型，预测反照率参数</p>
+</li>
+<li><p>预测UV图(CEST选用此方法)</p>
+</li>
+<li><p>图结构表示反射率</p>
+</li>
+</ul>
+<p> 预测反照率的流程</p>
+<ol>
+<li><p>将预测得到的形状盖在脸上，把2d图片展成uv图 $T$</p>
+</li>
+<li><p>得到包含照明因素的uv图 $T$</p>
+</li>
+<li><p>得到去除照明参数的uv图 $f_r(T;\theta_r):T\rightarrow A$</p>
+</li>
+</ol>
+</li>
+<li><p>预测照明参数。</p>
+<p> $f_l(I,T,A;\theta_l):(I,T,A) \rightarrow l\in \mathbb R^{9\times 1}$</p>
+</li>
+<li><p>渲染2D图像，计算loss。</p>
+<p> $\hat I &#x3D; \mathcal R(S,R,v,l)$</p>
+<p> 分别代表渲染图像，渲染器，形状参数，反照率参数，视点参数，照明参数。</p>
+</li>
+</ol>
+<p><img src="/./3dfacereconstruction-abstracts/cest0.png" alt="cest0"><br><img src="/./3dfacereconstruction-abstracts/cest-frame.png" alt="cest-frame"><br><img src="/./3dfacereconstruction-abstracts/cest-uv.png" alt="cest-uv"><br><img src="/./3dfacereconstruction-abstracts/cest-result0.png" alt="cest-result0"></p>
+<h3 id="3D3M"><a href="#3D3M" class="headerlink" title="3D3M"></a>3D3M</h3><h4 id="相关信息-5"><a href="#相关信息-5" class="headerlink" title="相关信息"></a>相关信息</h4><ul>
+<li>TMM2022: 3D3M: 3D Modulated Morphable Model for Monocular Face Reconstruction</li>
+<li>无代码</li>
+<li>对得到的3dmm参数进行随机混乱（不同脸之间），渲染出新的脸，再重新编码和渲染（用于自监督）</li>
+<li>自监督,侧重于几何形状 </li>
+<li>损失函数:<ul>
+<li>两阶段，</li>
+<li>1：landmark+图像损失</li>
+<li>2：用已经decode的参数，再encode，decode，比较第二次decode后的参数和第一次decode的参数。<br><img src="/./3dfacereconstruction-abstracts/3d3mframe.png" alt="3d3mframe"></li>
+</ul>
+</li>
+</ul>
+<h3 id="GCN-GAN"><a href="#GCN-GAN" class="headerlink" title="GCN+GAN"></a>GCN+GAN</h3><ul>
+<li>CVPR2020: Uncertainty-Aware Mesh Decoder for High Fidelity 3D Face Reconstruction</li>
+<li>无代码</li>
+</ul>
+<h3 id="REDA"><a href="#REDA" class="headerlink" title="REDA"></a>REDA</h3><ul>
+<li>CVPR2020: ReDA:Reinforced Differentiable Attribute for 3D Face Reconstruction</li>
+<li>无代码</li>
+</ul>
+<h3 id="MICA"><a href="#MICA" class="headerlink" title="MICA"></a>MICA</h3><ul>
+<li>ECCV2022: Towards Metrical Reconstruction of Human Faces</li>
+<li>有代码，<a target="_blank" rel="noopener" href="https://github.com/Zielon/MICA">https://github.com/Zielon/MICA</a></li>
+<li>提供的思路：</li>
+<li>自监督，头部重建，侧重于几何形状</li>
+<li>dataset:</li>
+<li>输入：</li>
+<li>损失函数：</li>
+<li>提出的问题：</li>
+<li>贡献：</li>
+</ul>
+<h1 id="非参数化建模"><a href="#非参数化建模" class="headerlink" title="非参数化建模"></a>非参数化建模</h1><h3 id="LAP"><a href="#LAP" class="headerlink" title="LAP"></a>LAP</h3><h4 id="相关信息-6"><a href="#相关信息-6" class="headerlink" title="相关信息"></a>相关信息</h4><ul>
+<li>CVPR2021: Learning to Aggregate and Personalize 3D Face from In-the-Wild Photo Collection</li>
+<li>有代码，<a target="_blank" rel="noopener" href="https://github.com/TencentYoutuResearch/3DFaceReconstruction-LAP">https://github.com/TencentYoutuResearch/3DFaceReconstruction-LAP</a></li>
+<li>提供的思路：课程学习。计算深度图和rgb图</li>
+<li>自监督，人脸重建，侧重于纹理</li>
+<li>dataset:<ul>
+<li>CelebAMask-HQ</li>
+<li>CelebA</li>
+<li>CASIAWebFace</li>
+<li>3DFAW(3d)</li>
+</ul>
+</li>
+<li>输入：同一个人的不同人脸照片</li>
+<li>损失函数：分为两部分，对应于id重建和个性化重建</li>
+<li>提出的问题：</li>
+<li>贡献：<ul>
+<li>分离了id一致的人脸</li>
+<li>较高的分辨率</li>
+</ul>
+</li>
+<li>大致流程：两个阶段，先输入多个同id图片，学习id一致的人脸。第二步：根据特定人脸加入表情等个性化因素。</li>
+</ul>
+<p><img src="/./3dfacereconstruction-abstracts/lapframe.png" alt="lapframe"><br><img src="/./3dfacereconstruction-abstracts/lapcomp.png" alt="lapcomp"></p>
+<h3 id="Transformer"><a href="#Transformer" class="headerlink" title="Transformer"></a>Transformer</h3><h4 id="相关信息-7"><a href="#相关信息-7" class="headerlink" title="相关信息"></a>相关信息</h4><ul>
+<li>TCSVT2022: Transformer-based 3D Face Reconstruction with End-to-end Shape-preserved Domain Transfer</li>
+<li>无代码</li>
+<li>不同面部区域loss权重不同</li>
+<li>gan生成图像训练</li>
+</ul>
+<p><img src="/./3dfacereconstruction-abstracts/transformer.png" alt="transformer"></p>
+<h3 id="UNSUP3d"><a href="#UNSUP3d" class="headerlink" title="UNSUP3d"></a>UNSUP3d</h3><ul>
+<li>CVPR2020: Unsupervised Learning of Probably Symmetric Deformable 3D Objects from Images in the Wild</li>
+<li>有代码，<a target="_blank" rel="noopener" href="https://github.com/elliottwu/unsup3d">https://github.com/elliottwu/unsup3d</a></li>
+</ul>
+<h1 id="基于NERF"><a href="#基于NERF" class="headerlink" title="基于NERF"></a>基于NERF</h1><h3 id="HeadNeRF"><a href="#HeadNeRF" class="headerlink" title="HeadNeRF"></a>HeadNeRF</h3><ul>
+<li>CVPR 2022: eadNeRF: A Real-time NeRF-based Parametric Head Model</li>
+<li>无训练代码，<a target="_blank" rel="noopener" href="https://github.com/CrisHY1995/headnerf">https://github.com/CrisHY1995/headnerf</a></li>
+</ul>
+<h1 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h1><ol>
+<li>眼睛、嘴唇、牙齿、头发的重建</li>
+<li>3DMM模型参数空间维度较低，纹理模型比较简单，难以恢复高精度的人脸。PCA方法是否存在问题。</li>
+<li>遮挡信息恢复</li>
+<li>3DMM模型及其变种不能在各种场景下同时保持较好的性能</li>
+<li>侧面角度重建</li>
+<li>表情</li>
+<li>多视角</li>
+<li>无监督，除了映射回2D图有没有其他方法</li>
+<li>怎么进行数据增强</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/paper/" rel="tag"># paper</a>
+              <a href="/tags/3Dface/" rel="tag"># 3Dface</a>
+              <a href="/tags/deeplearning/" rel="tag"># deeplearning</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/07/11/3dface-paper/3d-face-reconstruction-survey/" rel="prev" title="3D Face Reconstruction in Deep Learning Era:A Survey">
+                  <i class="fa fa-chevron-left"></i> 3D Face Reconstruction in Deep Learning Era:A Survey
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/07/24/signal-recognition/modulation-recognition-survey/" rel="next" title="无线电信号检测识别的两篇综述">
+                  无线电信号检测识别的两篇综述 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wadekiny</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/4.14.3/algoliasearch-lite.umd.js" integrity="sha256-dyJcbGuYfdzNfifkHxYVd/rzeR6SLLcDFYEidcybldM=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/4.49.2/instantsearch.production.min.js" integrity="sha256-Nu8yqoXoRZEVYyZf4/eY1V4FsenbiCw85RY3gWjN3zQ=" crossorigin="anonymous"></script><script src="/js/third-party/search/algolia-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="对于卷积的一些理解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="convolution">
+<meta property="og:url" content="http://example.com/2021/04/21/deeplearning-pytorch/convolution/index.html">
+<meta property="og:site_name" content="Wadekiny&#39;s Blog">
+<meta property="og:description" content="对于卷积的一些理解">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/convolution/flip.png">
+<meta property="og:image" content="http://example.com/convolution/DrawConvolution.gif">
+<meta property="og:image" content="http://example.com/convolution/et.png">
+<meta property="og:image" content="http://example.com/convolution/si_mu.png">
+<meta property="og:image" content="http://example.com/convolution/conv-image.png">
+<meta property="og:image" content="http://example.com/convolution/draw_conv.gif">
+<meta property="article:published_time" content="2021-04-21T07:09:58.000Z">
+<meta property="article:modified_time" content="2023-01-12T16:47:15.743Z">
+<meta property="article:author" content="Wadekiny">
+<meta property="article:tag" content="deeplearning">
+<meta property="article:tag" content="convolution">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/convolution/flip.png">
+
+
+<link rel="canonical" href="http://example.com/2021/04/21/deeplearning-pytorch/convolution/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2021/04/21/deeplearning-pytorch/convolution/","path":"2021/04/21/deeplearning-pytorch/convolution/","title":"convolution"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>convolution | Wadekiny's Blog</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Wadekiny's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">32</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">51</span></a></li><li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>Schedule</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Commonweal 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container"></div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container">
+  <div class="algolia-stats"><hr></div>
+  <div class="algolia-hits"></div>
+  <div class="algolia-pagination"></div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%B7%E7%A7%AF%E5%AE%9A%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">卷积定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%B7%E7%A7%AF%E5%BA%94%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">卷积应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E4%BF%A1%E5%8F%B7%E5%88%86%E6%9E%90%E4%B8%AD"><span class="nav-number">2.1.</span> <span class="nav-text">在信号分析中</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%81%E6%98%8E%E5%8A%A8%E6%80%81%E7%94%B5%E8%B7%AF%E5%8D%B7%E7%A7%AF%E5%AE%9A%E7%90%86"><span class="nav-number">2.1.1.</span> <span class="nav-text">证明动态电路卷积定理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E4%B8%AD"><span class="nav-number">2.2.</span> <span class="nav-text">在图像处理中</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Wadekiny</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/21/deeplearning-pytorch/convolution/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Wadekiny">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wadekiny's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="convolution | Wadekiny's Blog">
+      <meta itemprop="description" content="对于卷积的一些理解">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          convolution
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-04-21 15:09:58" itemprop="dateCreated datePublished" datetime="2021-04-21T15:09:58+08:00">2021-04-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-01-13 00:47:15" itemprop="dateModified" datetime="2023-01-13T00:47:15+08:00">2023-01-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/deeplearning/" itemprop="url" rel="index"><span itemprop="name">deeplearning</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">对于卷积的一些理解</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="卷积定义"><a href="#卷积定义" class="headerlink" title="卷积定义"></a>卷积定义</h1><p>$$(f*g)(x) &#x3D; \int_{-\infty}^{+\infty}f(\tau)g(x-\tau)d\tau$$</p>
+<p>卷积理解为加权积分，一个输出和多个输入有关，这些输入对输出的贡献程度不同。</p>
+<p>$f$ 是被积函数（系统输入）</p>
+<p>$g$ 是满足一定约束条件的权重函数（反应系统的结构参数）, 其自变量为<strong>某种距离</strong>，如时间距离，或坐标距离。</p>
+<p>卷积的运算过程：翻转平移 $\to$ 加权积分 $\to$ 滑动 $\to$ 加权积分 $\to$ 滑动 $\to \cdots$ </p>
+<ul>
+<li><p>由于权重函数需要满足一定约束条件，需要将 $g$ 进行翻转和平移</p>
+</li>
+<li><p>将 $x$ 看做常数，求积分</p>
+</li>
+<li><p>卷积后的结果为关于 $x$ 的函数，随着 $x$ 的增加，表现为 $g$ 函数在图像上滑动</p>
+</li>
+</ul>
+<p>数学定义的积分范围是无穷区间，但由于应用对象的不同，可以简化为有限区间内的积分。</p>
+<h1 id="卷积应用"><a href="#卷积应用" class="headerlink" title="卷积应用"></a>卷积应用</h1><h2 id="在信号分析中"><a href="#在信号分析中" class="headerlink" title="在信号分析中"></a>在信号分析中</h2><p>$$(f*g)(T) &#x3D; \int_{0}^{T}f(\tau)g(T-\tau)d\tau$$</p>
+<ul>
+<li><p>本质：对不同时刻的输入所引起的响应进行加权积分。</p>
+</li>
+<li><p>$f(\tau)$ 是 $\tau$ 时刻系统的输入信号</p>
+</li>
+<li><p>$g(t)$ 是系统的单位冲激响应，反映了系统的结构参数</p>
+</li>
+<li><p>$f(\tau)g(T-\tau)$：$\tau$ 时刻的输入对 $T$ 时刻输出的影响</p>
+</li>
+<li><p>将 $g$ 函数进行翻转平移的原因：$\tau$ 时刻系统的输入，经历了时间：$T-\tau$ ，影响到了输出 $T$ 时刻的状态。也就是单位冲激响应时间上经历了 $T-\tau$ 的衰减，表现在卷积公式上就是 $g$ 函数满足 <strong>时间距离</strong> 上的约束。</p>
+<p>  蓝色图像为翻转后的单位冲激响应：</p>
+<p>  <img src="/./convolution/flip.png" alt="avatar"></p>
+</li>
+<li><p>将 $g$ 函数进行滑动的原因： $T$ 的增长</p>
+<p>  滑动过程：</p>
+<p>  <img src="/./convolution/DrawConvolution.gif" alt="avatar"></p>
+</li>
+<li><p>积分区间简化：</p>
+<ul>
+<li><p>由于因果系统在一个时刻的响应只与该时刻以前的输入有关，当 $\tau&gt;T$ 时，$g(T-\tau) &#x3D; 0$ , 所以积分上限可改为 $T$。</p>
+</li>
+<li><p>人为规定在零时刻以前没有输入，当 $\tau &lt; 0$ 时，$f(\tau) &#x3D; 0$， 所以积分下限可改为 $0$</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="证明动态电路卷积定理"><a href="#证明动态电路卷积定理" class="headerlink" title="证明动态电路卷积定理"></a>证明动态电路卷积定理</h3><p><strong>已知：</strong> $h(t)$为单位冲激响应，$e(t)$为任意激励。</p>
+<p><strong>零状态响应：</strong> $c(T) &#x3D; \int_{t_0}^Te(T-\tau)h(\tau)d\tau$</p>
+<p><strong>证明：</strong></p>
+<ul>
+<li><p>前提：电路系统满足 <strong>线性原理</strong> 和 <strong>叠加原理</strong> 。</p>
+</li>
+<li><p>假设 $e(t)$ 从 $t_0$ 时刻开始作用，要求 $T$ 时刻零状态响应。</p>
+</li>
+<li><p>将 $e(t)$ 分割为数个长条，每个长条宽度为$\Delta t$ 。<br>  <img src="/./convolution/et.png" alt="avatar"></p>
+</li>
+<li><p>改写激励函数，用阶梯函数 $e(\zeta)$ 近似代表原激励函数</p>
+<p>  $e(\zeta) &#x3D; \sum_{k&#x3D;0}^{n-1}e(t_k)\delta(\zeta-t_k)\Delta t$</p>
+<p>  当 $\zeta &#x3D; t_0$ 时，</p>
+<p>  $e(\zeta) &#x3D; e(t_0) &#x3D; e(t_0)\delta(t_0 - t_0)\Delta t$</p>
+<p>  其他项由于冲激函数的存在，全部变成了零。</p>
+</li>
+<li><p>一个矩形脉冲下的零状态响应：</p>
+<p>  激励在 $t_k$ 时刻开始作用, 到 $T$ 时刻, 经历了 $T-t_k$</p>
+<p>  激励： $e(t_k) &#x3D; e(t_k)\delta(t_k - t_k)\Delta t$</p>
+<p>  $T$ 时刻对应的冲激响应： $c_k(T) &#x3D; e(t_k)\Delta t \cdot h(T-t_k)$</p>
+</li>
+<li><p>所有矩形脉冲下的零状态响应：</p>
+<p>  $T$ 时刻对应的冲激响应： $c(T) &#x3D; \sum_{k&#x3D;0}^{n-1}e(t_k)\Delta t \cdot h(T-t_k)$</p>
+</li>
+<li><p>$\Delta t$ 取无穷小，<strong>求和</strong> 变为 <strong>积分</strong></p>
+<p>  $t_k$ 的范围是 $k&#x3D;0 \to n-1$</p>
+<p>  令 $\tau &#x3D; t_k$</p>
+<p>  $\tau$ 的范围是 $\tau&#x3D;t_0 \to t_{n-1}(T)$</p>
+<p>  $T$ 时刻对应的冲激响应： $c(T) &#x3D; \int_{t_0}^{T} e(\tau) h(T-\tau) d\tau$</p>
+<p>  定积分换元后：</p>
+<p>  $c(T) &#x3D; \int_{t_0}^{T} e(T - \tau) h(\tau) d\tau$</p>
+</li>
+</ul>
+<h2 id="在图像处理中"><a href="#在图像处理中" class="headerlink" title="在图像处理中"></a>在图像处理中</h2><p>离散形式的二维卷积：</p>
+<p>$$(f*g)(x,y) &#x3D; \sum_{i&#x3D;-\infty}^{+\infty}\sum_{j&#x3D;-\infty}^{+\infty}f(i,j)g(x-i,y-j)$$</p>
+<p>一维与二维：</p>
+<p><img src="/./convolution/si_mu.png" alt="avatar"></p>
+<p>图像处理中的卷积：</p>
+<p><img src="/./convolution/conv-image.png" alt="avatar"></p>
+<ul>
+<li><p>本质：二维卷积，对所有的像素点进行加权求和。</p>
+</li>
+<li><p>$f(i,j)$ 是原图像在 $(i, j)$ 点的像素值</p>
+</li>
+<li><p>$g(u,v)$ 输入图像的一个像素点（单位值）对输出图像的一个像素点的影响，不同于信号分析（一维卷积）中 $g$, 这里的权重不随时间变化，而是随着两个像素点之间的坐标距离变化。这个函数包含了对原图像处理的目的（系统的结构参数），如锐化或模糊，不同的目的有不同的 $g$ 。</p>
+</li>
+<li><p>$f(i, j)g(x-i,y-j)$：原图坐标为 $(i, j)$ 的像素点对时刻的输入对输出图像坐标为 $(x,y)$ 的像素点的影响</p>
+</li>
+<li><p>将 $g$ 函数进行翻转平移的原因：类似于一维卷积， $(i,j)$ 点的输入，经历了距离：$(x-i, y-j)$ ，影响到了输出 $(x,y)$ 点的状态。表现在卷积公式上就是 $g$ 函数满足 <strong>坐标距离</strong> 上的约束。</p>
+</li>
+<li><p>将 $g$ 函数进行滑动的原因： $(x,y)$ 的增长</p>
+</li>
+<li><p>求和区间简化： 图像是有界的，所以求和的上下限变为图形的界限</p>
+</li>
+<li><p>$g$ 的简化：在一定范围内有权值，大于一定范围（比如3*3, 5*5）权值为0，这样可以把原本很大的权值函数简化为小的卷积核。</p>
+</li>
+</ul>
+<p>简化后的公式，（ $g$ 在一定范围内有权值 ）：</p>
+<p>$$(f*g)(x,y) &#x3D; \sum_{i&#x3D;0}^{width}\sum_{j&#x3D;0}^{height}f(i,j)g(x-i,y-j)$$</p>
+<p>等效变换（ 3*3 ）:</p>
+<p>$$ output(x,y) &#x3D; \sum_{i&#x3D;-1}^{1}\sum_{j&#x3D;-1}^{1}f(x-i,x-j)g(i,j)$$</p>
+<p>滑动过程：</p>
+<p><img src="/./convolution/draw_conv.gif" alt="avatar"></p>
+<p>参考知乎：如何通俗易懂地理解卷积？ palet和1335的回答：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/22298352">https://www.zhihu.com/question/22298352</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/deeplearning/" rel="tag"># deeplearning</a>
+              <a href="/tags/convolution/" rel="tag"># convolution</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/04/13/linux-ubuntu/chown-chgrp/" rel="prev" title="chown-chgrp">
+                  <i class="fa fa-chevron-left"></i> chown-chgrp
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/05/08/deeplearning-pytorch/pytorch-tensor/" rel="next" title="pytorch-tensor">
+                  pytorch-tensor <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wadekiny</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/4.14.3/algoliasearch-lite.umd.js" integrity="sha256-dyJcbGuYfdzNfifkHxYVd/rzeR6SLLcDFYEidcybldM=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/4.49.2/instantsearch.production.min.js" integrity="sha256-Nu8yqoXoRZEVYyZf4/eY1V4FsenbiCw85RY3gWjN3zQ=" crossorigin="anonymous"></script><script src="/js/third-party/search/algolia-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

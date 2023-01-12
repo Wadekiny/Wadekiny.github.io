@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="自动控制原理，现代控制理论学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Principle of Automatic Control">
+<meta property="og:url" content="http://example.com/2021/02/13/course-note/Principle-of-Automatic-Control/index.html">
+<meta property="og:site_name" content="Wadekiny&#39;s Blog">
+<meta property="og:description" content="自动控制原理，现代控制理论学习笔记">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/Principle-of-Automatic-Control/21zhixian.png">
+<meta property="og:image" content="http://example.com/Principle-of-Automatic-Control/21xuanzhuan.png">
+<meta property="og:image" content="http://example.com/Principle-of-Automatic-Control/27chuan.png">
+<meta property="og:image" content="http://example.com/Principle-of-Automatic-Control/27bihuan.png">
+<meta property="og:image" content="http://example.com/Principle-of-Automatic-Control/33.png">
+<meta property="og:image" content="http://example.com/Principle-of-Automatic-Control/312.png">
+<meta property="og:image" content="http://example.com/Principle-of-Automatic-Control/43.png">
+<meta property="og:image" content="http://example.com/Principle-of-Automatic-Control/451.png">
+<meta property="og:image" content="http://example.com/Principle-of-Automatic-Control/452.png">
+<meta property="og:image" content="http://example.com/Principle-of-Automatic-Control/55.png">
+<meta property="og:image" content="http://example.com/Principle-of-Automatic-Control/513.png">
+<meta property="og:image" content="http://example.com/Principle-of-Automatic-Control/5145.png">
+<meta property="og:image" content="http://example.com/Principle-of-Automatic-Control/521.png">
+<meta property="og:image" content="http://example.com/Principle-of-Automatic-Control/524.png">
+<meta property="og:image" content="http://example.com/Principle-of-Automatic-Control/525.png">
+<meta property="og:image" content="http://example.com/Principle-of-Automatic-Control/51lianxu.png">
+<meta property="article:published_time" content="2021-02-13T08:22:49.000Z">
+<meta property="article:modified_time" content="2023-01-12T16:47:15.733Z">
+<meta property="article:author" content="Wadekiny">
+<meta property="article:tag" content="notebook">
+<meta property="article:tag" content="automation">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/Principle-of-Automatic-Control/21zhixian.png">
+
+
+<link rel="canonical" href="http://example.com/2021/02/13/course-note/Principle-of-Automatic-Control/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2021/02/13/course-note/Principle-of-Automatic-Control/","path":"2021/02/13/course-note/Principle-of-Automatic-Control/","title":"Principle of Automatic Control"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Principle of Automatic Control | Wadekiny's Blog</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Wadekiny's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">32</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">51</span></a></li><li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>Schedule</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Commonweal 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container"></div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container">
+  <div class="algolia-stats"><hr></div>
+  <div class="algolia-hits"></div>
+  <div class="algolia-pagination"></div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E6%9C%AF%E8%AF%AD"><span class="nav-number">1.</span> <span class="nav-text">1.基本概念和术语</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E5%9F%BA%E6%9C%AC%E5%85%83%E4%BB%B6"><span class="nav-number">1.1.</span> <span class="nav-text">1.1.基本元件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E6%9C%AF%E8%AF%AD"><span class="nav-number">1.2.</span> <span class="nav-text">1.2.术语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="nav-number">1.3.</span> <span class="nav-text">1.3.自动控制的基本原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">1.4.</span> <span class="nav-text">1.4.控制系统的分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%A6%81%E6%B1%82"><span class="nav-number">1.5.</span> <span class="nav-text">1.5.控制系统的基本要求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-6-%E5%BD%B1%E5%93%8D%E7%B3%BB%E7%BB%9F%E5%93%8D%E5%BA%94%E7%9A%84%E5%9B%A0%E7%B4%A0"><span class="nav-number">1.6.</span> <span class="nav-text">1.6. 影响系统响应的因素</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%BE%93%E5%85%A5-%E8%BE%93%E5%87%BA%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">2.控制系统的输入-输出模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%88%E6%97%B6%E5%9F%9F%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">2.1.微分方程（时域）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-1-%E5%9B%9B%E7%A7%8D%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%BB%BA%E6%A8%A1"><span class="nav-number">2.1.1.</span> <span class="nav-text">2.1.1.四种系统的建模</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0-s"><span class="nav-number">2.2.</span> <span class="nav-text">2.2.传递函数$(s)$</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0%E5%AE%9A%E4%B9%89"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1.传递函数定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-%E8%A1%A8%E7%A4%BA%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2.2.表示系统的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%A1%86%E5%9B%BE"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">方框图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%A1%E5%8F%B7%E6%B5%81%E5%9B%BE"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">信号流图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A2%85%E6%A3%AE%E5%85%AC%E5%BC%8F"><span class="nav-number">2.2.2.3.</span> <span class="nav-text">梅森公式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E9%A2%91%E5%9F%9F%E7%89%B9%E6%80%A7%E5%87%BD%E6%95%B0-j-omega"><span class="nav-number">2.3.</span> <span class="nav-text">2.3.频域特性函数$(j\omega)$</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1-%E9%A2%91%E5%9F%9F%E7%89%B9%E6%80%A7%E5%87%BD%E6%95%B0%E5%AE%9A%E4%B9%89"><span class="nav-number">2.3.1.</span> <span class="nav-text">2.3.1.频域特性函数定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-2-%E9%A2%91%E5%9F%9F%E7%89%B9%E6%80%A7%E7%9A%84%E5%9B%BE%E7%A4%BA%E6%96%B9%E6%B3%95"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.3.2.频域特性的图示方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A5%88%E5%A5%8E%E6%96%AF%E7%89%B9%E5%9B%BE"><span class="nav-number">2.3.2.1.</span> <span class="nav-text">奈奎斯特图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%AF%E5%BE%B7%E5%9B%BE"><span class="nav-number">2.3.2.2.</span> <span class="nav-text">伯德图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-3-%E5%85%B8%E5%9E%8B%E7%8E%AF%E8%8A%82%E7%9A%84%E9%A2%91%E5%9F%9F%E7%89%B9%E6%80%A7"><span class="nav-number">2.3.3.</span> <span class="nav-text">2.3.3.典型环节的频域特性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%AF%E8%8D%A1%E7%8E%AF%E8%8A%82%E7%9A%84%E9%A2%91%E7%8E%87%E7%89%B9%E6%80%A7"><span class="nav-number">2.3.3.1.</span> <span class="nav-text">振荡环节的频率特性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-4-%E6%9C%80%E5%B0%8F%E7%9B%B8%E4%BD%8D%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.3.4.</span> <span class="nav-text">2.3.4 最小相位系统</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-%E9%87%87%E6%A0%B7%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.4.</span> <span class="nav-text">2.4.采样控制系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-2-%E9%87%87%E6%A0%B7%E5%99%A8"><span class="nav-number">2.4.1.</span> <span class="nav-text">2.4.2.采样器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-3-%E9%9B%B6%E9%98%B6%E4%BF%9D%E6%8C%81%E5%99%A8%EF%BC%88ZOH%EF%BC%89"><span class="nav-number">2.4.2.</span> <span class="nav-text">2.4.3.零阶保持器（ZOH）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-4-%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B"><span class="nav-number">2.4.3.</span> <span class="nav-text">2.4.4.差分方程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-5-%E8%84%89%E5%86%B2%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0"><span class="nav-number">2.4.4.</span> <span class="nav-text">2.4.5.脉冲传递函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%87%E6%A0%B7%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%81%94%E6%8E%A5"><span class="nav-number">2.4.4.1.</span> <span class="nav-text">采样系统的联接</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">3.控制系统的状态空间模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-%E7%8A%B6%E6%80%81%E6%96%B9%E7%A8%8B%E5%92%8C%E8%BE%93%E5%87%BA%E6%96%B9%E7%A8%8B"><span class="nav-number">3.1.</span> <span class="nav-text">3.1.状态方程和输出方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-%E8%BF%9E%E7%BB%AD%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.2.</span> <span class="nav-text">3.2. 连续状态空间模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-1-%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E6%A8%A1%E5%9E%8B-x3D-gt-IO%E6%A8%A1%E5%9E%8B%EF%BC%88%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0%E7%9F%A9%E9%98%B5%EF%BC%89"><span class="nav-number">3.2.1.</span> <span class="nav-text">3.2.1. 状态空间模型 &#x3D;&gt; IO模型（传递函数矩阵）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-2-IO%E6%A8%A1%E5%9E%8B%EF%BC%88%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0%E7%9F%A9%E9%98%B5%EF%BC%89-x3D-gt-%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.2.2.</span> <span class="nav-text">3.2.2. IO模型（传递函数矩阵）&#x3D;&gt; 状态空间模型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#end-bmatrix"><span class="nav-number">4.</span> <span class="nav-text">\end{bmatrix}</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#end-bmatrix-1"><span class="nav-number">5.</span> <span class="nav-text">\end{bmatrix}</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#end-bmatrix-2"><span class="nav-number">6.</span> <span class="nav-text">\end{bmatrix}</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-%E8%BF%9E%E7%BB%AD%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E6%B1%82%E8%A7%A3-%E5%81%87%E8%AE%BED%E4%B8%BA0"><span class="nav-number">6.1.</span> <span class="nav-text">3.3.连续状态空间求解(假设D为0)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-1-%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB%E7%9F%A9%E9%98%B5"><span class="nav-number">6.1.1.</span> <span class="nav-text">3.3.1.状态转移矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-2-%E7%BA%BF%E6%80%A7%E5%AE%9A%E5%B8%B8%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%85%A8%E5%93%8D%E5%BA%94"><span class="nav-number">6.1.2.</span> <span class="nav-text">3.3.2.线性定常系统的全响应</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-%E7%A6%BB%E6%95%A3%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E6%A8%A1%E5%9E%8B"><span class="nav-number">6.2.</span> <span class="nav-text">3.4.离散状态空间模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-1-%E8%BF%9E%E7%BB%AD%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E6%A8%A1%E5%9E%8B-x3D-gt-%E7%A6%BB%E6%95%A3%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E6%A8%A1%E5%9E%8B"><span class="nav-number">6.2.1.</span> <span class="nav-text">3.4.1. 连续状态空间模型&#x3D;&gt;离散状态空间模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-2-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A8%A1%E5%9E%8B%EF%BC%88%E8%84%89%E5%86%B2%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0%EF%BC%89-x3D-gt-%E7%A6%BB%E6%95%A3%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E6%A8%A1%E5%9E%8B"><span class="nav-number">6.2.2.</span> <span class="nav-text">3.4.2. 输入输出模型（脉冲传递函数）&#x3D;&gt;离散状态空间模型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#end-bmatrix-3"><span class="nav-number">7.</span> <span class="nav-text">\end{bmatrix}</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5-%E7%A6%BB%E6%95%A3%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E6%B1%82%E8%A7%A3"><span class="nav-number">7.1.</span> <span class="nav-text">3.5. 离散状态空间求解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-1-%E7%A6%BB%E6%95%A3%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB%E7%9F%A9%E9%98%B5"><span class="nav-number">7.1.1.</span> <span class="nav-text">3.5.1. 离散系统的状态转移矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-2-%E6%B1%82%E8%A7%A3%E7%BA%BF%E6%80%A7%E7%A6%BB%E6%95%A3%E7%B3%BB%E7%BB%9F"><span class="nav-number">7.1.2.</span> <span class="nav-text">3.5.2. 求解线性离散系统</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%A8%B3%E5%AE%9A%E6%80%A7%E5%88%86%E6%9E%90"><span class="nav-number">8.</span> <span class="nav-text">4.控制系统的稳定性分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-%E6%9D%8E%E9%9B%85%E6%99%AE%E8%AF%BA%E5%A4%AB%E7%A8%B3%E5%AE%9A%E6%80%A7%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="nav-number">8.1.</span> <span class="nav-text">4.1.李雅普诺夫稳定性的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-%E7%BA%BF%E6%80%A7%E5%AE%9A%E5%B8%B8%E7%B3%BB%E7%BB%9F%E7%A8%B3%E5%AE%9A%E7%9A%84%E5%85%85%E8%A6%81%E6%9D%A1%E4%BB%B6"><span class="nav-number">8.2.</span> <span class="nav-text">4.2.线性定常系统稳定的充要条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-%E7%B3%BB%E7%BB%9F%E7%A8%B3%E5%AE%9A%E6%80%A7%E7%9A%84%E4%BB%A3%E6%95%B0%E5%88%A4%E6%8D%AE"><span class="nav-number">8.3.</span> <span class="nav-text">4.3.系统稳定性的代数判据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4-%E6%A0%B9%E8%BD%A8%E8%BF%B9"><span class="nav-number">8.4.</span> <span class="nav-text">4.4.根轨迹</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-1-%E4%B8%A4%E4%B8%AA%E6%A0%B9%E6%9C%AC%E7%BA%A6%E6%9D%9F%E6%9D%A1%E4%BB%B6%EF%BC%9A%E5%B9%85%E5%80%BC%E6%9D%A1%E4%BB%B6%E5%92%8C%E7%9B%B8%E8%A7%92%E6%9D%A1%E4%BB%B6"><span class="nav-number">8.4.1.</span> <span class="nav-text">4.4.1.两个根本约束条件：幅值条件和相角条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-2-%E6%A0%B9%E8%BD%A8%E8%BF%B9%E7%BB%98%E5%88%B6%E8%A7%84%E5%88%99"><span class="nav-number">8.4.2.</span> <span class="nav-text">4.4.2.根轨迹绘制规则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-5-%E5%A5%88%E5%A5%8E%E6%96%AF%E7%89%B9%E7%A8%B3%E5%AE%9A%E6%80%A7%E5%88%A4%E6%8D%AE"><span class="nav-number">8.5.</span> <span class="nav-text">4.5.奈奎斯特稳定性判据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-1-%E7%A8%B3%E5%AE%9A%E8%A3%95%E5%BA%A6"><span class="nav-number">8.5.1.</span> <span class="nav-text">4.5.1. 稳定裕度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-6-%E6%9D%8E%E9%9B%85%E6%99%AE%E8%AF%BA%E5%A4%AB%E7%AC%AC%E4%BA%8C%E6%B3%95"><span class="nav-number">8.6.</span> <span class="nav-text">4.6. 李雅普诺夫第二法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%97%B6%E5%9F%9F%E8%BF%90%E5%8A%A8%E5%88%86%E6%9E%90"><span class="nav-number">9.</span> <span class="nav-text">5.控制系统的时域运动分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-%E6%97%B6%E5%9F%9F%E5%93%8D%E5%BA%94%E6%B1%82%E8%A7%A3"><span class="nav-number">9.1.</span> <span class="nav-text">5.1.时域响应求解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-1-%E8%BF%9E%E7%BB%AD%E7%B3%BB%E7%BB%9F"><span class="nav-number">9.1.1.</span> <span class="nav-text">5.1.1.连续系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-2-%E7%A6%BB%E6%95%A3%E7%B3%BB%E7%BB%9F"><span class="nav-number">9.1.2.</span> <span class="nav-text">5.1.2.离散系统</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-%E7%9E%AC%E6%80%81%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87"><span class="nav-number">9.2.</span> <span class="nav-text">5.2.瞬态性能指标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3-%E4%B8%80%E9%98%B6%E7%B3%BB%E7%BB%9F%E7%9E%AC%E6%80%81%E6%80%A7%E8%83%BD"><span class="nav-number">9.3.</span> <span class="nav-text">5.3.一阶系统瞬态性能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-1-%E6%9E%81%E7%82%B9%E5%88%86%E5%B8%83"><span class="nav-number">9.3.1.</span> <span class="nav-text">5.3.1.极点分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-2-%E9%98%B6%E8%B7%83%E5%93%8D%E5%BA%94"><span class="nav-number">9.3.2.</span> <span class="nav-text">5.3.2.阶跃响应</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-4-%E4%BA%8C%E9%98%B6%E7%B3%BB%E7%BB%9F%E7%9E%AC%E6%80%81%E6%80%A7%E8%83%BD"><span class="nav-number">9.4.</span> <span class="nav-text">5.4.二阶系统瞬态性能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-1-%E6%9E%81%E7%82%B9%E5%88%86%E5%B8%83"><span class="nav-number">9.4.1.</span> <span class="nav-text">5.4.1.极点分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-2-%E9%98%B6%E8%B7%83%E5%93%8D%E5%BA%94"><span class="nav-number">9.4.2.</span> <span class="nav-text">5.4.2. 阶跃响应</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-3-%E4%BA%8C%E9%98%B6%E7%B3%BB%E7%BB%9F%E6%80%A7%E8%83%BD%E6%94%B9%E5%96%84"><span class="nav-number">9.4.3.</span> <span class="nav-text">5.4.3. 二阶系统性能改善</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-5-%E9%AB%98%E9%98%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">9.5.</span> <span class="nav-text">5.5 高阶系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-6-%E7%A8%B3%E6%80%81%E8%AF%AF%E5%B7%AE%E5%88%86%E6%9E%90"><span class="nav-number">9.6.</span> <span class="nav-text">5.6.稳态误差分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-%E6%A0%A1%E6%AD%A3"><span class="nav-number">10.</span> <span class="nav-text">7. 校正</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#7-1-%E9%99%84%E5%8A%A0%E9%9B%B6%E6%9E%81%E7%82%B9%E5%AF%B9%E7%B3%BB%E7%BB%9F%E6%80%A7%E8%83%BD%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="nav-number">10.1.</span> <span class="nav-text">7.1 附加零极点对系统性能的影响</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E7%8E%AF%E9%9B%B6%E6%9E%81%E7%82%B9"><span class="nav-number">10.1.1.</span> <span class="nav-text">开环零极点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AD%E7%8E%AF%E9%9B%B6%E6%9E%81%E7%82%B9"><span class="nav-number">10.1.2.</span> <span class="nav-text">闭环零极点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%82%B9%E9%99%84%E8%BF%91%E5%BC%80%E7%8E%AF%E5%81%B6%E6%9E%81%E5%AD%90"><span class="nav-number">10.1.3.</span> <span class="nav-text">原点附近开环偶极子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-2-%E6%A0%B9%E8%BD%A8%E8%BF%B9%E6%A0%A1%E6%AD%A3"><span class="nav-number">10.2.</span> <span class="nav-text">7.2.根轨迹校正</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%99%84%E5%BD%95"><span class="nav-number">11.</span> <span class="nav-text">附录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%89%E6%B0%8F%E5%8F%98%E6%8D%A2%E5%87%A0%E4%B8%AA%E9%87%8D%E8%A6%81%E5%AE%9A%E7%90%86"><span class="nav-number">11.1.</span> <span class="nav-text">拉氏变换几个重要定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Z%E5%8F%98%E6%8D%A2%E5%87%A0%E4%B8%AA%E9%87%8D%E8%A6%81%E5%AE%9A%E7%90%86"><span class="nav-number">11.2.</span> <span class="nav-text">Z变换几个重要定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0%E6%8B%89%E6%B0%8F%E5%8F%98%E6%8D%A2%E5%92%8CZ%E5%8F%98%E6%8D%A2"><span class="nav-number">11.3.</span> <span class="nav-text">常见函数拉氏变换和Z变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B8%E5%9E%8B%E7%8E%AF%E8%8A%82%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0%E5%92%8C%E9%A2%91%E7%8E%87%E7%89%B9%E6%80%A7"><span class="nav-number">11.4.</span> <span class="nav-text">典型环节传递函数和频率特性</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Wadekiny</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/13/course-note/Principle-of-Automatic-Control/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Wadekiny">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wadekiny's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Principle of Automatic Control | Wadekiny's Blog">
+      <meta itemprop="description" content="自动控制原理，现代控制理论学习笔记">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Principle of Automatic Control
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-02-13 16:22:49" itemprop="dateCreated datePublished" datetime="2021-02-13T16:22:49+08:00">2021-02-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-01-13 00:47:15" itemprop="dateModified" datetime="2023-01-13T00:47:15+08:00">2023-01-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/notebook/" itemprop="url" rel="index"><span itemprop="name">notebook</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">自动控制原理，现代控制理论学习笔记</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <!-- vim-markdown-toc Redcarpet -->
+
+<ul>
+<li><a href="#1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E6%9C%AF%E8%AF%AD">1.基本概念和术语</a><ul>
+<li><a href="#1-1-%E5%9F%BA%E6%9C%AC%E5%85%83%E4%BB%B6">1.1.基本元件</a></li>
+<li><a href="#1-2-%E6%9C%AF%E8%AF%AD">1.2.术语</a></li>
+<li><a href="#1-3-%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86">1.3.自动控制的基本原理</a></li>
+<li><a href="#1-4-%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%88%86%E7%B1%BB">1.4.控制系统的分类</a></li>
+<li><a href="#1-5-%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%A6%81%E6%B1%82">1.5.控制系统的基本要求</a></li>
+<li><a href="#1-6-%E5%BD%B1%E5%93%8D%E7%B3%BB%E7%BB%9F%E5%93%8D%E5%BA%94%E7%9A%84%E5%9B%A0%E7%B4%A0">1.6. 影响系统响应的因素</a></li>
+</ul>
+</li>
+<li><a href="#2-%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%BE%93%E5%85%A5-%E8%BE%93%E5%87%BA%E6%A8%A1%E5%9E%8B">2.控制系统的输入-输出模型</a><ul>
+<li><a href="#2-1-%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%88%E6%97%B6%E5%9F%9F%EF%BC%89">2.1.微分方程（时域）</a><ul>
+<li><a href="#2-1-1-%E5%9B%9B%E7%A7%8D%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%BB%BA%E6%A8%A1">2.1.1.四种系统的建模</a></li>
+</ul>
+</li>
+<li><a href="#2-2-%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0-s">2.2.传递函数$(s)$</a><ul>
+<li><a href="#2-2-1-%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0%E5%AE%9A%E4%B9%89">2.2.1.传递函数定义</a></li>
+<li><a href="#2-2-2-%E8%A1%A8%E7%A4%BA%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%96%B9%E6%B3%95">2.2.2.表示系统的方法</a><ul>
+<li><a href="#%E6%96%B9%E6%A1%86%E5%9B%BE">方框图</a></li>
+<li><a href="#%E4%BF%A1%E5%8F%B7%E6%B5%81%E5%9B%BE">信号流图</a></li>
+<li><a href="#%E6%A2%85%E6%A3%AE%E5%85%AC%E5%BC%8F">梅森公式</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#2-3-%E9%A2%91%E5%9F%9F%E7%89%B9%E6%80%A7%E5%87%BD%E6%95%B0-j-omega">2.3.频域特性函数$(j\omega)$</a><ul>
+<li><a href="#2-3-1-%E9%A2%91%E5%9F%9F%E7%89%B9%E6%80%A7%E5%87%BD%E6%95%B0%E5%AE%9A%E4%B9%89">2.3.1.频域特性函数定义</a></li>
+<li><a href="#2-3-2-%E9%A2%91%E5%9F%9F%E7%89%B9%E6%80%A7%E7%9A%84%E5%9B%BE%E7%A4%BA%E6%96%B9%E6%B3%95">2.3.2.频域特性的图示方法</a><ul>
+<li><a href="#%E5%A5%88%E5%A5%8E%E6%96%AF%E7%89%B9%E5%9B%BE">奈奎斯特图</a></li>
+<li><a href="#%E4%BC%AF%E5%BE%B7%E5%9B%BE">伯德图</a></li>
+</ul>
+</li>
+<li><a href="#2-3-3-%E5%85%B8%E5%9E%8B%E7%8E%AF%E8%8A%82%E7%9A%84%E9%A2%91%E5%9F%9F%E7%89%B9%E6%80%A7">2.3.3.典型环节的频域特性</a><ul>
+<li><a href="#%E6%8C%AF%E8%8D%A1%E7%8E%AF%E8%8A%82%E7%9A%84%E9%A2%91%E7%8E%87%E7%89%B9%E6%80%A7">振荡环节的频率特性</a></li>
+</ul>
+</li>
+<li><a href="#2-3-4-%E6%9C%80%E5%B0%8F%E7%9B%B8%E4%BD%8D%E7%B3%BB%E7%BB%9F">2.3.4 最小相位系统</a></li>
+</ul>
+</li>
+<li><a href="#2-4-%E9%87%87%E6%A0%B7%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F">2.4.采样控制系统</a><ul>
+<li><a href="#2-4-2-%E9%87%87%E6%A0%B7%E5%99%A8">2.4.2.采样器</a></li>
+<li><a href="#2-4-3-%E9%9B%B6%E9%98%B6%E4%BF%9D%E6%8C%81%E5%99%A8%EF%BC%88zoh%EF%BC%89">2.4.3.零阶保持器（ZOH）</a></li>
+<li><a href="#2-4-4-%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B">2.4.4.差分方程</a></li>
+<li><a href="#2-4-5-%E8%84%89%E5%86%B2%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0">2.4.5.脉冲传递函数</a><ul>
+<li><a href="#%E9%87%87%E6%A0%B7%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%81%94%E6%8E%A5">采样系统的联接</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#3-%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E6%A8%A1%E5%9E%8B">3.控制系统的状态空间模型</a><ul>
+<li><a href="#3-1-%E7%8A%B6%E6%80%81%E6%96%B9%E7%A8%8B%E5%92%8C%E8%BE%93%E5%87%BA%E6%96%B9%E7%A8%8B">3.1.状态方程和输出方程</a></li>
+<li><a href="#3-2-%E8%BF%9E%E7%BB%AD%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E6%A8%A1%E5%9E%8B">3.2. 连续状态空间模型</a><ul>
+<li><a href="#3-2-1-%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E6%A8%A1%E5%9E%8B-%3E-io%E6%A8%A1%E5%9E%8B%EF%BC%88%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0%E7%9F%A9%E9%98%B5%EF%BC%89">3.2.1. 状态空间模型 &#x3D;&gt; IO模型（传递函数矩阵）</a></li>
+<li><a href="#3-2-2-io%E6%A8%A1%E5%9E%8B%EF%BC%88%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0%E7%9F%A9%E9%98%B5%EF%BC%89-%3E-%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E6%A8%A1%E5%9E%8B">3.2.2. IO模型（传递函数矩阵）&#x3D;&gt; 状态空间模型</a></li>
+</ul>
+</li>
+<li><a href="#3-3-%E8%BF%9E%E7%BB%AD%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E6%B1%82%E8%A7%A3-%E5%81%87%E8%AE%BEd%E4%B8%BA0">3.3.连续状态空间求解(假设D为0)</a><ul>
+<li><a href="#3-3-1-%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB%E7%9F%A9%E9%98%B5">3.3.1.状态转移矩阵</a></li>
+<li><a href="#3-3-2-%E7%BA%BF%E6%80%A7%E5%AE%9A%E5%B8%B8%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%85%A8%E5%93%8D%E5%BA%94">3.3.2.线性定常系统的全响应</a></li>
+</ul>
+</li>
+<li><a href="#3-4-%E7%A6%BB%E6%95%A3%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E6%A8%A1%E5%9E%8B">3.4.离散状态空间模型</a><ul>
+<li><a href="#3-4-1-%E8%BF%9E%E7%BB%AD%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E6%A8%A1%E5%9E%8B-%3E%E7%A6%BB%E6%95%A3%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E6%A8%A1%E5%9E%8B">3.4.1. 连续状态空间模型&#x3D;&gt;离散状态空间模型</a></li>
+<li><a href="#3-4-2-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A8%A1%E5%9E%8B%EF%BC%88%E8%84%89%E5%86%B2%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0%EF%BC%89-%3E%E7%A6%BB%E6%95%A3%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E6%A8%A1%E5%9E%8B">3.4.2. 输入输出模型（脉冲传递函数）&#x3D;&gt;离散状态空间模型</a></li>
+</ul>
+</li>
+<li><a href="#3-5-%E7%A6%BB%E6%95%A3%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E6%B1%82%E8%A7%A3">3.5. 离散状态空间求解</a><ul>
+<li><a href="#3-5-1-%E7%A6%BB%E6%95%A3%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB%E7%9F%A9%E9%98%B5">3.5.1. 离散系统的状态转移矩阵</a></li>
+<li><a href="#3-5-2-%E6%B1%82%E8%A7%A3%E7%BA%BF%E6%80%A7%E7%A6%BB%E6%95%A3%E7%B3%BB%E7%BB%9F">3.5.2. 求解线性离散系统</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#4-%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%A8%B3%E5%AE%9A%E6%80%A7%E5%88%86%E6%9E%90">4.控制系统的稳定性分析</a><ul>
+<li><a href="#4-1-%E6%9D%8E%E9%9B%85%E6%99%AE%E8%AF%BA%E5%A4%AB%E7%A8%B3%E5%AE%9A%E6%80%A7%E7%9A%84%E6%A6%82%E5%BF%B5">4.1.李雅普诺夫稳定性的概念</a></li>
+<li><a href="#4-2-%E7%BA%BF%E6%80%A7%E5%AE%9A%E5%B8%B8%E7%B3%BB%E7%BB%9F%E7%A8%B3%E5%AE%9A%E7%9A%84%E5%85%85%E8%A6%81%E6%9D%A1%E4%BB%B6">4.2.线性定常系统稳定的充要条件</a></li>
+<li><a href="#4-3-%E7%B3%BB%E7%BB%9F%E7%A8%B3%E5%AE%9A%E6%80%A7%E7%9A%84%E4%BB%A3%E6%95%B0%E5%88%A4%E6%8D%AE">4.3.系统稳定性的代数判据</a></li>
+<li><a href="#4-4-%E6%A0%B9%E8%BD%A8%E8%BF%B9">4.4.根轨迹</a><ul>
+<li><a href="#4-4-1-%E4%B8%A4%E4%B8%AA%E6%A0%B9%E6%9C%AC%E7%BA%A6%E6%9D%9F%E6%9D%A1%E4%BB%B6%EF%BC%9A%E5%B9%85%E5%80%BC%E6%9D%A1%E4%BB%B6%E5%92%8C%E7%9B%B8%E8%A7%92%E6%9D%A1%E4%BB%B6">4.4.1.两个根本约束条件：幅值条件和相角条件</a></li>
+<li><a href="#4-4-2-%E6%A0%B9%E8%BD%A8%E8%BF%B9%E7%BB%98%E5%88%B6%E8%A7%84%E5%88%99">4.4.2.根轨迹绘制规则</a></li>
+</ul>
+</li>
+<li><a href="#4-5-%E5%A5%88%E5%A5%8E%E6%96%AF%E7%89%B9%E7%A8%B3%E5%AE%9A%E6%80%A7%E5%88%A4%E6%8D%AE">4.5.奈奎斯特稳定性判据</a><ul>
+<li><a href="#4-5-1-%E7%A8%B3%E5%AE%9A%E8%A3%95%E5%BA%A6">4.5.1. 稳定裕度</a></li>
+</ul>
+</li>
+<li><a href="#4-6-%E6%9D%8E%E9%9B%85%E6%99%AE%E8%AF%BA%E5%A4%AB%E7%AC%AC%E4%BA%8C%E6%B3%95">4.6. 李雅普诺夫第二法</a></li>
+</ul>
+</li>
+<li><a href="#5-%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%97%B6%E5%9F%9F%E8%BF%90%E5%8A%A8%E5%88%86%E6%9E%90">5.控制系统的时域运动分析</a><ul>
+<li><a href="#5-1-%E6%97%B6%E5%9F%9F%E5%93%8D%E5%BA%94%E6%B1%82%E8%A7%A3">5.1.时域响应求解</a><ul>
+<li><a href="#5-1-1-%E8%BF%9E%E7%BB%AD%E7%B3%BB%E7%BB%9F">5.1.1.连续系统</a></li>
+<li><a href="#5-1-2-%E7%A6%BB%E6%95%A3%E7%B3%BB%E7%BB%9F">5.1.2.离散系统</a></li>
+</ul>
+</li>
+<li><a href="#5-2-%E7%9E%AC%E6%80%81%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87">5.2.瞬态性能指标</a></li>
+<li><a href="#5-3-%E4%B8%80%E9%98%B6%E7%B3%BB%E7%BB%9F%E7%9E%AC%E6%80%81%E6%80%A7%E8%83%BD">5.3.一阶系统瞬态性能</a><ul>
+<li><a href="#5-3-1-%E6%9E%81%E7%82%B9%E5%88%86%E5%B8%83">5.3.1.极点分布</a></li>
+<li><a href="#5-3-2-%E9%98%B6%E8%B7%83%E5%93%8D%E5%BA%94">5.3.2.阶跃响应</a></li>
+</ul>
+</li>
+<li><a href="#5-4-%E4%BA%8C%E9%98%B6%E7%B3%BB%E7%BB%9F%E7%9E%AC%E6%80%81%E6%80%A7%E8%83%BD">5.4.二阶系统瞬态性能</a><ul>
+<li><a href="#5-4-1-%E6%9E%81%E7%82%B9%E5%88%86%E5%B8%83">5.4.1.极点分布</a></li>
+<li><a href="#5-4-2-%E9%98%B6%E8%B7%83%E5%93%8D%E5%BA%94">5.4.2. 阶跃响应</a></li>
+<li><a href="#5-4-3-%E4%BA%8C%E9%98%B6%E7%B3%BB%E7%BB%9F%E6%80%A7%E8%83%BD%E6%94%B9%E5%96%84">5.4.3. 二阶系统性能改善</a></li>
+</ul>
+</li>
+<li><a href="#5-5-%E9%AB%98%E9%98%B6%E7%B3%BB%E7%BB%9F">5.5 高阶系统</a></li>
+<li><a href="#5-6-%E7%A8%B3%E6%80%81%E8%AF%AF%E5%B7%AE%E5%88%86%E6%9E%90">5.6.稳态误差分析</a></li>
+</ul>
+</li>
+<li><a href="#7-%E6%A0%A1%E6%AD%A3">7. 校正</a><ul>
+<li><a href="#7-1-%E9%99%84%E5%8A%A0%E9%9B%B6%E6%9E%81%E7%82%B9%E5%AF%B9%E7%B3%BB%E7%BB%9F%E6%80%A7%E8%83%BD%E7%9A%84%E5%BD%B1%E5%93%8D">7.1 附加零极点对系统性能的影响</a><ul>
+<li><a href="#%E5%BC%80%E7%8E%AF%E9%9B%B6%E6%9E%81%E7%82%B9">开环零极点</a></li>
+<li><a href="#%E9%97%AD%E7%8E%AF%E9%9B%B6%E6%9E%81%E7%82%B9">闭环零极点</a></li>
+<li><a href="#%E5%8E%9F%E7%82%B9%E9%99%84%E8%BF%91%E5%BC%80%E7%8E%AF%E5%81%B6%E6%9E%81%E5%AD%90">原点附近开环偶极子</a></li>
+</ul>
+</li>
+<li><a href="#7-2-%E6%A0%B9%E8%BD%A8%E8%BF%B9%E6%A0%A1%E6%AD%A3">7.2.根轨迹校正</a></li>
+</ul>
+</li>
+<li><a href="#%E9%99%84%E5%BD%95">附录</a><ul>
+<li><a href="#%E6%8B%89%E6%B0%8F%E5%8F%98%E6%8D%A2%E5%87%A0%E4%B8%AA%E9%87%8D%E8%A6%81%E5%AE%9A%E7%90%86">拉氏变换几个重要定理</a></li>
+<li><a href="#z%E5%8F%98%E6%8D%A2%E5%87%A0%E4%B8%AA%E9%87%8D%E8%A6%81%E5%AE%9A%E7%90%86">Z变换几个重要定理</a></li>
+<li><a href="#%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0%E6%8B%89%E6%B0%8F%E5%8F%98%E6%8D%A2%E5%92%8Cz%E5%8F%98%E6%8D%A2">常见函数拉氏变换和Z变换</a></li>
+<li><a href="#%E5%85%B8%E5%9E%8B%E7%8E%AF%E8%8A%82%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0%E5%92%8C%E9%A2%91%E7%8E%87%E7%89%B9%E6%80%A7">典型环节传递函数和频率特性</a></li>
+</ul>
+</li>
+</ul>
+<!-- vim-markdown-toc -->
+
+<h1 id="1-基本概念和术语"><a href="#1-基本概念和术语" class="headerlink" title="1.基本概念和术语"></a>1.基本概念和术语</h1><h2 id="1-1-基本元件"><a href="#1-1-基本元件" class="headerlink" title="1.1.基本元件"></a>1.1.基本元件</h2><ul>
+<li><p>给定：给出被控量应取的值</p>
+</li>
+<li><p>测量：检测被控量大小</p>
+</li>
+<li><p>比较：得到给定值与被控量之间的误差。常用差动放大器、电桥等。计算机控制系统中直接进行数值计算。</p>
+</li>
+<li><p>放大：放大误差信号，驱动执行机构。可以是电子元件网络，也可以是电机放大器等。</p>
+</li>
+<li><p>执行：执行控制命令，驱动被控对象。</p>
+</li>
+<li><p>校正：改善系统的性能。使用电路系统、计算机程序实现</p>
+</li>
+<li><p>能源：提供能源</p>
+</li>
+</ul>
+<h2 id="1-2-术语"><a href="#1-2-术语" class="headerlink" title="1.2.术语"></a>1.2.术语</h2><ul>
+<li><p>被控量：被测量和被控制的量</p>
+</li>
+<li><p>控制量：由控制器改变的量</p>
+</li>
+<li><p>对象：一个设备</p>
+</li>
+<li><p>系统：一些部件的组合</p>
+</li>
+<li><p>扰动：一种对系统的输出量产生不利影响的因素或信号。分为内部扰动和外部扰动</p>
+<p>  外部扰动：增加扰动输入</p>
+<p>  内部扰动：传递函数不稳定</p>
+</li>
+<li><p>系统的型别：v表示开环传递函数积分环节的个数，v&#x3D;几,就是几型系统。</p>
+</li>
+</ul>
+<h2 id="1-3-自动控制的基本原理"><a href="#1-3-自动控制的基本原理" class="headerlink" title="1.3.自动控制的基本原理"></a>1.3.自动控制的基本原理</h2><ul>
+<li><p>反馈控制</p>
+</li>
+<li><p>前馈控制（顺馈控制）</p>
+<p>  <font color="#000066">介绍一下前馈控制:</font><br /><br>  测量扰动后经过补偿装置直接接到系统输入端。</p>
+</li>
+</ul>
+<p><font color="#000066">对比闭环控制和开环控制:</font><br /> </p>
+<table>
+<thead>
+<tr>
+<th>开环</th>
+<th>闭环</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>结构简单</td>
+<td>结构复杂</td>
+</tr>
+<tr>
+<td>抗干扰能力弱</td>
+<td>抗干扰能力强</td>
+</tr>
+</tbody></table>
+<h2 id="1-4-控制系统的分类"><a href="#1-4-控制系统的分类" class="headerlink" title="1.4.控制系统的分类"></a>1.4.控制系统的分类</h2><ul>
+<li><p>恒值调节系统和随动系统</p>
+</li>
+<li><p>线性系统和非线性系统</p>
+<p>  <font color="#000066">线性和非线性的区别:</font><br /></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>线性</th>
+<th>非线性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>满足叠加定理</td>
+<td>不满足叠加定理</td>
+</tr>
+<tr>
+<td>稳定性只和系统结构参数有关</td>
+<td></td>
+</tr>
+<tr>
+<td>正弦信号的输入，输出同频</td>
+<td></td>
+</tr>
+<tr>
+<td>会产生自激振荡</td>
+<td></td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>定常系统和时变系统</p>
+</li>
+<li><p>连续系统和离散系统</p>
+</li>
+</ul>
+<h2 id="1-5-控制系统的基本要求"><a href="#1-5-控制系统的基本要求" class="headerlink" title="1.5.控制系统的基本要求"></a>1.5.控制系统的基本要求</h2><ul>
+<li>稳定性</li>
+<li>瞬态性能</li>
+<li>稳态性能</li>
+</ul>
+<h2 id="1-6-影响系统响应的因素"><a href="#1-6-影响系统响应的因素" class="headerlink" title="1.6. 影响系统响应的因素"></a>1.6. 影响系统响应的因素</h2><ul>
+<li>输入         $\to 1(t)$</li>
+<li>初始条件     $\to$ 0初始 (传递函数是在0初始条件下（0状态）)</li>
+<li>系统的结构参数</li>
+</ul>
+<h1 id="2-控制系统的输入-输出模型"><a href="#2-控制系统的输入-输出模型" class="headerlink" title="2.控制系统的输入-输出模型"></a>2.控制系统的输入-输出模型</h1><p><font color="#000066">控制系统的数学模型有:</font><br /> </p>
+<table>
+<thead>
+<tr>
+<th>域</th>
+<th>连续</th>
+<th>离散</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>t</td>
+<td>微分方程</td>
+<td>差分方程</td>
+</tr>
+<tr>
+<td>t</td>
+<td>状态方程</td>
+<td>状态方程</td>
+</tr>
+<tr>
+<td>s&#x2F;z</td>
+<td>传递函数</td>
+<td>脉冲传递函数</td>
+</tr>
+<tr>
+<td>s&#x2F;z</td>
+<td>方框图</td>
+<td>方框图</td>
+</tr>
+<tr>
+<td>j</td>
+<td>频率特性</td>
+<td>频率特性</td>
+</tr>
+</tbody></table>
+<ol>
+<li>微分方程</li>
+<li>传递函数</li>
+</ol>
+<h2 id="2-1-微分方程（时域）"><a href="#2-1-微分方程（时域）" class="headerlink" title="2.1.微分方程（时域）"></a>2.1.微分方程（时域）</h2><h3 id="2-1-1-四种系统的建模"><a href="#2-1-1-四种系统的建模" class="headerlink" title="2.1.1.四种系统的建模"></a>2.1.1.四种系统的建模</h3><ul>
+<li>机械系统</li>
+</ul>
+<p><img src="/./Principle-of-Automatic-Control/21zhixian.png" alt="avatar"></p>
+<p><img src="/./Principle-of-Automatic-Control/21xuanzhuan.png" alt="avatar"></p>
+<ul>
+<li><p>电路系统</p>
+<p>  基尔霍夫定律</p>
+</li>
+<li><p>机电系统</p>
+<p>  电机就是一个典型的机电系统，从三个方面列方程：</p>
+<ol>
+<li><p>机械部分</p>
+</li>
+<li><p>电磁部分</p>
+</li>
+<li><p>机电耦合部分</p>
+</li>
+</ol>
+</li>
+<li><p>液位系统</p>
+<p>  液面高度与流量看做线性关系（层流为线性关系，紊流近似为线性关系）</p>
+<p>  设$q_i$和$q_o$分别为输入和输出流量，$C$为容器横截面积，$h$为当前页面高度，$R$为液阻</p>
+<p>  $$Cdh &#x3D; (q_i-q_o)dt$$<br>  $$q_o &#x3D; \dfrac hR$$</p>
+<p>  液位系统的运动方程：</p>
+<p>  $$RC\dfrac{dh}{dt}+h&#x3D;Rq_i$$</p>
+</li>
+</ul>
+<h2 id="2-2-传递函数-s"><a href="#2-2-传递函数-s" class="headerlink" title="2.2.传递函数$(s)$"></a>2.2.传递函数$(s)$</h2><h3 id="2-2-1-传递函数定义"><a href="#2-2-1-传递函数定义" class="headerlink" title="2.2.1.传递函数定义"></a>2.2.1.传递函数定义</h3><p>$$ G(s) &#x3D; \dfrac {Y(s)}{U(s)} &#x3D; K_g \dfrac{\prod_{i&#x3D;1}^m(s+z_i)}{\prod_{j&#x3D;1}^n(s+p_j)} $$</p>
+<ul>
+<li><p>$K_g$ 称为 <strong>传递函数的传递系数</strong> 或 <strong>根轨迹增益</strong> (首1)</p>
+</li>
+<li><p>开环增益（尾1）</p>
+</li>
+<li><p>反馈：$W(s) &#x3D; \dfrac{G(s)}{1+G(s)F(s)}$ </p>
+<p>  其中 $1+G(s)F(s)&#x3D;0$ 称为闭环系统的特征方程</p>
+<p>  反馈系统对于扰动有较好的抑制作用</p>
+</li>
+</ul>
+<h3 id="2-2-2-表示系统的方法"><a href="#2-2-2-表示系统的方法" class="headerlink" title="2.2.2.表示系统的方法"></a>2.2.2.表示系统的方法</h3><h4 id="方框图"><a href="#方框图" class="headerlink" title="方框图"></a>方框图</h4><h4 id="信号流图"><a href="#信号流图" class="headerlink" title="信号流图"></a>信号流图</h4><h4 id="梅森公式"><a href="#梅森公式" class="headerlink" title="梅森公式"></a>梅森公式</h4><p>$$ G(s) &#x3D; \dfrac1{\Delta(s)}\sum_iQ_i(s)\Delta_i(s)$$</p>
+<ul>
+<li><p>$\Delta(s) &#x3D; 1$ - 所有不同回路的传递函数之和 + 每两个不接触回路的传递函数乘积之和 - 每三个不接触回路的传递函数乘积之和 + … </p>
+</li>
+<li><p>$Q_i(s)$ 从该输入到该输出的某前向通道的传递函数</p>
+</li>
+<li><p>$\Delta_i(s)$ 对$\Delta(s)$操作，将其中与$Q_i$接触的回路传递函数置0</p>
+</li>
+<li><p>$\Delta(s)$ 是系统的特征式</p>
+</li>
+</ul>
+<h2 id="2-3-频域特性函数-j-omega"><a href="#2-3-频域特性函数-j-omega" class="headerlink" title="2.3.频域特性函数$(j\omega)$"></a>2.3.频域特性函数$(j\omega)$</h2><h3 id="2-3-1-频域特性函数定义"><a href="#2-3-1-频域特性函数定义" class="headerlink" title="2.3.1.频域特性函数定义"></a>2.3.1.频域特性函数定义</h3><p>输入为正弦量 $u(t) &#x3D; Asin\omega t \to A\angle0$ </p>
+<p>$$G(j\omega) &#x3D; \dfrac{\dot Y}{\dot U}$$</p>
+<ul>
+<li><p>$G(j\omega)   &#x3D; X(\omega) + jY(\omega) &#x3D; |G(j\omega)|\angle G(j\omega)  &#x3D; F(\omega)e^{j\varphi(\omega)}$</p>
+</li>
+<li><p>幅频特性：<br>$F(\omega) &#x3D; |G(j\omega)| &#x3D; \dfrac{|\dot Y|}{|\dot U|}$</p>
+</li>
+<li><p>相频特性：<br>$\varphi &#x3D; \angle G(\omega) &#x3D; \angle \dot Y - \angle \dot U$</p>
+</li>
+</ul>
+<h3 id="2-3-2-频域特性的图示方法"><a href="#2-3-2-频域特性的图示方法" class="headerlink" title="2.3.2.频域特性的图示方法"></a>2.3.2.频域特性的图示方法</h3><h4 id="奈奎斯特图"><a href="#奈奎斯特图" class="headerlink" title="奈奎斯特图"></a>奈奎斯特图</h4><h4 id="伯德图"><a href="#伯德图" class="headerlink" title="伯德图"></a>伯德图</h4><ul>
+<li><p>幅频特性</p>
+<ul>
+<li>横坐标：$lg \omega$</li>
+<li>纵坐标：$20 lg |G(j \omega)|$</li>
+</ul>
+</li>
+<li><p>相频特性</p>
+<ul>
+<li>横坐标：$lg \omega$</li>
+<li>纵坐标：$\angle G(j \omega)$</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-3-3-典型环节的频域特性"><a href="#2-3-3-典型环节的频域特性" class="headerlink" title="2.3.3.典型环节的频域特性"></a>2.3.3.典型环节的频域特性</h3><h4 id="振荡环节的频率特性"><a href="#振荡环节的频率特性" class="headerlink" title="振荡环节的频率特性"></a>振荡环节的频率特性</h4><p>$\omega_r$称为振荡环节的谐振频率，此时$\dfrac{dA(\omega)}{d\omega} &#x3D; 0$</p>
+<p>$$\omega_r &#x3D; \omega_n \sqrt{1-2\zeta ^2}$$</p>
+<p>$$M_r &#x3D; A(\omega_r) &#x3D; \dfrac1{2\zeta\sqrt{1-\zeta ^2}}$$</p>
+<p>$$\varphi(\omega_r) &#x3D; -arctan\dfrac{\zeta}{2\zeta\sqrt{1-\zeta ^2}}$$</p>
+<h3 id="2-3-4-最小相位系统"><a href="#2-3-4-最小相位系统" class="headerlink" title="2.3.4 最小相位系统"></a>2.3.4 最小相位系统</h3><ul>
+<li>如果系统开环传递函数在右半s平面没有零点和极点，该系统称为 <strong>最小相位系统</strong></li>
+<li>有延迟环节的系统属于 <strong>非最小相位系统</strong></li>
+<li>两个开环稳定的系统有相同的幅频特性，对任意$\omega \geq 0$, <strong>最小相位系统</strong> 的相位总滞后于 <strong>非最小相位系统</strong></li>
+</ul>
+<h2 id="2-4-采样控制系统"><a href="#2-4-采样控制系统" class="headerlink" title="2.4.采样控制系统"></a>2.4.采样控制系统</h2><h3 id="2-4-2-采样器"><a href="#2-4-2-采样器" class="headerlink" title="2.4.2.采样器"></a>2.4.2.采样器</h3><ul>
+<li><p>采样前的连续信号： $x(t)$)</p>
+</li>
+<li><p>理想采样后所得的脉冲序列：$x^*(t) &#x3D; \sum_{n&#x3D;0}^\infty x(nT)\delta(t-nT)$</p>
+</li>
+<li><p>采样前的连续信号的频谱： $F_x(j\omega)$</p>
+</li>
+<li><p>理想采样后所得的脉冲序列的频谱：$F_x^*(j\omega) &#x3D; \dfrac1T\sum_{n&#x3D;-\infty}^\infty F_x(j(\omega-n\omega_s))$</p>
+</li>
+</ul>
+<p>其中, $\omega_s$ 为采样角频率，$\omega_m$ 为连续信号的最大频率。离散信号的频谱可以看做连续信号频谱经过无穷次平移后叠加而成的。</p>
+<ul>
+<li><strong>香农采样定理</strong> : $\omega_s &gt; \omega_m$ 时，能够通过采样信号恢复原信号（必要条件）。</li>
+<li>实际上满足香农采样定理后，还需要一个理想的低通滤波器（物理上不可实现）才能不失真地获得原信号。</li>
+</ul>
+<h3 id="2-4-3-零阶保持器（ZOH）"><a href="#2-4-3-零阶保持器（ZOH）" class="headerlink" title="2.4.3.零阶保持器（ZOH）"></a>2.4.3.零阶保持器（ZOH）</h3><p>ZOH 相当于一个近似于带宽为 $\omega_s$ 的低通滤波器</p>
+<p>T 为采样脉冲信号的周期</p>
+<ul>
+<li><p>脉冲响应函数 $g_h(t) &#x3D; 1(t) - 1(t-T)$</p>
+</li>
+<li><p>传递函数 $G_h(s) &#x3D; \dfrac{1-e^{-Ts}}{s}$</p>
+</li>
+</ul>
+<h3 id="2-4-4-差分方程"><a href="#2-4-4-差分方程" class="headerlink" title="2.4.4.差分方程"></a>2.4.4.差分方程</h3><ul>
+<li><p>前向差分 </p>
+<p>$$y(k+n) + a_1y(k+n-1) + \dots + a_ny(k) &#x3D; b_0u(k+n) + b_1u(k+n-1)+ \dots +b_mu(k)$$</p>
+</li>
+<li><p>后向差分（时间平移n个周期）</p>
+<p>$$y(k) + a_1y(k-1) + \dots + a_ny(k-n) &#x3D; b_0u(k) + b_1u(k-1)+ \dots +b_mu(k-m)$$</p>
+</li>
+</ul>
+<h3 id="2-4-5-脉冲传递函数"><a href="#2-4-5-脉冲传递函数" class="headerlink" title="2.4.5.脉冲传递函数"></a>2.4.5.脉冲传递函数</h3><ul>
+<li><p>由差分方程</p>
+<p>  $$G(z) &#x3D; \dfrac{Y(z)}{U(z)} &#x3D; \dfrac{b_0+b_1z^{-1} + \dots + b_mz^{-m}}{1+a_1z^{-1} + \dots + a_nz^{-n}}$$</p>
+</li>
+<li><p>由传递函数<br>  $$G(z) &#x3D;\mathscr{Z}[ \mathscr{L}^{-1}[G(s)]]$$</p>
+</li>
+</ul>
+<h4 id="采样系统的联接"><a href="#采样系统的联接" class="headerlink" title="采样系统的联接"></a>采样系统的联接</h4><ul>
+<li>串联</li>
+</ul>
+<p><img src="/./Principle-of-Automatic-Control/27chuan.png" alt="avatar"></p>
+<p>加采样同步器:<br>$G(z) &#x3D; G_1(z)G_2(z)$</p>
+<p>不加采样同步器:<br>$G(z) &#x3D; \mathscr{Z}[\mathscr{L}^{-1}[G_1(s)G_2(s)]] &#x3D; G_1G_2(z)$</p>
+<ul>
+<li><p>并联：求和</p>
+</li>
+<li><p>闭环系统的脉冲传递函数</p>
+</li>
+</ul>
+<p><img src="/./Principle-of-Automatic-Control/27bihuan.png" alt="avatar"></p>
+<ul>
+<li>两种情况可用梅森公式</li>
+</ul>
+<h1 id="3-控制系统的状态空间模型"><a href="#3-控制系统的状态空间模型" class="headerlink" title="3.控制系统的状态空间模型"></a>3.控制系统的状态空间模型</h1><h2 id="3-1-状态方程和输出方程"><a href="#3-1-状态方程和输出方程" class="headerlink" title="3.1.状态方程和输出方程"></a>3.1.状态方程和输出方程</h2><ul>
+<li>向量形式 ($\boldsymbol {A_{nn} , B_{nm}, C_{ln}, D_{lm}, x_{n1}, y_{l1}, u_{m1}}$)</li>
+</ul>
+<p>$$\begin{cases}<br>\boldsymbol{\dot x(t) &#x3D; Ax(t) + Bu(t)} \<br>\boldsymbol{\dot y(t) &#x3D; Cx(t) + Du(t)} \<br>\end{cases}$$</p>
+<ul>
+<li><p>对同一系统而言，状态选取不唯一，有<strong>n阶可逆矩阵P</strong>， 则 $\boldsymbol{x’ &#x3D; Px}$ 构成新的状态向量<br>$$\boldsymbol{A’ &#x3D; PAP^{-1},\qquad B’ &#x3D; PB}$$<br>$$\boldsymbol{C’ &#x3D; CP^{-1}, \qquad D’ &#x3D; D}$$</p>
+</li>
+<li><p>状态空间模型方块图：</p>
+</li>
+</ul>
+<p><img src="/./Principle-of-Automatic-Control/33.png" alt="avatar"></p>
+<h2 id="3-2-连续状态空间模型"><a href="#3-2-连续状态空间模型" class="headerlink" title="3.2. 连续状态空间模型"></a>3.2. 连续状态空间模型</h2><h3 id="3-2-1-状态空间模型-x3D-gt-IO模型（传递函数矩阵）"><a href="#3-2-1-状态空间模型-x3D-gt-IO模型（传递函数矩阵）" class="headerlink" title="3.2.1. 状态空间模型 &#x3D;&gt; IO模型（传递函数矩阵）"></a>3.2.1. 状态空间模型 &#x3D;&gt; IO模型（传递函数矩阵）</h3><p>$$\boldsymbol {G(s) &#x3D; C(sI-A)^{-1}B+D} $$</p>
+<h3 id="3-2-2-IO模型（传递函数矩阵）-x3D-gt-状态空间模型"><a href="#3-2-2-IO模型（传递函数矩阵）-x3D-gt-状态空间模型" class="headerlink" title="3.2.2. IO模型（传递函数矩阵）&#x3D;&gt; 状态空间模型"></a>3.2.2. IO模型（传递函数矩阵）&#x3D;&gt; 状态空间模型</h3><p>这个过程称之为实现，系统的实现不唯一，最小实现指维数最低的实现。</p>
+<ul>
+<li><p><strong>虚拟输出法（能控规范型）</strong></p>
+<p>  $$G(s) &#x3D; d+\dfrac{b_ms^m+…}{a_ns^n+…} \quad (m&lt;n)$$</p>
+<p>  $$\begin{bmatrix}<br>  A &amp; B\\<br>  C &amp; D </p>
+<h1 id="end-bmatrix"><a href="#end-bmatrix" class="headerlink" title="\end{bmatrix}"></a>\end{bmatrix}</h1><p>  \begin{bmatrix}<br>  0 &amp; 1 &amp; 0 &amp; \dots\dots &amp; 0  &amp; \quad 0\<br>  0 &amp; 0 &amp; 1 &amp; \dots\dots &amp; 0  &amp; \quad 0\<br>  \vdots &amp; \vdots &amp; \vdots &amp;  \ddots &amp; \vdots &amp; \quad 0\<br>  0 &amp; 0 &amp; 0 &amp; \dots\dots &amp; 1 \<br>  -\dfrac{a_0}{a_n} &amp; -\dfrac{a_1}{a_n} &amp; -\dfrac{a_2}{a_n} &amp; \dots\dots &amp; -\dfrac{a_{n-1}}{a_n} &amp; \quad \dfrac1{a_n}\<br>  \<br>  \<br>  b_0 &amp; b_1 &amp; b_2 &amp;…b_m…&amp;0 &amp; \quad d\<br>  \end{bmatrix}$$</p>
+</li>
+<li><p><strong>部分分式法</strong></p>
+<ul>
+<li><p>极点互异时(对角线规范型)</p>
+<p>  $$G(s) &#x3D; d + \sum_{i&#x3D;1}^n\dfrac{c_i}{s+p_i}$$</p>
+<p>  $$\begin{bmatrix}<br>  A &amp; B\\<br>  C &amp; D </p>
+<h1 id="end-bmatrix-1"><a href="#end-bmatrix-1" class="headerlink" title="\end{bmatrix}"></a>\end{bmatrix}</h1><p>  \begin{bmatrix}<br>  -p_i &amp; \dots &amp; 0  &amp; \quad 1  \<br>  \vdots &amp;  \ddots &amp; \vdots &amp; \quad \vdots  \<br>  0 &amp; \dots &amp; -p_n  &amp; \quad 1  \<br>  \<br>  c_1 &amp; \dots &amp; c_n &amp; \quad d  \</p>
+<p>  \end{bmatrix}$$</p>
+</li>
+<li><p>当极点为2重根时（若尔当规范性）</p>
+<p>$$Y(s) &#x3D; dU(s) + \sum_{i&#x3D;3}^nc_i\dfrac{U(s)}{s+p_i} + c_{g2} \dfrac{U(s)}{s+p_1}+c_{g1}\dfrac{U(s)}{(s+p_1)^2}$$</p>
+<p>$$\begin{bmatrix}<br>A &amp; B\\<br>C &amp; D </p>
+<h1 id="end-bmatrix-2"><a href="#end-bmatrix-2" class="headerlink" title="\end{bmatrix}"></a>\end{bmatrix}</h1><p>\begin{bmatrix}<br>-p_1 &amp; 1 &amp; 0 &amp; \dots &amp; 0  &amp; \quad 0  \<br>0 &amp; -p_1 &amp; 0 &amp; \dots &amp; 0  &amp; \quad 1  \<br>0 &amp; 0 &amp; -p_3 &amp; \dots &amp; 0  &amp; \quad 1  \<br>\vdots &amp;\vdots &amp;\vdots &amp;\ddots &amp;\vdots &amp;\quad \vdots  \<br>0 &amp; 0 &amp; 0 &amp; \dots &amp; -p_n  &amp; \quad 1  \<br>\<br>c_{g1} &amp; c_{g2} &amp; c_3 &amp; \dots &amp; c_n &amp; \quad d  \ </p>
+<p>\end{bmatrix}$$</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-3-连续状态空间求解-假设D为0"><a href="#3-3-连续状态空间求解-假设D为0" class="headerlink" title="3.3.连续状态空间求解(假设D为0)"></a>3.3.连续状态空间求解(假设D为0)</h2><h3 id="3-3-1-状态转移矩阵"><a href="#3-3-1-状态转移矩阵" class="headerlink" title="3.3.1.状态转移矩阵"></a>3.3.1.状态转移矩阵</h3><ul>
+<li><p><strong>状态转移矩阵的性质</strong></p>
+<p>  (1) $\boldsymbol{\dot \varphi(t) &#x3D; A\varphi(t)}$</p>
+<p>  (2) $\boldsymbol {\varphi(0) &#x3D; I}$</p>
+<p>  (3) $\boldsymbol {\varphi(-t) &#x3D; \varphi^{-1}(t)}$ 系统的状态转移具有双向性。</p>
+<p>  (4) $\boldsymbol {\varphi(t_2 - t_1) \varphi(t_1 - t_0) &#x3D; \varphi(t_2-t_0)}$ </p>
+<p>  (5) $\boldsymbol {\varphi(t_1 + t_2) &#x3D; \varphi(t_1) \varphi(t_2)}$ </p>
+<p>  (6) $\boldsymbol {\varphi^k(t) &#x3D; \varphi(kt)}$ </p>
+<p>  (7) $\boldsymbol {A \int_0^t \varphi(\tau)d\tau &#x3D; \varphi(t) - I}$ </p>
+</li>
+<li><p><strong>状态转移矩阵的计算</strong></p>
+<p>  (1) 展开泰勒级数<br>  (2) 凯莱-哈密顿定理<br>  (3) 特征值法</p>
+<p>  (4) 拉普拉斯变换法</p>
+<p>  $$\boldsymbol\Phi(s) &#x3D; (s\boldsymbol I - \boldsymbol A)^{-1}$$</p>
+<p>  $$\boldsymbol \varphi(t) &#x3D; \mathscr{L^{-1}}[\boldsymbol\Phi(s)] &#x3D; \mathscr{L^{-1}}[(s\boldsymbol I - \boldsymbol A)^{-1}]$$</p>
+</li>
+</ul>
+<h3 id="3-3-2-线性定常系统的全响应"><a href="#3-3-2-线性定常系统的全响应" class="headerlink" title="3.3.2.线性定常系统的全响应"></a>3.3.2.线性定常系统的全响应</h3><p>$$\begin{cases}<br> \boldsymbol {x(t) &#x3D; \varphi(t-t_0)x(t_0) + \int_{t_0}^t\varphi(t-\tau)Bu(\tau)d\tau}, \quad t\geq t_0 \<br> \<br> \boldsymbol {y(t) &#x3D; Cx(t) &#x3D; C\varphi(t-t_0)x(t_0) + C\int_{t_0}^t\varphi(t-\tau)Bu(\tau)d\tau}, \quad t\geq t_0<br>\end{cases}$$</p>
+<h2 id="3-4-离散状态空间模型"><a href="#3-4-离散状态空间模型" class="headerlink" title="3.4.离散状态空间模型"></a>3.4.离散状态空间模型</h2><h3 id="3-4-1-连续状态空间模型-x3D-gt-离散状态空间模型"><a href="#3-4-1-连续状态空间模型-x3D-gt-离散状态空间模型" class="headerlink" title="3.4.1. 连续状态空间模型&#x3D;&gt;离散状态空间模型"></a>3.4.1. 连续状态空间模型&#x3D;&gt;离散状态空间模型</h3><p>采样控制系统：<br><img src="/./Principle-of-Automatic-Control/312.png" alt="avatar"></p>
+<p>连续部分的状态空间模型：</p>
+<p>$$\begin{cases}<br>\boldsymbol {\dot x &#x3D; Ax + B}u_h \<br>y\boldsymbol { &#x3D; Cx + D}u_h<br>\end{cases}$$</p>
+<p>离散化：</p>
+<p>$$\boldsymbol G &#x3D; e^{\boldsymbol AT} &#x3D; \boldsymbol \varphi(T)$$</p>
+<p>$$\boldsymbol H &#x3D; \int_0^T\boldsymbol G(\tau)d\tau \cdot \boldsymbol B&#x3D; \int_0^T\boldsymbol \varphi(\tau)d\tau \cdot \boldsymbol B&#x3D; \int_0^T\boldsymbol e^{\boldsymbol A\tau }d\tau \cdot \boldsymbol B$$</p>
+<p>离散状态空间模型：</p>
+<p>$$\boldsymbol x(k+1) &#x3D; \boldsymbol{Gx}(k) + \boldsymbol{Hu}(k)$$<br>$$\boldsymbol y(k) &#x3D; \boldsymbol{Cx}(k) + \boldsymbol{Du}(k)$$</p>
+<h3 id="3-4-2-输入输出模型（脉冲传递函数）-x3D-gt-离散状态空间模型"><a href="#3-4-2-输入输出模型（脉冲传递函数）-x3D-gt-离散状态空间模型" class="headerlink" title="3.4.2. 输入输出模型（脉冲传递函数）&#x3D;&gt;离散状态空间模型"></a>3.4.2. 输入输出模型（脉冲传递函数）&#x3D;&gt;离散状态空间模型</h3><ul>
+<li><p><strong>虚拟输出法</strong></p>
+<p>  $$G(z) &#x3D; d+\dfrac{b_mz^m+…}{a_nz^n+…} \quad (m&lt;n)$$</p>
+<p>  $$\begin{bmatrix}<br>  G &amp; H\\<br>  C &amp; D </p>
+<h1 id="end-bmatrix-3"><a href="#end-bmatrix-3" class="headerlink" title="\end{bmatrix}"></a>\end{bmatrix}</h1><p>  \begin{bmatrix}<br>  0 &amp; 1 &amp; 0 &amp; \dots\dots &amp; 0  &amp; \quad 0\<br>  0 &amp; 0 &amp; 1 &amp; \dots\dots &amp; 0  &amp; \quad 0\<br>  \vdots &amp; \vdots &amp; \vdots &amp;  \ddots &amp; \vdots &amp; \quad 0\<br>  0 &amp; 0 &amp; 0 &amp; \dots\dots &amp; 1 \<br>  -\dfrac{a_0}{a_n} &amp; -\dfrac{a_1}{a_n} &amp; -\dfrac{a_2}{a_n} &amp; \dots\dots &amp; -\dfrac{a_{n-1}}{a_n} &amp; \quad \dfrac1{a_n}\<br>  \<br>  \<br>  b_0 &amp; b_1 &amp; b_2 &amp;…b_m…&amp;0 &amp; \quad d\<br>  \end{bmatrix}$$</p>
+</li>
+</ul>
+<h2 id="3-5-离散状态空间求解"><a href="#3-5-离散状态空间求解" class="headerlink" title="3.5. 离散状态空间求解"></a>3.5. 离散状态空间求解</h2><h3 id="3-5-1-离散系统的状态转移矩阵"><a href="#3-5-1-离散系统的状态转移矩阵" class="headerlink" title="3.5.1. 离散系统的状态转移矩阵"></a>3.5.1. 离散系统的状态转移矩阵</h3><ul>
+<li><p>$\boldsymbol G(k)$ 求解：$\boldsymbol G(k) &#x3D; \boldsymbol G^k &#x3D; \mathscr{L^{-1}}\boldsymbol [(z\boldsymbol{I-G})^{-1}z\boldsymbol]$</p>
+</li>
+<li><p>$\boldsymbol G(k) 的三个性质$</p>
+<p>  (1) $\boldsymbol G(0) &#x3D; \boldsymbol I$</p>
+<p>  (2) $\boldsymbol G^{-1}(k) &#x3D; \boldsymbol G(-k)$</p>
+<p>  (2) $\boldsymbol G(k-h) &#x3D; \boldsymbol G(k-l)\boldsymbol G(l-h)$</p>
+</li>
+</ul>
+<h3 id="3-5-2-求解线性离散系统"><a href="#3-5-2-求解线性离散系统" class="headerlink" title="3.5.2. 求解线性离散系统"></a>3.5.2. 求解线性离散系统</h3><ul>
+<li><strong>Z变换法</strong></li>
+</ul>
+<p>$$\boldsymbol x(k) &#x3D; \mathscr{Z^{-1}}[(z\boldsymbol{I-G})^{-1}z]\boldsymbol x(0) + \mathscr{Z^{-1}}[(z\boldsymbol{I-G})^{-1}\boldsymbol{HU}(z)]$$</p>
+<p>$$\boldsymbol y(k) &#x3D; \boldsymbol{Cx}(k) + \boldsymbol{Du}(k)$$</p>
+<ul>
+<li><p><strong>迭代法</strong></p>
+<p>  $\boldsymbol G(k)$ 为离散系统的状态转移矩阵</p>
+</li>
+</ul>
+<p>$$\boldsymbol x(k) &#x3D; \boldsymbol G(k) \boldsymbol x(0) + \sum_{i&#x3D;0}^{k-1}\boldsymbol G(k-i-1)\boldsymbol {Hu}(i), \quad  k &#x3D; 0,1,2…$$</p>
+<p>$$\boldsymbol y(k) &#x3D; \boldsymbol{Cx}(k) + \boldsymbol{Du}(k)$$</p>
+<h1 id="4-控制系统的稳定性分析"><a href="#4-控制系统的稳定性分析" class="headerlink" title="4.控制系统的稳定性分析"></a>4.控制系统的稳定性分析</h1><p><font color="#000066">介绍一下反馈控制:</font><br/> </p>
+<h2 id="4-1-李雅普诺夫稳定性的概念"><a href="#4-1-李雅普诺夫稳定性的概念" class="headerlink" title="4.1.李雅普诺夫稳定性的概念"></a>4.1.李雅普诺夫稳定性的概念</h2><p><img src="/./Principle-of-Automatic-Control/43.png" alt="avatar"></p>
+<h2 id="4-2-线性定常系统稳定的充要条件"><a href="#4-2-线性定常系统稳定的充要条件" class="headerlink" title="4.2.线性定常系统稳定的充要条件"></a>4.2.线性定常系统稳定的充要条件</h2><p>内部渐进稳定的&#x3D;&gt;输入输出稳定</p>
+<p>反之,不一定</p>
+<p>当没有极点对消时, 输入输出稳定性&lt;&#x3D;&gt;内部稳定性</p>
+<ul>
+<li><p><strong>连续系统内部渐进稳定</strong>：系数矩阵 $\boldsymbol A$ 的特征值全都复平面的左半平面，不包括虚轴</p>
+<p>  若系数矩阵 $\boldsymbol A$ 存在实部为零的单重特征值，其动态响应分量会随着时间的增长而趋于常数或等幅振荡，系统李雅普诺夫稳定的。</p>
+</li>
+<li><p><strong>离散系统内部渐进稳定</strong>：系数矩阵 $\boldsymbol G$ 的特征值全都位于Z平面以原点为中心的单位圆</p>
+</li>
+<li><p><strong>连续线性定常系统 I&#x2F;O 稳定</strong>: 传递函数的极点位于复平面的左半平面</p>
+</li>
+<li><p><strong>离散线性定常系统 I&#x2F;O 稳定</strong>: 脉冲传递函数的极点位于Z平面以原点为中心的单位圆内</p>
+</li>
+</ul>
+<h2 id="4-3-系统稳定性的代数判据"><a href="#4-3-系统稳定性的代数判据" class="headerlink" title="4.3.系统稳定性的代数判据"></a>4.3.系统稳定性的代数判据</h2><ul>
+<li><p><strong>连续系统</strong>： 劳斯判据</p>
+</li>
+<li><p><strong>离散系统</strong>： 朱利判据、双线性变换</p>
+</li>
+</ul>
+<h2 id="4-4-根轨迹"><a href="#4-4-根轨迹" class="headerlink" title="4.4.根轨迹"></a>4.4.根轨迹</h2><p>根据开环传递函数零极点</p>
+<h3 id="4-4-1-两个根本约束条件：幅值条件和相角条件"><a href="#4-4-1-两个根本约束条件：幅值条件和相角条件" class="headerlink" title="4.4.1.两个根本约束条件：幅值条件和相角条件"></a>4.4.1.两个根本约束条件：幅值条件和相角条件</h3><p>$$W(s) &#x3D; \dfrac{G(s)}{1+G_0(s)}$$</p>
+<p>$$G_0(s) &#x3D; K_g\dfrac{\Pi_{i&#x3D;1}^m(s+z_i)}{\Pi_{j&#x3D;1}^n(s+p_i)} &#x3D; -1$$</p>
+<p>$$\to \begin{cases}</p>
+<p>|G_0(s)| &#x3D; 1 \ </p>
+<p>\angle{G_0(s)} &#x3D; \pm \pi(2k+1)，\quad k&#x3D;0,1,2,…</p>
+<p>\end{cases}$$</p>
+<h3 id="4-4-2-根轨迹绘制规则"><a href="#4-4-2-根轨迹绘制规则" class="headerlink" title="4.4.2.根轨迹绘制规则"></a>4.4.2.根轨迹绘制规则</h3><p>现有n个开环极点，m个开环零点</p>
+<ol>
+<li><p>起点：开环极点</p>
+<p> 终点：开环零点或无穷远处</p>
+</li>
+<li><p>对称于实轴</p>
+</li>
+<li><p>实轴上根轨迹相间隔</p>
+</li>
+<li><p>根之和：$n-m \geq 2$ 时，闭环根之和为常数，等于开环根之和。</p>
+</li>
+<li><p>系统有两个开环极点，一个开环零点，复平面存在根轨迹，则复平面的根轨迹一定是以该零点为圆心的圆弧</p>
+</li>
+<li><p>渐近线：</p>
+</li>
+</ol>
+<p>$$\theta &#x3D; \dfrac{2k+1}{n-m} \pi, \quad k&#x3D;0,1,…n-m-1$$</p>
+<p>$$\sigma &#x3D; \dfrac{\sum_{j&#x3D;1}^np_j - \sum_{i&#x3D;1}^nz_i}{n-m}$$</p>
+<ol start="7">
+<li><p>分离点，汇合点：<br> $\sum_{i&#x3D;1}^n\dfrac1{d-p_i} &#x3D; \sum_{j&#x3D;1}^m\dfrac1{d-z_j}$</p>
+<p> 分离角：$\theta_d &#x3D; \dfrac{\pi}{k}, k$ 为相分离的根轨迹支数</p>
+</li>
+<li><p>出射角与入射角：用相角条件</p>
+</li>
+<li><p>与虚轴交点：$s &#x3D; j\omega$ 是根的点，代入特征方程</p>
+</li>
+</ol>
+<h2 id="4-5-奈奎斯特稳定性判据"><a href="#4-5-奈奎斯特稳定性判据" class="headerlink" title="4.5.奈奎斯特稳定性判据"></a>4.5.奈奎斯特稳定性判据</h2><p>$$Z &#x3D; P-2N$$</p>
+<p>$Z:$ 右半S平面中闭环极点个数</p>
+<p>$P:$ 右半S平面中开环极点个数</p>
+<p>$N: G(j\omega)$ 包围 $(-1, j0)$ 的圈数，逆正顺负。 </p>
+<ul>
+<li><p>伯德图中的表现：<br>  $N &#x3D; N^+ - N^-$</p>
+<p>  在对数幅频曲线大于0dB的范围，相频曲线穿越-180° (从下向上为正，从上向下为负)</p>
+</li>
+</ul>
+<h3 id="4-5-1-稳定裕度"><a href="#4-5-1-稳定裕度" class="headerlink" title="4.5.1. 稳定裕度"></a>4.5.1. 稳定裕度</h3><p>相角裕度：$\gamma &#x3D; 180°+\angle G(j\omega)$</p>
+<p>幅值裕度：$h &#x3D; \dfrac1{|G(j\omega)|} &#x3D; \dfrac1A &#x3D; exp{\dfrac{L_g}{20}}$</p>
+<p><img src="/./Principle-of-Automatic-Control/451.png" alt="avatar"><br><img src="/./Principle-of-Automatic-Control/452.png" alt="avatar"></p>
+<h2 id="4-6-李雅普诺夫第二法"><a href="#4-6-李雅普诺夫第二法" class="headerlink" title="4.6. 李雅普诺夫第二法"></a>4.6. 李雅普诺夫第二法</h2><p>充分条件，常取 $v &#x3D; x_1^2 + x_2^2$</p>
+<ul>
+<li><p>$\boldsymbol {v(x)}$正定</p>
+<p>  $\boldsymbol {\dot v(x)}$ 负定</p>
+</li>
+<li><p>$v$正定</p>
+</li>
+<li><p>$\boldsymbol {v(x)}$正定</p>
+<p>  $\boldsymbol {\dot v(x)}$ 半负定</p>
+<p>  $\boldsymbol {\dot v(x)}$ 不恒为 0</p>
+</li>
+</ul>
+<h1 id="5-控制系统的时域运动分析"><a href="#5-控制系统的时域运动分析" class="headerlink" title="5.控制系统的时域运动分析"></a>5.控制系统的时域运动分析</h1><h2 id="5-1-时域响应求解"><a href="#5-1-时域响应求解" class="headerlink" title="5.1.时域响应求解"></a>5.1.时域响应求解</h2><h3 id="5-1-1-连续系统"><a href="#5-1-1-连续系统" class="headerlink" title="5.1.1.连续系统"></a>5.1.1.连续系统</h3><ul>
+<li>零初始</li>
+</ul>
+<p>$$c(t) &#x3D; \mathscr{L^{-1}}[W(s)R(s)]$$</p>
+<ul>
+<li><p>非零初始</p>
+<p>  (1) 微分方程的通常解法</p>
+<p>  (2) 运动方程两端拉氏变换,求出响应,再反变换</p>
+</li>
+</ul>
+<h3 id="5-1-2-离散系统"><a href="#5-1-2-离散系统" class="headerlink" title="5.1.2.离散系统"></a>5.1.2.离散系统</h3><ul>
+<li>Z变换法</li>
+</ul>
+<h2 id="5-2-瞬态性能指标"><a href="#5-2-瞬态性能指标" class="headerlink" title="5.2.瞬态性能指标"></a>5.2.瞬态性能指标</h2><p><img src="/./Principle-of-Automatic-Control/55.png" alt="avatar"></p>
+<ul>
+<li><p>上升时间 $t_\tau$</p>
+</li>
+<li><p>峰值时间 $t_p$</p>
+</li>
+<li><p>(最大)超调量 $\delta% &#x3D; \dfrac{y_{max} - y(\infty)}{y(\infty)} \cdot 100%$</p>
+</li>
+<li><p>调节时间 &#x2F; 过渡时间 $t_s$</p>
+</li>
+<li><p>振荡次数 $N$</p>
+</li>
+</ul>
+<h2 id="5-3-一阶系统瞬态性能"><a href="#5-3-一阶系统瞬态性能" class="headerlink" title="5.3.一阶系统瞬态性能"></a>5.3.一阶系统瞬态性能</h2><h3 id="5-3-1-极点分布"><a href="#5-3-1-极点分布" class="headerlink" title="5.3.1.极点分布"></a>5.3.1.极点分布</h3><ul>
+<li><p><strong>开环传递函数：</strong>  $W(s) &#x3D; \dfrac1{Ts}$</p>
+</li>
+<li><p><strong>闭环传递函数：</strong>  $W(s) &#x3D; \dfrac1{Ts+1}$</p>
+</li>
+</ul>
+<h3 id="5-3-2-阶跃响应"><a href="#5-3-2-阶跃响应" class="headerlink" title="5.3.2.阶跃响应"></a>5.3.2.阶跃响应</h3><ul>
+<li><strong>阶跃响应：</strong></li>
+</ul>
+<p>$$c(t) &#x3D; 1-e^{-\tfrac{t}{T}}, \quad t\geq0$$</p>
+<p>$$t_s &#x3D; \begin{cases}<br>4T, \quad \Delta &#x3D; 2 \<br>3T, \quad \Delta &#x3D; 5 \<br>\end{cases}$$</p>
+<h2 id="5-4-二阶系统瞬态性能"><a href="#5-4-二阶系统瞬态性能" class="headerlink" title="5.4.二阶系统瞬态性能"></a>5.4.二阶系统瞬态性能</h2><h3 id="5-4-1-极点分布"><a href="#5-4-1-极点分布" class="headerlink" title="5.4.1.极点分布"></a>5.4.1.极点分布</h3><ul>
+<li><p><strong>开环传递函数：</strong> $W(s) &#x3D; \dfrac{K}{s(Ts+1)}$</p>
+</li>
+<li><p><strong>闭环传递函数：</strong> $W(s) &#x3D; \dfrac{K}{s(Ts+1)+K}$</p>
+</li>
+<li><p><strong>闭环传递函数：</strong> $W(s) &#x3D; \dfrac{\omega_n^2}{s^2+ 2\zeta \omega_n s + \omega_n^2}$</p>
+<p>  $\zeta$ 为阻尼比， $\omega_n$ 称为无阻尼振荡频率或自然频率</p>
+<p>  $\omega_n &#x3D; \sqrt{\dfrac KT}, \qquad$<br>  $\zeta &#x3D; \dfrac 1{2\sqrt{KT}}$</p>
+</li>
+<li><p><strong>特征方程：</strong> $s^2+ 2\zeta \omega_n s + \omega_n^2 &#x3D; 0$</p>
+</li>
+</ul>
+<p><img src="/./Principle-of-Automatic-Control/513.png" alt="avatar"></p>
+<h3 id="5-4-2-阶跃响应"><a href="#5-4-2-阶跃响应" class="headerlink" title="5.4.2. 阶跃响应"></a>5.4.2. 阶跃响应</h3><hr>
+<ul>
+<li><p><strong>欠阻尼</strong></p>
+<p>  一般情况下,希望阻尼比再0.4-0.8之间, 0.707是最佳阻尼系数</p>
+<p>  $c(t) &#x3D; 1-\dfrac{e^{-\zeta \omega_n t}}{\sqrt{1-\zeta^2}}sin(\omega_dt + \varphi), \quad t\geq 0$</p>
+<p>  $\varphi &#x3D; arctan\dfrac{\sqrt{1-\zeta^2}}{\zeta}$</p>
+<p>  阻尼振荡频率: $\omega_d &#x3D; \omega_n \sqrt{1-\zeta^2}$</p>
+<p>  衰减震荡周期: $T_d &#x3D; \dfrac{2\pi}{\omega_d} &#x3D; \dfrac{2\pi}{\omega_n \sqrt{1-\zeta^2}}$</p>
+<p>  $N &#x3D; \dfrac{t_s}{T_d}$</p>
+<p>  <img src="/./Principle-of-Automatic-Control/5145.png" alt="avatar"></p>
+<p>  $t_r &#x3D; \dfrac{\pi-\varphi}{\omega_d}$</p>
+<p>  $t_p &#x3D; \dfrac{\pi}{\omega_d}$</p>
+<p>  $\boldsymbol{\delta% &#x3D; e^{-\frac{\zeta \pi}{\sqrt{1-\zeta^2}}}\cdot100%}$</p>
+</li>
+</ul>
+<p>$$\boldsymbol{包络线近似:\begin{cases}</p>
+<p>t_s \approx \dfrac4{\zeta \omega_n}, \quad \Delta &#x3D; 2 \<br>\<br>t_s \approx \dfrac3{\zeta \omega_n}, \quad \Delta &#x3D; 5 \</p>
+<p>\end{cases}}$$</p>
+<p><img src="/./Principle-of-Automatic-Control/521.png" alt="avatar"></p>
+<hr>
+<ul>
+<li><p><strong>无阻尼</strong></p>
+<p>  欠阻尼的一种特殊情况</p>
+<p>  $$c(t) &#x3D; 1-cos\omega_n t, \quad t\geq0$$</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p><strong>临界阻尼</strong></p>
+<p>  $$c(t) &#x3D; 1-(\omega_nt+1)e^{-\omega_nt}, \quad t\geq0$$</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p><strong>过阻尼</strong></p>
+<p>  $$c(t) &#x3D; 1+\dfrac{\omega_n}{2\sqrt{\zeta^2-1}}(\dfrac{e^{s_1t}}{-s_1}-\dfrac{e^{s_2t}}{-s_2}), \quad t\geq0$$</p>
+<p>  近似一阶:</p>
+<p>  $$c(t) &#x3D; 1-e^{-(\zeta-\sqrt{\zeta^2-1})\omega_nt}, \quad t\geq0$$</p>
+</li>
+</ul>
+<hr>
+<h3 id="5-4-3-二阶系统性能改善"><a href="#5-4-3-二阶系统性能改善" class="headerlink" title="5.4.3. 二阶系统性能改善"></a>5.4.3. 二阶系统性能改善</h3><ul>
+<li><p><strong>KT对性能的影响</strong></p>
+<p>  根据公式关系推导</p>
+</li>
+<li><p><strong>附加 速度反馈</strong></p>
+<p>  实质：加入微分器，增加系统阻尼</p>
+<p>  <img src="/./Principle-of-Automatic-Control/524.png" alt="avatar"></p>
+<p>  $W(s) &#x3D; \dfrac{\omega_{n1}^2}{s^2+ 2\zeta_1 \omega_{n1} s + \omega_{n1}^2}$</p>
+<p>  $\omega_{n1} &#x3D; \sqrt{\dfrac KT} \qquad$<br>  $\zeta_1 &#x3D; \dfrac {1+K\tau}{2\sqrt{KT}}$</p>
+</li>
+<li><p><strong>比例-微分控制</strong> </p>
+<p>  实质：附加了零点。是一种超前控制</p>
+<p>  不改变系统的自然频率，可以增加阻尼比<br>  <img src="/./Principle-of-Automatic-Control/525.png" alt="avatar"></p>
+</li>
+</ul>
+<h2 id="5-5-高阶系统"><a href="#5-5-高阶系统" class="headerlink" title="5.5 高阶系统"></a>5.5 高阶系统</h2><p>标出所有闭环极点，零点， 注意零极点对消情况。</p>
+<p>如果：</p>
+<ol>
+<li><p>其他闭环极点与虚轴之间的距离远大于一对共轭极点(5倍)</p>
+</li>
+<li><p>这一对共轭极点周围没有零点</p>
+</li>
+</ol>
+<p>可以近似为二阶系统</p>
+<h2 id="5-6-稳态误差分析"><a href="#5-6-稳态误差分析" class="headerlink" title="5.6.稳态误差分析"></a>5.6.稳态误差分析</h2><ul>
+<li><p>定义法 </p>
+<p>  求出误差传递函数，终值定理</p>
+</li>
+<li><p>查表法</p>
+<ul>
+<li><p>连续系统</p>
+<p><img src="/./Principle-of-Automatic-Control/51lianxu.png" alt="avatar"></p>
+</li>
+<li><p>离散系统<br>$$k_p &#x3D; \lim_{z\to1}G_o(z)$$<br>$$k_v &#x3D; \dfrac1T\lim_{z\to1}(z-1)G_o(z)$$<br>$$k_a &#x3D; \dfrac1{T^2}\lim_{z\to1}(z-1)^{2}G_o(z)$$</p>
+</li>
+</ul>
+</li>
+<li><p>减少稳态误差的措施</p>
+</li>
+</ul>
+<ol>
+<li><p>增加开环增益</p>
+</li>
+<li><p>扰动前的前向通道的增益</p>
+</li>
+<li><p>前向通道或主反馈通道增加积分环节</p>
+</li>
+</ol>
+<h1 id="7-校正"><a href="#7-校正" class="headerlink" title="7. 校正"></a>7. 校正</h1><p>给定指标，选择校正方法</p>
+<h2 id="7-1-附加零极点对系统性能的影响"><a href="#7-1-附加零极点对系统性能的影响" class="headerlink" title="7.1 附加零极点对系统性能的影响"></a>7.1 附加零极点对系统性能的影响</h2><h3 id="开环零极点"><a href="#开环零极点" class="headerlink" title="开环零极点"></a>开环零极点</h3><p>影响根轨迹形状，影响闭环极点位置</p>
+<ul>
+<li><p>开环零点：<br>根轨迹左移，有利于动态性能指标</p>
+</li>
+<li><p>开环极点：<br>根轨迹右移，不利于动态性能指标</p>
+</li>
+</ul>
+<h3 id="闭环零极点"><a href="#闭环零极点" class="headerlink" title="闭环零极点"></a>闭环零极点</h3><ul>
+<li><p>闭环零点：<br>超调量增加，峰值时间靠前</p>
+</li>
+<li><p>闭环极点：<br>超调量减少，峰值时间靠后</p>
+</li>
+</ul>
+<h3 id="原点附近开环偶极子"><a href="#原点附近开环偶极子" class="headerlink" title="原点附近开环偶极子"></a>原点附近开环偶极子</h3><p>对动态性能几乎无影响，可提高系统开环增益，改善静态特性</p>
+<h2 id="7-2-根轨迹校正"><a href="#7-2-根轨迹校正" class="headerlink" title="7.2.根轨迹校正"></a>7.2.根轨迹校正</h2><ol>
+<li><p>根据动态性能指标确定主导极点的位置</p>
+</li>
+<li><p>绘制未校正系统的根轨迹，若希望的主导极点位置不在根轨迹上（不满足相角条件），需要增加校正装置。</p>
+</li>
+<li><p>校正后的根轨迹通过希望的主导极点时，检验开环比例系数是否满足静态性要求。</p>
+</li>
+<li><p>若不满足，在原点附近增加开环偶极子，调节开环比例系数。</p>
+</li>
+</ol>
+<hr>
+<h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><h2 id="拉氏变换几个重要定理"><a href="#拉氏变换几个重要定理" class="headerlink" title="拉氏变换几个重要定理"></a>拉氏变换几个重要定理</h2><table>
+<thead>
+<tr>
+<th>性质</th>
+<th>时域</th>
+<th>频域</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>线性性质</td>
+<td>$af_1(t) \pm bf_2(t)$</td>
+<td>$aF_1(s) \pm bF_2(s)$</td>
+</tr>
+<tr>
+<td>微分定理</td>
+<td>$f’(t)$</td>
+<td>$s{\cdot}F(s)-f(0^-)$</td>
+</tr>
+<tr>
+<td>微分定理</td>
+<td>$f^{(n)}(t)$</td>
+<td>$s^{n}F(s)-\sum_{i&#x3D;0}^{n-1}s^{n-1-i}f^{(i)}(0)$</td>
+</tr>
+<tr>
+<td>积分定理</td>
+<td>$\int_{0^-}^t f(\xi)d\xi$</td>
+<td>$\dfrac1s F(s)$</td>
+</tr>
+<tr>
+<td>实位移定理</td>
+<td>$f(t-\tau_0)$</td>
+<td>$e^{-s\tau_0}F(s)$</td>
+</tr>
+<tr>
+<td>复位移定理</td>
+<td>$e^{At}f(t)$</td>
+<td>$F(s-A)$</td>
+</tr>
+<tr>
+<td>初值定理</td>
+<td>$f(0) &#x3D; \lim_{s\to\infty}sF(s)$</td>
+<td></td>
+</tr>
+<tr>
+<td>终值定理</td>
+<td>$f(\infty) &#x3D; \lim_{s\to0}sF(s)$</td>
+<td>终值确定存在时才能用</td>
+</tr>
+</tbody></table>
+<h2 id="Z变换几个重要定理"><a href="#Z变换几个重要定理" class="headerlink" title="Z变换几个重要定理"></a>Z变换几个重要定理</h2><table>
+<thead>
+<tr>
+<th>性质</th>
+<th>$x(k)$</th>
+<th>$X(z)$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>线性性质</td>
+<td>$ax_1(t) \pm bx_2(t)$</td>
+<td>$aX_1(z) \pm bX_2(z)$</td>
+</tr>
+<tr>
+<td>位移定理</td>
+<td>$x(k+n)$</td>
+<td>$z^nX(z)-\sum_{i&#x3D;0}^{n-1}z^{n-1}x(i)$</td>
+</tr>
+<tr>
+<td>位移定理</td>
+<td>$x(k-n)$</td>
+<td>$z^{-n}X(z)+\sum_{i&#x3D;0}^{n-1}z^{-i}x(i-n)$</td>
+</tr>
+<tr>
+<td>初值定理</td>
+<td>$x(0)&#x3D; \lim_{z\to\infty}X(z)$</td>
+<td></td>
+</tr>
+<tr>
+<td>终值定理</td>
+<td>$x(\infty) &#x3D; \lim_{z\to1}(z-1)X(z)$</td>
+<td>终值确定存在时才能用</td>
+</tr>
+</tbody></table>
+<h2 id="常见函数拉氏变换和Z变换"><a href="#常见函数拉氏变换和Z变换" class="headerlink" title="常见函数拉氏变换和Z变换"></a>常见函数拉氏变换和Z变换</h2><table>
+<thead>
+<tr>
+<th>$x(t)$</th>
+<th>$X(s)$</th>
+<th>$x(k)$</th>
+<th>$X(z)$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$\delta(t)$</td>
+<td>$1$</td>
+<td>$\delta(k)$</td>
+<td>$1$</td>
+</tr>
+<tr>
+<td>$1(t)$</td>
+<td>$\dfrac1s$</td>
+<td>$x(k)&#x3D;1\ k&#x3D;0,1,2…$</td>
+<td>$\dfrac z{z-1}$</td>
+</tr>
+<tr>
+<td>$t$</td>
+<td>$\dfrac1{s^2}$</td>
+<td>$kT$</td>
+<td>$\dfrac{Tz}{(z-1)^2}$</td>
+</tr>
+<tr>
+<td>$t^2$</td>
+<td>$\dfrac2{s^3}$</td>
+<td>$(kT)^2$</td>
+<td>$\dfrac{T^2z(z+1)}{(z-1)^3}$</td>
+</tr>
+<tr>
+<td>-</td>
+<td>-</td>
+<td>$a^k$</td>
+<td>$\dfrac z{z-a}$</td>
+</tr>
+<tr>
+<td>-</td>
+<td>-</td>
+<td>$ka^k$</td>
+<td>$\dfrac {az}{(z-a)^2}$</td>
+</tr>
+<tr>
+<td>$e^{-at}$</td>
+<td>$\dfrac1{s+a}$</td>
+<td>$e^{-akT}$</td>
+<td></td>
+</tr>
+<tr>
+<td>$te^{-at}$</td>
+<td>$\dfrac1{(s+a)^2}$</td>
+<td>$kTe^{-akT}$</td>
+<td></td>
+</tr>
+<tr>
+<td>$sin(\omega t)$</td>
+<td>$\dfrac{\omega}{s^2+\omega^2}$</td>
+<td>$sin(\omega kT)$</td>
+<td></td>
+</tr>
+<tr>
+<td>$cos(\omega t)$</td>
+<td>$\dfrac{s}{s^2+\omega^2}$</td>
+<td>$cos(\omega kT)$</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="典型环节传递函数和频率特性"><a href="#典型环节传递函数和频率特性" class="headerlink" title="典型环节传递函数和频率特性"></a>典型环节传递函数和频率特性</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>传递函数</th>
+<th>频率特性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>放大环节</td>
+<td>$K$</td>
+<td>$A &#x3D; k \quad \varphi &#x3D; 0$</td>
+</tr>
+<tr>
+<td>惯性环节</td>
+<td>$\dfrac1{Ts+1}$</td>
+<td>$A &#x3D; \dfrac1{\sqrt{1+\omega^2 T^2}} \quad \varphi &#x3D; -arctan(\omega T)$</td>
+</tr>
+<tr>
+<td>振荡环节</td>
+<td>$\dfrac{\omega_n^2}{s^2+2\zeta\omega_ns +\omega_n^2}$</td>
+<td>$A &#x3D; \dfrac1{\sqrt{[1-(\dfrac{\omega}{\omega_n})^2]^2+(2\zeta \dfrac{\omega}{\omega_n})^2}} \ \varphi &#x3D; -arctan\dfrac{1-(\dfrac{\omega}{\omega_n})^2}{2\zeta \dfrac{\omega}{\omega_n}}$</td>
+</tr>
+<tr>
+<td>积分环节</td>
+<td>$\dfrac1s$</td>
+<td>$A &#x3D; \dfrac1{\omega} \quad \varphi &#x3D; -90$</td>
+</tr>
+<tr>
+<td>微分环节</td>
+<td>$s$</td>
+<td>$A &#x3D; \omega \quad \varphi &#x3D; 90$</td>
+</tr>
+<tr>
+<td>延时环节</td>
+<td>$e^{-\tau s}$</td>
+<td>$A&#x3D;1 \quad \varphi &#x3D; -\omega \tau$</td>
+</tr>
+<tr>
+<td>一阶微分环节</td>
+<td>$Ts+1$</td>
+<td>$A &#x3D; \sqrt{\omega^2T^2+1} \quad \varphi &#x3D; arctan\omega T$</td>
+</tr>
+<tr>
+<td>二阶微分环节</td>
+<td>$s^2+2\zeta \omega_ns+\omega_n^2$</td>
+<td>$A &#x3D; {\sqrt{[1-(\dfrac{\omega}{\omega_n})^2]^2+(2\zeta \dfrac{\omega}{\omega_n})^2}} \ \varphi &#x3D; arctan\dfrac{1-(\dfrac{\omega}{\omega_n})^2}{2\zeta \dfrac{\omega}{\omega_n}}$</td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/notebook/" rel="tag"># notebook</a>
+              <a href="/tags/automation/" rel="tag"># automation</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/02/12/linux-ubuntu/R7000P-bright/" rel="prev" title="R7000P安装ubuntu18.04不能调节亮度">
+                  <i class="fa fa-chevron-left"></i> R7000P安装ubuntu18.04不能调节亮度
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/04/02/linux-ubuntu/ranger-config/" rel="next" title="ranger配置">
+                  ranger配置 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wadekiny</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/4.14.3/algoliasearch-lite.umd.js" integrity="sha256-dyJcbGuYfdzNfifkHxYVd/rzeR6SLLcDFYEidcybldM=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/4.49.2/instantsearch.production.min.js" integrity="sha256-Nu8yqoXoRZEVYyZf4/eY1V4FsenbiCw85RY3gWjN3zQ=" crossorigin="anonymous"></script><script src="/js/third-party/search/algolia-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

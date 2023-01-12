@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="pytorch中tensor的一些特性">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pytorch-tensor">
+<meta property="og:url" content="http://example.com/2021/05/08/deeplearning-pytorch/pytorch-tensor/index.html">
+<meta property="og:site_name" content="Wadekiny&#39;s Blog">
+<meta property="og:description" content="pytorch中tensor的一些特性">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-05-08T14:56:14.000Z">
+<meta property="article:modified_time" content="2023-01-12T16:47:15.743Z">
+<meta property="article:author" content="Wadekiny">
+<meta property="article:tag" content="deeplearning">
+<meta property="article:tag" content="pytorch">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2021/05/08/deeplearning-pytorch/pytorch-tensor/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2021/05/08/deeplearning-pytorch/pytorch-tensor/","path":"2021/05/08/deeplearning-pytorch/pytorch-tensor/","title":"pytorch-tensor"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>pytorch-tensor | Wadekiny's Blog</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Wadekiny's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">32</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">51</span></a></li><li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>Schedule</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Commonweal 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container"></div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container">
+  <div class="algolia-stats"><hr></div>
+  <div class="algolia-hits"></div>
+  <div class="algolia-pagination"></div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%A0%E9%87%8F%EF%BC%88Tensor%EF%BC%89%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="nav-number">1.</span> <span class="nav-text">张量（Tensor）的属性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-dtype"><span class="nav-number">1.1.</span> <span class="nav-text">数据类型 dtype</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E5%B8%83%E5%B1%80"><span class="nav-number">1.2.</span> <span class="nav-text">在内存中的布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E5%A4%87"><span class="nav-number">1.3.</span> <span class="nav-text">设备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rank%EF%BC%88%E9%98%B6%E6%95%B0%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">Rank（阶数）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shape%EF%BC%88%E5%BD%A2%E7%8A%B6%EF%BC%89"><span class="nav-number">1.5.</span> <span class="nav-text">Shape（形状）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%BC%A0%E9%87%8F"><span class="nav-number">2.</span> <span class="nav-text">创建张量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%8E%B0%E6%9C%89%E7%9A%84%E6%95%B0%E6%8D%AE%E5%88%9B%E5%BB%BA%E5%BC%A0%E9%87%8F"><span class="nav-number">2.1.</span> <span class="nav-text">使用现有的数据创建张量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%89%B9%E5%AE%9A%E6%95%B0%E6%8D%AE%E6%88%96%E9%9A%8F%E6%9C%BA%E6%95%B0%E5%88%9B%E5%BB%BA%E5%BC%A0%E9%87%8F"><span class="nav-number">2.2.</span> <span class="nav-text">使用特定数据或随机数创建张量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%B9%E5%BC%A0%E9%87%8F%E5%BD%A2%E7%8A%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">对张量形状的基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#View"><span class="nav-number">3.1.</span> <span class="nav-text">View</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reshape"><span class="nav-number">3.2.</span> <span class="nav-text">Reshape</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Squeeze"><span class="nav-number">3.3.</span> <span class="nav-text">Squeeze</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flatten"><span class="nav-number">3.4.</span> <span class="nav-text">flatten</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E9%98%B6%E5%90%88%E5%B9%B6-cat"><span class="nav-number">3.5.</span> <span class="nav-text">同阶合并 cat()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%87%E9%98%B6%E5%90%88%E5%B9%B6-stack"><span class="nav-number">3.6.</span> <span class="nav-text">升阶合并 stack()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B9%BF%E6%92%AD%EF%BC%88Broadcasting%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">广播（Broadcasting）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%8F%96%E5%87%BA%E5%BC%A0%E9%87%8F%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="nav-number">5.</span> <span class="nav-text">一些取出张量的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#item"><span class="nav-number">5.1.</span> <span class="nav-text">.item()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tolist"><span class="nav-number">5.2.</span> <span class="nav-text">.tolist()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#numpy"><span class="nav-number">5.3.</span> <span class="nav-text">.numpy()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#detach-detach-data"><span class="nav-number">5.4.</span> <span class="nav-text">detach(), detach_(), data</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Wadekiny</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/08/deeplearning-pytorch/pytorch-tensor/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Wadekiny">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wadekiny's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="pytorch-tensor | Wadekiny's Blog">
+      <meta itemprop="description" content="pytorch中tensor的一些特性">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          pytorch-tensor
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-05-08 22:56:14" itemprop="dateCreated datePublished" datetime="2021-05-08T22:56:14+08:00">2021-05-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-01-13 00:47:15" itemprop="dateModified" datetime="2023-01-13T00:47:15+08:00">2023-01-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/deeplearning/" itemprop="url" rel="index"><span itemprop="name">deeplearning</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">pytorch中tensor的一些特性</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="张量（Tensor）的属性"><a href="#张量（Tensor）的属性" class="headerlink" title="张量（Tensor）的属性"></a>张量（Tensor）的属性</h1><h2 id="数据类型-dtype"><a href="#数据类型-dtype" class="headerlink" title="数据类型 dtype"></a>数据类型 dtype</h2><p>张量的互相操作要同类型<br>新版pytorch自动转换类型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; t = torch.Tensor()</span><br><span class="line">&gt;&gt;&gt; t.dtype</span><br><span class="line">torch.float32</span><br></pre></td></tr></table></figure>
+
+<h2 id="在内存中的布局"><a href="#在内存中的布局" class="headerlink" title="在内存中的布局"></a>在内存中的布局</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; t.layout</span><br><span class="line">torch.strided</span><br></pre></td></tr></table></figure>
+
+<h2 id="设备"><a href="#设备" class="headerlink" title="设备"></a>设备</h2><p>使用多设备时，张量之间的操作必须存在于同一个设备</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; t.device</span><br><span class="line">device(type=&#x27;cpu&#x27;)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; device = torch.device(&#x27;cuda:0&#x27;)</span><br><span class="line">&gt;&gt;&gt; device</span><br><span class="line">device(type=&#x27;cuda&#x27;, index=0)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Rank（阶数）"><a href="#Rank（阶数）" class="headerlink" title="Rank（阶数）"></a>Rank（阶数）</h2><p>常量： rank 0<br>向量： rank 1<br>矩阵： rank 2<br>n维张量： rank n</p>
+<h2 id="Shape（形状）"><a href="#Shape（形状）" class="headerlink" title="Shape（形状）"></a>Shape（形状）</h2><p><strong>指明每一层有多少个元素</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = torch.Tensor([1,2,3])</span><br><span class="line">&gt;&gt;&gt; a.shape</span><br><span class="line">torch.Size([3])</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; a = torch.Tensor([[1,2,3],[4,5,6],[7,8,9]])</span><br><span class="line">&gt;&gt;&gt; a.shape</span><br><span class="line">torch.Size([3, 3])</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; b = torch.Tensor([[1,2],[4,5],[7,8]])</span><br><span class="line">&gt;&gt;&gt; b.shape</span><br><span class="line">torch.Size([3, 2])</span><br></pre></td></tr></table></figure>
+
+<p>a.rank &#x3D; <code>len(a.shape)</code></p>
+<p>图像中的例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"># [B,C,H,W]</span><br><span class="line"># [batch, channel, height, width]</span><br><span class="line"></span><br><span class="line"># 三幅图，一个通道，2*2大小</span><br><span class="line"># [3,1,2,2]</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; d</span><br><span class="line">tensor([[[[1., 1.],</span><br><span class="line">          [1., 1.]]],</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        [[[2., 2.],</span><br><span class="line">          [2., 2.]]],</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        [[[3., 3.],</span><br><span class="line">          [3., 3.]]]])</span><br><span class="line"></span><br><span class="line">#------------------</span><br><span class="line">#          Batch1     </span><br><span class="line">#          | Channel1</span><br><span class="line">#          | | Line1</span><br><span class="line">#          | | | Column1</span><br><span class="line">#          | | | |</span><br><span class="line">#          ↓ ↓ ↓ ↓</span><br><span class="line"># tensor([ [ [ [ 1., 1.],</span><br><span class="line">#              [ 1., 1.] ] ],</span><br><span class="line">#                    ↑ ↑ ↑ ↑</span><br><span class="line">#                    | | | |</span><br><span class="line">#                    | | | Batch1</span><br><span class="line">#                    | | Channel1 </span><br><span class="line">#                    | Line2  </span><br><span class="line">#                    Column2   </span><br><span class="line">#</span><br><span class="line">#         [[[2., 2.],</span><br><span class="line">#           [2., 2.]]],</span><br><span class="line"># </span><br><span class="line"># </span><br><span class="line">#         [[[3., 3.],</span><br><span class="line">#           [3., 3.]]]])</span><br></pre></td></tr></table></figure>
+
+<h1 id="创建张量"><a href="#创建张量" class="headerlink" title="创建张量"></a>创建张量</h1><h2 id="使用现有的数据创建张量"><a href="#使用现有的数据创建张量" class="headerlink" title="使用现有的数据创建张量"></a>使用现有的数据创建张量</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; data = np.array([1,2,3,])</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; data</span><br><span class="line">array([1, 2, 3])</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; type(data)</span><br><span class="line">&lt;class &#x27;numpy.ndarray&#x27;&gt;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>构造函数，使用默认的数据类型，复制数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; torch.Tensor(data)</span><br><span class="line">tensor([1., 2., 3.])</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>（推荐）工厂函数，使用相同的数据类型（或人为指定），复制数据</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; torch.tensor(data)</span><br><span class="line">tensor([1, 2, 3])</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>工厂函数，使用相同的数据类型（或人为指定），只接受numpy数组，共享数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; torch.from_numpy(data)</span><br><span class="line">tensor([1, 2, 3])</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>（推荐）工厂函数，使用相同的数据类型（或人为指定），不只是numpy数组，共享数据</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; torch.as_tensor(data)</span><br><span class="line">tensor([1, 2, 3])</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="使用特定数据或随机数创建张量"><a href="#使用特定数据或随机数创建张量" class="headerlink" title="使用特定数据或随机数创建张量"></a>使用特定数据或随机数创建张量</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; torch.eye(3)</span><br><span class="line">tensor([[1., 0., 0.],</span><br><span class="line">        [0., 1., 0.],</span><br><span class="line">        [0., 0., 1.]])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; torch.zeros(2,2)</span><br><span class="line">tensor([[0., 0.],</span><br><span class="line">        [0., 0.]])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; torch.ones(2,2)</span><br><span class="line">tensor([[1., 1.],</span><br><span class="line">        [1., 1.]])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; torch.rand(2,2)</span><br><span class="line">tensor([[0.2826, 0.3104],</span><br><span class="line">        [0.6186, 0.4671]])</span><br></pre></td></tr></table></figure>
+
+<h1 id="对张量形状的基本操作"><a href="#对张量形状的基本操作" class="headerlink" title="对张量形状的基本操作"></a>对张量形状的基本操作</h1><h2 id="View"><a href="#View" class="headerlink" title="View"></a>View</h2><p>view 和 reshape 的区别？</p>
+<h2 id="Reshape"><a href="#Reshape" class="headerlink" title="Reshape"></a>Reshape</h2><blockquote>
+<p>怎么实现的？看源码</p>
+</blockquote>
+<p>通过reshape可以改变形状或阶数</p>
+<p><strong>获得元素个数</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; t = torch.tensor([[1,1,1,1,],[2,2,2,2,],[3,3,3,3,],],dtype=torch.float32)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; torch.tensor(t.shape).prod()</span><br><span class="line">tensor(12)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; t.numel()</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+
+<p><strong>元素个数要一样</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; t = torch.tensor([[1,1,1,1,],[2,2,2,2,],[3,3,3,3,],],dtype=torch.float32)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; t.reshape(6,2)</span><br><span class="line">tensor([[1., 1.],</span><br><span class="line">        [1., 1.],</span><br><span class="line">        [2., 2.],</span><br><span class="line">        [2., 2.],</span><br><span class="line">        [3., 3.],</span><br><span class="line">        [3., 3.]])</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; t.reshape(4,3)</span><br><span class="line">tensor([[1., 1., 1.],</span><br><span class="line">        [1., 2., 2.],</span><br><span class="line">        [2., 2., 3.],</span><br><span class="line">        [3., 3., 3.]])</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; t.reshape(1,12)</span><br><span class="line">tensor([[1., 1., 1., 1., 2., 2., 2., 2., 3., 3., 3., 3.]])</span><br><span class="line"></span><br><span class="line"># 改变阶数</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; t.reshape(2,2,3)</span><br><span class="line">tensor([[[1., 1., 1.],</span><br><span class="line">         [1., 2., 2.]],</span><br><span class="line"></span><br><span class="line">        [[2., 2., 3.],</span><br><span class="line">         [3., 3., 3.]]])</span><br></pre></td></tr></table></figure>
+
+<h2 id="Squeeze"><a href="#Squeeze" class="headerlink" title="Squeeze"></a>Squeeze</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># original</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; t1</span><br><span class="line">tensor([[1., 1., 1., 1., 2., 2., 2., 2., 3., 3., 3., 3.]])</span><br><span class="line">&gt;&gt;&gt; t1.shape</span><br><span class="line">torch.Size([1, 12])</span><br><span class="line"></span><br><span class="line"># squeezed</span><br><span class="line">&gt;&gt;&gt; t1.squeeze()</span><br><span class="line">tensor([1., 1., 1., 1., 2., 2., 2., 2., 3., 3., 3., 3.])</span><br><span class="line">&gt;&gt;&gt; t1.squeeze().shape</span><br><span class="line">torch.Size([12])</span><br><span class="line"></span><br><span class="line"># unsqueezed</span><br><span class="line">&gt;&gt;&gt; t2 = t1.squeeze()</span><br><span class="line">&gt;&gt;&gt; t2</span><br><span class="line">tensor([1., 1., 1., 1., 2., 2., 2., 2., 3., 3., 3., 3.])</span><br><span class="line">&gt;&gt;&gt; t2.unsqueeze(dim=0)</span><br><span class="line">tensor([[1., 1., 1., 1., 2., 2., 2., 2., 3., 3., 3., 3.]])</span><br><span class="line">&gt;&gt;&gt; t2.unsqueeze(dim=0).shape</span><br><span class="line">torch.Size([1, 12])</span><br></pre></td></tr></table></figure>
+
+<h2 id="flatten"><a href="#flatten" class="headerlink" title="flatten"></a>flatten</h2><p><strong>pytorch自带的flatten()</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; d</span><br><span class="line">tensor([[[[1., 1.],</span><br><span class="line">          [1., 1.]]],</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        [[[2., 2.],</span><br><span class="line">          [2., 2.]]],</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        [[[3., 3.],</span><br><span class="line">          [3., 3.]]]])</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; d.flatten().shape</span><br><span class="line">torch.Size([12])</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; d.flatten(start_dim=0).shape</span><br><span class="line">torch.Size([12])</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; d.flatten(start_dim=1).shape</span><br><span class="line">torch.Size([3, 4])</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; d.flatten(start_dim=2).shape</span><br><span class="line">torch.Size([3, 1, 4])</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; d.flatten(start_dim=3).shape</span><br><span class="line">torch.Size([3, 1, 2, 2])</span><br></pre></td></tr></table></figure>
+
+<p><strong>自己构造</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"># 第一种方法</span><br><span class="line"></span><br><span class="line">def flatten(t):</span><br><span class="line">    t = t.reshape(1,-1)</span><br><span class="line">    t = t.squeeze()</span><br><span class="line">    return t</span><br><span class="line"></span><br><span class="line"># 第二种方法</span><br><span class="line"></span><br><span class="line">def flatten(t):</span><br><span class="line">    t = t.reshape(-1)</span><br><span class="line">    # 或 t = t.reshape(t.numel())</span><br><span class="line">    return t</span><br><span class="line"></span><br><span class="line"># 起始轴自定义</span><br><span class="line"></span><br><span class="line">def MyFlatten(t, start_dim=0，end_dim = -1):</span><br><span class="line"></span><br><span class="line">    if start_dim&gt;=0 and start_dim &lt; len(t.shape) and (end_dim == -1 or (end_dim &gt; start_dim and end_dim &lt; len(t.shape) )):</span><br><span class="line">        sp = t.shape</span><br><span class="line">        spn = []</span><br><span class="line">        inin = 1</span><br><span class="line"></span><br><span class="line">        for i in range(start_dim, end_dim+1, 1):</span><br><span class="line">            inin *= sp[i]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        for i in range(0,start_dim,1):</span><br><span class="line">            spn.append(sp[i])</span><br><span class="line">        spn.append(inin)</span><br><span class="line">        for i in range(end_dim+1, len(sp), 1):</span><br><span class="line">            spn.append(sp[i])</span><br><span class="line"></span><br><span class="line">        spn = torch.Size(spn)</span><br><span class="line"></span><br><span class="line">        t = t.reshape(spn)</span><br><span class="line">    else:</span><br><span class="line">        pass</span><br><span class="line"></span><br><span class="line">    return t</span><br></pre></td></tr></table></figure>
+
+<h2 id="同阶合并-cat"><a href="#同阶合并-cat" class="headerlink" title="同阶合并 cat()"></a>同阶合并 cat()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a</span><br><span class="line">tensor([[1., 1., 1.],</span><br><span class="line">        [1., 1., 1.]])</span><br><span class="line">&gt;&gt;&gt; b</span><br><span class="line">tensor([[2., 2., 2.],</span><br><span class="line">        [2., 2., 2.],</span><br><span class="line">        [2., 2., 2.],</span><br><span class="line">        [2., 2., 2.]])</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; torch.cat((a,b),dim=0)</span><br><span class="line">tensor([[1., 1., 1.],</span><br><span class="line">        [1., 1., 1.],</span><br><span class="line">        [2., 2., 2.],</span><br><span class="line">        [2., 2., 2.],</span><br><span class="line">        [2., 2., 2.],</span><br><span class="line">        [2., 2., 2.]])</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; torch.cat((a,b),dim=1)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">RuntimeError: Sizes of tensors must match except in dimension 1. Got 2 and 4 in dimension 0 (The offending index is 1)</span><br></pre></td></tr></table></figure>
+
+<h2 id="升阶合并-stack"><a href="#升阶合并-stack" class="headerlink" title="升阶合并 stack()"></a>升阶合并 stack()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a</span><br><span class="line">tensor([[1., 1.],</span><br><span class="line">        [1., 1.]])</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; b</span><br><span class="line">tensor([[2., 2.],</span><br><span class="line">        [2., 2.]])</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; c</span><br><span class="line">tensor([[3., 3.],</span><br><span class="line">        [3., 3.]])</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; torch.stack((a,b,c))</span><br><span class="line">tensor([[[1., 1.],</span><br><span class="line">         [1., 1.]],</span><br><span class="line"></span><br><span class="line">        [[2., 2.],</span><br><span class="line">         [2., 2.]],</span><br><span class="line"></span><br><span class="line">        [[3., 3.],</span><br><span class="line">         [3., 3.]]])</span><br></pre></td></tr></table></figure>
+
+<h1 id="广播（Broadcasting）"><a href="#广播（Broadcasting）" class="headerlink" title="广播（Broadcasting）"></a>广播（Broadcasting）</h1><h1 id="一些取出张量的操作"><a href="#一些取出张量的操作" class="headerlink" title="一些取出张量的操作"></a>一些取出张量的操作</h1><h2 id="item"><a href="#item" class="headerlink" title=".item()"></a>.item()</h2><p>只适用于仅拥有一个元素的张量，对维数没有要求，返回张量内部的数据（基本的python数字类型）</p>
+<h2 id="tolist"><a href="#tolist" class="headerlink" title=".tolist()"></a>.tolist()</h2><p>类似.item(), 返回list</p>
+<h2 id="numpy"><a href="#numpy" class="headerlink" title=".numpy()"></a>.numpy()</h2><p>Returns self tensor as a NumPy ndarray</p>
+<h2 id="detach-detach-data"><a href="#detach-detach-data" class="headerlink" title="detach(), detach_(), data"></a>detach(), detach_(), data</h2>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/deeplearning/" rel="tag"># deeplearning</a>
+              <a href="/tags/pytorch/" rel="tag"># pytorch</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/04/21/deeplearning-pytorch/convolution/" rel="prev" title="convolution">
+                  <i class="fa fa-chevron-left"></i> convolution
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/05/14/deeplearning-pytorch/pytorch-dataset/" rel="next" title="pytorch-dataset">
+                  pytorch-dataset <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wadekiny</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/4.14.3/algoliasearch-lite.umd.js" integrity="sha256-dyJcbGuYfdzNfifkHxYVd/rzeR6SLLcDFYEidcybldM=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/4.49.2/instantsearch.production.min.js" integrity="sha256-Nu8yqoXoRZEVYyZf4/eY1V4FsenbiCw85RY3gWjN3zQ=" crossorigin="anonymous"></script><script src="/js/third-party/search/algolia-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

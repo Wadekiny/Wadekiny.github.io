@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="(ACM Trans. Graph 2021)3d人脸模型：deca.md">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(deca)Learning an Animatable Detailed 3D Face Model from In-The-Wild Images">
+<meta property="og:url" content="http://example.com/2022/09/03/3dface-paper/deca/index.html">
+<meta property="og:site_name" content="Wadekiny&#39;s Blog">
+<meta property="og:description" content="(ACM Trans. Graph 2021)3d人脸模型：deca.md">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/deca/pic.png">
+<meta property="og:image" content="http://example.com/deca/unknowdeca.png">
+<meta property="og:image" content="http://example.com/deca/framework.png">
+<meta property="og:image" content="http://example.com/deca/ldc.png">
+<meta property="og:image" content="http://example.com/deca/mrf.png">
+<meta property="og:image" content="http://example.com/deca/sym.png">
+<meta property="article:published_time" content="2022-09-03T09:11:11.000Z">
+<meta property="article:modified_time" content="2023-01-12T16:47:15.703Z">
+<meta property="article:author" content="Wadekiny">
+<meta property="article:tag" content="paper">
+<meta property="article:tag" content="3Dface">
+<meta property="article:tag" content="deeplearning">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/deca/pic.png">
+
+
+<link rel="canonical" href="http://example.com/2022/09/03/3dface-paper/deca/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/09/03/3dface-paper/deca/","path":"2022/09/03/3dface-paper/deca/","title":"(deca)Learning an Animatable Detailed 3D Face Model from In-The-Wild Images"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>(deca)Learning an Animatable Detailed 3D Face Model from In-The-Wild Images | Wadekiny's Blog</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Wadekiny's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">32</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">51</span></a></li><li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>Schedule</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Commonweal 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container"></div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container">
+  <div class="algolia-stats"><hr></div>
+  <div class="algolia-hits"></div>
+  <div class="algolia-pagination"></div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B4%A1%E7%8C%AE"><span class="nav-number">1.</span> <span class="nav-text">贡献</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">使用的模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%A0%E4%BD%95%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.1.</span> <span class="nav-text">几何模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%96%E8%A7%82%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.2.</span> <span class="nav-text">外观模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E6%9C%BA%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.3.</span> <span class="nav-text">相机模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%85%A7%E6%98%8E%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.4.</span> <span class="nav-text">照明模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%B9%E7%90%86%E6%B8%B2%E6%9F%93"><span class="nav-number">2.5.</span> <span class="nav-text">纹理渲染</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B2%97%E7%B3%99%E9%87%8D%E5%BB%BA"><span class="nav-number">3.1.</span> <span class="nav-text">粗糙重建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%86%E8%8A%82%E9%87%8D%E5%BB%BA"><span class="nav-number">3.2.</span> <span class="nav-text">细节重建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%86%E6%9E%B6"><span class="nav-number">3.3.</span> <span class="nav-text">框架</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E7%BB%86%E8%8A%82"><span class="nav-number">4.</span> <span class="nav-text">实现细节</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B6%88%E8%9E%8D%E5%AE%9E%E9%AA%8C"><span class="nav-number">5.</span> <span class="nav-text">消融实验</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%86%E8%8A%82%E4%B8%80%E8%87%B4%E6%80%A7%E6%8D%9F%E5%A4%B1"><span class="nav-number">5.1.</span> <span class="nav-text">细节一致性损失</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ID-MRF-loss"><span class="nav-number">5.2.</span> <span class="nav-text">ID-MRF loss</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AF%E5%AF%B9%E7%A7%B0%E6%8D%9F%E5%A4%B1"><span class="nav-number">5.3.</span> <span class="nav-text">软对称损失</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Wadekiny</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/03/3dface-paper/deca/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Wadekiny">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wadekiny's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="(deca)Learning an Animatable Detailed 3D Face Model from In-The-Wild Images | Wadekiny's Blog">
+      <meta itemprop="description" content="(ACM Trans. Graph 2021)3d人脸模型：deca.md">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          (deca)Learning an Animatable Detailed 3D Face Model from In-The-Wild Images
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-03 17:11:11" itemprop="dateCreated datePublished" datetime="2022-09-03T17:11:11+08:00">2022-09-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-01-13 00:47:15" itemprop="dateModified" datetime="2023-01-13T00:47:15+08:00">2023-01-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/paper/" itemprop="url" rel="index"><span itemprop="name">paper</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">(ACM Trans. Graph 2021)3d人脸模型：deca.md</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><img src="/./deca/pic.png" alt="pic"></p>
+<h1 id="贡献"><a href="#贡献" class="headerlink" title="贡献"></a>贡献</h1><ul>
+<li><p>改变表情参数，可以合成合理的几何细节</p>
+</li>
+<li><p>使用一种<strong>细节一致性损失</strong>来将<strong>身份相关的细节</strong>和<strong>表情相关的细节</strong>分开</p>
+</li>
+<li><p>因为重建的是几何细节，对于遮挡，光照变化，姿势变化有鲁棒性</p>
+</li>
+<li><p>两个基准上的SOTA(2021年)</p>
+</li>
+<li><p>主要困难：缺乏训练数据，本文不需要3d ground truth</p>
+</li>
+<li><p>开源</p>
+</li>
+</ul>
+<h1 id="使用的模型"><a href="#使用的模型" class="headerlink" title="使用的模型"></a>使用的模型</h1><h2 id="几何模型"><a href="#几何模型" class="headerlink" title="几何模型"></a>几何模型</h2><ul>
+<li><p>FLAME</p>
+</li>
+<li><p>$M(\vec\beta,\vec\theta,\vec\psi)&#x3D;W(T_P(\vec\beta,\vec\theta,\vec\psi),\mathrm J(\vec\beta),\vec\theta,\mathcal W)$</p>
+</li>
+</ul>
+<h2 id="外观模型"><a href="#外观模型" class="headerlink" title="外观模型"></a>外观模型</h2><ul>
+<li><p>由于 FLAME 没有外观模型，所以把 BFM 的外观模型搬过来，用在 FLAME 上</p>
+</li>
+<li><p>BFM’s linear albedo subspace -&gt; FLAME UV layout</p>
+</li>
+<li><p>外观模型输出一个UV 反照率图：$A(\alpha) \in \mathbb R^{d\times d\times 3},\alpha\in \mathbb R^{|\alpha|}$</p>
+</li>
+</ul>
+<h2 id="相机模型"><a href="#相机模型" class="headerlink" title="相机模型"></a>相机模型</h2><ul>
+<li><p>将 3d mesh 投影到图片空间</p>
+</li>
+<li><p>$v &#x3D; s\Pi(M_i)+t,\quad \Pi\in\mathbb R^{2\times3},\quad M_i\in\mathbb R^3, \quad s\in\mathbb R(scale),\quad t\in\mathbb R^2(translation)$</p>
+</li>
+<li><p>用 $c$ 表示 $s,t$</p>
+</li>
+</ul>
+<h2 id="照明模型"><a href="#照明模型" class="headerlink" title="照明模型"></a>照明模型</h2><ul>
+<li><p>基于球谐函数 (Spherical Harmonics, SH, [Ramamoorthi and Hanrahan 2001])</p>
+</li>
+<li><p>有阴影的面部图像计算方法：$B(\alpha,\mathrm l,N_{uv})<em>{i,j} &#x3D; A(\alpha)</em>{i,j}\odot\sum_{k&#x3D;1}^9\mathrm l_kH_K(N)_{i,j}$</p>
+</li>
+<li><p>$A$ 是外观模型生成的UV反照率图，$N$ 是法线，$B$ 是有阴影的纹理，哈达马积后面的部分是 HS 的东西</p>
+</li>
+</ul>
+<h2 id="纹理渲染"><a href="#纹理渲染" class="headerlink" title="纹理渲染"></a>纹理渲染</h2><ul>
+<li><p>输入：$\mathrm{(\beta,\theta,\psi),\alpha,l,c}$ 分别是FLAME参数，反照率参数，照明参数，相机参数</p>
+</li>
+<li><p>$I_r &#x3D; \mathcal R(M,B,\mathrm c)$</p>
+</li>
+</ul>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><ul>
+<li><p>发现：一些面部细节(皱纹)取决于表情，但是一些其他属性不随表情变化。</p>
+</li>
+<li><p>将面部细节分为两部分</p>
+<ul>
+<li><strong>静态面部细节</strong>因人而异。</li>
+<li><strong>动态面部细节</strong>依赖于表情，在同一个人上也会有差异。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./deca/unknowdeca.png" alt="unknowdeca"></p>
+<h2 id="粗糙重建"><a href="#粗糙重建" class="headerlink" title="粗糙重建"></a>粗糙重建</h2><p>首先学习一个粗糙的重建(在flame的模型空间里)</p>
+<p>LOSS : $L_{coarse} &#x3D; +L_{lmk}+L_{eye}+L_{pho}+L_{id}+L_{sc}+L_{reg}$</p>
+<ul>
+<li><p>关键点投影损失(landmark re-projection loss)</p>
+<ul>
+<li><p>比较<strong>2D输入图像的关键点坐标</strong>和<strong>3D mesh 投影到图片空间的坐标</strong>，是绝对位置误差</p>
+</li>
+<li><p>$L_{lmk}&#x3D;\sum_{i&#x3D;1}^{68}||k_i-s\Pi(M_i)+t||_1$</p>
+</li>
+</ul>
+</li>
+<li><p>眼部闭合损失(eye closure loss)</p>
+<ul>
+<li><p>这部分损失是平移不变的，是一种相对位置误差，不容易受投影3d人脸没有对齐的影响</p>
+</li>
+<li><p>$L_{eye}&#x3D;\sum_{(i,j)\in E}||k_i-k_j-s\Pi(M_i-M_j)||$</p>
+</li>
+<li><p>$E$ 是眼睛上轮廓，下轮廓的关键点对</p>
+</li>
+</ul>
+</li>
+<li><p>渲染损失(photometric loss)</p>
+<ul>
+<li><p>$L_{pho} &#x3D; ||V_I\odot(I-I_r)||_{1,1}$ </p>
+</li>
+<li><p>$V_I$ 是面部的mask</p>
+</li>
+</ul>
+</li>
+<li><p>身份损失(identity loss)</p>
+<ul>
+<li><p>使用预训练的人脸识别网络,余弦相似度</p>
+</li>
+<li><p>$L_{id} &#x3D; 1-\dfrac{f(I)f(I_r)}{||f(I)||_2\cdot||f(I_r)||_2}$</p>
+</li>
+</ul>
+</li>
+<li><p>形状一致性损失(shape consistency loss)</p>
+<ul>
+<li><p>给一个人的两张图，应该输出相同的 FLAME 形状参数，(i.e.$\beta_i&#x3D;\beta_j$), 之前有一些工作是最小参数$\beta$之间的距离,但是效果不是特别好</p>
+</li>
+<li><p>新策略：在渲染图像 $i$ 时，将 $\beta_i$ 替换为 $\beta_j$ </p>
+</li>
+<li><p>如果模型正确估计了同一个人两幅图像中的面部形状，则交换形状参数，渲染出的图像应当难以区分。所以在渲染图像上，使用渲染损失和身份损失</p>
+</li>
+<li><p>$L_{sc} &#x3D; L_{coarse}(I_i,I_r(\beta_j,…))$</p>
+</li>
+</ul>
+</li>
+<li><p>正则化损失?</p>
+<ul>
+<li>$L_{reg}$ <ul>
+<li>$E_\beta &#x3D; ||\beta||_2^2$</li>
+<li>$E_\psi &#x3D; ||\psi||_2^2$</li>
+<li>$E_\alpha &#x3D; ||\alpha||_2^2$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="细节重建"><a href="#细节重建" class="headerlink" title="细节重建"></a>细节重建</h2><p>通过细节的uv位移图$D\in[-0.01,0.01]^{d\times d}$增强粗糙的flame模型</p>
+<ol>
+<li><p>生成UV位移图</p>
+<ul>
+<li><p>将输入图像编码为128维向量 $\delta$</p>
+</li>
+<li><p>$D &#x3D; F_d(\delta,\psi,\theta_{jaw})$</p>
+</li>
+<li><p>$D\in[-0.01,0.01]^{d\times d}$</p>
+</li>
+<li><p>$\delta$ 控制静态的人物细节</p>
+</li>
+</ul>
+</li>
+<li><p>将mesh投影到UV空间，叠加细节</p>
+<ul>
+<li><p>将 mesh 和 法线转换到UV空间</p>
+</li>
+<li><p>$M’<em>{uv} &#x3D; M</em>{uv} + D \odot N_{uv}$</p>
+</li>
+</ul>
+</li>
+<li><p>根据叠加了细节的mesh，计算新的法线 $N’$</p>
+</li>
+<li><p>渲染图像</p>
+<ul>
+<li>$I’_r &#x3D; \mathcal R(M, B(\mathrm{\alpha,l},N’), c)$</li>
+</ul>
+</li>
+</ol>
+<p>Loss : $L_{ detail } &#x3D; L_{phoD}+L_{mrf}+L_{sym}+L_{dc}+L_{regD}$</p>
+<ul>
+<li><p>细节渲染损失</p>
+<ul>
+<li><p>$L_{phoD} &#x3D; ||V_I\odot(I-I_r)||_{1,1}$ </p>
+</li>
+<li><p>$V_I$ 是面部的mask</p>
+</li>
+</ul>
+</li>
+<li><p>ID-MRF 损失</p>
+<ul>
+<li><p>Implicit Diversified Markov Random Field (ID-MRF) loss [Wang et al. 2018]</p>
+</li>
+<li><p>$L_{mrf} &#x3D; 2L_M(conv4_2)+L_M(conv3_2)$</p>
+</li>
+</ul>
+</li>
+<li><p>软对称损失(soft symmetry loss)</p>
+<ul>
+<li><p>为了增加对自遮挡问题的鲁棒性，有助于解决在边界的伪影问题？</p>
+</li>
+<li><p>$L_{sym}&#x3D; ||V_{uv}\odot(D-flip(D))||_{1,1}$</p>
+</li>
+<li><p>$V_{uv}$ 是在UV空间的面部mask</p>
+</li>
+</ul>
+</li>
+<li><p>正则化损失</p>
+<ul>
+<li>$L_{regD} &#x3D; ||D||_{1,1}$</li>
+</ul>
+</li>
+<li><p>细节一致性损失(detail consistency loss)</p>
+<ul>
+<li><p>为了控制人脸，要将静态细节(毛孔，眉毛等与表情无关)和动态细节(因表情而产生的皱纹)</p>
+</li>
+<li><p>静态细节受 $\delta$ 控制，动态细节受 $\psi,\theta_{jaw}$ 控制</p>
+</li>
+<li><p>类似粗重建过程中的形状一致性损失，利用同一个人的不同照片，其静态细节应该是一致的。</p>
+</li>
+<li><p>对于同一个人的不同照片，交换$\delta$参数</p>
+</li>
+<li><p>$L_{dc} &#x3D; L_{detail}(I_i,I_r(\delta_j…))$</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><p><img src="/./deca/framework.png" alt="framework"></p>
+<h1 id="实现细节"><a href="#实现细节" class="headerlink" title="实现细节"></a>实现细节</h1><ul>
+<li>三个公开数据集：VGGFace2，BUPT-Balancedface, VoxCeleb2</li>
+<li>总共训练了200万张图像</li>
+<li>使用FAN来预测68个2d 标志点</li>
+<li>使用Pytorch3D的工具进行渲染</li>
+<li>输入图像大小：224x224</li>
+<li>uv空间大小：d&#x3D;256</li>
+</ul>
+<h1 id="消融实验"><a href="#消融实验" class="headerlink" title="消融实验"></a>消融实验</h1><h2 id="细节一致性损失"><a href="#细节一致性损失" class="headerlink" title="细节一致性损失"></a>细节一致性损失</h2><p><img src="/./deca/ldc.png" alt="ldc"></p>
+<h2 id="ID-MRF-loss"><a href="#ID-MRF-loss" class="headerlink" title="ID-MRF loss"></a>ID-MRF loss</h2><p><img src="/./deca/mrf.png" alt="mrf"></p>
+<h2 id="软对称损失"><a href="#软对称损失" class="headerlink" title="软对称损失"></a>软对称损失</h2><p><img src="/./deca/sym.png" alt="sym"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/paper/" rel="tag"># paper</a>
+              <a href="/tags/3Dface/" rel="tag"># 3Dface</a>
+              <a href="/tags/deeplearning/" rel="tag"># deeplearning</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/09/02/3dface-paper/flame_model/" rel="prev" title="Learning a model of facial shape and expression from 4D scans">
+                  <i class="fa fa-chevron-left"></i> Learning a model of facial shape and expression from 4D scans
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/09/24/3dface-paper/cest/" rel="next" title="(CEST)Self-Supervised 3D Face Reconstruction via Conditional Estimation">
+                  (CEST)Self-Supervised 3D Face Reconstruction via Conditional Estimation <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wadekiny</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/4.14.3/algoliasearch-lite.umd.js" integrity="sha256-dyJcbGuYfdzNfifkHxYVd/rzeR6SLLcDFYEidcybldM=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/4.49.2/instantsearch.production.min.js" integrity="sha256-Nu8yqoXoRZEVYyZf4/eY1V4FsenbiCw85RY3gWjN3zQ=" crossorigin="anonymous"></script><script src="/js/third-party/search/algolia-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

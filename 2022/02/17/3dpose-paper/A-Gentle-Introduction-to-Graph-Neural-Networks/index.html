@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="关于图卷积, https:&#x2F;&#x2F;distill.pub&#x2F;2021&#x2F;gnn-intro&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A Gentle Introduction to Graph Neural Networks">
+<meta property="og:url" content="http://example.com/2022/02/17/3dpose-paper/A-Gentle-Introduction-to-Graph-Neural-Networks/index.html">
+<meta property="og:site_name" content="Wadekiny&#39;s Blog">
+<meta property="og:description" content="关于图卷积, https:&#x2F;&#x2F;distill.pub&#x2F;2021&#x2F;gnn-intro&#x2F;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220217170936126.png">
+<meta property="og:image" content="http://example.com/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220217171705110.png">
+<meta property="og:image" content="http://example.com/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220217171746654.png">
+<meta property="og:image" content="http://example.com/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220217172440822.png">
+<meta property="og:image" content="http://example.com/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220217172711351.png">
+<meta property="og:image" content="http://example.com/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220217175346381.png">
+<meta property="og:image" content="http://example.com/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220217195750251.png">
+<meta property="og:image" content="http://example.com/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220217200401762.png">
+<meta property="og:image" content="http://example.com/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220217200507968.png">
+<meta property="og:image" content="http://example.com/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220217200552495.png">
+<meta property="og:image" content="http://example.com/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220217200716833.png">
+<meta property="og:image" content="http://example.com/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220217203422477.png">
+<meta property="og:image" content="http://example.com/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220217204557150.png">
+<meta property="og:image" content="http://example.com/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220217210054621.png">
+<meta property="og:image" content="http://example.com/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220217210818660.png">
+<meta property="og:image" content="http://example.com/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220217211211018.png">
+<meta property="og:image" content="http://example.com/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220219160758420.png">
+<meta property="og:image" content="http://example.com/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220219160807852.png">
+<meta property="og:image" content="http://example.com/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220219161211192.png">
+<meta property="article:published_time" content="2022-02-17T09:04:12.000Z">
+<meta property="article:modified_time" content="2023-01-12T16:47:15.713Z">
+<meta property="article:author" content="Wadekiny">
+<meta property="article:tag" content="paper">
+<meta property="article:tag" content="deeplearning">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220217170936126.png">
+
+
+<link rel="canonical" href="http://example.com/2022/02/17/3dpose-paper/A-Gentle-Introduction-to-Graph-Neural-Networks/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/02/17/3dpose-paper/A-Gentle-Introduction-to-Graph-Neural-Networks/","path":"2022/02/17/3dpose-paper/A-Gentle-Introduction-to-Graph-Neural-Networks/","title":"A Gentle Introduction to Graph Neural Networks"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>A Gentle Introduction to Graph Neural Networks | Wadekiny's Blog</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Wadekiny's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">32</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">51</span></a></li><li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>Schedule</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Commonweal 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container"></div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container">
+  <div class="algolia-stats"><hr></div>
+  <div class="algolia-hits"></div>
+  <div class="algolia-pagination"></div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="nav-number">1.</span> <span class="nav-text">图神经网络</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E6%95%B0%E6%8D%AE%E5%8F%AF%E4%BB%A5%E8%A1%A8%E7%A4%BA%E6%88%90%E4%B8%80%E5%BC%A0%E5%9B%BE"><span class="nav-number">2.</span> <span class="nav-text">什么样的数据可以表示成一张图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">2.1.</span> <span class="nav-text">图是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%A6%82%E4%BD%95%E8%A1%A8%E7%A4%BA%E6%88%90%E5%9B%BE"><span class="nav-number">2.2.</span> <span class="nav-text">数据如何表示成图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E7%89%87"><span class="nav-number">2.2.1.</span> <span class="nav-text">图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%9C%AC"><span class="nav-number">2.2.2.</span> <span class="nav-text">文本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E6%95%B0%E6%8D%AE%E5%8F%AF%E4%BB%A5%E8%A1%A8%E7%A4%BA%E6%88%90%E5%9B%BE"><span class="nav-number">2.3.</span> <span class="nav-text">什么样的数据可以表示成图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E5%B1%82%E9%9D%A2"><span class="nav-number">2.3.1.</span> <span class="nav-text">图层面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B6%E7%82%B9%E5%B1%82%E9%9D%A2"><span class="nav-number">2.3.2.</span> <span class="nav-text">顶点层面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%B9%E5%B1%82%E9%9D%A2"><span class="nav-number">2.3.3.</span> <span class="nav-text">边层面</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE%E7%94%A8%E5%88%B0%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8A%E7%9A%84%E6%8C%91%E6%88%98"><span class="nav-number">2.4.</span> <span class="nav-text">图用到神经网络上的挑战</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%82%BB%E6%8E%A5%E8%A1%A8"><span class="nav-number">2.4.1.</span> <span class="nav-text">邻接表</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GNN"><span class="nav-number">3.</span> <span class="nav-text">GNN</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84-GNN-%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.1.</span> <span class="nav-text">最简单的 GNN 模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GNN-%E8%BE%93%E5%87%BA"><span class="nav-number">3.1.1.</span> <span class="nav-text">GNN 输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E7%BB%93%E6%9E%84"><span class="nav-number">3.1.2.</span> <span class="nav-text">模型结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E4%BC%A0%E9%80%92"><span class="nav-number">3.2.</span> <span class="nav-text">信息传递</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.1.</span> <span class="nav-text">最简单的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E4%BC%A0%E9%80%92%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.2.</span> <span class="nav-text">信息传递的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E4%BF%A1%E6%81%AF"><span class="nav-number">3.2.3.</span> <span class="nav-text">全局信息</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B6%85%E5%8F%82%E6%95%B0%E5%AF%B9%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="nav-number">4.</span> <span class="nav-text">超参数对模型的影响</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GNN-%E7%9B%B8%E5%85%B3%E8%AF%9D%E9%A2%98"><span class="nav-number">5.</span> <span class="nav-text">GNN 相关话题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#mutigraph"><span class="nav-number">5.1.</span> <span class="nav-text">mutigraph</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hypergraph"><span class="nav-number">5.2.</span> <span class="nav-text">hypergraph</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E5%9B%BE%E8%BF%9B%E8%A1%8C%E9%87%87%E6%A0%B7"><span class="nav-number">5.3.</span> <span class="nav-text">对图进行采样</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#batching"><span class="nav-number">5.4.</span> <span class="nav-text">batching</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E5%81%87%E8%AE%BE"><span class="nav-number">5.5.</span> <span class="nav-text">图神经网络的假设</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B1%87%E8%81%9A%E6%93%8D%E4%BD%9C"><span class="nav-number">5.6.</span> <span class="nav-text">汇聚操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">5.7.</span> <span class="nav-text"></span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Wadekiny</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/17/3dpose-paper/A-Gentle-Introduction-to-Graph-Neural-Networks/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Wadekiny">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wadekiny's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="A Gentle Introduction to Graph Neural Networks | Wadekiny's Blog">
+      <meta itemprop="description" content="关于图卷积, https://distill.pub/2021/gnn-intro/">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          A Gentle Introduction to Graph Neural Networks
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-02-17 17:04:12" itemprop="dateCreated datePublished" datetime="2022-02-17T17:04:12+08:00">2022-02-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-01-13 00:47:15" itemprop="dateModified" datetime="2023-01-13T00:47:15+08:00">2023-01-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/paper/" itemprop="url" rel="index"><span itemprop="name">paper</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">关于图卷积, https://distill.pub/2021/gnn-intro/</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="图神经网络"><a href="#图神经网络" class="headerlink" title="图神经网络"></a>图神经网络</h1><p><img src="/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220217170936126.png" alt="image-20220217170936126"></p>
+<ul>
+<li>什么样的数据可以表示成一张图</li>
+<li>图跟其他数据有什么不同</li>
+<li>GNN 的各个模块</li>
+<li>GNN playground</li>
+</ul>
+<h1 id="什么样的数据可以表示成一张图"><a href="#什么样的数据可以表示成一张图" class="headerlink" title="什么样的数据可以表示成一张图"></a>什么样的数据可以表示成一张图</h1><h2 id="图是什么"><a href="#图是什么" class="headerlink" title="图是什么"></a>图是什么</h2><p><img src="/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220217171705110.png" alt="image-20220217171705110"></p>
+<p><img src="/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220217171746654.png" alt="image-20220217171746654"></p>
+<h2 id="数据如何表示成图"><a href="#数据如何表示成图" class="headerlink" title="数据如何表示成图"></a>数据如何表示成图</h2><h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><ul>
+<li><p>一般情况下：三维的 tensor (e.g., $244 \times 244 \times 3$)</p>
+</li>
+<li><p>表示成图：</p>
+<p><img src="/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220217172440822.png" alt="image-20220217172440822"></p>
+</li>
+</ul>
+<h3 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h3><ul>
+<li>表示成图：</li>
+</ul>
+<p><img src="/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220217172711351.png" alt="image-20220217172711351"></p>
+<h2 id="什么样的数据可以表示成图"><a href="#什么样的数据可以表示成图" class="headerlink" title="什么样的数据可以表示成图"></a>什么样的数据可以表示成图</h2><ul>
+<li>图层面</li>
+<li>顶点层面</li>
+<li>边层面</li>
+</ul>
+<h3 id="图层面"><a href="#图层面" class="headerlink" title="图层面"></a>图层面</h3><ul>
+<li>预测整个图的属性</li>
+<li>如图像分类，情绪分析</li>
+</ul>
+<h3 id="顶点层面"><a href="#顶点层面" class="headerlink" title="顶点层面"></a>顶点层面</h3><ul>
+<li>与每个节点的身份或角色有关</li>
+<li>如图像分割，语义分割，预测文本中单词的词性</li>
+</ul>
+<h3 id="边层面"><a href="#边层面" class="headerlink" title="边层面"></a>边层面</h3><ul>
+<li>预测顶点间的关系</li>
+</ul>
+<h2 id="图用到神经网络上的挑战"><a href="#图用到神经网络上的挑战" class="headerlink" title="图用到神经网络上的挑战"></a>图用到神经网络上的挑战</h2><ul>
+<li>怎样表示图，使图与神经网络是兼容的</li>
+<li>表示连接性的邻接矩阵，可能会有的问题：<ul>
+<li>顶点多，矩阵很大，稀疏矩阵难以高效计算</li>
+<li>一个图可以有多种邻接矩阵（顶点的排序不同），不能保证这些不同的矩阵在神经网络中产生相同的结果</li>
+</ul>
+</li>
+</ul>
+<h3 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h3><p><img src="/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220217175346381.png" alt="image-20220217175346381"></p>
+<h1 id="GNN"><a href="#GNN" class="headerlink" title="GNN"></a>GNN</h1><ul>
+<li><p>GNN 是对图上所有的属性进行<strong>可以优化的变换</strong>（置换不变）</p>
+</li>
+<li><p>输入是图，输出是图</p>
+</li>
+<li><p>不会改变图的连接性，只改变顶点和边的属性</p>
+</li>
+</ul>
+<h2 id="最简单的-GNN-模型"><a href="#最简单的-GNN-模型" class="headerlink" title="最简单的 GNN 模型"></a>最简单的 GNN 模型</h2><p><img src="/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220217195750251.png" alt="image-20220217195750251"></p>
+<h3 id="GNN-输出"><a href="#GNN-输出" class="headerlink" title="GNN 输出"></a>GNN 输出</h3><ul>
+<li><p>已知节点（边缘），预测节点（边缘）</p>
+<p><img src="/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220217200401762.png" alt="image-20220217200401762"></p>
+</li>
+<li><p>节点中没有信息，通过边缘信息预测节点</p>
+<p><img src="/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220217200507968.png" alt="image-20220217200507968"></p>
+<ul>
+<li>只有边信息，预测顶点<img src="/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220217200552495.png" alt="image-20220217200552495"></li>
+</ul>
+</li>
+<li><p>只有节点信息，预测边</p>
+<p><img src="/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220217200716833.png" alt="image-20220217200716833"></p>
+</li>
+<li><p>预测全局，类似于 CNN 的全局池化层</p>
+</li>
+</ul>
+<h3 id="模型结构"><a href="#模型结构" class="headerlink" title="模型结构"></a>模型结构</h3><p><img src="/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220217203422477.png" alt="image-20220217203422477"></p>
+<h2 id="信息传递"><a href="#信息传递" class="headerlink" title="信息传递"></a>信息传递</h2><h3 id="最简单的方法"><a href="#最简单的方法" class="headerlink" title="最简单的方法"></a>最简单的方法</h3><p>顶点向量或边向量单独输入到 MLP </p>
+<h3 id="信息传递的方法"><a href="#信息传递的方法" class="headerlink" title="信息传递的方法"></a>信息传递的方法</h3><p>一个顶点的向量和邻居向量加和，类似于卷积（卷积核的权重都一样），卷积过程中的多通道对应于一个顶点向量的维度</p>
+<ul>
+<li><p>节点之间的信息汇聚</p>
+<p><img src="/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220217204557150.png" alt="image-20220217204557150"></p>
+<p><img src="/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220217210054621.png" alt="image-20220217210054621"></p>
+</li>
+<li><p>节点和边之间的信息汇聚</p>
+<p><img src="/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220217210818660.png" alt="image-20220217210818660"></p>
+</li>
+</ul>
+<h3 id="全局信息"><a href="#全局信息" class="headerlink" title="全局信息"></a>全局信息</h3><p>全局信息 $U$ 和所有的顶点、边相连。在汇聚顶点和边的时候都会用到全局信息。</p>
+<p><img src="/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220217211211018.png" alt="image-20220217211211018"></p>
+<h1 id="超参数对模型的影响"><a href="#超参数对模型的影响" class="headerlink" title="超参数对模型的影响"></a>超参数对模型的影响</h1><h1 id="GNN-相关话题"><a href="#GNN-相关话题" class="headerlink" title="GNN 相关话题"></a>GNN 相关话题</h1><h2 id="mutigraph"><a href="#mutigraph" class="headerlink" title="mutigraph"></a>mutigraph</h2><p><img src="/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220219160758420.png" alt="image-20220219160758420"></p>
+<h2 id="hypergraph"><a href="#hypergraph" class="headerlink" title="hypergraph"></a>hypergraph</h2><p><img src="/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220219160807852.png" alt="image-20220219160807852"></p>
+<h2 id="对图进行采样"><a href="#对图进行采样" class="headerlink" title="对图进行采样"></a>对图进行采样</h2><ul>
+<li><p>网络和比较深，图比较大的时候，最后一层做信息汇聚的时候保存的中间变量很多，计算量可能无法承受</p>
+</li>
+<li><p>采样方法（有点像dropout）：</p>
+<p><img src="/A-Gentle-Introduction-to-Graph-Neural-Networks/image-20220219161211192.png" alt="image-20220219161211192"></p>
+</li>
+</ul>
+<h2 id="batching"><a href="#batching" class="headerlink" title="batching"></a>batching</h2><ul>
+<li>每一个顶点的邻居个数不一样，怎么合并成一个规则的张量？</li>
+</ul>
+<h2 id="图神经网络的假设"><a href="#图神经网络的假设" class="headerlink" title="图神经网络的假设"></a>图神经网络的假设</h2><ul>
+<li>图的对称性：交换顶点的顺序，GNN 对它的作用保持不变</li>
+</ul>
+<h2 id="汇聚操作"><a href="#汇聚操作" class="headerlink" title="汇聚操作"></a>汇聚操作</h2><ul>
+<li>min, max, mean 都差不多</li>
+</ul>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/paper/" rel="tag"># paper</a>
+              <a href="/tags/deeplearning/" rel="tag"># deeplearning</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/02/15/3dpose-paper/3D-Human-Pose-Regression-Using-Graph-Convolutional-Networkmy-software/" rel="prev" title="3D Human Pose Regression Using Graph Convolutional Network">
+                  <i class="fa fa-chevron-left"></i> 3D Human Pose Regression Using Graph Convolutional Network
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/02/27/linux-ubuntu/terminator/" rel="next" title="terminator">
+                  terminator <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wadekiny</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/4.14.3/algoliasearch-lite.umd.js" integrity="sha256-dyJcbGuYfdzNfifkHxYVd/rzeR6SLLcDFYEidcybldM=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/4.49.2/instantsearch.production.min.js" integrity="sha256-Nu8yqoXoRZEVYyZf4/eY1V4FsenbiCw85RY3gWjN3zQ=" crossorigin="anonymous"></script><script src="/js/third-party/search/algolia-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

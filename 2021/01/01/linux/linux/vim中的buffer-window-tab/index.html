@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="buffer, window, tab是什么">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vim:buffer window tab">
+<meta property="og:url" content="http://example.com/2021/01/01/linux/linux/vim%E4%B8%AD%E7%9A%84buffer-window-tab/index.html">
+<meta property="og:site_name" content="Wadekiny&#39;s Blog">
+<meta property="og:description" content="buffer, window, tab是什么">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-01T12:53:33.000Z">
+<meta property="article:modified_time" content="2023-01-12T16:47:15.753Z">
+<meta property="article:author" content="Wadekiny">
+<meta property="article:tag" content="vim">
+<meta property="article:tag" content="ubuntu">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2021/01/01/linux/linux/vim%E4%B8%AD%E7%9A%84buffer-window-tab/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2021/01/01/linux/linux/vim%E4%B8%AD%E7%9A%84buffer-window-tab/","path":"2021/01/01/linux/linux/vim中的buffer-window-tab/","title":"vim:buffer window tab"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>vim:buffer window tab | Wadekiny's Blog</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Wadekiny's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">34</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">9</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">52</span></a></li><li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>Schedule</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Commonweal 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container"></div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container">
+  <div class="algolia-stats"><hr></div>
+  <div class="algolia-hits"></div>
+  <div class="algolia-pagination"></div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#buffer-window-tab-%E5%88%86%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">1.</span> <span class="nav-text">buffer  window  tab 分别是什么</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Window"><span class="nav-number">1.1.</span> <span class="nav-text">Window:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Buffer"><span class="nav-number">1.2.</span> <span class="nav-text">Buffer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tab"><span class="nav-number">1.3.</span> <span class="nav-text">Tab</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.4.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vim-%E4%B8%AD-buffer-window-tab-%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">vim 中 buffer  window  tab 的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#buffer"><span class="nav-number">2.1.</span> <span class="nav-text">buffer</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%93%E5%86%B2%E5%8C%BA%E5%88%97%E8%A1%A8"><span class="nav-number">2.1.1.</span> <span class="nav-text">缓冲区列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%87%E6%8D%A2%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="nav-number">2.1.2.</span> <span class="nav-text">切换缓冲区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="nav-number">2.1.3.</span> <span class="nav-text">删除缓冲区</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#window"><span class="nav-number">2.2.</span> <span class="nav-text">window</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%87%E5%88%86%E7%AA%97%E5%8F%A3"><span class="nav-number">2.2.1.</span> <span class="nav-text">切分窗口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E9%97%AD%E7%AA%97%E5%8F%A3"><span class="nav-number">2.2.2.</span> <span class="nav-text">关闭窗口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%87%E6%8D%A2%E7%AA%97%E5%8F%A3"><span class="nav-number">2.2.3.</span> <span class="nav-text">切换窗口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B0%83%E6%95%B4%E7%AA%97%E5%8F%A3"><span class="nav-number">2.2.4.</span> <span class="nav-text">调整窗口</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tab"><span class="nav-number">2.3.</span> <span class="nav-text">tab</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Wadekiny</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">52</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/01/linux/linux/vim%E4%B8%AD%E7%9A%84buffer-window-tab/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Wadekiny">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wadekiny's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="vim:buffer window tab | Wadekiny's Blog">
+      <meta itemprop="description" content="buffer, window, tab是什么">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          vim:buffer window tab
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-01-01 20:53:33" itemprop="dateCreated datePublished" datetime="2021-01-01T20:53:33+08:00">2021-01-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-01-13 00:47:15" itemprop="dateModified" datetime="2023-01-13T00:47:15+08:00">2023-01-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/ubuntu/" itemprop="url" rel="index"><span itemprop="name">ubuntu</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">buffer, window, tab是什么</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="buffer-window-tab-分别是什么"><a href="#buffer-window-tab-分别是什么" class="headerlink" title="buffer  window  tab 分别是什么"></a>buffer  window  tab 分别是什么</h2><p><strong>参考vim的help文件</strong><br>A buffer is the in-memory text of a file<br>A window is a viewport on a buffer<br>A tab page is a collection of windows.</p>
+<h3 id="Window"><a href="#Window" class="headerlink" title="Window:"></a>Window:</h3><p>A window is a viewport onto a buffer. You can use mutiple windows on one buffer, or several windows on different buffers.</p>
+<p>A screen contains one or more windows, separated by status lines and with the<br>command line at the bottom.</p>
+<p>for example:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">             screen</span><br><span class="line">+-------------------------------+</span><br><span class="line">| window 1      | window 2      |</span><br><span class="line">|               |               |</span><br><span class="line">|               |               |</span><br><span class="line">|= status line =|= status line =|</span><br><span class="line">| window 3                      |</span><br><span class="line">|                               |</span><br><span class="line">|                               |</span><br><span class="line">|==== status line ==============|</span><br><span class="line">|command line                   |</span><br><span class="line">+-------------------------------+</span><br></pre></td></tr></table></figure>
+
+<h3 id="Buffer"><a href="#Buffer" class="headerlink" title="Buffer"></a>Buffer</h3><p>A buffer is a file loaded into memory for editing. The original file remains unchanged until you write the buffer to the file.</p>
+<p>A buffer can be in one of three states:</p>
+<ol>
+<li>active: the buffer is displayed in a window. If there is a file for this buffer, it has been read into the buffer. The buffer may have been modified since then and thus be different from the file.</li>
+<li>hidden: the buffer is not displayed. If ther is a file for this buffer, it has been read into the buffer. Otherwise it is the same as an active buffer, you just cannot see it.</li>
+<li>inactive: the buffer is not displayed and does not contain anything. Options for the buffer are remembered if the file was once loaded. It can contain marks from the shada file. But the buffer doesn’t contain text.</li>
+</ol>
+<p>In brief:</p>
+<table>
+<thead>
+<tr>
+<th>state</th>
+<th>displayed in window</th>
+<th>loaded</th>
+<th>“:buffers” show</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>active</td>
+<td>yes</td>
+<td>yes</td>
+<td>‘a’</td>
+</tr>
+<tr>
+<td>hidden</td>
+<td>no</td>
+<td>yes</td>
+<td>‘h’</td>
+</tr>
+<tr>
+<td>inactive</td>
+<td>no</td>
+<td>no</td>
+<td>‘ ‘</td>
+</tr>
+</tbody></table>
+<h3 id="Tab"><a href="#Tab" class="headerlink" title="Tab"></a>Tab</h3><p>A tab page holds one or more windows.  You can easily switch between tab pages, so that you have several collections of windows to work on different things.</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>操作文件实际上是操作各个buffer（当新打开一个buffer的时候它不对应任何文件），buffer客观存在（活动、非活动、隐藏），想要看到buffer的内容需要使用window</li>
+<li>window实际上是buffer的视窗，想要看到buffer需要通过window，一个window对应一个buffer；也可以同时用多个window看一个buffer（比如需要对比一个文件的两个不同位置），对buffer的修改同时有效</li>
+<li>一个tab可以整合多个window，多个window构成一个tab</li>
+</ul>
+<hr>
+<h2 id="vim-中-buffer-window-tab-的操作"><a href="#vim-中-buffer-window-tab-的操作" class="headerlink" title="vim 中 buffer  window  tab 的操作"></a>vim 中 buffer  window  tab 的操作</h2><h3 id="buffer"><a href="#buffer" class="headerlink" title="buffer"></a>buffer</h3><h4 id="缓冲区列表"><a href="#缓冲区列表" class="headerlink" title="缓冲区列表"></a>缓冲区列表</h4><ol>
+<li><code>:ls</code></li>
+<li><code>:buffers</code></li>
+</ol>
+<h4 id="切换缓冲区"><a href="#切换缓冲区" class="headerlink" title="切换缓冲区"></a>切换缓冲区</h4><ol>
+<li>上一个　<code>:bp</code></li>
+<li>下一个　<code>:bn</code></li>
+<li>指定　<code>:b[index]</code></li>
+</ol>
+<h4 id="删除缓冲区"><a href="#删除缓冲区" class="headerlink" title="删除缓冲区"></a>删除缓冲区</h4><ol>
+<li>删除当前　<code>:bd</code></li>
+<li>删除指定　<code>:bd[index]</code></li>
+</ol>
+<h3 id="window"><a href="#window" class="headerlink" title="window"></a>window</h3><h4 id="切分窗口"><a href="#切分窗口" class="headerlink" title="切分窗口"></a>切分窗口</h4><ol>
+<li>水平切分<br> 命令：<code>:sp file</code><br> 快捷键：<code>&lt;Ctrl-w&gt; + s</code> </li>
+<li>垂直切分<br> 命令： <code>:vsp file</code><br> 快捷键：<code>&lt;Ctrl-w&gt; + v</code></li>
+</ol>
+<h4 id="关闭窗口"><a href="#关闭窗口" class="headerlink" title="关闭窗口"></a>关闭窗口</h4><ol>
+<li>关闭活动窗口<br> 命令： <code>:clo  或者 :q</code><br> 快捷键：<code>&lt;Ctrl-w&gt; + c</code></li>
+<li>关闭其他窗口<br> 命令： <code>:on</code><br> 快捷键：<code>&lt;Ctrl-w&gt; + o</code></li>
+</ol>
+<h4 id="切换窗口"><a href="#切换窗口" class="headerlink" title="切换窗口"></a>切换窗口</h4><ol>
+<li>窗口间循环切换 <code>&lt;Ctrl-w&gt; + w</code></li>
+<li>切换到左边窗口 <code>&lt;Ctrl-w&gt; + h</code></li>
+<li>切换到上边窗口 <code>&lt;Ctrl-w&gt; + j</code></li>
+<li>切换到下边窗口 <code>&lt;Ctrl-w&gt; + k</code></li>
+<li>切换到右边窗口 <code>&lt;Ctrl-w&gt; + l</code></li>
+</ol>
+<h4 id="调整窗口"><a href="#调整窗口" class="headerlink" title="调整窗口"></a>调整窗口</h4><ol>
+<li>增加活动窗口宽度      <code>:vertical res +10  </code> </li>
+<li>最大化活动窗口的宽度  <code>&lt;Ctrl-W&gt; + | 　　  </code> </li>
+<li>使所有窗口等宽等高    <code>&lt;Ctrl-W&gt; + =       </code> </li>
+<li>设置活动窗口高度为N行 <code>[N] + &lt;Ctrl-W&gt; + _ </code> </li>
+<li>设置活动窗口宽度为N列 <code>[N] + &lt;Ctrl-W&gt; + | </code> </li>
+<li>增加活动窗口高度      <code>:res +10           </code></li>
+</ol>
+<h3 id="tab"><a href="#tab" class="headerlink" title="tab"></a>tab</h3><ol>
+<li>在新标签页中打开 {filename}         <code>:tabe(dit) [filename] </code>	</li>
+<li>关闭当前标签页及其中的所有窗口      <code>:tabc(lose)	          </code>  </li>
+<li>只保留活动标签页，关闭所有其他标签页<code>:tabo(nly) [filename] </code>	</li>
+<li>切换到编号为 {N} 的标签页           <code>:tabn(ext) [N&#125; 	      </code>  </li>
+<li>切换到下一标签页                    <code>:tabn(ext) 	          </code>  </li>
+<li>切换到上一标签页                    <code>:tabp(revious) 	      </code></li>
+</ol>
+<hr>
+<hr>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/vim/" rel="tag"># vim</a>
+              <a href="/tags/ubuntu/" rel="tag"># ubuntu</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/01/01/linux/linux/ubuntu%E4%B8%8B%E6%89%93%E5%8C%85%E4%B8%8E%E5%8E%8B%E7%BC%A9/" rel="prev" title="ubuntu下打包与压缩">
+                  <i class="fa fa-chevron-left"></i> ubuntu下打包与压缩
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/01/02/linux/linux/Vim%E6%8F%92%E4%BB%B6/" rel="next" title="Vim插件">
+                  Vim插件 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wadekiny</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/4.14.3/algoliasearch-lite.umd.js" integrity="sha256-dyJcbGuYfdzNfifkHxYVd/rzeR6SLLcDFYEidcybldM=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/4.49.2/instantsearch.production.min.js" integrity="sha256-Nu8yqoXoRZEVYyZf4/eY1V4FsenbiCw85RY3gWjN3zQ=" crossorigin="anonymous"></script><script src="/js/third-party/search/algolia-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

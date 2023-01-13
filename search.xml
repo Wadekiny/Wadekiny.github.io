@@ -47,82 +47,38 @@
 <p>额外的uv图用来恢复高清细节</p>
 <p>模型去除光照渲染<br>反射率之类的东西<br>部件gcn<br>meshgcn</p>
 <p>粗-细<br>眼镜</p>
-<p>pyright opencv<br>clash for windows git加速(还是用qv2ray把)<br>舞蹈和人脸合成一起</p>
+<p>舞蹈和人脸合成一起</p>
 <p>纹理细节为什么不好？</p>
-<p>无线电 群里的论文<br>expgan</p>
-<p>i3: autotiling<br>i3: lxappearance</p>
-<p>vim: vim-surround (ysiw3*)<br>vim: startify<br>vim: lightline, bufferline<br>vim: coc-explorer<br>vim: plugin - treesitter- too long ‘if,for,class,function…,’<br>vim: line tab4 highlight<br>vim: highlight func class…too long<br>vim: pwd at right top<br>vim: set autochdir 自动改变工作目录<br>：cd改变工作目录<br>see more details: <code>:h expand</code></p>
-<p>.zshrc<br>alias todo&#x3D;’nvim ~&#x2F;BLOG&#x2F;source&#x2F;_posts&#x2F;TODO.md’</p>
-<p>coc补全边框圆角显示问题巴拉巴拉，是alacritty的问题，更新最新版的alacritty，就好了</p>
-<p>system: asd2123<br>ranger:select-editor</p>
-<p>sogou<br>nvidia驱动</p>
-<p>dwm,i3获取窗口<br>xprop<br>xwininfo<br>notify-osd<br>dunst!<br>dunst要不要加到开机启动？<br>vim:hex 16进制表示方法<br>:set laststatus&#x3D;2<br><code>:set statusline=%&lt;%f%h%m%r%=%b\ 0x%B\ \ %l,%c%V\ %P</code></p>
-<p>dwm statusbar 日期部分显示异常，加正则表达式替换<br> cal | sed  ‘s&#x2F;_&#x2F;test&#x2F;g’ | nvim<br>：<br>cal | sed ‘s&#x2F;_^H&#x2F; &#x2F;‘ | sed ‘s&#x2F;  _^H&#x2F;&gt;&#x2F;‘<br>正则替换每一个可能的清空<br>dwm statusbar路径设置<br>vim 正则表达式替换<br>vim宏+1功能 c-a<br>ls20东蒙人工智能团支部p<br>clash for window<br>wsl代理需要设置防火墙<br>ip到底是哪个？</p>
-<p>easyconnect 打开导致不能git push</p>
-<p>proxy打开后，pip install报错 <a href="https://blog.csdn.net/tuzixini/article/details/88203910">https://blog.csdn.net/tuzixini/article/details/88203910</a><br>mason 不能安装python-lanuage-server <a href="https://www.saoniuhuo.com/question/detail-2133503.htmlcli">https://www.saoniuhuo.com/question/detail-2133503.htmlcli</a></p>
-<p>2022-12-23T16:57:49 Warning  WARN Client 1 quit with exit code 1 and signal 0 ,checkhealth,是不是有依赖不匹配</p>
-<ol>
-<li>kitty and Chinese</li>
+<p>expgan</p>
+<p>vim:hex 16进制表示方法<br>:set laststatus&#x3D;2<br><code>:set statusline=%&lt;%f%h%m%r%=%b\ 0x%B\ \ %l,%c%V\ %P</code></p>
+<p>vim 正则表达式替换</p>
+<p>wsl代理需要设置防火墙- ip到底是哪个？<br>easyconnect 打开导致不能git push</p>
+<p>proxy打开后，pip install报错 <a href="https://blog.csdn.net/tuzixini/article/details/88203910">https://blog.csdn.net/tuzixini/article/details/88203910</a><br>mason 不能安装python-lanuage-server <a href="https://www.saoniuhuo.com/question/detail-2133503.htmlcli">https://www.saoniuhuo.com/question/detail-2133503.htmlcli</a><br>16. pynput need sudo apt install python3-tk python3-dev<br>17. pyautogui 可以弹窗</p>
+<p>pyright opencv<br>import pyautogui<br>显示一个简单的带文字和OK按钮的消息弹窗。用户点击后返回button的文字。<br>pyautogui.alert(text&#x3D;’’, title&#x3D;’’, button&#x3D;’OK’)</p>
+<p> pip 换源</p>
+<ol start="2">
 <li>Xauthority should be wadekiny’s, instaed, login loop</li>
 <li>Nvidia driver should be 470.xxx. or black screen</li>
-<li>a lot of nvim stateline</li>
-<li>i3-gaps</li>
-<li>fcitx</li>
-<li>ranger kitty preview image</li>
-<li>i3 picom ,is updating</li>
-<li>betterlockscreen  need i3lock ..</li>
-<li>git speed up</li>
-<li>press mod+p to imput password</li>
-<li>filename from window will be wired</li>
-<li>kitty do not support chinese input method, rustup ,cargo and alacritty</li>
-<li>ranger default text editor</li>
-<li>删除团员</li>
-<li>pynput need sudo apt install python3-tk python3-dev</li>
-<li>pyautogui 可以弹窗</li>
 </ol>
-<p>import pyautogui</p>
-<h1 id="显示一个简单的带文字和OK按钮的消息弹窗。用户点击后返回button的文字。"><a href="#显示一个简单的带文字和OK按钮的消息弹窗。用户点击后返回button的文字。" class="headerlink" title="显示一个简单的带文字和OK按钮的消息弹窗。用户点击后返回button的文字。"></a>显示一个简单的带文字和OK按钮的消息弹窗。用户点击后返回button的文字。</h1><p>pyautogui.alert(text&#x3D;’’, title&#x3D;’’, button&#x3D;’OK’)</p>
-<p>~&#x2F;.fonts&#x2F; 添加字体文件，可以直接安装字体<br>dunst是系统自带的<br>&#x2F;usr&#x2F;share&#x2F;xsession&#x2F;dwm.desktop<br>lsp<br>dwm-statusbar有时候不显示，是因为temp里多了一对@,不知道为什么<br>windows的zip文件在ubuntu解压乱码k</p>
-<p> install arch linux<br> merge code new roman and maiyuan<br>  fcixt5 vim<br> sound pulseaudio dwm shortcut change volume use pactl instead of axmier</p>
-<p> how to view a key code? like<br>    { 0,    XF86XK_AudioLowerVolume,  spawn, SHCMD(“pactl set-sink-volume @DEFAULT_SINK@ -5%”) },                              &#x2F;* super shift down | 音量减                 *&#x2F;<br>    xkxxxxxxx</p>
-<p>#include &lt;X11&#x2F;XF86keysym.h&gt;?</p>
-<p> amd-display-xf?? 装了后显示异常，不如不装<br> pip 换源</p>
-<p> 网卡驱动<br> realtek rtl8852be wifi 6 802.11ax pcie adapter  archlinux 驱动</p>
+<p>~&#x2F;.fonts&#x2F; 添加字体文件，可以直接安装字体<br>windows的zip文件在ubuntu解压乱码k</p>
 <p> 开机不自动换esc capslock？</p>
 <p>grub add windows</p>
-<p>feh dnust betterlockscreen rofi picom dwm </p>
 <p>.Xresources<br>.xinitrc<br>免密自动登录 startx</p>
-<p>clash for windows</p>
-<p>aur makepkg<br>nm-applet 貌似是ubuntu下的，arch不能用 ,用nm-tray-git</p>
-<p>esc2caps 和 fcitx5 -d 都放到autostart里不行</p>
-<p>fcitx5 -d 不在autostart时，esc2caps起作用<br>起作用后在启动fcitx5 -d esc2caps 又不起作用了<br>再esc2caps,又起作用了</p>
-<p>所以是fcitx5重置了esc2caps<br><a href="https://wiki.archlinux.org/title/fcitx">https://wiki.archlinux.org/title/fcitx</a><br>提到了 fcitx会覆盖xmodmap的作用<br>Fcitx now control keyboard layout and when switch layout, xmodmap setting will be overwritten. So fcitx-xkb provides an option to specify the xmodmap script and let fcitx loads it for you whenever keyboard layout changes. Or disable fcitx-xkb addon is also a solution for you, or if your requirement is simply, for example, switching Caps Lock and Esc, which is provided by xkb option, you can just set it with your desktop keyboard configuration tool (Gnome and KDE all support such configuration).</p>
-<p>For more detailed explanation, xmodmap is a very low level tool, that doesn’t aware keyboard layout. For X11, keyboard layout is built on a set of profile, when such profile is loaded, anything you changed with xmodmap will be overwritten, this isn’t specific to fcitx, but all tool that support keyboard layout configuration. Xkb option is a set of profile that can do some pre-defined change over keyboard layout, including many thing that people usually do with xmodmap, for example, defining where dead key is, switching Caps Lock and Esc, and so on. Unless you have special requirements, xkb layout and xkb option is recommended.</p>
-<p>Since 4.2.7, Fcitx will try to load ~&#x2F;.Xmodmap if it exists.</p>
-<p>由于不只是fcitx会出现此情况，其他软件也有可能，解决方法最好是用xkb(Xorg&#x2F;Keyboard configuration)</p>
-<p>setxkbmap -option “caps:swapescape”</p>
-<p>neovide can implement cursors smooth but can not input Chinese<br>how to set fonts?????????</p>
-<p>maiyuan font : 11904 start  end 184000 ,放弃了 并且使用jetbrains nerdfont字体，其他字体可能不会对齐</p>
-<p>neovide不能输入中文，winit？</p>
+<p>neovide can implement cursors smooth but can not input Chinese</p>
 <p>zotero</p>
-<p>aur:<br>yay:<br>sudo pacman -S yay<br>坚果云 zotero</p>
+<p>坚果云 zotero</p>
 <p>安装微信需要打开multilib<br><a href="https://blog.csdn.net/weixin_52027058/article/details/128346840">https://blog.csdn.net/weixin_52027058/article/details/128346840</a></p>
-<p>fontforge合并字体之后 还要在小修改一下符号，避免边框对不起(然而含麻烦)</p>
 <p>微信<a href="https://github.com/vufa/deepin-wine-wechat-arch#%E4%BB%8Eaur%E5%AE%89%E8%A3%85">https://github.com/vufa/deepin-wine-wechat-arch#%E4%BB%8Eaur%E5%AE%89%E8%A3%85</a></p>
 <p><a href="https://github.com/vufa/deepin-wine-wechat-arch#%E4%BB%8Eaur%E5%AE%89%E8%A3%85">https://github.com/vufa/deepin-wine-wechat-arch#%E4%BB%8Eaur%E5%AE%89%E8%A3%85</a><br>o<a href="https://www.bilibili.com/video/BV1Z3411F7TL/?spm_id_from=333.337.search-card.all.click&vd_source=c59669dc10d72873dc1a840e4c9b6095">https://www.bilibili.com/video/BV1Z3411F7TL/?spm_id_from=333.337.search-card.all.click&amp;vd_source=c59669dc10d72873dc1a840e4c9b6095</a></p>
 <p>flameshot 截图不能直接复制到qq 微信 no tray refer:<br><a href="https://wiki.archlinux.org/title/Flameshot">https://wiki.archlinux.org/title/Flameshot</a></p>
 <p>vim 如何在浮动窗口和普通窗口切换<br>023-01-12T19:23:37 Messages  INFO line    8:<br>Needs xclip in X11 or wl-clipboard in Wayland.<br>2023-01-12T19:23:37 Error  ERROR Error detected while processing function MdPasteImage[5]..mdip#MarkdownClipboardImage[23]..<SNR>58_SaveFileTMP[6]..<SNR>58_SaveFileTMPLinux:<br>2023-01-12T19:23:49 Messages  INFO 2023-01-12T19:23:37 Messages  INFO line    8:<br>Needs xclip in X11 or wl-clipboard in Wayland.<br>2023-01-12T19:23:37 Error  ERROR Error detected while processing function MdPasteImage[5]..mdip#MarkdownClipboardImage[23]..<SNR>58_SaveFileTMP[6]..<SNR>58_SaveFileTMPLinux:<br>2023-01-12T19:24:01 Error  ERROR E488: Trailing characters: list</p>
 <p>flameshot &amp;<br>flameshot gui<br><a href="https://github.com/flameshot-org/flameshot/issues/2496">https://github.com/flameshot-org/flameshot/issues/2496</a></p>
-<p>xorg 缩放倍数<br>设置鼠标样式 大小<br><a href="https://wiki.archlinuxcn.org/zh-hans/%E5%85%89%E6%A0%87%E4%B8%BB%E9%A2%98">https://wiki.archlinuxcn.org/zh-hans/%E5%85%89%E6%A0%87%E4%B8%BB%E9%A2%98</a><br>lxapperance</p>
-<p>文件夹可视化管理<br>nautilus</p>
-<p>xrandr –output e-DP1 –scale 0.5x0.5</p>
-<p>npm fanyi 的问题<br><a href="https://github.com/afc163/fanyi#error-spawn-festival-enoent">https://github.com/afc163/fanyi#error-spawn-festival-enoent</a><br>sudo apt-get install festival festvox-kallpc16k</p>
-<p>arch无法识别typec接口显示器</p>
-<p>设置亮度 sudo echo 50 &gt; &#x2F;sys&#x2F;class&#x2F;backligh^Cmdgpu_bl0&#x2F;brightness<br>root用户才行，sudo不能获取root全部权限</p>
-<p>获取窗口名称？</p>
+<p>xorg 缩放倍数</p>
+<p>xrandr –output e-DP1 –scale 0.5x0.5<br>arch无法识别typec接口显示器</p>
 <p>挂载windows分区<a href="https://zhuanlan.zhihu.com/p/513859236">https://zhuanlan.zhihu.com/p/513859236</a></p>
 <p>怎么有时候会卡死？好像和fcitx有关<br>grub不能识别windows<br>从archlinux.md中拆分 profile bashrcxxxxx优先级，形成一篇新的</p>
-<p>Xresources修改dpi？<br><a href="https://zhuanlan.zhihu.com/p/513859236">https://zhuanlan.zhihu.com/p/513859236</a></p>
+<p>Xresources修改dpi？<br><a href="https://zhuanlan.zhihu.com/p/513859236">https://zhuanlan.zhihu.com/p/513859236</a><br>wechat 锁更新<br>okular pdf查看器查看器</p>
+<p>hexo deploy github<br>hexo 相对位置文件路径</p>
 ]]></content>
       <categories>
         <category>todo</category>
@@ -3725,124 +3681,6 @@
       </tags>
   </entry>
   <entry>
-    <title>窗口管理器i3wm安装配置</title>
-    <url>/2022/06/22/linux/i3/i3wm/</url>
-    <content><![CDATA[<p>效果图:<br><img src="/./i3wm/performance2.png" alt="performance2"></p>
-<p>可以借鉴的配置：<br><a href="https://github.com/aeghn/prettyi3">https://github.com/aeghn/prettyi3</a><br><a href="https://github.com/jorhelp/LinuxDotfiles">https://github.com/jorhelp/LinuxDotfiles</a></p>
-<p>我的配置文件: <a href="https://github.com/Wadekiny/dotfiles">https://github.com/Wadekiny/dotfiles</a></p>
-<h1 id="i3wm"><a href="#i3wm" class="headerlink" title="i3wm"></a>i3wm</h1><p><a href="https://github.com/i3/i3">https://github.com/i3/i3</a></p>
-<h2 id="i3-gaps"><a href="#i3-gaps" class="headerlink" title="i3-gaps"></a>i3-gaps</h2><p>i3-gaps 可以使窗口之间有空隙（最终使用）<br><a href="https://github.com/Airblader/i3">https://github.com/Airblader/i3</a></p>
-<h2 id="i3-gaps-rounded"><a href="#i3-gaps-rounded" class="headerlink" title="i3-gaps-rounded"></a>i3-gaps-rounded</h2><p>在i3-gaps的基础之上添加了圆角，有bug，圆角不能正常显示<br><a href="https://github.com/resloved/i3">https://github.com/resloved/i3</a></p>
-<h2 id="配置i3"><a href="#配置i3" class="headerlink" title="配置i3"></a>配置i3</h2><p>创建配置文件: <code>~/.config/i3/config</code><br>我的配置文件: <a href="https://github.com/Wadekiny/dotfiles">https://github.com/Wadekiny/dotfiles</a></p>
-<h1 id="compton-amp-picom"><a href="#compton-amp-picom" class="headerlink" title="compton &amp; picom"></a>compton &amp; picom</h1><p>使用picom实现阴影，透明，高斯模糊，圆角效果</p>
-<h2 id="安装picom"><a href="#安装picom" class="headerlink" title="安装picom"></a>安装picom</h2><ul>
-<li><p>原生picom，功能少，bug少<br><a href="https://github.com/yshui/picom">https://github.com/yshui/picom</a></p>
-</li>
-<li><p>增加了透明、高斯模糊、圆角<br>但是有一个问题，同时使用圆角，透明+高斯模糊，阴影时，圆角处不透明而是模糊效果<br><a href="https://github.com/ibhagwan/picom">https://github.com/ibhagwan/picom</a> </p>
-</li>
-<li><p>修复了圆角处的问题（最终使用）<br><a href="https://github.com/s0nny7/picom">https://github.com/s0nny7/picom</a></p>
-</li>
-<li><p>带动画的picom，会报错，动画不流畅<br><a href="https://github.com/jonaburg/picom">https://github.com/jonaburg/picom</a></p>
-<ul>
-<li>还有一个jonaburg-fix版本</li>
-</ul>
-</li>
-</ul>
-<h2 id="配置picom"><a href="#配置picom" class="headerlink" title="配置picom"></a>配置picom</h2><p><code>~/.config/picom/picom.conf</code></p>
-<p>我的配置文件: <a href="https://github.com/Wadekiny/dotfiles">https://github.com/Wadekiny/dotfiles</a></p>
-<h1 id="polybar"><a href="#polybar" class="headerlink" title="polybar"></a>polybar</h1><p><a href="https://github.com/polybar/polybar">https://github.com/polybar/polybar</a></p>
-<p>如果要显示不同模块的信息，需要装上对应的依赖</p>
-<h2 id="开机启动polybar"><a href="#开机启动polybar" class="headerlink" title="开机启动polybar"></a>开机启动polybar</h2><ol>
-<li><p>在<code>~/.config/i3/config</code>中注释掉<code>i3status</code>部分</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#finds out, if available)</span><br><span class="line">#bar &#123;</span><br><span class="line">#status_command i3status</span><br><span class="line">#&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建脚本<code>~/.config/i3/polybar.sh</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">killall -q polybar</span><br><span class="line">while pgrep -x &gt;/dev/null; do sleep 1; done</span><br><span class="line">polybar</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在<code>~/.config/i3/config</code>中添加开机启动</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">exec_always --no-startup-id ~/.config/i3/polybar.sh &amp;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="配置polybar"><a href="#配置polybar" class="headerlink" title="配置polybar"></a>配置polybar</h2><p>配置文件位置: <code>~/.config/polybar/config.ini</code><br>我的配置文件: <a href="https://github.com/Wadekiny/dotfiles">https://github.com/Wadekiny/dotfiles</a></p>
-<h1 id="rofi"><a href="#rofi" class="headerlink" title="rofi"></a>rofi</h1><h2 id="安装rofi"><a href="#安装rofi" class="headerlink" title="安装rofi"></a>安装rofi</h2><p><a href="https://github.com/davatorium/rofi">https://github.com/davatorium/rofi</a></p>
-<h2 id="配置rofi"><a href="#配置rofi" class="headerlink" title="配置rofi"></a>配置rofi</h2><p><a href="https://github.com/davatorium/rofi/blob/next/CONFIG.md">https://github.com/davatorium/rofi/blob/next/CONFIG.md</a></p>
-<p>创建配置文件到<code>~/.config/rofi/config.rasi</code></p>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">rofi -upgrade-config</span><br></pre></td></tr></table></figure>
-<h2 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h2><p><a href="https://github.com/davatorium/rofi-themes/tree/master/User%20Themes">https://github.com/davatorium/rofi-themes/tree/master/User%20Themes</a></p>
-<p>下载想用的主题，主题文件放到<code>~/.config/rofi/</code>目录下</p>
-<h2 id="rofi代替dmenu"><a href="#rofi代替dmenu" class="headerlink" title="rofi代替dmenu"></a>rofi代替dmenu</h2><p>在<code>~/.config/i3/config</code>中添加一行：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bindsym $mod+d exec --no-startup-id rofi -theme slate.rasi -show combi -show-icons</span><br></pre></td></tr></table></figure>
-
-<h2 id="rofi配置文件"><a href="#rofi配置文件" class="headerlink" title="rofi配置文件"></a>rofi配置文件</h2><p>我的配置文件: <a href="https://github.com/Wadekiny/dotfiles">https://github.com/Wadekiny/dotfiles</a></p>
-<h1 id="i3lock"><a href="#i3lock" class="headerlink" title="i3lock"></a>i3lock</h1><ol>
-<li><p>默认的i3lock</p>
-</li>
-<li><p>i3lock-color<br><a href="https://github.com/Raymo111/i3lock-color">https://github.com/Raymo111/i3lock-color</a></p>
-</li>
-<li><p>betterlockscreen (最终使用)<br><a href="https://github.com/betterlockscreen/betterlockscreen">https://github.com/betterlockscreen/betterlockscreen</a></p>
-</li>
-</ol>
-<ul>
-<li>我的配置文件: <a href="https://github.com/Wadekiny/dotfiles">https://github.com/Wadekiny/dotfiles</a></li>
-</ul>
-<h1 id="壁纸"><a href="#壁纸" class="headerlink" title="壁纸"></a>壁纸</h1><p>自动更换壁纸</p>
-<ol>
-<li>创建 python 文件</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> glob</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">bg_dir = <span class="string">&#x27;/home/wadekiny/Pictures/background/&#x27;</span></span><br><span class="line">time_cycle = <span class="number">1000</span></span><br><span class="line">bg_list = glob.glob(bg_dir + <span class="string">&#x27;*.jpg&#x27;</span>) + glob.glob(bg_dir + <span class="string">&#x27;*.png&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    bg_list = glob.glob(bg_dir + <span class="string">&#x27;*.jpg&#x27;</span>) + glob.glob(bg_dir + <span class="string">&#x27;*.png&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> pic_name <span class="keyword">in</span> bg_list:</span><br><span class="line">        <span class="built_in">print</span>(pic_name)</span><br><span class="line">        os.system(<span class="string">&#x27;feh --bg-fill &#x27;</span>+ pic_name)</span><br><span class="line">        time.sleep(time_cycle)</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>开机启动</li>
-</ol>
-<p><code>~/.config/i3/config</code>中添加一行</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">exec_always --no-startup-id python3 ~/.config/i3/wallpic.py</span><br></pre></td></tr></table></figure>
-
-
-
-
-<h1 id="音量"><a href="#音量" class="headerlink" title="音量"></a>音量</h1><h2 id="设置默认声卡"><a href="#设置默认声卡" class="headerlink" title="设置默认声卡"></a>设置默认声卡</h2><p>在使用amixer设置音量时，报错: <code>amixer: Unable to find simple control &#39;Master&#39; 0</code></p>
-<ol>
-<li><p>通过<code>alsamixer</code>命令可以查看当前声卡，调节音频</p>
-</li>
-<li><p>查看声卡相关信息：</p>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"> wadekiny-R7P &lt;~&gt; [<span class="number">16</span>:<span class="number">35</span>:<span class="number">29</span>]</span><br><span class="line"> &gt;&gt; aplay -l</span><br><span class="line">**** List of PLAYBACK Hardware Devices ****</span><br><span class="line">card <span class="number">0</span>: NVidia [HDA NVidia], device <span class="number">3</span>: HDMI <span class="number">0</span> [HDMI <span class="number">0</span>]</span><br><span class="line"><span class="function">  Subdevices: 1/1</span></span><br><span class="line"><span class="function">  <span class="title">Subdevice</span> #0: <span class="title">subdevice</span> #0</span></span><br><span class="line"><span class="function"><span class="title">card</span> 0: <span class="title">NVidia</span> [<span class="title">HDA</span> <span class="title">NVidia</span>], <span class="title">device</span> 7: <span class="title">HDMI</span> 1 [<span class="title">HDMI</span> 1]</span></span><br><span class="line"><span class="function">  <span class="title">Subdevices</span>: 1/1</span></span><br><span class="line"><span class="function">  <span class="title">Subdevice</span> #0: <span class="title">subdevice</span> #0</span></span><br><span class="line"><span class="function"><span class="title">card</span> 0: <span class="title">NVidia</span> [<span class="title">HDA</span> <span class="title">NVidia</span>], <span class="title">device</span> 8: <span class="title">HDMI</span> 2 [<span class="title">HDMI</span> 2]</span></span><br><span class="line"><span class="function">  <span class="title">Subdevices</span>: 1/1</span></span><br><span class="line"><span class="function">  <span class="title">Subdevice</span> #0: <span class="title">subdevice</span> #0</span></span><br><span class="line"><span class="function"><span class="title">card</span> 0: <span class="title">NVidia</span> [<span class="title">HDA</span> <span class="title">NVidia</span>], <span class="title">device</span> 9: <span class="title">HDMI</span> 3 [<span class="title">HDMI</span> 3]</span></span><br><span class="line"><span class="function">  <span class="title">Subdevices</span>: 1/1</span></span><br><span class="line"><span class="function">  <span class="title">Subdevice</span> #0: <span class="title">subdevice</span> #0</span></span><br><span class="line"><span class="function"><span class="title">card</span> 0: <span class="title">NVidia</span> [<span class="title">HDA</span> <span class="title">NVidia</span>], <span class="title">device</span> 10: <span class="title">HDMI</span> 4 [<span class="title">HDMI</span> 4]</span></span><br><span class="line"><span class="function">  <span class="title">Subdevices</span>: 1/1</span></span><br><span class="line"><span class="function">  <span class="title">Subdevice</span> #0: <span class="title">subdevice</span> #0</span></span><br><span class="line"><span class="function"><span class="title">card</span> 1: <span class="title">Generic</span> [<span class="title">HD</span>-<span class="title">Audio</span> <span class="title">Generic</span>], <span class="title">device</span> 0: <span class="title">ALC257</span> <span class="title">Analog</span> [<span class="title">ALC257</span> <span class="title">Analog</span>]</span></span><br><span class="line"><span class="function">  <span class="title">Subdevices</span>: 1/1</span></span><br><span class="line"><span class="function">  <span class="title">Subdevice</span> #0: <span class="title">subdevice</span> #0</span></span><br></pre></td></tr></table></figure>
-<p>所以，在aplay -l 里面选择声卡1,设备ID为0的声卡。</p>
-</li>
-<li><p>把下列配置添加到系统级别的 <code>/etc/asound.conf</code> 或用户级别的 <code>~/.asoundrc</code> 文件。如果文件不存在，可以手动创建。其中的各个ID，请根据实际情况调整：</p>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">defaults.pcm.card 1</span><br><span class="line">defaults.pcm.device 0</span><br><span class="line">defaults.ctl.card 1</span><br></pre></td></tr></table></figure>
-
-<p><code>pcm</code>选项决定用来播放音频的设备，而<code>ctl</code>选项决定那个声卡能够由控制工具（如 alsamixer）使用。</p>
-<h2 id="配置快捷键"><a href="#配置快捷键" class="headerlink" title="配置快捷键"></a>配置快捷键</h2><p>在<code>~/.config/i3/config</code>中添加：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bindsym XF86AudioRaiseVolume exec amixer set  Master 1dB+</span><br><span class="line">bindsym XF86AudioLowerVolume exec amixer set  Master 1dB-</span><br><span class="line">bindsym XF86AudioMute exec amixer -D pulse set Master toggle </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="亮度"><a href="#亮度" class="headerlink" title="亮度"></a>亮度</h1><p>在<code>~/.config/i3/config</code>中添加：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bindsym XF86MonBrightnessUp exec &quot;xbacklight -inc 10; notify-send &#x27;brightness up&#x27;&quot;</span><br><span class="line">bindsym XF86MonBrightnessDown exec &quot;xbacklight -dec 10; notify-send &#x27;brightness down&#x27;&quot;</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="触摸板"><a href="#触摸板" class="headerlink" title="触摸板"></a>触摸板</h1><h2 id="轻击触摸板实现点击功能"><a href="#轻击触摸板实现点击功能" class="headerlink" title="轻击触摸板实现点击功能"></a>轻击触摸板实现点击功能</h2><p>编写脚本文件<code>~/.config/i3/tap2click.sh</code>，在i3的配置文件中添加一行：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">exec_always --no-startup-id ~/.config/i3/tap2click.sh &amp;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Get <span class="built_in">id</span> of touchpad and the <span class="built_in">id</span> of the field corresponding to</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">tapping to click</span></span><br><span class="line">id=`xinput list | grep &quot;Touchpad&quot; | cut -d&#x27;=&#x27; -f2 | cut -d&#x27;[&#x27; -f1`</span><br><span class="line">tap_to_click_id=`xinput list-props $id | \</span><br><span class="line">                      grep &quot;Tapping Enabled (&quot; \</span><br><span class="line">                      | cut -d&#x27;(&#x27; -f2 | cut -d&#x27;)&#x27; -f1`</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Set the property to <span class="literal">true</span></span></span><br><span class="line">xinput --set-prop $id $tap_to_click_id 1</span><br></pre></td></tr></table></figure>
-
-<h2 id="实现反向滚动"><a href="#实现反向滚动" class="headerlink" title="实现反向滚动"></a>实现反向滚动</h2><p>编写脚本文件<code>~/.config/i3/inverse-scroll.sh</code>，在i3的配置文件中添加一行：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">exec_always --no-startup-id ~/.config/i3/inverse-scroll.sh &amp;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Get <span class="built_in">id</span> of touchpad and the <span class="built_in">id</span> of the field corresponding to</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">natural scrolling</span></span><br><span class="line">id=`xinput list | grep &quot;Touchpad&quot; | cut -d&#x27;=&#x27; -f2 | cut -d&#x27;[&#x27; -f1`</span><br><span class="line">natural_scrolling_id=`xinput list-props $id | \</span><br><span class="line">                      grep &quot;Natural Scrolling Enabled (&quot; \</span><br><span class="line">                      | cut -d&#x27;(&#x27; -f2 | cut -d&#x27;)&#x27; -f1`</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Set the property to <span class="literal">true</span></span></span><br><span class="line">xinput --set-prop $id $natural_scrolling_id 1</span><br></pre></td></tr></table></figure>
-<h1 id="解决边框-圆角冲突"><a href="#解决边框-圆角冲突" class="headerlink" title="解决边框+圆角冲突"></a>解决边框+圆角冲突</h1><ul>
-<li>使用i3的边框再用picom圆角，会导致四个角的边框被削掉。</li>
-</ul>
-<p>用这个: <a href="https://github.com/Wadekiny/xborders">https://github.com/Wadekiny/xborders</a></p>
-]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-      <tags>
-        <tag>i3</tag>
-        <tag>linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Arch Linux 安装</title>
     <url>/2023/01/13/linux/arch/archlinux/</url>
     <content><![CDATA[<p><img src="/./archlinux/arch.png" alt="arch"></p>
@@ -4032,10 +3870,11 @@
     <content><![CDATA[<p><a href="https://github.com/wu58430/R7000-brightness-control">https://github.com/wu58430/R7000-brightness-control</a></p>
 ]]></content>
       <categories>
-        <category>ubuntu</category>
+        <category>linux</category>
       </categories>
       <tags>
-        <tag>ubuntu</tag>
+        <tag>linux</tag>
+        <tag>hardware</tag>
       </tags>
   </entry>
   <entry>
@@ -4050,11 +3889,12 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&quot;##### auto fcitx  ###########</span><br><span class="line">let g:input_toggle = 1</span><br><span class="line">function! fcitx2en()</span><br><span class="line">   let s:input_status = system(&quot;fcitx-remote&quot;)</span><br><span class="line">   if s:input_status == 2</span><br><span class="line">      let g:input_toggle = 1</span><br><span class="line">      let l:a = system(&quot;fcitx-remote -c&quot;)</span><br><span class="line">   endif</span><br><span class="line">endfunction</span><br><span class="line"></span><br><span class="line">function! fcitx2zh()</span><br><span class="line">   let s:input_status = system(&quot;fcitx-remote&quot;)</span><br><span class="line">   if s:input_status != 2 &amp;&amp; g:input_toggle == 1</span><br><span class="line">      let l:a = system(&quot;fcitx-remote -o&quot;)</span><br><span class="line">      let g:input_toggle = 0</span><br><span class="line">   endif</span><br><span class="line">endfunction</span><br><span class="line"></span><br><span class="line">set ttimeoutlen=150</span><br><span class="line">&quot;退出插入模式</span><br><span class="line">autocmd insertleave * call fcitx2en()</span><br><span class="line">&quot;进入插入模式</span><br><span class="line">autocmd insertenter * call fcitx2zh()</span><br><span class="line">&quot;##### auto fcitx end ######</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>ubuntu</category>
+        <category>linux</category>
       </categories>
       <tags>
         <tag>vim</tag>
-        <tag>ubuntu</tag>
+        <tag>linux</tag>
+        <tag>nvim</tag>
       </tags>
   </entry>
   <entry>
@@ -4064,11 +3904,11 @@
 <h1 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Configuration for Alacritty, the GPU enhanced terminal emulator.</span><br><span class="line"></span><br><span class="line"># Import additional configuration files</span><br><span class="line">#</span><br><span class="line"># Imports are loaded in order, skipping all missing files, with the importing</span><br><span class="line"># file being loaded last. If a field is already present in a previous import, it</span><br><span class="line"># will be replaced.</span><br><span class="line">#</span><br><span class="line"># All imports must either be absolute paths starting with `/`, or paths relative</span><br><span class="line"># to the user&#x27;s home directory starting with `~/`.</span><br><span class="line">#import:</span><br><span class="line">#  - /path/to/alacritty.yml</span><br><span class="line"></span><br><span class="line"># Any items in the `env` entry below will be added as</span><br><span class="line"># environment variables. Some entries may override variables</span><br><span class="line"># set by alacritty itself.</span><br><span class="line">#env:</span><br><span class="line">  # TERM variable</span><br><span class="line">  #</span><br><span class="line">  # This value is used to set the `$TERM` environment variable for</span><br><span class="line">  # each instance of Alacritty. If it is not present, alacritty will</span><br><span class="line">  # check the local terminfo database and use `alacritty` if it is</span><br><span class="line">  # available, otherwise `xterm-256color` is used.</span><br><span class="line">  #TERM: alacritty</span><br><span class="line"></span><br><span class="line">window:</span><br><span class="line">  # Window dimensions (changes require restart)</span><br><span class="line">  #</span><br><span class="line">  # Number of lines/columns (not pixels) in the terminal. The number of columns</span><br><span class="line">  # must be at least `2`, while using a value of `0` for columns and lines will</span><br><span class="line">  # fall back to the window manager&#x27;s recommended size.</span><br><span class="line">  #dimensions:</span><br><span class="line">  #  columns: 0</span><br><span class="line">  #  lines: 0</span><br><span class="line"></span><br><span class="line">  # Window position (changes require restart)</span><br><span class="line">  #</span><br><span class="line">  # Specified in number of pixels.</span><br><span class="line">  # If the position is not set, the window manager will handle the placement.</span><br><span class="line">  #position:</span><br><span class="line">  #  x: 0</span><br><span class="line">  #  y: 0</span><br><span class="line"></span><br><span class="line">  # Window padding (changes require restart)</span><br><span class="line">  #</span><br><span class="line">  # Blank space added around the window in pixels. This padding is scaled</span><br><span class="line">  # by DPI and the specified value is always added at both opposing sides.</span><br><span class="line">  #padding:</span><br><span class="line">  #  x: 0</span><br><span class="line">  #  y: 0</span><br><span class="line"></span><br><span class="line">  # Spread additional padding evenly around the terminal content.</span><br><span class="line">  #dynamic_padding: false</span><br><span class="line"></span><br><span class="line">  # Window decorations</span><br><span class="line">  #</span><br><span class="line">  # Values for `decorations`:</span><br><span class="line">  #     - full: Borders and title bar</span><br><span class="line">  #     - none: Neither borders nor title bar</span><br><span class="line">  #</span><br><span class="line">  # Values for `decorations` (macOS only):</span><br><span class="line">  #     - transparent: Title bar, transparent background and title bar buttons</span><br><span class="line">  #     - buttonless: Title bar, transparent background and no title bar buttons</span><br><span class="line">  decorations: none</span><br><span class="line"></span><br><span class="line">  # Startup Mode (changes require restart)</span><br><span class="line">  #</span><br><span class="line">  # Values for `startup_mode`:</span><br><span class="line">  #   - Windowed</span><br><span class="line">  #   - Maximized</span><br><span class="line">  #   - Fullscreen</span><br><span class="line">  #</span><br><span class="line">  # Values for `startup_mode` (macOS only):</span><br><span class="line">  #   - SimpleFullscreen</span><br><span class="line">  #startup_mode: Windowed</span><br><span class="line"></span><br><span class="line">  # Window title</span><br><span class="line">  #title: Alacritty</span><br><span class="line"></span><br><span class="line">  # Allow terminal applications to change Alacritty&#x27;s window title.</span><br><span class="line">  #dynamic_title: true</span><br><span class="line"></span><br><span class="line">  # Window class (Linux/BSD only):</span><br><span class="line">  #class:</span><br><span class="line">    # Application instance name</span><br><span class="line">    #instance: Alacritty</span><br><span class="line">    # General application class</span><br><span class="line">    #general: Alacritty</span><br><span class="line"></span><br><span class="line">  # GTK theme variant (Linux/BSD only)</span><br><span class="line">  #</span><br><span class="line">  # Override the variant of the GTK theme. Commonly supported values are `dark`</span><br><span class="line">  # and `light`. Set this to `None` to use the default theme variant.</span><br><span class="line">  #gtk_theme_variant: None</span><br><span class="line">  gtk_theme_variant: dark</span><br><span class="line"></span><br><span class="line">#scrolling:</span><br><span class="line">  # Maximum number of lines in the scrollback buffer.</span><br><span class="line">  # Specifying &#x27;0&#x27; will disable scrolling.</span><br><span class="line">  #history: 10000</span><br><span class="line"></span><br><span class="line">  # Scrolling distance multiplier.</span><br><span class="line">  #multiplier: 3</span><br><span class="line"></span><br><span class="line"># Font configuration</span><br><span class="line">font:</span><br><span class="line">  # Normal (roman) font face</span><br><span class="line">  normal:</span><br><span class="line">    # Font family</span><br><span class="line">    #</span><br><span class="line">    # Default:</span><br><span class="line">    #   - (macOS) Menlo</span><br><span class="line">    #   - (Linux/BSD) monospace</span><br><span class="line">    #   - (Windows) Consolas</span><br><span class="line">    #   tips: mono is useful for airline.vim</span><br><span class="line">    family: CodeNewRoman Nerd Font Mono</span><br><span class="line">    #family: Consolas Nerd Font</span><br><span class="line">    #family: Consolas Nerd Font book</span><br><span class="line"></span><br><span class="line">    # The `style` can be specified to pick a specific face.</span><br><span class="line">    #style: Regular</span><br><span class="line"></span><br><span class="line">  # Bold font face</span><br><span class="line">  #bold:</span><br><span class="line">    # Font family</span><br><span class="line">    #</span><br><span class="line">    # If the bold family is not specified, it will fall back to the</span><br><span class="line">    # value specified for the normal font.</span><br><span class="line">    #family: monospace</span><br><span class="line">    #family: CodeNewRoman Nerd Font</span><br><span class="line"></span><br><span class="line">    # The `style` can be specified to pick a specific face.</span><br><span class="line">    #style: Bold</span><br><span class="line"></span><br><span class="line">  # Italic font face</span><br><span class="line">  #italic:</span><br><span class="line">    # Font family</span><br><span class="line">    #</span><br><span class="line">    # If the italic family is not specified, it will fall back to the</span><br><span class="line">    # value specified for the normal font.</span><br><span class="line">    #family: monospace</span><br><span class="line">    #family: CodeNewRoman Nerd Font</span><br><span class="line"></span><br><span class="line">    # The `style` can be specified to pick a specific face.</span><br><span class="line">    #style: Italic</span><br><span class="line"></span><br><span class="line">  # Bold italic font face</span><br><span class="line">  #bold_italic:</span><br><span class="line">    # Font family</span><br><span class="line">    #</span><br><span class="line">    # If the bold italic family is not specified, it will fall back to the</span><br><span class="line">    # value specified for the normal font.</span><br><span class="line">    #family: monospace</span><br><span class="line">    #family: CodeNewRoman Nerd Font</span><br><span class="line"></span><br><span class="line">    # The `style` can be specified to pick a specific face.</span><br><span class="line">    #style: Bold Italic</span><br><span class="line"></span><br><span class="line">  # Point size</span><br><span class="line">  # 16 -- 5</span><br><span class="line">  size: 15.5</span><br><span class="line"></span><br><span class="line">  # Offset is the extra space around each character. `offset.y` can be thought</span><br><span class="line">  # of as modifying the line spacing, and `offset.x` as modifying the letter</span><br><span class="line">  # spacing.</span><br><span class="line">  offset:</span><br><span class="line">    x: 0</span><br><span class="line">    y: 5</span><br><span class="line"></span><br><span class="line">  # Glyph offset determines the locations of the glyphs within their cells with</span><br><span class="line">  # the default being at the bottom. Increasing `x` moves the glyph to the</span><br><span class="line">  # right, increasing `y` moves the glyph upward.</span><br><span class="line">  glyph_offset:</span><br><span class="line">    x: 0</span><br><span class="line">    y: 0</span><br><span class="line"></span><br><span class="line">  # Thin stroke font rendering (macOS only)</span><br><span class="line">  #</span><br><span class="line">  # Thin strokes are suitable for retina displays, but for non-retina screens</span><br><span class="line">  # it is recommended to set `use_thin_strokes` to `false`.</span><br><span class="line">  # use_thin_strokes: true</span><br><span class="line"></span><br><span class="line"># If `true`, bold text is drawn using the bright color variants.</span><br><span class="line">draw_bold_text_with_bright_colors: true</span><br><span class="line"></span><br><span class="line"># Colors (Tomorrow Night)</span><br><span class="line">colors:</span><br><span class="line">  # Default colors</span><br><span class="line">  primary:</span><br><span class="line">  #  background: &#x27;#1d1f21&#x27;</span><br><span class="line">  #  foreground: &#x27;#c5c8c6&#x27;</span><br><span class="line"></span><br><span class="line">      #background: &#x27;0x282a36&#x27;</span><br><span class="line">      #foreground: &#x27;0xf8f8f2&#x27;</span><br><span class="line"></span><br><span class="line">    background: &#x27;#222222&#x27;</span><br><span class="line">    foreground: &#x27;0xf8f8f2&#x27;</span><br><span class="line"></span><br><span class="line">    # Bright and dim foreground colors</span><br><span class="line">    #</span><br><span class="line">    # The dimmed foreground color is calculated automatically if it is not</span><br><span class="line">    # present. If the bright foreground color is not set, or</span><br><span class="line">    # `draw_bold_text_with_bright_colors` is `false`, the normal foreground</span><br><span class="line">    # color will be used.</span><br><span class="line">    #dim_foreground: &#x27;#828482&#x27;</span><br><span class="line">    #bright_foreground: &#x27;#eaeaea&#x27;</span><br><span class="line">  cursor:</span><br><span class="line">    text: &#x27;0x44475a&#x27;</span><br><span class="line">    cursor: &#x27;0xf8f8f2&#x27;</span><br><span class="line"></span><br><span class="line">  # Cursor colors</span><br><span class="line">  #</span><br><span class="line">  # Colors which should be used to draw the terminal cursor.</span><br><span class="line">  #</span><br><span class="line">  # Allowed values are CellForeground/CellBackground, which reference the</span><br><span class="line">  # affected cell, or hexadecimal colors like #ff00ff.</span><br><span class="line">  #cursor:</span><br><span class="line">  #  text: CellBackground</span><br><span class="line">  #  cursor: CellForeground</span><br><span class="line"></span><br><span class="line">  # Vi mode cursor colors</span><br><span class="line">  #</span><br><span class="line">  # Colors for the cursor when the vi mode is active.</span><br><span class="line">  #</span><br><span class="line">  # Allowed values are CellForeground/CellBackground, which reference the</span><br><span class="line">  # affected cell, or hexadecimal colors like #ff00ff.</span><br><span class="line">  #vi_mode_cursor:</span><br><span class="line">  #  text: CellBackground</span><br><span class="line">  #  cursor: CellForeground</span><br><span class="line"></span><br><span class="line">  # Search colors</span><br><span class="line">  #</span><br><span class="line">  # Colors used for the search bar and match highlighting.</span><br><span class="line">  #search:</span><br><span class="line">    # Allowed values are CellForeground/CellBackground, which reference the</span><br><span class="line">    # affected cell, or hexadecimal colors like #ff00ff.</span><br><span class="line">    #matches:</span><br><span class="line">    #  foreground: &#x27;#000000&#x27;</span><br><span class="line">    #  background: &#x27;#ffffff&#x27;</span><br><span class="line">    #focused_match:</span><br><span class="line">    #  foreground: CellBackground</span><br><span class="line">    #  background: CellForeground</span><br><span class="line"></span><br><span class="line">    #bar:</span><br><span class="line">    #  background: &#x27;#c5c8c6&#x27;</span><br><span class="line">    #  foreground: &#x27;#1d1f21&#x27;</span><br><span class="line"></span><br><span class="line">  # Keyboard hints</span><br><span class="line">  #hints:</span><br><span class="line">    # Fist character in the hint label</span><br><span class="line">    #</span><br><span class="line">    # Allowed values are CellForeground/CellBackground, which reference the</span><br><span class="line">    # affected cell, or hexadecimal colors like #ff00ff.</span><br><span class="line">    #start:</span><br><span class="line">    #  foreground: &#x27;#1d1f21&#x27;</span><br><span class="line">    #  background: &#x27;#e9ff5e&#x27;</span><br><span class="line"></span><br><span class="line">    # All characters after the first one in the hint label</span><br><span class="line">    #</span><br><span class="line">    # Allowed values are CellForeground/CellBackground, which reference the</span><br><span class="line">    # affected cell, or hexadecimal colors like #ff00ff.</span><br><span class="line">    #end:</span><br><span class="line">    #  foreground: &#x27;#e9ff5e&#x27;</span><br><span class="line">    #  background: &#x27;#1d1f21&#x27;</span><br><span class="line"></span><br><span class="line">  # Line indicator</span><br><span class="line">  #</span><br><span class="line">  # Color used for the indicator displaying the position in history during</span><br><span class="line">  # search and vi mode.</span><br><span class="line">  #</span><br><span class="line">  # By default, these will use the opposing primary color.</span><br><span class="line">  #line_indicator:</span><br><span class="line">  #  foreground: None</span><br><span class="line">  #  background: None</span><br><span class="line"></span><br><span class="line">  # Selection colors</span><br><span class="line">  #</span><br><span class="line">  # Colors which should be used to draw the selection area.</span><br><span class="line">  #</span><br><span class="line">  # Allowed values are CellForeground/CellBackground, which reference the</span><br><span class="line">  # affected cell, or hexadecimal colors like #ff00ff.</span><br><span class="line">  #selection:</span><br><span class="line">  #  text: CellBackground</span><br><span class="line">  #  background: CellForeground</span><br><span class="line"></span><br><span class="line">  normal:</span><br><span class="line">    black:   &#x27;0x000000&#x27;</span><br><span class="line">    red:     &#x27;0xff5555&#x27;</span><br><span class="line">    green:   &#x27;0x50fa7b&#x27;</span><br><span class="line">    yellow:  &#x27;0xf1fa8c&#x27;</span><br><span class="line">    blue:    &#x27;0xbd93f9&#x27;</span><br><span class="line">    magenta: &#x27;0xff79c6&#x27;</span><br><span class="line">    cyan:    &#x27;0x8be9fd&#x27;</span><br><span class="line">    white:   &#x27;0xbfbfbf&#x27;</span><br><span class="line"></span><br><span class="line">  # Bright colors</span><br><span class="line">  bright:</span><br><span class="line">    black:   &#x27;0x4d4d4d&#x27;</span><br><span class="line">    red:     &#x27;0xff6e67&#x27;</span><br><span class="line">    green:   &#x27;0x5af78e&#x27;</span><br><span class="line">    yellow:  &#x27;0xf4f99d&#x27;</span><br><span class="line">    blue:    &#x27;0xcaa9fa&#x27;</span><br><span class="line">    magenta: &#x27;0xff92d0&#x27;</span><br><span class="line">    cyan:    &#x27;0x9aedfe&#x27;</span><br><span class="line">    white:   &#x27;0xe6e6e6&#x27;</span><br><span class="line"></span><br><span class="line">  # Dim colors</span><br><span class="line">  #</span><br><span class="line">  # If the dim colors are not set, they will be calculated automatically based</span><br><span class="line">  # on the `normal` colors.</span><br><span class="line">  dim:</span><br><span class="line">    black:   &#x27;0x14151b&#x27;</span><br><span class="line">    red:     &#x27;0xff2222&#x27;</span><br><span class="line">    green:   &#x27;0x1ef956&#x27;</span><br><span class="line">    yellow:  &#x27;0xebf85b&#x27;</span><br><span class="line">    blue:    &#x27;0x4d5b86&#x27;</span><br><span class="line">    magenta: &#x27;0xff46b0&#x27;</span><br><span class="line">    cyan:    &#x27;0x59dffc&#x27;</span><br><span class="line">    white:   &#x27;0xe6e6d1&#x27;</span><br><span class="line"></span><br><span class="line">  # Indexed Colors</span><br><span class="line">  #</span><br><span class="line">  # The indexed colors include all colors from 16 to 256.</span><br><span class="line">  # When these are not set, they&#x27;re filled with sensible defaults.</span><br><span class="line">  #</span><br><span class="line">  # Example:</span><br><span class="line">  #   `- &#123; index: 16, color: &#x27;0xff00ff&#x27; &#125;`</span><br><span class="line">  #</span><br><span class="line">  indexed_colors: []</span><br><span class="line">  # Normal colors</span><br><span class="line">  # normal:</span><br><span class="line">  #   black:   &#x27;#1d1f21&#x27;</span><br><span class="line">  #   red:     &#x27;#cc6666&#x27;</span><br><span class="line">  #   green:   &#x27;#b5bd68&#x27;</span><br><span class="line">  #   yellow:  &#x27;#f0c674&#x27;</span><br><span class="line">  #   blue:    &#x27;#81a2be&#x27;</span><br><span class="line">  #   magenta: &#x27;#b294bb&#x27;</span><br><span class="line">  #   cyan:    &#x27;#8abeb7&#x27;</span><br><span class="line">  #   white:   &#x27;#c5c8c6&#x27;</span><br><span class="line"></span><br><span class="line">  # # Bright colors</span><br><span class="line">  # bright:</span><br><span class="line">  #   black:   &#x27;#666666&#x27;</span><br><span class="line">  #   red:     &#x27;#d54e53&#x27;</span><br><span class="line">  #   green:   &#x27;#b9ca4a&#x27;</span><br><span class="line">  #   yellow:  &#x27;#e7c547&#x27;</span><br><span class="line">  #   blue:    &#x27;#7aa6da&#x27;</span><br><span class="line">  #   magenta: &#x27;#c397d8&#x27;</span><br><span class="line">  #   cyan:    &#x27;#70c0b1&#x27;</span><br><span class="line">  #   white:   &#x27;#eaeaea&#x27;</span><br><span class="line"></span><br><span class="line">  # # Dim colors</span><br><span class="line">  # #</span><br><span class="line">  # # If the dim colors are not set, they will be calculated automatically based</span><br><span class="line">  # # on the `normal` colors.</span><br><span class="line">  # dim:</span><br><span class="line">  #   black:   &#x27;#131415&#x27;</span><br><span class="line">  #   red:     &#x27;#864343&#x27;</span><br><span class="line">  #   green:   &#x27;#777c44&#x27;</span><br><span class="line">  #   yellow:  &#x27;#9e824c&#x27;</span><br><span class="line">  #   blue:    &#x27;#556a7d&#x27;</span><br><span class="line">  #   magenta: &#x27;#75617b&#x27;</span><br><span class="line">  #   cyan:    &#x27;#5b7d78&#x27;</span><br><span class="line">  #   white:   &#x27;#828482&#x27;</span><br><span class="line"></span><br><span class="line">  # Indexed Colors</span><br><span class="line">  #</span><br><span class="line">  # The indexed colors include all colors from 16 to 256.</span><br><span class="line">  # When these are not set, they&#x27;re filled with sensible defaults.</span><br><span class="line">  #</span><br><span class="line">  # Example:</span><br><span class="line">  #   `- &#123; index: 16, color: &#x27;#ff00ff&#x27; &#125;`</span><br><span class="line">  #</span><br><span class="line">  #indexed_colors: []</span><br><span class="line"></span><br><span class="line"># Bell</span><br><span class="line">#</span><br><span class="line"># The bell is rung every time the BEL control character is received.</span><br><span class="line">#bell:</span><br><span class="line">  # Visual Bell Animation</span><br><span class="line">  #</span><br><span class="line">  # Animation effect for flashing the screen when the visual bell is rung.</span><br><span class="line">  #</span><br><span class="line">  # Values for `animation`:</span><br><span class="line">  #   - Ease</span><br><span class="line">  #   - EaseOut</span><br><span class="line">  #   - EaseOutSine</span><br><span class="line">  #   - EaseOutQuad</span><br><span class="line">  #   - EaseOutCubic</span><br><span class="line">  #   - EaseOutQuart</span><br><span class="line">  #   - EaseOutQuint</span><br><span class="line">  #   - EaseOutExpo</span><br><span class="line">  #   - EaseOutCirc</span><br><span class="line">  #   - Linear</span><br><span class="line">  #animation: EaseOutExpo</span><br><span class="line"></span><br><span class="line">  # Duration of the visual bell flash in milliseconds. A `duration` of `0` will</span><br><span class="line">  # disable the visual bell animation.</span><br><span class="line">  #duration: 0</span><br><span class="line"></span><br><span class="line">  # Visual bell animation color.</span><br><span class="line">  #color: &#x27;#ffffff&#x27;</span><br><span class="line"></span><br><span class="line">  # Bell Command</span><br><span class="line">  #</span><br><span class="line">  # This program is executed whenever the bell is rung.</span><br><span class="line">  #</span><br><span class="line">  # When set to `command: None`, no command will be executed.</span><br><span class="line">  #</span><br><span class="line">  # Example:</span><br><span class="line">  #   command:</span><br><span class="line">  #     program: notify-send</span><br><span class="line">  #     args: [&quot;Hello, World!&quot;]</span><br><span class="line">  #</span><br><span class="line">  #command: None</span><br><span class="line"></span><br><span class="line"># Background opacity</span><br><span class="line">#</span><br><span class="line"># Window opacity as a floating point number from `0.0` to `1.0`.</span><br><span class="line"># The value `0.0` is completely transparent and `1.0` is opaque.</span><br><span class="line">background_opacity: 0.99</span><br><span class="line"></span><br><span class="line">#selection:</span><br><span class="line">  # This string contains all characters that are used as separators for</span><br><span class="line">  # &quot;semantic words&quot; in Alacritty.</span><br><span class="line">  #semantic_escape_chars: &quot;,│`|:\&quot;&#x27; ()[]&#123;&#125;&lt;&gt;\t&quot;</span><br><span class="line"></span><br><span class="line">  # When set to `true`, selected text will be copied to the primary clipboard.</span><br><span class="line">  #save_to_clipboard: false</span><br><span class="line"></span><br><span class="line">#cursor:</span><br><span class="line">  # Cursor style</span><br><span class="line">  #style:</span><br><span class="line">    # Cursor shape</span><br><span class="line">    #</span><br><span class="line">    # Values for `shape`:</span><br><span class="line">    #   - ▇ Block</span><br><span class="line">    #   - _ Underline</span><br><span class="line">    #   - | Beam</span><br><span class="line">    #shape: Block</span><br><span class="line"></span><br><span class="line">    # Cursor blinking state</span><br><span class="line">    #</span><br><span class="line">    # Values for `blinking`:</span><br><span class="line">    #   - Never: Prevent the cursor from ever blinking</span><br><span class="line">    #   - Off: Disable blinking by default</span><br><span class="line">    #   - On: Enable blinking by default</span><br><span class="line">    #   - Always: Force the cursor to always blink</span><br><span class="line">    #blinking: Off</span><br><span class="line"></span><br><span class="line">  # Vi mode cursor style</span><br><span class="line">  #</span><br><span class="line">  # If the vi mode cursor style is `None` or not specified, it will fall back to</span><br><span class="line">  # the style of the active value of the normal cursor.</span><br><span class="line">  #</span><br><span class="line">  # See `cursor.style` for available options.</span><br><span class="line">  #vi_mode_style: None</span><br><span class="line"></span><br><span class="line">  # Cursor blinking interval in milliseconds.</span><br><span class="line">  #blink_interval: 750</span><br><span class="line"></span><br><span class="line">  # If this is `true`, the cursor will be rendered as a hollow box when the</span><br><span class="line">  # window is not focused.</span><br><span class="line">  #unfocused_hollow: true</span><br><span class="line"></span><br><span class="line">  # Thickness of the cursor relative to the cell width as floating point number</span><br><span class="line">  # from `0.0` to `1.0`.</span><br><span class="line">  #thickness: 0.15</span><br><span class="line"></span><br><span class="line"># Live config reload (changes require restart)</span><br><span class="line">#live_config_reload: true</span><br><span class="line"></span><br><span class="line"># Shell</span><br><span class="line">#</span><br><span class="line"># You can set `shell.program` to the path of your favorite shell, e.g.</span><br><span class="line"># `/bin/fish`. Entries in `shell.args` are passed unmodified as arguments to the</span><br><span class="line"># shell.</span><br><span class="line">#</span><br><span class="line"># Default:</span><br><span class="line">#   - (macOS) /bin/bash --login</span><br><span class="line">#   - (Linux/BSD) user login shell</span><br><span class="line">#   - (Windows) powershell</span><br><span class="line">#shell:</span><br><span class="line">#  program: /bin/bash</span><br><span class="line">#  args:</span><br><span class="line">#    - --login</span><br><span class="line"></span><br><span class="line"># Startup directory</span><br><span class="line">#</span><br><span class="line"># Directory the shell is started in. If this is unset, or `None`, the working</span><br><span class="line"># directory of the parent process will be used.</span><br><span class="line">#working_directory: None</span><br><span class="line"></span><br><span class="line"># Send ESC (\x1b) before characters when alt is pressed.</span><br><span class="line">#alt_send_esc: true</span><br><span class="line"></span><br><span class="line">#mouse:</span><br><span class="line">  # Click settings</span><br><span class="line">  #</span><br><span class="line">  # The `double_click` and `triple_click` settings control the time</span><br><span class="line">  # alacritty should wait for accepting multiple clicks as one double</span><br><span class="line">  # or triple click.</span><br><span class="line">  #double_click: &#123; threshold: 300 &#125;</span><br><span class="line">  #triple_click: &#123; threshold: 300 &#125;</span><br><span class="line"></span><br><span class="line">  # If this is `true`, the cursor is temporarily hidden when typing.</span><br><span class="line">  #hide_when_typing: false</span><br><span class="line"></span><br><span class="line">  #url:</span><br><span class="line">    # URL launcher</span><br><span class="line">    #</span><br><span class="line">    # This program is executed when clicking on a text which is recognized as a</span><br><span class="line">    # URL. The URL is always added to the command as the last parameter.</span><br><span class="line">    #</span><br><span class="line">    # When set to `launcher: None`, URL launching will be disabled completely.</span><br><span class="line">    #</span><br><span class="line">    # Default:</span><br><span class="line">    #   - (macOS) open</span><br><span class="line">    #   - (Linux/BSD) xdg-open</span><br><span class="line">    #   - (Windows) cmd /c start &quot;&quot;</span><br><span class="line">    #launcher:</span><br><span class="line">    #  program: xdg-open</span><br><span class="line">    #  args: []</span><br><span class="line"></span><br><span class="line">    # URL modifiers</span><br><span class="line">    #</span><br><span class="line">    # These are the modifiers that need to be held down for opening URLs when</span><br><span class="line">    # clicking on them. The available modifiers are documented in the key</span><br><span class="line">    # binding section.</span><br><span class="line">    #modifiers: None</span><br><span class="line"></span><br><span class="line"># Regex hints</span><br><span class="line">#</span><br><span class="line"># Terminal hints can be used to find text in the visible part of the terminal</span><br><span class="line"># and pipe it to other applications.</span><br><span class="line">#hints:</span><br><span class="line">  # Keys used for the hint labels.</span><br><span class="line">  #alphabet: &quot;jfkdls;ahgurieowpq&quot;</span><br><span class="line"></span><br><span class="line">  # List with all available hints</span><br><span class="line">  #</span><br><span class="line">  # The fields `command`, `binding.key` and `binding.mods` accept the same</span><br><span class="line">  # values as they do in the `key_bindings` section.</span><br><span class="line">  #</span><br><span class="line">  # Example</span><br><span class="line">  #</span><br><span class="line">  # enabled:</span><br><span class="line">  #   - regex: &quot;alacritty/alacritty#\\d*&quot;</span><br><span class="line">  #     command: firefox</span><br><span class="line">  #     binding:</span><br><span class="line">  #       key: G</span><br><span class="line">  #       mods: Control|Shift</span><br><span class="line">  #enabled: []</span><br><span class="line"></span><br><span class="line"># Mouse bindings</span><br><span class="line">#</span><br><span class="line"># Mouse bindings are specified as a list of objects, much like the key</span><br><span class="line"># bindings further below.</span><br><span class="line">#</span><br><span class="line"># To trigger mouse bindings when an application running within Alacritty</span><br><span class="line"># captures the mouse, the `Shift` modifier is automatically added as a</span><br><span class="line"># requirement.</span><br><span class="line">#</span><br><span class="line"># Each mouse binding will specify a:</span><br><span class="line">#</span><br><span class="line"># - `mouse`:</span><br><span class="line">#</span><br><span class="line">#   - Middle</span><br><span class="line">#   - Left</span><br><span class="line">#   - Right</span><br><span class="line">#   - Numeric identifier such as `5`</span><br><span class="line">#</span><br><span class="line"># - `action` (see key bindings)</span><br><span class="line">#</span><br><span class="line"># And optionally:</span><br><span class="line">#</span><br><span class="line"># - `mods` (see key bindings)</span><br><span class="line">#mouse_bindings:</span><br><span class="line">#  - &#123; mouse: Middle, action: PasteSelection &#125;</span><br><span class="line"></span><br><span class="line"># Key bindings</span><br><span class="line">#</span><br><span class="line"># Key bindings are specified as a list of objects. For example, this is the</span><br><span class="line"># default paste binding:</span><br><span class="line">#</span><br><span class="line"># `- &#123; key: V, mods: Control|Shift, action: Paste &#125;`</span><br><span class="line">#</span><br><span class="line"># Each key binding will specify a:</span><br><span class="line">#</span><br><span class="line"># - `key`: Identifier of the key pressed</span><br><span class="line">#</span><br><span class="line">#    - A-Z</span><br><span class="line">#    - F1-F24</span><br><span class="line">#    - Key0-Key9</span><br><span class="line">#</span><br><span class="line">#    A full list with available key codes can be found here:</span><br><span class="line">#    https://docs.rs/glutin/*/glutin/event/enum.VirtualKeyCode.html#variants</span><br><span class="line">#</span><br><span class="line">#    Instead of using the name of the keys, the `key` field also supports using</span><br><span class="line">#    the scancode of the desired key. Scancodes have to be specified as a</span><br><span class="line">#    decimal number. This command will allow you to display the hex scancodes</span><br><span class="line">#    for certain keys:</span><br><span class="line">#</span><br><span class="line">#       `showkey --scancodes`.</span><br><span class="line">#</span><br><span class="line"># Then exactly one of:</span><br><span class="line">#</span><br><span class="line"># - `chars`: Send a byte sequence to the running application</span><br><span class="line">#</span><br><span class="line">#    The `chars` field writes the specified string to the terminal. This makes</span><br><span class="line">#    it possible to pass escape sequences. To find escape codes for bindings</span><br><span class="line">#    like `PageUp` (`&quot;\x1b[5~&quot;`), you can run the command `showkey -a` outside</span><br><span class="line">#    of tmux. Note that applications use terminfo to map escape sequences back</span><br><span class="line">#    to keys. It is therefore required to update the terminfo when changing an</span><br><span class="line">#    escape sequence.</span><br><span class="line">#</span><br><span class="line"># - `action`: Execute a predefined action</span><br><span class="line">#</span><br><span class="line">#   - ToggleViMode</span><br><span class="line">#   - SearchForward</span><br><span class="line">#       Start searching toward the right of the search origin.</span><br><span class="line">#   - SearchBackward</span><br><span class="line">#       Start searching toward the left of the search origin.</span><br><span class="line">#   - Copy</span><br><span class="line">#   - Paste</span><br><span class="line">#   - IncreaseFontSize</span><br><span class="line">#   - DecreaseFontSize</span><br><span class="line">#   - ResetFontSize</span><br><span class="line">#   - ScrollPageUp</span><br><span class="line">#   - ScrollPageDown</span><br><span class="line">#   - ScrollHalfPageUp</span><br><span class="line">#   - ScrollHalfPageDown</span><br><span class="line">#   - ScrollLineUp</span><br><span class="line">#   - ScrollLineDown</span><br><span class="line">#   - ScrollToTop</span><br><span class="line">#   - ScrollToBottom</span><br><span class="line">#   - ClearHistory</span><br><span class="line">#       Remove the terminal&#x27;s scrollback history.</span><br><span class="line">#   - Hide</span><br><span class="line">#       Hide the Alacritty window.</span><br><span class="line">#   - Minimize</span><br><span class="line">#       Minimize the Alacritty window.</span><br><span class="line">#   - Quit</span><br><span class="line">#       Quit Alacritty.</span><br><span class="line">#   - ToggleFullscreen</span><br><span class="line">#   - SpawnNewInstance</span><br><span class="line">#       Spawn a new instance of Alacritty.</span><br><span class="line">#   - ClearLogNotice</span><br><span class="line">#       Clear Alacritty&#x27;s UI warning and error notice.</span><br><span class="line">#   - ClearSelection</span><br><span class="line">#       Remove the active selection.</span><br><span class="line">#   - ReceiveChar</span><br><span class="line">#   - None</span><br><span class="line">#</span><br><span class="line"># - Vi mode exclusive actions:</span><br><span class="line">#</span><br><span class="line">#   - Open</span><br><span class="line">#       Open URLs at the cursor location with the launcher configured in</span><br><span class="line">#       `url.launcher`.</span><br><span class="line">#   - ToggleNormalSelection</span><br><span class="line">#   - ToggleLineSelection</span><br><span class="line">#   - ToggleBlockSelection</span><br><span class="line">#   - ToggleSemanticSelection</span><br><span class="line">#       Toggle semantic selection based on `selection.semantic_escape_chars`.</span><br><span class="line">#</span><br><span class="line"># - Vi mode exclusive cursor motion actions:</span><br><span class="line">#</span><br><span class="line">#   - Up</span><br><span class="line">#       One line up.</span><br><span class="line">#   - Down</span><br><span class="line">#       One line down.</span><br><span class="line">#   - Left</span><br><span class="line">#       One character left.</span><br><span class="line">#   - Right</span><br><span class="line">#       One character right.</span><br><span class="line">#   - First</span><br><span class="line">#       First column, or beginning of the line when already at the first column.</span><br><span class="line">#   - Last</span><br><span class="line">#       Last column, or beginning of the line when already at the last column.</span><br><span class="line">#   - FirstOccupied</span><br><span class="line">#       First non-empty cell in this terminal row, or first non-empty cell of</span><br><span class="line">#       the line when already at the first cell of the row.</span><br><span class="line">#   - High</span><br><span class="line">#       Top of the screen.</span><br><span class="line">#   - Middle</span><br><span class="line">#       Center of the screen.</span><br><span class="line">#   - Low</span><br><span class="line">#       Bottom of the screen.</span><br><span class="line">#   - SemanticLeft</span><br><span class="line">#       Start of the previous semantically separated word.</span><br><span class="line">#   - SemanticRight</span><br><span class="line">#       Start of the next semantically separated word.</span><br><span class="line">#   - SemanticLeftEnd</span><br><span class="line">#       End of the previous semantically separated word.</span><br><span class="line">#   - SemanticRightEnd</span><br><span class="line">#       End of the next semantically separated word.</span><br><span class="line">#   - WordLeft</span><br><span class="line">#       Start of the previous whitespace separated word.</span><br><span class="line">#   - WordRight</span><br><span class="line">#       Start of the next whitespace separated word.</span><br><span class="line">#   - WordLeftEnd</span><br><span class="line">#       End of the previous whitespace separated word.</span><br><span class="line">#   - WordRightEnd</span><br><span class="line">#       End of the next whitespace separated word.</span><br><span class="line">#   - Bracket</span><br><span class="line">#       Character matching the bracket at the cursor&#x27;s location.</span><br><span class="line">#   - SearchNext</span><br><span class="line">#       Beginning of the next match.</span><br><span class="line">#   - SearchPrevious</span><br><span class="line">#       Beginning of the previous match.</span><br><span class="line">#   - SearchStart</span><br><span class="line">#       Start of the match to the left of the vi mode cursor.</span><br><span class="line">#   - SearchEnd</span><br><span class="line">#       End of the match to the right of the vi mode cursor.</span><br><span class="line">#</span><br><span class="line"># - Search mode exclusive actions:</span><br><span class="line">#   - SearchFocusNext</span><br><span class="line">#       Move the focus to the next search match.</span><br><span class="line">#   - SearchFocusPrevious</span><br><span class="line">#       Move the focus to the previous search match.</span><br><span class="line">#   - SearchConfirm</span><br><span class="line">#   - SearchCancel</span><br><span class="line">#   - SearchClear</span><br><span class="line">#       Reset the search regex.</span><br><span class="line">#   - SearchDeleteWord</span><br><span class="line">#       Delete the last word in the search regex.</span><br><span class="line">#   - SearchHistoryPrevious</span><br><span class="line">#       Go to the previous regex in the search history.</span><br><span class="line">#   - SearchHistoryNext</span><br><span class="line">#       Go to the next regex in the search history.</span><br><span class="line">#</span><br><span class="line"># - macOS exclusive actions:</span><br><span class="line">#   - ToggleSimpleFullscreen</span><br><span class="line">#       Enter fullscreen without occupying another space.</span><br><span class="line">#</span><br><span class="line"># - Linux/BSD exclusive actions:</span><br><span class="line">#</span><br><span class="line">#   - CopySelection</span><br><span class="line">#       Copy from the selection buffer.</span><br><span class="line">#   - PasteSelection</span><br><span class="line">#       Paste from the selection buffer.</span><br><span class="line">#</span><br><span class="line"># - `command`: Fork and execute a specified command plus arguments</span><br><span class="line">#</span><br><span class="line">#    The `command` field must be a map containing a `program` string and an</span><br><span class="line">#    `args` array of command line parameter strings. For example:</span><br><span class="line">#       `&#123; program: &quot;alacritty&quot;, args: [&quot;-e&quot;, &quot;vttest&quot;] &#125;`</span><br><span class="line">#</span><br><span class="line"># And optionally:</span><br><span class="line">#</span><br><span class="line"># - `mods`: Key modifiers to filter binding actions</span><br><span class="line">#</span><br><span class="line">#    - Command</span><br><span class="line">#    - Control</span><br><span class="line">#    - Option</span><br><span class="line">#    - Super</span><br><span class="line">#    - Shift</span><br><span class="line">#    - Alt</span><br><span class="line">#</span><br><span class="line">#    Multiple `mods` can be combined using `|` like this:</span><br><span class="line">#       `mods: Control|Shift`.</span><br><span class="line">#    Whitespace and capitalization are relevant and must match the example.</span><br><span class="line">#</span><br><span class="line"># - `mode`: Indicate a binding for only specific terminal reported modes</span><br><span class="line">#</span><br><span class="line">#    This is mainly used to send applications the correct escape sequences</span><br><span class="line">#    when in different modes.</span><br><span class="line">#</span><br><span class="line">#    - AppCursor</span><br><span class="line">#    - AppKeypad</span><br><span class="line">#    - Search</span><br><span class="line">#    - Alt</span><br><span class="line">#    - Vi</span><br><span class="line">#</span><br><span class="line">#    A `~` operator can be used before a mode to apply the binding whenever</span><br><span class="line">#    the mode is *not* active, e.g. `~Alt`.</span><br><span class="line">#</span><br><span class="line"># Bindings are always filled by default, but will be replaced when a new</span><br><span class="line"># binding with the same triggers is defined. To unset a default binding, it can</span><br><span class="line"># be mapped to the `ReceiveChar` action. Alternatively, you can use `None` for</span><br><span class="line"># a no-op if you do not wish to receive input characters for that binding.</span><br><span class="line">#</span><br><span class="line"># If the same trigger is assigned to multiple actions, all of them are executed</span><br><span class="line"># in the order they were defined in.</span><br><span class="line">#key_bindings:</span><br><span class="line">  #- &#123; key: Paste,                                       action: Paste          &#125;</span><br><span class="line">  #- &#123; key: Copy,                                        action: Copy           &#125;</span><br><span class="line">  #- &#123; key: L,         mods: Control,                    action: ClearLogNotice &#125;</span><br><span class="line">  #- &#123; key: L,         mods: Control, mode: ~Vi|~Search, chars: &quot;\x0c&quot;          &#125;</span><br><span class="line">  #- &#123; key: PageUp,    mods: Shift,   mode: ~Alt,        action: ScrollPageUp,  &#125;</span><br><span class="line">  #- &#123; key: PageDown,  mods: Shift,   mode: ~Alt,        action: ScrollPageDown &#125;</span><br><span class="line">  #- &#123; key: Home,      mods: Shift,   mode: ~Alt,        action: ScrollToTop,   &#125;</span><br><span class="line">  #- &#123; key: End,       mods: Shift,   mode: ~Alt,        action: ScrollToBottom &#125;</span><br><span class="line"></span><br><span class="line">  # Vi Mode</span><br><span class="line">  #- &#123; key: Space,  mods: Shift|Control, mode: Vi|~Search, action: ScrollToBottom          &#125;</span><br><span class="line">  #- &#123; key: Space,  mods: Shift|Control, mode: ~Search,    action: ToggleViMode            &#125;</span><br><span class="line">  #- &#123; key: Escape,                      mode: Vi|~Search, action: ClearSelection          &#125;</span><br><span class="line">  #- &#123; key: I,                           mode: Vi|~Search, action: ScrollToBottom          &#125;</span><br><span class="line">  #- &#123; key: I,                           mode: Vi|~Search, action: ToggleViMode            &#125;</span><br><span class="line">  #- &#123; key: C,      mods: Control,       mode: Vi|~Search, action: ToggleViMode            &#125;</span><br><span class="line">  #- &#123; key: Y,      mods: Control,       mode: Vi|~Search, action: ScrollLineUp            &#125;</span><br><span class="line">  #- &#123; key: E,      mods: Control,       mode: Vi|~Search, action: ScrollLineDown          &#125;</span><br><span class="line">  #- &#123; key: G,                           mode: Vi|~Search, action: ScrollToTop             &#125;</span><br><span class="line">  #- &#123; key: G,      mods: Shift,         mode: Vi|~Search, action: ScrollToBottom          &#125;</span><br><span class="line">  #- &#123; key: B,      mods: Control,       mode: Vi|~Search, action: ScrollPageUp            &#125;</span><br><span class="line">  #- &#123; key: F,      mods: Control,       mode: Vi|~Search, action: ScrollPageDown          &#125;</span><br><span class="line">  #- &#123; key: U,      mods: Control,       mode: Vi|~Search, action: ScrollHalfPageUp        &#125;</span><br><span class="line">  #- &#123; key: D,      mods: Control,       mode: Vi|~Search, action: ScrollHalfPageDown      &#125;</span><br><span class="line">  #- &#123; key: Y,                           mode: Vi|~Search, action: Copy                    &#125;</span><br><span class="line">  #- &#123; key: Y,                           mode: Vi|~Search, action: ClearSelection          &#125;</span><br><span class="line">  #- &#123; key: Copy,                        mode: Vi|~Search, action: ClearSelection          &#125;</span><br><span class="line">  #- &#123; key: V,                           mode: Vi|~Search, action: ToggleNormalSelection   &#125;</span><br><span class="line">  #- &#123; key: V,      mods: Shift,         mode: Vi|~Search, action: ToggleLineSelection     &#125;</span><br><span class="line">  #- &#123; key: V,      mods: Control,       mode: Vi|~Search, action: ToggleBlockSelection    &#125;</span><br><span class="line">  #- &#123; key: V,      mods: Alt,           mode: Vi|~Search, action: ToggleSemanticSelection &#125;</span><br><span class="line">  #- &#123; key: Return,                      mode: Vi|~Search, action: Open                    &#125;</span><br><span class="line">  #- &#123; key: K,                           mode: Vi|~Search, action: Up                      &#125;</span><br><span class="line">  #- &#123; key: J,                           mode: Vi|~Search, action: Down                    &#125;</span><br><span class="line">  #- &#123; key: H,                           mode: Vi|~Search, action: Left                    &#125;</span><br><span class="line">  #- &#123; key: L,                           mode: Vi|~Search, action: Right                   &#125;</span><br><span class="line">  #- &#123; key: Up,                          mode: Vi|~Search, action: Up                      &#125;</span><br><span class="line">  #- &#123; key: Down,                        mode: Vi|~Search, action: Down                    &#125;</span><br><span class="line">  #- &#123; key: Left,                        mode: Vi|~Search, action: Left                    &#125;</span><br><span class="line">  #- &#123; key: Right,                       mode: Vi|~Search, action: Right                   &#125;</span><br><span class="line">  #- &#123; key: Key0,                        mode: Vi|~Search, action: First                   &#125;</span><br><span class="line">  #- &#123; key: Key4,   mods: Shift,         mode: Vi|~Search, action: Last                    &#125;</span><br><span class="line">  #- &#123; key: Key6,   mods: Shift,         mode: Vi|~Search, action: FirstOccupied           &#125;</span><br><span class="line">  #- &#123; key: H,      mods: Shift,         mode: Vi|~Search, action: High                    &#125;</span><br><span class="line">  #- &#123; key: M,      mods: Shift,         mode: Vi|~Search, action: Middle                  &#125;</span><br><span class="line">  #- &#123; key: L,      mods: Shift,         mode: Vi|~Search, action: Low                     &#125;</span><br><span class="line">  #- &#123; key: B,                           mode: Vi|~Search, action: SemanticLeft            &#125;</span><br><span class="line">  #- &#123; key: W,                           mode: Vi|~Search, action: SemanticRight           &#125;</span><br><span class="line">  #- &#123; key: E,                           mode: Vi|~Search, action: SemanticRightEnd        &#125;</span><br><span class="line">  #- &#123; key: B,      mods: Shift,         mode: Vi|~Search, action: WordLeft                &#125;</span><br><span class="line">  #- &#123; key: W,      mods: Shift,         mode: Vi|~Search, action: WordRight               &#125;</span><br><span class="line">  #- &#123; key: E,      mods: Shift,         mode: Vi|~Search, action: WordRightEnd            &#125;</span><br><span class="line">  #- &#123; key: Key5,   mods: Shift,         mode: Vi|~Search, action: Bracket                 &#125;</span><br><span class="line">  #- &#123; key: Slash,                       mode: Vi|~Search, action: SearchForward           &#125;</span><br><span class="line">  #- &#123; key: Slash,  mods: Shift,         mode: Vi|~Search, action: SearchBackward          &#125;</span><br><span class="line">  #- &#123; key: N,                           mode: Vi|~Search, action: SearchNext              &#125;</span><br><span class="line">  #- &#123; key: N,      mods: Shift,         mode: Vi|~Search, action: SearchPrevious          &#125;</span><br><span class="line"></span><br><span class="line">  # Search Mode</span><br><span class="line">  #- &#123; key: Return,                mode: Search|Vi,  action: SearchConfirm         &#125;</span><br><span class="line">  #- &#123; key: Escape,                mode: Search,     action: SearchCancel          &#125;</span><br><span class="line">  #- &#123; key: C,      mods: Control, mode: Search,     action: SearchCancel          &#125;</span><br><span class="line">  #- &#123; key: U,      mods: Control, mode: Search,     action: SearchClear           &#125;</span><br><span class="line">  #- &#123; key: W,      mods: Control, mode: Search,     action: SearchDeleteWord      &#125;</span><br><span class="line">  #- &#123; key: P,      mods: Control, mode: Search,     action: SearchHistoryPrevious &#125;</span><br><span class="line">  #- &#123; key: N,      mods: Control, mode: Search,     action: SearchHistoryNext     &#125;</span><br><span class="line">  #- &#123; key: Up,                    mode: Search,     action: SearchHistoryPrevious &#125;</span><br><span class="line">  #- &#123; key: Down,                  mode: Search,     action: SearchHistoryNext     &#125;</span><br><span class="line">  #- &#123; key: Return,                mode: Search|~Vi, action: SearchFocusNext       &#125;</span><br><span class="line">  #- &#123; key: Return, mods: Shift,   mode: Search|~Vi, action: SearchFocusPrevious   &#125;</span><br><span class="line"></span><br><span class="line">  # (Windows, Linux, and BSD only)</span><br><span class="line">  #- &#123; key: V,              mods: Control|Shift, mode: ~Vi,        action: Paste            &#125;</span><br><span class="line">  #- &#123; key: C,              mods: Control|Shift,                   action: Copy             &#125;</span><br><span class="line">  #- &#123; key: F,              mods: Control|Shift, mode: ~Search,    action: SearchForward    &#125;</span><br><span class="line">  #- &#123; key: B,              mods: Control|Shift, mode: ~Search,    action: SearchBackward   &#125;</span><br><span class="line">  #- &#123; key: C,              mods: Control|Shift, mode: Vi|~Search, action: ClearSelection   &#125;</span><br><span class="line">  #- &#123; key: Insert,         mods: Shift,                           action: PasteSelection   &#125;</span><br><span class="line">  #- &#123; key: Key0,           mods: Control,                         action: ResetFontSize    &#125;</span><br><span class="line">  #- &#123; key: Equals,         mods: Control,                         action: IncreaseFontSize &#125;</span><br><span class="line">  #- &#123; key: Plus,           mods: Control,                         action: IncreaseFontSize &#125;</span><br><span class="line">  #- &#123; key: NumpadAdd,      mods: Control,                         action: IncreaseFontSize &#125;</span><br><span class="line">  #- &#123; key: Minus,          mods: Control,                         action: DecreaseFontSize &#125;</span><br><span class="line">  #- &#123; key: NumpadSubtract, mods: Control,                         action: DecreaseFontSize &#125;</span><br><span class="line"></span><br><span class="line">  # (Windows only)</span><br><span class="line">  #- &#123; key: Return,   mods: Alt,           action: ToggleFullscreen &#125;</span><br><span class="line"></span><br><span class="line">  # (macOS only)</span><br><span class="line">  #- &#123; key: K,              mods: Command, mode: ~Vi|~Search, chars: &quot;\x0c&quot;            &#125;</span><br><span class="line">  #- &#123; key: K,              mods: Command, mode: ~Vi|~Search, action: ClearHistory     &#125;</span><br><span class="line">  #- &#123; key: Key0,           mods: Command,                    action: ResetFontSize    &#125;</span><br><span class="line">  #- &#123; key: Equals,         mods: Command,                    action: IncreaseFontSize &#125;</span><br><span class="line">  #- &#123; key: Plus,           mods: Command,                    action: IncreaseFontSize &#125;</span><br><span class="line">  #- &#123; key: NumpadAdd,      mods: Command,                    action: IncreaseFontSize &#125;</span><br><span class="line">  #- &#123; key: Minus,          mods: Command,                    action: DecreaseFontSize &#125;</span><br><span class="line">  #- &#123; key: NumpadSubtract, mods: Command,                    action: DecreaseFontSize &#125;</span><br><span class="line">  #- &#123; key: V,              mods: Command,                    action: Paste            &#125;</span><br><span class="line">  #- &#123; key: C,              mods: Command,                    action: Copy             &#125;</span><br><span class="line">  #- &#123; key: C,              mods: Command, mode: Vi|~Search,  action: ClearSelection   &#125;</span><br><span class="line">  #- &#123; key: H,              mods: Command,                    action: Hide             &#125;</span><br><span class="line">  #- &#123; key: M,              mods: Command,                    action: Minimize         &#125;</span><br><span class="line">  #- &#123; key: Q,              mods: Command,                    action: Quit             &#125;</span><br><span class="line">  #- &#123; key: W,              mods: Command,                    action: Quit             &#125;</span><br><span class="line">  #- &#123; key: N,              mods: Command,                    action: SpawnNewInstance &#125;</span><br><span class="line">  #- &#123; key: F,              mods: Command|Control,            action: ToggleFullscreen &#125;</span><br><span class="line">  #- &#123; key: F,              mods: Command, mode: ~Search,     action: SearchForward    &#125;</span><br><span class="line">  #- &#123; key: B,              mods: Command, mode: ~Search,     action: SearchBackward   &#125;</span><br><span class="line"></span><br><span class="line">#debug:</span><br><span class="line">  # Display the time it takes to redraw each frame.</span><br><span class="line">  #render_timer: false</span><br><span class="line"></span><br><span class="line">  # Keep the log file after quitting Alacritty.</span><br><span class="line">  #persistent_logging: false</span><br><span class="line"></span><br><span class="line">  # Log level</span><br><span class="line">  #</span><br><span class="line">  # Values for `log_level`:</span><br><span class="line">  #   - Off</span><br><span class="line">  #   - Error</span><br><span class="line">  #   - Warn</span><br><span class="line">  #   - Info</span><br><span class="line">  #   - Debug</span><br><span class="line">  #   - Trace</span><br><span class="line">  #log_level: Warn</span><br><span class="line"></span><br><span class="line">  # Print all received window events.</span><br><span class="line">  #print_events: false</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>ubuntu</category>
+        <category>linux</category>
       </categories>
       <tags>
-        <tag>ubuntu</tag>
         <tag>terminal</tag>
+        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
@@ -4081,11 +3921,11 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#enable bash completion in interactive shells</span><br><span class="line">#if ! shopt -oq posix; then</span><br><span class="line">#      if [-f  /usr/share/bash-completion/bash_completion ]; then</span><br><span class="line">#          . /usr/share/bash-completion/bash_completion</span><br><span class="line">#      elif [ -f /etc/bash_completion]; then</span><br><span class="line">#           . /etc/bash_completion</span><br><span class="line">#      fi</span><br><span class="line">#fi</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>ubuntu</category>
+        <category>linux</category>
       </categories>
       <tags>
-        <tag>ubuntu</tag>
-        <tag>shell</tag>
+        <tag>linux</tag>
+        <tag>bash</tag>
       </tags>
   </entry>
   <entry>
@@ -4108,12 +3948,12 @@
 </ol>
 ]]></content>
       <categories>
-        <category>ubuntu</category>
+        <category>linux</category>
       </categories>
       <tags>
-        <tag>ubuntu</tag>
         <tag>chown</tag>
         <tag>chgrp</tag>
+        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
@@ -4133,11 +3973,11 @@
 </ul>
 ]]></content>
       <categories>
-        <category>ubuntu</category>
+        <category>linux</category>
       </categories>
       <tags>
-        <tag>ubuntu</tag>
-        <tag>shell</tag>
+        <tag>linux</tag>
+        <tag>bash</tag>
       </tags>
   </entry>
   <entry>
@@ -4157,11 +3997,13 @@
 </ol>
 ]]></content>
       <categories>
-        <category>ubuntu</category>
+        <category>linux</category>
       </categories>
       <tags>
-        <tag>ubuntu</tag>
         <tag>shell</tag>
+        <tag>linux</tag>
+        <tag>zsh</tag>
+        <tag>fish</tag>
       </tags>
   </entry>
   <entry>
@@ -4182,11 +4024,11 @@
 
 ]]></content>
       <categories>
-        <category>ubuntu</category>
+        <category>linux</category>
       </categories>
       <tags>
-        <tag>ubuntu</tag>
         <tag>fzf</tag>
+        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
@@ -4309,6 +4151,7 @@
       <tags>
         <tag>hexo</tag>
         <tag>blog</tag>
+        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
@@ -4317,11 +4160,11 @@
     <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">let mapleader = &quot;;&quot;      &quot; 定义&lt;leader&gt;键</span><br><span class="line">set nocompatible         &quot; 设置不兼容原始vi模式</span><br><span class="line">filetype on              &quot; 设置开启文件类型侦测</span><br><span class="line">filetype plugin on       &quot; 设置加载对应文件类型的插件</span><br><span class="line">set noeb                 &quot; 关闭错误的提示</span><br><span class="line">syntax enable            &quot; 开启语法高亮功能</span><br><span class="line">set t_Co=256             &quot; 开启256色支持</span><br><span class="line">set cmdheight=1          &quot; 设置命令行的高度</span><br><span class="line">&quot;set cmdheight=2          &quot; 设置命令行的高度</span><br><span class="line">set showcmd              &quot; select模式下显示选中的行数</span><br><span class="line">set ruler                &quot; 总是显示光标位置</span><br><span class="line">set laststatus=2         &quot; 总是显示状态栏</span><br><span class="line">set number               &quot; 开启行号显示</span><br><span class="line">set relativenumber       &quot; 特殊行号</span><br><span class="line">set cursorline           &quot; 高亮显示当前行</span><br><span class="line">set whichwrap+=&lt;,&gt;,h,l   &quot; 设置光标键跨行</span><br><span class="line">set ttimeoutlen=100        &quot; 设置&lt;ESC&gt;键响应时间</span><br><span class="line">set virtualedit=block,onemore   &quot; 允许光标出现在最后一个字符的后面</span><br><span class="line">set mouse=a</span><br><span class="line">set hidden</span><br><span class="line">set updatetime=100</span><br><span class="line">set shortmess+=c</span><br><span class="line">set numberwidth=1</span><br><span class="line">set fdm=marker</span><br><span class="line">set scrolloff=5</span><br><span class="line">filetype plugin on</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;</span><br><span class="line">&quot; 代码缩进和排版</span><br><span class="line">&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;</span><br><span class="line">set autoindent           &quot; 设置自动缩进</span><br><span class="line">set cindent              &quot; 设置使用C/C++语言的自动缩进方式</span><br><span class="line">set cinoptions=g0,:0,N-s,(0    &quot; 设置C/C++语言的具体缩进方式</span><br><span class="line">set smartindent          &quot; 智能的选择对其方式</span><br><span class="line">filetype indent on       &quot; 自适应不同语言的智能缩进</span><br><span class="line">set expandtab            &quot; 将制表符扩展为空格</span><br><span class="line">set tabstop=4            &quot; 设置编辑时制表符占用空格数</span><br><span class="line">set shiftwidth=4         &quot; 设置格式化时制表符占用空格数</span><br><span class="line">set softtabstop=4        &quot; 设置4个空格为制表符 set smarttab             &quot; 在行和段开始处使用制表符 set wrap                 &quot; 折行</span><br><span class="line">set backspace=2          &quot; 使用回车键正常处理indent,eol,start等</span><br><span class="line">set sidescroll=10        &quot; 设置向右滚动字符数</span><br><span class="line">set nofoldenable         &quot; 禁用折叠代码</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;</span><br><span class="line">&quot; 代码补全</span><br><span class="line">&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;</span><br><span class="line">set wildmenu             &quot; vim自身命名行模式智能补全</span><br><span class="line">set completeopt-=preview &quot; 补全时不显示窗口，只显示补全列表</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;</span><br><span class="line">&quot; 搜索设置</span><br><span class="line">&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;</span><br><span class="line">set hlsearch            &quot; 高亮显示搜索结果</span><br><span class="line">set incsearch           &quot; 开启实时搜索功能</span><br><span class="line">set ignorecase          &quot; 搜索时大小写不敏感</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;</span><br><span class="line">&quot; 缓存设置</span><br><span class="line">&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;</span><br><span class="line">set nobackup            &quot; 设置不备份</span><br><span class="line">set noswapfile          &quot; 禁止生成临时文件</span><br><span class="line">set autoread            &quot; 文件在vim之外修改过，自动重新读入</span><br><span class="line">set autowrite           &quot; 设置自动保存</span><br><span class="line">set confirm             &quot; 在处理未保存或只读文件的时候，弹出确认</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;</span><br><span class="line">&quot; 编码设置</span><br><span class="line">&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;</span><br><span class="line">set langmenu=zh_CN.UTF-8</span><br><span class="line">set helplang=cn</span><br><span class="line">set termencoding=utf-8</span><br><span class="line">set encoding=utf8</span><br><span class="line">set fileencodings=utf8,ucs-bom,gbk,cp936,gb2312,gb18030</span><br><span class="line"></span><br><span class="line">&quot;记住上次位置</span><br><span class="line">au BufReadPost * if line(&quot;&#x27;\&quot;&quot;) &gt; 1 &amp;&amp; line(&quot;&#x27;\&quot;&quot;) &lt;= line(&quot;$&quot;) | exe &quot;normal! g&#x27;\&quot;&quot; | endif</span><br><span class="line"></span><br><span class="line">&quot;撤销记忆</span><br><span class="line">if has(&#x27;persistent_undo&#x27;)</span><br><span class="line">	set undofile</span><br><span class="line">	set undodir=~/.config/nvim/tmp/undo,.</span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot;pluginstall</span><br><span class="line">call plug#begin(&#x27;~/.config/nvim/plugged&#x27;)</span><br><span class="line">&quot;input-------------------------------</span><br><span class="line">Plug &#x27;vim-scripts/fcitx.vim&#x27;</span><br><span class="line">Plug &#x27;easymotion/vim-easymotion&#x27;</span><br><span class="line">Plug &#x27;jiangmiao/auto-pairs&#x27;</span><br><span class="line">Plug &#x27;junegunn/vim-peekaboo&#x27;</span><br><span class="line">Plug &#x27;mg979/vim-visual-multi&#x27;</span><br><span class="line">Plug &#x27;gcmt/wildfire.vim&#x27;</span><br><span class="line">Plug &#x27;tpope/vim-surround&#x27;</span><br><span class="line"></span><br><span class="line">&quot;display-------------------------------</span><br><span class="line">Plug &#x27;scrooloose/nerdtree&#x27;</span><br><span class="line">Plug &#x27;vim-airline/vim-airline&#x27;</span><br><span class="line">&quot;Plug &#x27;vim-airline/vim-airline-themes&#x27;</span><br><span class="line">&quot;Plug &#x27;itchyny/lightline.vim&#x27;</span><br><span class="line">Plug &#x27;kevinhwang91/rnvimr&#x27;</span><br><span class="line"></span><br><span class="line">&quot;themes</span><br><span class="line">Plug &#x27;joshdick/onedark.vim&#x27;</span><br><span class="line">Plug &#x27;tomasr/molokai&#x27;</span><br><span class="line">Plug &#x27;altercation/vim-colors-solarized&#x27;</span><br><span class="line">Plug &#x27;KabbAmine/yowish.vim&#x27;</span><br><span class="line"></span><br><span class="line">Plug &#x27;ryanoasis/vim-devicons&#x27;</span><br><span class="line">Plug &#x27;machakann/vim-highlightedyank&#x27;</span><br><span class="line">Plug &#x27;preservim/tagbar&#x27;</span><br><span class="line">Plug &#x27;jszakmeister/markdown2ctags&#x27; &quot;(use pip to install, it&#x27;s not a vim plugin)</span><br><span class="line"></span><br><span class="line">&quot; problem</span><br><span class="line">Plug &#x27;lvht/tagbar-markdown&#x27;</span><br><span class="line">Plug &#x27;xolox/vim-misc&#x27;</span><br><span class="line">Plug &#x27;xolox/vim-easytags&#x27;</span><br><span class="line"></span><br><span class="line">&quot;complete---------------------------</span><br><span class="line">&quot;Plug &#x27;Valloric/YouCompleteMe&#x27;</span><br><span class="line">Plug &#x27;neoclide/coc.nvim&#x27;, &#123;&#x27;branch&#x27;: &#x27;release&#x27;&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot;markdown---------------------------</span><br><span class="line">&quot;Plug &#x27;iamcco/markdown-preview.nvim&#x27;, &#123; &#x27;do&#x27;: &#x27;cd app &amp;&amp; yarn install&#x27;  &#125;</span><br><span class="line">Plug &#x27;iamcco/markdown-preview.nvim&#x27;, &#123; &#x27;do&#x27;: &#123; -&gt; mkdp#util#install() &#125;, &#x27;for&#x27;: [&#x27;markdown&#x27;, &#x27;vim-plug&#x27;]&#125;</span><br><span class="line">Plug &#x27;godlygeek/tabular&#x27;</span><br><span class="line">Plug &#x27;plasticboy/vim-markdown&#x27; </span><br><span class="line">Plug &#x27;dhruvasagar/vim-table-mode&#x27;</span><br><span class="line">Plug &#x27;mzlogin/vim-markdown-toc&#x27;</span><br><span class="line">Plug &#x27;ferrine/md-img-paste.vim&#x27;</span><br><span class="line">&quot;Plug &#x27;suan/vim-instant-markdown&#x27;, &#123;&#x27;for&#x27;: &#x27;markdown&#x27;&#125;</span><br><span class="line">&quot;Plug &#x27;iamcco/mathjax-support-for-mkdp&#x27;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">call plug#end()</span><br><span class="line"></span><br><span class="line">&quot;coc install</span><br><span class="line">let g:coc_global_extensions = [</span><br><span class="line">    \&#x27;coc-marketplace&#x27;, </span><br><span class="line">    \&#x27;coc-json&#x27;, </span><br><span class="line">    \&#x27;coc-clangd&#x27;,</span><br><span class="line">    \&#x27;coc-vimlsp&#x27;,</span><br><span class="line">    \&#x27;coc-actions&#x27;,</span><br><span class="line">    \&#x27;coc-pyright&#x27;,</span><br><span class="line">    \]</span><br><span class="line">&quot;\&#x27;coc-pyright&#x27;,</span><br><span class="line">&quot;\&#x27;coc-jedi&#x27;,</span><br><span class="line"></span><br><span class="line"> &quot;vim-highlightedyank</span><br><span class="line">let g:highlightedyank_highlight_duration = 400</span><br><span class="line"></span><br><span class="line">&quot; colod-theme</span><br><span class="line">&quot;</span><br><span class="line">set background=dark</span><br><span class="line"></span><br><span class="line">colorscheme yowish </span><br><span class="line">let g:yowish = &#123;&#125;</span><br><span class="line">let g:yowish.option1 = &#x27;foo&#x27;</span><br><span class="line">let g:yowish.option2 = 0</span><br><span class="line"></span><br><span class="line">&quot;</span><br><span class="line">&quot;let g:onedark_termcolors=256</span><br><span class="line">&quot;colorscheme onedark </span><br><span class="line">&quot;</span><br><span class="line">&quot;colorscheme molokai </span><br><span class="line">&quot;let g:rehash256 = 1</span><br><span class="line">&quot;let g:molokai_original = 1</span><br><span class="line">&quot;</span><br><span class="line">&quot;colorscheme desert</span><br><span class="line">&quot;</span><br><span class="line">&quot;let g:solarized_termcolors=256</span><br><span class="line">&quot;colorscheme solarized </span><br><span class="line"></span><br><span class="line">&quot;&quot; airline</span><br><span class="line">&quot;let g:airline_theme=&quot;onedark&quot;</span><br><span class="line">let g:airline_powerline_fonts = 1</span><br><span class="line">let g:airline#extensions#tabline#enabled = 1</span><br><span class="line">if !exists(&#x27;g:airline_symbols&#x27;)</span><br><span class="line">    let g:airline_symbols = &#123;&#125;</span><br><span class="line">endif</span><br><span class="line">&quot;&quot;insert mode, press &lt;c-v&gt;u + 4-digit code</span><br><span class="line">&quot;&quot;in alacritty, size = 15, offset: y=5, icons work fine</span><br><span class="line">let g:airline_left_sep = &#x27;&#x27;</span><br><span class="line">&quot;let g:airline_left_alt_sep = &#x27;&#x27;</span><br><span class="line">&quot;let g:airline_right_sep = &#x27;&#x27;</span><br><span class="line">&quot;let g:airline_right_alt_sep = &#x27;&#x27;</span><br><span class="line">&quot;</span><br><span class="line">&quot;let g:airline_left_sep = &#x27;&#x27;</span><br><span class="line">&quot;let g:airline_right_alt_sep = &#x27;|&#x27;</span><br><span class="line">&quot;</span><br><span class="line">&quot;let g:airline_left_sep = &#x27;&#x27;</span><br><span class="line">&quot;let g:airline_left_alt_sep = &#x27;&#x27;</span><br><span class="line">&quot;let g:airline_right_sep = &#x27;&#x27;</span><br><span class="line">&quot;let g:airline_right_sep = &#x27;&#x27;</span><br><span class="line">&quot;let g:airline_right_alt_sep = &#x27;&#x27;</span><br><span class="line"></span><br><span class="line">&quot; 24color</span><br><span class="line">if (empty($TMUX))</span><br><span class="line">  if (has(&quot;nvim&quot;))</span><br><span class="line">    &quot;For Neovim 0.1.3 and 0.1.4 &lt; https://github.com/neovim/neovim/pull/2198 &gt;</span><br><span class="line">    let $NVIM_TUI_ENABLE_TRUE_COLOR=1</span><br><span class="line">  endif</span><br><span class="line">  &quot;For Neovim &gt; 0.1.5 and Vim &gt; patch 7.4.1799 &lt; https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 &gt;</span><br><span class="line">  &quot;Based on Vim patch 7.4.1770 (`guicolors` option) &lt; https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd &gt;</span><br><span class="line">  &quot; &lt; https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 &gt;</span><br><span class="line">  if (has(&quot;termguicolors&quot;))</span><br><span class="line">    set termguicolors</span><br><span class="line">  endif</span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line">&quot; easymotion</span><br><span class="line">let g:EasyMotion_smartcase = 1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot; markdown preview===================================</span><br><span class="line">&quot; set to 1, nvim will open the preview window after entering the markdown buffer</span><br><span class="line">&quot; default: 0</span><br><span class="line">let g:mkdp_auto_start = 0</span><br><span class="line"></span><br><span class="line">&quot; set to 1, the nvim will auto close current preview window when change</span><br><span class="line">&quot; from markdown buffer to another buffer</span><br><span class="line">&quot; default: 1</span><br><span class="line">let g:mkdp_auto_close = 0</span><br><span class="line"></span><br><span class="line">&quot; set to 1, the vim will refresh markdown when save the buffer or</span><br><span class="line">&quot; leave from insert mode, default 0 is auto refresh markdown as you edit or</span><br><span class="line">&quot; move the cursor</span><br><span class="line">&quot; default: 0</span><br><span class="line">let g:mkdp_refresh_slow = 0</span><br><span class="line"></span><br><span class="line">&quot; set to 1, the MarkdownPreview command can be use for all files,</span><br><span class="line">&quot; by default it can be use in markdown file</span><br><span class="line">&quot; default: 0</span><br><span class="line">let g:mkdp_command_for_global = 0</span><br><span class="line"></span><br><span class="line">&quot; set to 1, preview server available to others in your network</span><br><span class="line">&quot; by default, the server listens on localhost (127.0.0.1)</span><br><span class="line">&quot; default: 0</span><br><span class="line">let g:mkdp_open_to_the_world = 0</span><br><span class="line"></span><br><span class="line">&quot; use custom IP to open preview page</span><br><span class="line">&quot; useful when you work in remote vim and preview on local browser</span><br><span class="line">&quot; more detail see: https://github.com/iamcco/markdown-preview.nvim/pull/9</span><br><span class="line">&quot; default empty</span><br><span class="line">let g:mkdp_open_ip = &#x27;&#x27;</span><br><span class="line"></span><br><span class="line">&quot; specify browser to open preview page</span><br><span class="line">&quot; default: &#x27;&#x27;</span><br><span class="line">let g:mkdp_browser = &#x27;firefox&#x27;</span><br><span class="line"></span><br><span class="line">&quot; set to 1, echo preview page url in command line when open preview page</span><br><span class="line">&quot; default is 0</span><br><span class="line">let g:mkdp_echo_preview_url = 0</span><br><span class="line"></span><br><span class="line">&quot; a custom vim function name to open preview page</span><br><span class="line">&quot; this function will receive url as param</span><br><span class="line">&quot; default is empty</span><br><span class="line">let g:mkdp_browserfunc = &#x27;&#x27;</span><br><span class="line"></span><br><span class="line">&quot; options for markdown render</span><br><span class="line">&quot; mkit: markdown-it options for render</span><br><span class="line">&quot; katex: katex options for math</span><br><span class="line">&quot; uml: markdown-it-plantuml options</span><br><span class="line">&quot; maid: mermaid options</span><br><span class="line">&quot; disable_sync_scroll: if disable sync scroll, default 0</span><br><span class="line">&quot; sync_scroll_type: &#x27;middle&#x27;, &#x27;top&#x27; or &#x27;relative&#x27;, default value is &#x27;middle&#x27;</span><br><span class="line">&quot;   middle: mean the cursor position alway show at the middle of the preview page</span><br><span class="line">&quot;   top: mean the vim top viewport alway show at the top of the preview page</span><br><span class="line">&quot;   relative: mean the cursor position alway show at the relative positon of the preview page</span><br><span class="line">&quot; hide_yaml_meta: if hide yaml metadata, default is 1</span><br><span class="line">&quot; sequence_diagrams: js-sequence-diagrams options</span><br><span class="line">&quot; content_editable: if enable content editable for preview page, default: v:false</span><br><span class="line">&quot; disable_filename: if disable filename header for preview page, default: 0</span><br><span class="line">let g:mkdp_preview_options = &#123;</span><br><span class="line">    \ &#x27;mkit&#x27;: &#123;&#125;,</span><br><span class="line">    \ &#x27;katex&#x27;: &#123;&#125;,</span><br><span class="line">    \ &#x27;uml&#x27;: &#123;&#125;,</span><br><span class="line">    \ &#x27;maid&#x27;: &#123;&#125;,</span><br><span class="line">    \ &#x27;disable_sync_scroll&#x27;: 0,</span><br><span class="line">    \ &#x27;sync_scroll_type&#x27;: &#x27;middle&#x27;,</span><br><span class="line">    \ &#x27;hide_yaml_meta&#x27;: 1,</span><br><span class="line">    \ &#x27;sequence_diagrams&#x27;: &#123;&#125;,</span><br><span class="line">    \ &#x27;flowchart_diagrams&#x27;: &#123;&#125;,</span><br><span class="line">    \ &#x27;content_editable&#x27;: v:false,</span><br><span class="line">    \ &#x27;disable_filename&#x27;: 0</span><br><span class="line">    \ &#125;</span><br><span class="line"></span><br><span class="line">&quot; use a custom markdown style must be absolute path</span><br><span class="line">&quot; like &#x27;/Users/username/markdown.css&#x27; or expand(&#x27;~/markdown.css&#x27;)</span><br><span class="line">let g:mkdp_markdown_css = &#x27;&#x27;</span><br><span class="line"></span><br><span class="line">&quot; use a custom highlight style must absolute path</span><br><span class="line">&quot; like &#x27;/Users/username/highlight.css&#x27; or expand(&#x27;~/highlight.css&#x27;)</span><br><span class="line">let g:mkdp_highlight_css = &#x27;&#x27;</span><br><span class="line"></span><br><span class="line">&quot; use a custom port to start server or random for empty</span><br><span class="line">let g:mkdp_port = &#x27;&#x27;</span><br><span class="line"></span><br><span class="line">&quot; preview page title</span><br><span class="line">&quot; $&#123;name&#125; will be replace with the file name</span><br><span class="line">let g:mkdp_page_title = &#x27;「$&#123;name&#125;」&#x27;</span><br><span class="line"></span><br><span class="line">&quot; recognized filetypes</span><br><span class="line">&quot; these filetypes will have MarkdownPreview... commands</span><br><span class="line">let g:mkdp_filetypes = [&#x27;markdown&#x27;]</span><br><span class="line"></span><br><span class="line">&quot; vim.markdown</span><br><span class="line">let g:vim_markdown_math = 1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot; markdown2ctags</span><br><span class="line">&quot; !!!remember to set the ctagsbin</span><br><span class="line">let g:tagbar_type_markdown = &#123;</span><br><span class="line">    \ &#x27;ctagstype&#x27;: &#x27;markdown&#x27;,</span><br><span class="line">    \ &#x27;ctagsbin&#x27; : &#x27;~/.config/nvim/plugged/markdown2ctags/markdown2ctags.py&#x27;,</span><br><span class="line">    \ &#x27;ctagsargs&#x27; : &#x27;-f - --sort=yes --sro=»&#x27;,</span><br><span class="line">    \ &#x27;kinds&#x27; : [</span><br><span class="line">        \ &#x27;s:sections&#x27;,</span><br><span class="line">        \ &#x27;i:images&#x27;</span><br><span class="line">    \ ],</span><br><span class="line">    \ &#x27;sro&#x27; : &#x27;»&#x27;,</span><br><span class="line">    \ &#x27;kind2scope&#x27; : &#123;</span><br><span class="line">        \ &#x27;s&#x27; : &#x27;section&#x27;,</span><br><span class="line">    \ &#125;,</span><br><span class="line">    \ &#x27;sort&#x27;: 0,</span><br><span class="line">\ &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot;&quot;======================================================================================================</span><br><span class="line">&quot;shortcut key</span><br><span class="line">&quot;======================================================================================================</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;</span><br><span class="line">&quot; VIM快捷键</span><br><span class="line">&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;</span><br><span class="line">nnoremap &lt;leader&gt;h :noh&lt;cr&gt;</span><br><span class="line">nnoremap &lt;space&gt;h :bp&lt;cr&gt;</span><br><span class="line">nnoremap &lt;space&gt;l :bn&lt;cr&gt;</span><br><span class="line">nnoremap &lt;space&gt;d :bd&lt;cr&gt;</span><br><span class="line">nnoremap &lt;c-a&gt;  gg&lt;s-v&gt;G</span><br><span class="line">vnoremap Y &quot;+y</span><br><span class="line"></span><br><span class="line">&quot;termnal模式下 退出插入模式</span><br><span class="line">tnoremap &lt;Esc&gt; &lt;C-\&gt;&lt;C-n&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot; 缩进文本</span><br><span class="line">nnoremap &lt;tab&gt; V&gt;</span><br><span class="line">nnoremap &lt;s-tab&gt; V&lt;</span><br><span class="line">vnoremap &lt;tab&gt; &gt;gv</span><br><span class="line">vnoremap &lt;s-tab&gt; &lt;gv</span><br><span class="line"></span><br><span class="line">&quot;分屏调整 m是alt</span><br><span class="line">nnoremap &lt;m-l&gt; &lt;c-w&gt;5&gt;</span><br><span class="line">nnoremap &lt;m-k&gt; &lt;c-w&gt;5+</span><br><span class="line">nnoremap &lt;m-h&gt; &lt;c-w&gt;5&lt;</span><br><span class="line">nnoremap &lt;m-j&gt; &lt;c-w&gt;5-</span><br><span class="line"></span><br><span class="line">&quot;&quot; 分屏切换 </span><br><span class="line">nnoremap &lt;c-h&gt; &lt;c-w&gt;h</span><br><span class="line">nnoremap &lt;c-j&gt; &lt;c-w&gt;j</span><br><span class="line">nnoremap &lt;c-k&gt; &lt;c-w&gt;k</span><br><span class="line">nnoremap &lt;c-l&gt; &lt;c-w&gt;l</span><br><span class="line"></span><br><span class="line">inoremap &lt;c-h&gt; &lt;esc&gt;&lt;c-w&gt;h</span><br><span class="line">inoremap &lt;c-j&gt; &lt;esc&gt;&lt;c-w&gt;j</span><br><span class="line">inoremap &lt;c-k&gt; &lt;esc&gt;&lt;c-w&gt;k</span><br><span class="line">inoremap &lt;c-l&gt; &lt;esc&gt;&lt;c-w&gt;l</span><br><span class="line"></span><br><span class="line">tnoremap &lt;c-h&gt; &lt;C-\&gt;&lt;C-n&gt;&lt;c-w&gt;h</span><br><span class="line">tnoremap &lt;c-j&gt; &lt;C-\&gt;&lt;C-n&gt;&lt;c-w&gt;j</span><br><span class="line">tnoremap &lt;c-k&gt; &lt;C-\&gt;&lt;C-n&gt;&lt;c-w&gt;k</span><br><span class="line">tnoremap &lt;c-l&gt; &lt;C-\&gt;&lt;C-n&gt;&lt;c-w&gt;l</span><br><span class="line"></span><br><span class="line">&quot; 编辑vimrc</span><br><span class="line">nnoremap &lt;leader&gt;e :edit $MYVIMRC&lt;cr&gt;                               </span><br><span class="line">nnoremap &lt;c-s&gt; :w&lt;cr&gt;</span><br><span class="line">&quot; 重新加载vimrc文件</span><br><span class="line">nnoremap &lt;leader&gt;r :source $MYVIMRC&lt;cr&gt;</span><br><span class="line"></span><br><span class="line">&quot; nerdtree</span><br><span class="line">nnoremap &lt;silent&gt; ff :NERDTreeToggle&lt;CR&gt;</span><br><span class="line"></span><br><span class="line">&quot;easymotion f是vim自带当前行找字母</span><br><span class="line">map &lt;leader&gt;w &lt;Plug&gt;(easymotion-bd-w)</span><br><span class="line"></span><br><span class="line">&quot; ranger in vim (rnvimr)</span><br><span class="line">nnoremap &lt;silent&gt; &lt;leader&gt;f :RnvimrToggle&lt;CR&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;</span><br><span class="line">&quot; coc.nvim</span><br><span class="line">&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">&quot; Use tab for trigger completion with characters ahead and navigate.</span><br><span class="line">inoremap &lt;silent&gt;&lt;expr&gt; &lt;TAB&gt;</span><br><span class="line">      \ pumvisible() ? &quot;\&lt;C-n&gt;&quot; :</span><br><span class="line">      \ &lt;SID&gt;check_back_space() ? &quot;\&lt;TAB&gt;&quot; :</span><br><span class="line">      \ coc#refresh()</span><br><span class="line">inoremap &lt;expr&gt;&lt;S-TAB&gt; pumvisible() ? &quot;\&lt;C-p&gt;&quot; : &quot;\&lt;C-h&gt;&quot;</span><br><span class="line"></span><br><span class="line">function! s:check_back_space() abort</span><br><span class="line">  let col = col(&#x27;.&#x27;) - 1</span><br><span class="line">  return !col || getline(&#x27;.&#x27;)[col - 1]  =~# &#x27;\s&#x27;</span><br><span class="line">endfunction</span><br><span class="line"></span><br><span class="line">&quot; Use &lt;c-space&gt; to trigger completion.</span><br><span class="line">inoremap &lt;silent&gt;&lt;expr&gt; &lt;c-space&gt; coc#refresh()</span><br><span class="line"></span><br><span class="line">&quot; Make &lt;CR&gt; auto-select the first completion item and notify coc.nvim to</span><br><span class="line">&quot; format on enter, &lt;cr&gt; could be remapped by other vim plugin</span><br><span class="line">inoremap &lt;silent&gt;&lt;expr&gt; &lt;cr&gt; pumvisible() ? coc#_select_confirm(): &quot;\&lt;C-g&gt;u\&lt;CR&gt;\&lt;c-r&gt;=coc#on_enter()\&lt;CR&gt;&quot;</span><br><span class="line"></span><br><span class="line">&quot; Use `[g` and `]g` to navigate diagnostics</span><br><span class="line">&quot; Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.</span><br><span class="line">nmap &lt;silent&gt; [g &lt;Plug&gt;(coc-diagnostic-prev)</span><br><span class="line">nmap &lt;silent&gt; ]g &lt;Plug&gt;(coc-diagnostic-next)</span><br><span class="line"></span><br><span class="line">&quot; GoTo code navigation.</span><br><span class="line">nmap &lt;silent&gt; gd &lt;Plug&gt;(coc-definition)</span><br><span class="line">nmap &lt;silent&gt; gy &lt;Plug&gt;(coc-type-definition)</span><br><span class="line">nmap &lt;silent&gt; gi &lt;Plug&gt;(coc-implementation)</span><br><span class="line">nmap &lt;silent&gt; gr &lt;Plug&gt;(coc-references)</span><br><span class="line"></span><br><span class="line">nmap rn &lt;Plug&gt;(coc-rename)</span><br><span class="line"></span><br><span class="line">&quot; Applying codeAction to the selected region.</span><br><span class="line">&quot; Example: `&lt;leader&gt;aap` for current paragraph</span><br><span class="line">xmap &lt;leader&gt;a  &lt;Plug&gt;(coc-codeaction-selected)</span><br><span class="line">nmap &lt;leader&gt;a  &lt;Plug&gt;(coc-codeaction-selected)</span><br><span class="line"></span><br><span class="line">&quot; markdown preview ===============</span><br><span class="line">nmap mo &lt;Plug&gt;MarkdownPreview</span><br><span class="line">nmap mc &lt;Plug&gt;MarkdownPreviewStop</span><br><span class="line">nmap mm &lt;Plug&gt;MarkdownPreviewToggle</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot; markdown image paste</span><br><span class="line">&quot; latex see github</span><br><span class="line">&quot;autocmd FileType markdown nmap &lt;buffer&gt;&lt;silent&gt; &lt;leader&gt;p :call mdip#MarkdownClipboardImage()&lt;CR&gt;</span><br><span class="line">&quot;let g:mdip_imgdir_intext = &#x27;./md_images_&#x27; . expand(&#x27;%:r&#x27;)</span><br><span class="line">&quot;let g:mdip_imgdir = &#x27;./md_images_&#x27; . expand(&#x27;%:r&#x27;)</span><br><span class="line">&quot;let g:mdip_imgname = &#x27;image&#x27;</span><br><span class="line"></span><br><span class="line">function! MdPasteImage() </span><br><span class="line">    let g:mdip_imgdir_intext = &#x27;./&#x27; . expand(&#x27;%:r&#x27;)</span><br><span class="line">    let g:mdip_imgdir = &#x27;./&#x27; . expand(&#x27;%:r&#x27;)</span><br><span class="line">    &quot;echo g:mdip_imgdir</span><br><span class="line">    &quot;echo g:mdip_imgdir_intext</span><br><span class="line">    call mdip#MarkdownClipboardImage()</span><br><span class="line"></span><br><span class="line">endfunction</span><br><span class="line"></span><br><span class="line">autocmd FileType markdown nmap &lt;buffer&gt;&lt;silent&gt; &lt;leader&gt;p :call MdPasteImage()&lt;CR&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot;  ctags==========================</span><br><span class="line">nmap F :TagbarToggle&lt;CR&gt;</span><br><span class="line"></span><br><span class="line">&quot; autocmd</span><br><span class="line">&quot;    coc </span><br><span class="line">autocmd CursorHold * silent call CocActionAsync(&#x27;highlight&#x27;)</span><br><span class="line"></span><br><span class="line">&quot;    nerdtree   </span><br><span class="line">&quot;autocmd VimEnter * NERDTree | wincmd l</span><br><span class="line">&quot;au BufEnter * if winnr(&#x27;$&#x27;) == 1 &amp;&amp; exists(&#x27;b:NERDTree&#x27;) &amp;&amp; b:NERDTree.isTabTree() | quit | endif</span><br><span class="line">&quot;    tagbar</span><br><span class="line">&quot;au BufEnter *.py :TagbarToggle</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>ubuntu</category>
+        <category>linux</category>
       </categories>
       <tags>
         <tag>vim</tag>
-        <tag>ubuntu</tag>
+        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
@@ -4337,11 +4180,11 @@
 </ul>
 ]]></content>
       <categories>
-        <category>ubuntu</category>
+        <category>linux</category>
       </categories>
       <tags>
-        <tag>ubuntu</tag>
         <tag>software</tag>
+        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
@@ -4354,12 +4197,12 @@
 <h1 id="连接和断开WiFi"><a href="#连接和断开WiFi" class="headerlink" title="连接和断开WiFi"></a>连接和断开WiFi</h1><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">// 显示网络连接信息</span><br><span class="line">nmcli c  </span><br><span class="line">// 连接</span><br><span class="line">nmcli c up $ssid</span><br><span class="line">// 断开</span><br><span class="line">nmcli c down $ssid</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>ubuntu</category>
+        <category>linux</category>
       </categories>
       <tags>
-        <tag>ubuntu</tag>
-        <tag>network-manager</tag>
         <tag>wifi</tag>
+        <tag>linux</tag>
+        <tag>network</tag>
       </tags>
   </entry>
   <entry>
@@ -4373,13 +4216,15 @@
 
 <p>在<code>~/.zshrc</code>中添加（如果用的是bash，就添加到<code>~/.bashrc</code>）：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export RANGER_LOAD_DEFAULT_RC FALSE</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置默认文件编辑器："><a href="#配置默认文件编辑器：" class="headerlink" title="配置默认文件编辑器："></a>配置默认文件编辑器：</h2><p>在<code>rifile.conf</code>中</p>
 ]]></content>
       <categories>
-        <category>ubuntu</category>
+        <category>linux</category>
       </categories>
       <tags>
-        <tag>ubuntu</tag>
         <tag>ranger</tag>
+        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
@@ -4392,11 +4237,11 @@
 <h1 id="zshrc"><a href="#zshrc" class="headerlink" title=".zshrc"></a>.zshrc</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># If you come from bash you might have to change your $PATH.</span><br><span class="line"># export PATH=$HOME/bin:/usr/local/bin:$PATH</span><br><span class="line"></span><br><span class="line"># Path to your oh-my-zsh installation.</span><br><span class="line">export ZSH=$HOME/.oh-my-zsh</span><br><span class="line"></span><br><span class="line"># Set name of the theme to load --- if set to &quot;random&quot;, it will</span><br><span class="line"># load a random theme each time oh-my-zsh is loaded, in which case,</span><br><span class="line"># to know which specific one was loaded, run: echo $RANDOM_THEME</span><br><span class="line"># See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes</span><br><span class="line">#ZSH_THEME=&quot;my&quot;</span><br><span class="line">ZSH_THEME=&quot;my2&quot;</span><br><span class="line">#ZSH_THEME=&quot;robbyrussell&quot;</span><br><span class="line"></span><br><span class="line"># Set list of themes to pick from when loading at random</span><br><span class="line"># Setting this variable when ZSH_THEME=random will cause zsh to load</span><br><span class="line"># a theme from this variable instead of looking in $ZSH/themes/</span><br><span class="line"># If set to an empty array, this variable will have no effect.</span><br><span class="line"># ZSH_THEME_RANDOM_CANDIDATES=( &quot;robbyrussell&quot; &quot;agnoster&quot; )</span><br><span class="line"></span><br><span class="line"># Uncomment the following line to use case-sensitive completion.</span><br><span class="line"># CASE_SENSITIVE=&quot;true&quot;</span><br><span class="line"></span><br><span class="line"># Uncomment the following line to use hyphen-insensitive completion.</span><br><span class="line"># Case-sensitive completion must be off. _ and - will be interchangeable.</span><br><span class="line"># HYPHEN_INSENSITIVE=&quot;true&quot;</span><br><span class="line"></span><br><span class="line"># Uncomment the following line to disable bi-weekly auto-update checks.</span><br><span class="line"># DISABLE_AUTO_UPDATE=&quot;true&quot;</span><br><span class="line"></span><br><span class="line"># Uncomment the following line to automatically update without prompting.</span><br><span class="line"># DISABLE_UPDATE_PROMPT=&quot;true&quot;</span><br><span class="line"></span><br><span class="line"># Uncomment the following line to change how often to auto-update (in days).</span><br><span class="line"># export UPDATE_ZSH_DAYS=13</span><br><span class="line"></span><br><span class="line"># Uncomment the following line if pasting URLs and other text is messed up.</span><br><span class="line"># DISABLE_MAGIC_FUNCTIONS=&quot;true&quot;</span><br><span class="line"></span><br><span class="line"># Uncomment the following line to disable colors in ls.</span><br><span class="line"># DISABLE_LS_COLORS=&quot;true&quot;</span><br><span class="line"></span><br><span class="line"># Uncomment the following line to disable auto-setting terminal title.</span><br><span class="line"># DISABLE_AUTO_TITLE=&quot;true&quot;</span><br><span class="line"></span><br><span class="line"># Uncomment the following line to enable command auto-correction.</span><br><span class="line"># ENABLE_CORRECTION=&quot;true&quot;</span><br><span class="line"></span><br><span class="line"># Uncomment the following line to display red dots whilst waiting for completion.</span><br><span class="line"># Caution: this setting can cause issues with multiline prompts (zsh 5.7.1 and newer seem to work)</span><br><span class="line"># See https://github.com/ohmyzsh/ohmyzsh/issues/5765</span><br><span class="line"># COMPLETION_WAITING_DOTS=&quot;true&quot;</span><br><span class="line"></span><br><span class="line"># Uncomment the following line if you want to disable marking untracked files</span><br><span class="line"># under VCS as dirty. This makes repository status check for large repositories</span><br><span class="line"># much, much faster.</span><br><span class="line"># DISABLE_UNTRACKED_FILES_DIRTY=&quot;true&quot;</span><br><span class="line"></span><br><span class="line"># Uncomment the following line if you want to change the command execution time</span><br><span class="line"># stamp shown in the history command output.</span><br><span class="line"># You can set one of the optional three formats:</span><br><span class="line"># &quot;mm/dd/yyyy&quot;|&quot;dd.mm.yyyy&quot;|&quot;yyyy-mm-dd&quot;</span><br><span class="line"># or set a custom format using the strftime function format specifications,</span><br><span class="line"># see &#x27;man strftime&#x27; for details.</span><br><span class="line"># HIST_STAMPS=&quot;mm/dd/yyyy&quot;</span><br><span class="line"></span><br><span class="line"># Would you like to use another custom folder than $ZSH/custom?</span><br><span class="line"># ZSH_CUSTOM=/path/to/new-custom-folder</span><br><span class="line"></span><br><span class="line"># Which plugins would you like to load?</span><br><span class="line"># Standard plugins can be found in $ZSH/plugins/</span><br><span class="line"># Custom plugins may be added to $ZSH_CUSTOM/plugins/</span><br><span class="line"># Example format: plugins=(rails git textmate ruby lighthouse)</span><br><span class="line"># Add wisely, as too many plugins slow down shell startup.</span><br><span class="line">plugins=(</span><br><span class="line">    git</span><br><span class="line">    zsh-autosuggestions</span><br><span class="line">    zsh-syntax-highlighting </span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">source $ZSH/oh-my-zsh.sh</span><br><span class="line"></span><br><span class="line"># User configuration</span><br><span class="line"></span><br><span class="line"># export MANPATH=&quot;/usr/local/man:$MANPATH&quot;</span><br><span class="line"></span><br><span class="line"># You may need to manually set your language environment</span><br><span class="line"># export LANG=en_US.UTF-8</span><br><span class="line"></span><br><span class="line"># Preferred editor for local and remote sessions</span><br><span class="line"># if [[ -n $SSH_CONNECTION ]]; then</span><br><span class="line">#   export EDITOR=&#x27;vim&#x27;</span><br><span class="line"># else</span><br><span class="line">#   export EDITOR=&#x27;mvim&#x27;</span><br><span class="line"># fi</span><br><span class="line"></span><br><span class="line"># Compilation flags</span><br><span class="line"># export ARCHFLAGS=&quot;-arch x86_64&quot;</span><br><span class="line"></span><br><span class="line"># Set personal aliases, overriding those provided by oh-my-zsh libs,</span><br><span class="line"># plugins, and themes. Aliases can be placed here, though oh-my-zsh</span><br><span class="line"># users are encouraged to define aliases within the ZSH_CUSTOM folder.</span><br><span class="line"># For a full list of active aliases, run `alias`.</span><br><span class="line">#</span><br><span class="line"># Example aliases</span><br><span class="line"># alias zshconfig=&quot;mate ~/.zshrc&quot;</span><br><span class="line"># alias ohmyzsh=&quot;mate ~/.oh-my-zsh&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">##### ranger #####</span><br><span class="line">export RANGER_LOAD_DEFAULT_RC=FALSE</span><br><span class="line"></span><br><span class="line">##### node #####</span><br><span class="line">export PATH=$PATH:~/ProgramFiles/node/node-v14.16.0-linux-x64/bin</span><br><span class="line"></span><br><span class="line">##### pip3 #####</span><br><span class="line">export PATH=$PATH:~/.local/bin</span><br><span class="line"></span><br><span class="line"># &gt;&gt;&gt; conda initialize &gt;&gt;&gt;</span><br><span class="line"># !! Contents within this block are managed by &#x27;conda init&#x27; !!</span><br><span class="line">__conda_setup=&quot;$(&#x27;/home/wadekiny/workspace/anaconda3/bin/conda&#x27; &#x27;shell.bash&#x27; &#x27;hook&#x27; 2&gt; /dev/null)&quot;</span><br><span class="line">if [ $? -eq 0 ]; then</span><br><span class="line">    eval &quot;$__conda_setup&quot;</span><br><span class="line">else</span><br><span class="line">    if [ -f &quot;/home/wadekiny/workspace/anaconda3/etc/profile.d/conda.sh&quot; ]; then</span><br><span class="line">        . &quot;/home/wadekiny/workspace/anaconda3/etc/profile.d/conda.sh&quot;</span><br><span class="line">    else</span><br><span class="line">        export PATH=&quot;/home/wadekiny/workspace/anaconda3/bin:$PATH&quot;</span><br><span class="line">    fi</span><br><span class="line">fi</span><br><span class="line">unset __conda_setup</span><br><span class="line"># &lt;&lt;&lt; conda initialize &lt;&lt;&lt;</span><br><span class="line">#</span><br><span class="line"></span><br><span class="line">export TERM=xterm-256color</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>ubuntu</category>
+        <category>linux</category>
       </categories>
       <tags>
-        <tag>ubuntu</tag>
-        <tag>shell</tag>
+        <tag>linux</tag>
+        <tag>zsh</tag>
       </tags>
   </entry>
   <entry>
@@ -4414,11 +4259,14 @@
 <p>路径：<code>org / gnome / desktop / input-sources / xkb-options</code><br>把custome value的内容改为：<code>&#39;caps:swapescape&#39;</code><br><img src="/./ubuntu18-04-CapsLock%E5%92%8CEsc%E4%BA%92%E6%8D%A2/ce.png" alt="avatar"></p>
 ]]></content>
       <categories>
-        <category>ubuntu</category>
+        <category>linux</category>
       </categories>
       <tags>
-        <tag>vim</tag>
-        <tag>ubuntu</tag>
+        <tag>linux</tag>
+        <tag>keyboard</tag>
+        <tag>esc</tag>
+        <tag>capslock</tag>
+        <tag>xmodmap</tag>
       </tags>
   </entry>
   <entry>
@@ -4453,10 +4301,13 @@
 <hr>
 ]]></content>
       <categories>
-        <category>ubuntu</category>
+        <category>linux</category>
       </categories>
       <tags>
-        <tag>ubuntu</tag>
+        <tag>linux</tag>
+        <tag>tar</tag>
+        <tag>zip</tag>
+        <tag>rar</tag>
       </tags>
   </entry>
   <entry>
@@ -4469,11 +4320,11 @@
 <p>无需去 ~&#x2F;.config&#x2F;terminator&#x2F;config 里一个个敲<br>更改完会自动添加到里面</p>
 ]]></content>
       <categories>
-        <category>ubuntu</category>
+        <category>linux</category>
       </categories>
       <tags>
-        <tag>ubuntu</tag>
         <tag>terminal</tag>
+        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
@@ -4576,11 +4427,12 @@
 <hr>
 ]]></content>
       <categories>
-        <category>ubuntu</category>
+        <category>linux</category>
       </categories>
       <tags>
         <tag>vim</tag>
-        <tag>ubuntu</tag>
+        <tag>linux</tag>
+        <tag>nvim</tag>
       </tags>
   </entry>
   <entry>
@@ -4598,11 +4450,12 @@
 </ol>
 ]]></content>
       <categories>
-        <category>ubuntu</category>
+        <category>linux</category>
       </categories>
       <tags>
-        <tag>ubuntu</tag>
         <tag>image</tag>
+        <tag>linux</tag>
+        <tag>format</tag>
       </tags>
   </entry>
   <entry>
@@ -4614,11 +4467,11 @@
 </ul>
 ]]></content>
       <categories>
-        <category>ubuntu</category>
+        <category>linux</category>
       </categories>
       <tags>
         <tag>ubuntu</tag>
-        <tag>software</tag>
+        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
@@ -4637,11 +4490,12 @@
 <p>sudo pppoeconf</p>
 ]]></content>
       <categories>
-        <category>ubuntu</category>
+        <category>linux</category>
       </categories>
       <tags>
         <tag>ubuntu</tag>
-        <tag>network-manager</tag>
+        <tag>linux</tag>
+        <tag>network</tag>
       </tags>
   </entry>
   <entry>
@@ -4663,11 +4517,12 @@
 </ol>
 ]]></content>
       <categories>
-        <category>ubuntu</category>
+        <category>linux</category>
       </categories>
       <tags>
         <tag>ubuntu</tag>
         <tag>firefox</tag>
+        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
@@ -4677,11 +4532,12 @@
 <p><img src="/ubuntu-recorder/2022-01-30-22-27-55-image.png"></p>
 ]]></content>
       <categories>
-        <category>ubuntu</category>
+        <category>linux</category>
       </categories>
       <tags>
         <tag>ubuntu</tag>
         <tag>gnome</tag>
+        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
@@ -4720,11 +4576,12 @@
 <hr>
 ]]></content>
       <categories>
-        <category>ubuntu</category>
+        <category>linux</category>
       </categories>
       <tags>
         <tag>ubuntu</tag>
         <tag>gnome</tag>
+        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
@@ -4744,10 +4601,12 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">刷新内核</span><br><span class="line">`sudo update-initramfs -u`</span><br><span class="line">重启</span><br><span class="line">`reboot`</span><br><span class="line"></span><br><span class="line">4. 此时应该能够正常显示桌面系统，装NVIDIA显卡驱动</span><br><span class="line">查找推荐的驱动型号，对于RTX2060，有些驱动版本不能支持，太旧的驱动不能用。</span><br><span class="line">`ubuntu-drivers devices`</span><br><span class="line">![avatar](../pictures/udd.png)</span><br><span class="line">这里推荐我用460，开始安装：</span><br><span class="line">`sudo add-apt-repository ppa:graphics-drivers/ppa`</span><br><span class="line">`sudo apt update`</span><br><span class="line">`sudo apt-get install nvidia-460`</span><br><span class="line">`sudo apt-get install mesa-common-dev`</span><br><span class="line">`sudo apt-get install freeglut3-dev`</span><br><span class="line">验证：</span><br><span class="line">`nvidia-smi`</span><br><span class="line">![avatar](../pictures/smi.png)</span><br><span class="line">出现框框则安装成功。</span><br><span class="line">重启</span><br><span class="line">`reboot`</span><br><span class="line"></span><br><span class="line">5. 再次开机发现又卡在开机界面了。重启，进BIOS，切换成独立显卡模式就OK了。 </span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>ubuntu</category>
+        <category>linux</category>
       </categories>
       <tags>
         <tag>ubuntu</tag>
+        <tag>linux</tag>
+        <tag>nvidia</tag>
       </tags>
   </entry>
   <entry>
@@ -4758,10 +4617,295 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>ubuntu</category>
+        <category>linux</category>
       </categories>
       <tags>
         <tag>ubuntu</tag>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>dwm</title>
+    <url>/2023/01/12/linux/linux/dwm/</url>
+    <content><![CDATA[<h1 id="autostart-sh-脚本-arch下"><a href="#autostart-sh-脚本-arch下" class="headerlink" title="autostart.sh 脚本(arch下)"></a>autostart.sh 脚本(arch下)</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#! /bin/bash</span><br><span class="line"># sudo systemctl start todeskd.service</span><br><span class="line"></span><br><span class="line">nm-tray &amp;</span><br><span class="line">flameshot &amp;</span><br><span class="line">setxkbmap -option &quot;caps:swapescape&quot;</span><br><span class="line">dunst &amp;</span><br><span class="line">fcitx5 -d &amp;</span><br><span class="line">/home/wadekiny/ProgramFiles/picom/build/src/picom &amp;</span><br><span class="line">feh --bg-fill ~/Pictures/background/bg0.jpg  &amp;</span><br><span class="line">bash /home/wadekiny/ProgramFiles/dwm-wadekiny/statusbar/statusbar.sh cron &amp;</span><br><span class="line">bash /home/wadekiny/Scripts/tap2click.sh &amp;</span><br><span class="line">bash /home/wadekiny/Scripts/inverse-scroll.sh &amp;</span><br><span class="line">#bash /home/wadekiny/Scripts/xmodmap/esc2capslock.sh &amp;</span><br><span class="line">#python3 /home/wadekiny/Scripts/wallpic.py &amp;</span><br><span class="line">#nm-applet &amp;</span><br><span class="line">#picom -b &amp;</span><br><span class="line">#/home/wadekiny/ProgramFiles/picom-wadekiny/build/src/picom --experimental-backends &amp;</span><br></pre></td></tr></table></figure>
+
+<h1 id="显示窗口信息的方法"><a href="#显示窗口信息的方法" class="headerlink" title="显示窗口信息的方法"></a>显示窗口信息的方法</h1><ul>
+<li>命令<code>xprop</code> (用来获取class,name之类的属性)</li>
+<li>命令<code>xwininfo</code></li>
+</ul>
+<h1 id="有时候statusbar不能显示"><a href="#有时候statusbar不能显示" class="headerlink" title="有时候statusbar不能显示"></a>有时候statusbar不能显示</h1><ul>
+<li>是因为temp文件中多了一些奇奇怪怪的东西，删除即可</li>
+</ul>
+<h1 id="statusbar日期点开之后显示异常"><a href="#statusbar日期点开之后显示异常" class="headerlink" title="statusbar日期点开之后显示异常"></a>statusbar日期点开之后显示异常</h1><ul>
+<li>输入<code>cal</code>命令，今天的日期会被高亮，而notify-send的语法不能识别这个高亮的修饰符</li>
+<li>解决办法：statusbar日期脚本中,使用正则表达式替换高亮修饰符号(要考虑到所有情况，替换为空还是空格……)  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cal | sed &#x27;s/_^H/ /&#x27; | sed &#x27;s/  _^H/&gt;/&#x27; </span><br><span class="line"># ^H的编码:0x8</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="通过按F9自动输入密码"><a href="#通过按F9自动输入密码" class="headerlink" title="通过按F9自动输入密码"></a>通过按F9自动输入密码</h1><ul>
+<li>(使用NOPASS已经用不上这个功能了)</li>
+</ul>
+<ol>
+<li>dwm的配置头文件中添加快捷键</li>
+<li>快捷键调用scripts中的auto_type.py</li>
+</ol>
+<h1 id="如何启动dwm"><a href="#如何启动dwm" class="headerlink" title="如何启动dwm"></a>如何启动dwm</h1><ul>
+<li>有登陆管理器<ul>
+<li>添加文件：&#x2F;usr&#x2F;share&#x2F;xsession&#x2F;dwm.desktop，内容忘了怎么写</li>
+</ul>
+</li>
+<li>修改~&#x2F;.xinitrc<ul>
+<li>添加<code>exec dwm</code></li>
+<li>这样<code>startx</code>之后就可以启动dwm</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>dwm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>窗口管理器i3wm安装配置</title>
+    <url>/2022/06/22/linux/linux/i3wm/</url>
+    <content><![CDATA[<p>效果图:<br><img src="/./i3wm/performance2.png" alt="performance2"></p>
+<p>可以借鉴的配置：<br><a href="https://github.com/aeghn/prettyi3">https://github.com/aeghn/prettyi3</a><br><a href="https://github.com/jorhelp/LinuxDotfiles">https://github.com/jorhelp/LinuxDotfiles</a></p>
+<p>我的配置文件: <a href="https://github.com/Wadekiny/dotfiles">https://github.com/Wadekiny/dotfiles</a></p>
+<h1 id="i3wm"><a href="#i3wm" class="headerlink" title="i3wm"></a>i3wm</h1><p><a href="https://github.com/i3/i3">https://github.com/i3/i3</a></p>
+<h2 id="i3-gaps"><a href="#i3-gaps" class="headerlink" title="i3-gaps"></a>i3-gaps</h2><p>i3-gaps 可以使窗口之间有空隙（最终使用）<br><a href="https://github.com/Airblader/i3">https://github.com/Airblader/i3</a></p>
+<h2 id="i3-gaps-rounded"><a href="#i3-gaps-rounded" class="headerlink" title="i3-gaps-rounded"></a>i3-gaps-rounded</h2><p>在i3-gaps的基础之上添加了圆角，有bug，圆角不能正常显示<br><a href="https://github.com/resloved/i3">https://github.com/resloved/i3</a></p>
+<h2 id="配置i3"><a href="#配置i3" class="headerlink" title="配置i3"></a>配置i3</h2><p>创建配置文件: <code>~/.config/i3/config</code><br>我的配置文件: <a href="https://github.com/Wadekiny/dotfiles">https://github.com/Wadekiny/dotfiles</a></p>
+<h1 id="compton-amp-picom"><a href="#compton-amp-picom" class="headerlink" title="compton &amp; picom"></a>compton &amp; picom</h1><p>使用picom实现阴影，透明，高斯模糊，圆角效果</p>
+<h2 id="安装picom"><a href="#安装picom" class="headerlink" title="安装picom"></a>安装picom</h2><ul>
+<li><p>原生picom，功能少，bug少<br><a href="https://github.com/yshui/picom">https://github.com/yshui/picom</a></p>
+</li>
+<li><p>增加了透明、高斯模糊、圆角<br>但是有一个问题，同时使用圆角，透明+高斯模糊，阴影时，圆角处不透明而是模糊效果<br><a href="https://github.com/ibhagwan/picom">https://github.com/ibhagwan/picom</a> </p>
+</li>
+<li><p>修复了圆角处的问题（最终使用）<br><a href="https://github.com/s0nny7/picom">https://github.com/s0nny7/picom</a></p>
+</li>
+<li><p>带动画的picom，会报错，动画不流畅<br><a href="https://github.com/jonaburg/picom">https://github.com/jonaburg/picom</a></p>
+<ul>
+<li>还有一个jonaburg-fix版本</li>
+</ul>
+</li>
+</ul>
+<h2 id="配置picom"><a href="#配置picom" class="headerlink" title="配置picom"></a>配置picom</h2><p><code>~/.config/picom/picom.conf</code></p>
+<p>我的配置文件: <a href="https://github.com/Wadekiny/dotfiles">https://github.com/Wadekiny/dotfiles</a></p>
+<h1 id="polybar"><a href="#polybar" class="headerlink" title="polybar"></a>polybar</h1><p><a href="https://github.com/polybar/polybar">https://github.com/polybar/polybar</a></p>
+<p>如果要显示不同模块的信息，需要装上对应的依赖</p>
+<h2 id="开机启动polybar"><a href="#开机启动polybar" class="headerlink" title="开机启动polybar"></a>开机启动polybar</h2><ol>
+<li><p>在<code>~/.config/i3/config</code>中注释掉<code>i3status</code>部分</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#finds out, if available)</span><br><span class="line">#bar &#123;</span><br><span class="line">#status_command i3status</span><br><span class="line">#&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建脚本<code>~/.config/i3/polybar.sh</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">killall -q polybar</span><br><span class="line">while pgrep -x &gt;/dev/null; do sleep 1; done</span><br><span class="line">polybar</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>~/.config/i3/config</code>中添加开机启动</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">exec_always --no-startup-id ~/.config/i3/polybar.sh &amp;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="配置polybar"><a href="#配置polybar" class="headerlink" title="配置polybar"></a>配置polybar</h2><p>配置文件位置: <code>~/.config/polybar/config.ini</code><br>我的配置文件: <a href="https://github.com/Wadekiny/dotfiles">https://github.com/Wadekiny/dotfiles</a></p>
+<h1 id="rofi"><a href="#rofi" class="headerlink" title="rofi"></a>rofi</h1><h2 id="安装rofi"><a href="#安装rofi" class="headerlink" title="安装rofi"></a>安装rofi</h2><p><a href="https://github.com/davatorium/rofi">https://github.com/davatorium/rofi</a></p>
+<h2 id="配置rofi"><a href="#配置rofi" class="headerlink" title="配置rofi"></a>配置rofi</h2><p><a href="https://github.com/davatorium/rofi/blob/next/CONFIG.md">https://github.com/davatorium/rofi/blob/next/CONFIG.md</a></p>
+<p>创建配置文件到<code>~/.config/rofi/config.rasi</code></p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">rofi -upgrade-config</span><br></pre></td></tr></table></figure>
+<h2 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h2><p><a href="https://github.com/davatorium/rofi-themes/tree/master/User%20Themes">https://github.com/davatorium/rofi-themes/tree/master/User%20Themes</a></p>
+<p>下载想用的主题，主题文件放到<code>~/.config/rofi/</code>目录下</p>
+<h2 id="rofi代替dmenu"><a href="#rofi代替dmenu" class="headerlink" title="rofi代替dmenu"></a>rofi代替dmenu</h2><p>在<code>~/.config/i3/config</code>中添加一行：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bindsym $mod+d exec --no-startup-id rofi -theme slate.rasi -show combi -show-icons</span><br></pre></td></tr></table></figure>
+
+<h2 id="rofi配置文件"><a href="#rofi配置文件" class="headerlink" title="rofi配置文件"></a>rofi配置文件</h2><p>我的配置文件: <a href="https://github.com/Wadekiny/dotfiles">https://github.com/Wadekiny/dotfiles</a></p>
+<h1 id="i3lock"><a href="#i3lock" class="headerlink" title="i3lock"></a>i3lock</h1><ol>
+<li><p>默认的i3lock</p>
+</li>
+<li><p>i3lock-color<br><a href="https://github.com/Raymo111/i3lock-color">https://github.com/Raymo111/i3lock-color</a></p>
+</li>
+<li><p>betterlockscreen (最终使用) 需要的依赖是i3lock<br><a href="https://github.com/betterlockscreen/betterlockscreen">https://github.com/betterlockscreen/betterlockscreen</a></p>
+</li>
+</ol>
+<ul>
+<li>我的配置文件: <a href="https://github.com/Wadekiny/dotfiles">https://github.com/Wadekiny/dotfiles</a></li>
+</ul>
+<h1 id="壁纸"><a href="#壁纸" class="headerlink" title="壁纸"></a>壁纸</h1><p>自动更换壁纸</p>
+<ol>
+<li>创建 python 文件</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> glob</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">bg_dir = <span class="string">&#x27;/home/wadekiny/Pictures/background/&#x27;</span></span><br><span class="line">time_cycle = <span class="number">1000</span></span><br><span class="line">bg_list = glob.glob(bg_dir + <span class="string">&#x27;*.jpg&#x27;</span>) + glob.glob(bg_dir + <span class="string">&#x27;*.png&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    bg_list = glob.glob(bg_dir + <span class="string">&#x27;*.jpg&#x27;</span>) + glob.glob(bg_dir + <span class="string">&#x27;*.png&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> pic_name <span class="keyword">in</span> bg_list:</span><br><span class="line">        <span class="built_in">print</span>(pic_name)</span><br><span class="line">        os.system(<span class="string">&#x27;feh --bg-fill &#x27;</span>+ pic_name)</span><br><span class="line">        time.sleep(time_cycle)</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>开机启动</li>
+</ol>
+<p><code>~/.config/i3/config</code>中添加一行</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">exec_always --no-startup-id python3 ~/.config/i3/wallpic.py</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h1 id="音量"><a href="#音量" class="headerlink" title="音量"></a>音量</h1><h2 id="设置默认声卡"><a href="#设置默认声卡" class="headerlink" title="设置默认声卡"></a>设置默认声卡</h2><p>在使用amixer设置音量时，报错: <code>amixer: Unable to find simple control &#39;Master&#39; 0</code></p>
+<ol>
+<li><p>通过<code>alsamixer</code>命令可以查看当前声卡，调节音频</p>
+</li>
+<li><p>查看声卡相关信息：</p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"> wadekiny-R7P &lt;~&gt; [<span class="number">16</span>:<span class="number">35</span>:<span class="number">29</span>]</span><br><span class="line"> &gt;&gt; aplay -l</span><br><span class="line">**** List of PLAYBACK Hardware Devices ****</span><br><span class="line">card <span class="number">0</span>: NVidia [HDA NVidia], device <span class="number">3</span>: HDMI <span class="number">0</span> [HDMI <span class="number">0</span>]</span><br><span class="line"><span class="function">  Subdevices: 1/1</span></span><br><span class="line"><span class="function">  <span class="title">Subdevice</span> #0: <span class="title">subdevice</span> #0</span></span><br><span class="line"><span class="function"><span class="title">card</span> 0: <span class="title">NVidia</span> [<span class="title">HDA</span> <span class="title">NVidia</span>], <span class="title">device</span> 7: <span class="title">HDMI</span> 1 [<span class="title">HDMI</span> 1]</span></span><br><span class="line"><span class="function">  <span class="title">Subdevices</span>: 1/1</span></span><br><span class="line"><span class="function">  <span class="title">Subdevice</span> #0: <span class="title">subdevice</span> #0</span></span><br><span class="line"><span class="function"><span class="title">card</span> 0: <span class="title">NVidia</span> [<span class="title">HDA</span> <span class="title">NVidia</span>], <span class="title">device</span> 8: <span class="title">HDMI</span> 2 [<span class="title">HDMI</span> 2]</span></span><br><span class="line"><span class="function">  <span class="title">Subdevices</span>: 1/1</span></span><br><span class="line"><span class="function">  <span class="title">Subdevice</span> #0: <span class="title">subdevice</span> #0</span></span><br><span class="line"><span class="function"><span class="title">card</span> 0: <span class="title">NVidia</span> [<span class="title">HDA</span> <span class="title">NVidia</span>], <span class="title">device</span> 9: <span class="title">HDMI</span> 3 [<span class="title">HDMI</span> 3]</span></span><br><span class="line"><span class="function">  <span class="title">Subdevices</span>: 1/1</span></span><br><span class="line"><span class="function">  <span class="title">Subdevice</span> #0: <span class="title">subdevice</span> #0</span></span><br><span class="line"><span class="function"><span class="title">card</span> 0: <span class="title">NVidia</span> [<span class="title">HDA</span> <span class="title">NVidia</span>], <span class="title">device</span> 10: <span class="title">HDMI</span> 4 [<span class="title">HDMI</span> 4]</span></span><br><span class="line"><span class="function">  <span class="title">Subdevices</span>: 1/1</span></span><br><span class="line"><span class="function">  <span class="title">Subdevice</span> #0: <span class="title">subdevice</span> #0</span></span><br><span class="line"><span class="function"><span class="title">card</span> 1: <span class="title">Generic</span> [<span class="title">HD</span>-<span class="title">Audio</span> <span class="title">Generic</span>], <span class="title">device</span> 0: <span class="title">ALC257</span> <span class="title">Analog</span> [<span class="title">ALC257</span> <span class="title">Analog</span>]</span></span><br><span class="line"><span class="function">  <span class="title">Subdevices</span>: 1/1</span></span><br><span class="line"><span class="function">  <span class="title">Subdevice</span> #0: <span class="title">subdevice</span> #0</span></span><br></pre></td></tr></table></figure>
+<p>所以，在aplay -l 里面选择声卡1,设备ID为0的声卡。</p>
+</li>
+<li><p>把下列配置添加到系统级别的 <code>/etc/asound.conf</code> 或用户级别的 <code>~/.asoundrc</code> 文件。如果文件不存在，可以手动创建。其中的各个ID，请根据实际情况调整：</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">defaults.pcm.card 1</span><br><span class="line">defaults.pcm.device 0</span><br><span class="line">defaults.ctl.card 1</span><br></pre></td></tr></table></figure>
+
+<p><code>pcm</code>选项决定用来播放音频的设备，而<code>ctl</code>选项决定那个声卡能够由控制工具（如 alsamixer）使用。</p>
+<h2 id="配置快捷键"><a href="#配置快捷键" class="headerlink" title="配置快捷键"></a>配置快捷键</h2><p>在<code>~/.config/i3/config</code>中添加：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bindsym XF86AudioRaiseVolume exec amixer set  Master 1dB+</span><br><span class="line">bindsym XF86AudioLowerVolume exec amixer set  Master 1dB-</span><br><span class="line">bindsym XF86AudioMute exec amixer -D pulse set Master toggle </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="亮度"><a href="#亮度" class="headerlink" title="亮度"></a>亮度</h1><p>在<code>~/.config/i3/config</code>中添加：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bindsym XF86MonBrightnessUp exec &quot;xbacklight -inc 10; notify-send &#x27;brightness up&#x27;&quot;</span><br><span class="line">bindsym XF86MonBrightnessDown exec &quot;xbacklight -dec 10; notify-send &#x27;brightness down&#x27;&quot;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="触摸板"><a href="#触摸板" class="headerlink" title="触摸板"></a>触摸板</h1><h2 id="轻击触摸板实现点击功能"><a href="#轻击触摸板实现点击功能" class="headerlink" title="轻击触摸板实现点击功能"></a>轻击触摸板实现点击功能</h2><p>编写脚本文件<code>~/.config/i3/tap2click.sh</code>，在i3的配置文件中添加一行：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">exec_always --no-startup-id ~/.config/i3/tap2click.sh &amp;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Get <span class="built_in">id</span> of touchpad and the <span class="built_in">id</span> of the field corresponding to</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">tapping to click</span></span><br><span class="line">id=`xinput list | grep &quot;Touchpad&quot; | cut -d&#x27;=&#x27; -f2 | cut -d&#x27;[&#x27; -f1`</span><br><span class="line">tap_to_click_id=`xinput list-props $id | \</span><br><span class="line">                      grep &quot;Tapping Enabled (&quot; \</span><br><span class="line">                      | cut -d&#x27;(&#x27; -f2 | cut -d&#x27;)&#x27; -f1`</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Set the property to <span class="literal">true</span></span></span><br><span class="line">xinput --set-prop $id $tap_to_click_id 1</span><br></pre></td></tr></table></figure>
+
+<h2 id="实现反向滚动"><a href="#实现反向滚动" class="headerlink" title="实现反向滚动"></a>实现反向滚动</h2><p>编写脚本文件<code>~/.config/i3/inverse-scroll.sh</code>，在i3的配置文件中添加一行：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">exec_always --no-startup-id ~/.config/i3/inverse-scroll.sh &amp;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Get <span class="built_in">id</span> of touchpad and the <span class="built_in">id</span> of the field corresponding to</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">natural scrolling</span></span><br><span class="line">id=`xinput list | grep &quot;Touchpad&quot; | cut -d&#x27;=&#x27; -f2 | cut -d&#x27;[&#x27; -f1`</span><br><span class="line">natural_scrolling_id=`xinput list-props $id | \</span><br><span class="line">                      grep &quot;Natural Scrolling Enabled (&quot; \</span><br><span class="line">                      | cut -d&#x27;(&#x27; -f2 | cut -d&#x27;)&#x27; -f1`</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Set the property to <span class="literal">true</span></span></span><br><span class="line">xinput --set-prop $id $natural_scrolling_id 1</span><br></pre></td></tr></table></figure>
+<h1 id="解决边框-圆角冲突"><a href="#解决边框-圆角冲突" class="headerlink" title="解决边框+圆角冲突"></a>解决边框+圆角冲突</h1><ul>
+<li>使用i3的边框再用picom圆角，会导致四个角的边框被削掉。</li>
+</ul>
+<p>用这个: <a href="https://github.com/Wadekiny/xborders">https://github.com/Wadekiny/xborders</a></p>
+<h1 id="使用autotiling自动布局"><a href="#使用autotiling自动布局" class="headerlink" title="使用autotiling自动布局"></a>使用autotiling自动布局</h1><p><a href="https://github.com/nwg-piotr/autotiling">https://github.com/nwg-piotr/autotiling</a></p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>i3</tag>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>dwm, i3 下修改主题</title>
+    <url>/2023/01/13/linux/linux/lxappearance/</url>
+    <content><![CDATA[<p>使用lxappearance可以修改dwm、i3下的主题(鼠标样式、nautilus文件夹样式等等)</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>i3</tag>
+        <tag>gnome</tag>
+        <tag>linux</tag>
+        <tag>dwm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>linux设置代理,git加速</title>
+    <url>/2023/01/13/linux/linux/proxy/</url>
+    <content><![CDATA[<h1 id="安装代理软件"><a href="#安装代理软件" class="headerlink" title="安装代理软件"></a>安装代理软件</h1><ul>
+<li>qv2ray 或 clash for windows(linux版本)</li>
+</ul>
+<h2 id="qv2ray"><a href="#qv2ray" class="headerlink" title="qv2ray"></a>qv2ray</h2><h3 id="第一步，安装Qv2ray"><a href="#第一步，安装Qv2ray" class="headerlink" title="第一步，安装Qv2ray"></a>第一步，安装Qv2ray</h3><h3 id="第二步，安装V2ray-Core"><a href="#第二步，安装V2ray-Core" class="headerlink" title="第二步，安装V2ray Core"></a>第二步，安装V2ray Core</h3><ul>
+<li>选择 v2ray-linux-64.zip<br><a href="https://github.com/v2fly/v2ray-core/releases">https://github.com/v2fly/v2ray-core/releases</a></li>
+</ul>
+<h3 id="第三步，设置Qv2ray"><a href="#第三步，设置Qv2ray" class="headerlink" title="第三步，设置Qv2ray"></a>第三步，设置Qv2ray</h3><ol>
+<li><p>做好类似于下图的设置，检查v2ray core和系统时间<br> <img src="/./proxy-md/qv2ray-setting.png" alt="qv2ray-setting"></p>
+</li>
+<li><p>添加订阅<br> <img src="/./proxy-md/subscribe.png" alt="subscribe"></p>
+</li>
+</ol>
+<h3 id="第四步，qv2ray内启动代理"><a href="#第四步，qv2ray内启动代理" class="headerlink" title="第四步，qv2ray内启动代理"></a>第四步，qv2ray内启动代理</h3><h2 id="Clash-for-Windows"><a href="#Clash-for-Windows" class="headerlink" title="Clash for Windows"></a>Clash for Windows</h2><h3 id="第一步-在’Profiles’里添加订阅"><a href="#第一步-在’Profiles’里添加订阅" class="headerlink" title="第一步 在’Profiles’里添加订阅"></a>第一步 在’Profiles’里添加订阅</h3><h3 id="第二步-在’Proxies’里选择Rule-自动选择"><a href="#第二步-在’Proxies’里选择Rule-自动选择" class="headerlink" title="第二步 在’Proxies’里选择Rule,自动选择"></a>第二步 在’Proxies’里选择Rule,自动选择</h3><h3 id="第三步-Clash的linux版本打开自动启动代理"><a href="#第三步-Clash的linux版本打开自动启动代理" class="headerlink" title="第三步 Clash的linux版本打开自动启动代理"></a>第三步 Clash的linux版本打开自动启动代理</h3><h1 id="设置系统代理"><a href="#设置系统代理" class="headerlink" title="设置系统代理"></a>设置系统代理</h1><p>如果只是启动了软件的代理，系统的流量并没有从代理的端口走，还是不能git加速。</p>
+<ul>
+<li>对于终端，要设置环境变量才能走代理<code>export all_proxy=socks5://127.0.0.1:7890</code></li>
+<li>对于gnome桌面，有系统的手动代理管理</li>
+<li>对于git，在<code>~/.gitconfig</code>中设置：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[http]</span><br><span class="line">   proxy = socks5://127.0.0.1:7890</span><br><span class="line">[https]</span><br><span class="line">    proxy = socks5://127.0.0.1:7890</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>network</tag>
+        <tag>proxy</tag>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Arch Linux 的一些设置</title>
+    <url>/2023/01/13/linux/arch/arch-setting/</url>
+    <content><![CDATA[<h1 id="pacman设置"><a href="#pacman设置" class="headerlink" title="pacman设置"></a>pacman设置</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-S 指令</span><br><span class="line">安装</span><br><span class="line">sudo pacman -S #安装软件</span><br><span class="line">sudo pacman -Sy #获取最新的软件情况，如果已经是最新了，直接会提示已经更新到最新了。</span><br><span class="line">sudo pacman -Syy #强行更新你的应用的软件库（源）</span><br><span class="line">sudo pacman -Su #更新所有软件</span><br><span class="line">sudo pacman -Syu #更新软件源并更新你的软件</span><br><span class="line">sudo pacman -Syyu #强行更新一遍，再更新软件</span><br><span class="line"></span><br><span class="line">查询一个软件</span><br><span class="line">sudo pacman -Ss &lt;pkg_name&gt; #查询所有软件名里面带有&lt;pkg_name&gt;相关的软件。并且查询名支持正则表达</span><br><span class="line"></span><br><span class="line">删除软件/var目录下的缓存</span><br><span class="line">sudo pacman -Sc</span><br><span class="line"></span><br><span class="line">-R 指令</span><br><span class="line">sudo pacman -R &lt;pkg_name&gt; #删除软件</span><br><span class="line">sudo pacman -Rs &lt;pkg_name&gt; #删除软件，并删除&lt;pkg&gt;所有的依赖包</span><br><span class="line">sudo pacman -Rns &lt;pkg_name&gt; #删除软件，并删除&lt;pkg&gt;所有的依赖，并删掉&lt;pkg&gt;的全局配置文件。 推荐！！</span><br><span class="line"></span><br><span class="line">-Q 指令</span><br><span class="line">sudo pacman -Q #显示出所有软件 sudo pacman -Q | wc -l 查询数量</span><br><span class="line">sudo pacman -Qe #查询所有自己安装的软件</span><br><span class="line">sudo pacman -Qeq #查询所有自己安装的软件，只显示包名，不显示版本号等</span><br><span class="line">sudo pacman -Qs &lt;pkg_name&gt; #查询本地安装的所有带&lt;pkg_name&gt;的软件</span><br><span class="line">sudo pacman -Qdt #查询所有孤儿软件，不再被需要的。</span><br><span class="line">sudo pacman -Qdtq #查询所有不再被依赖的包名</span><br></pre></td></tr></table></figure>
+
+<h2 id="添加中文社区源"><a href="#添加中文社区源" class="headerlink" title="添加中文社区源"></a>添加中文社区源</h2><ol>
+<li>找到<code>/etc/pacman.conf</code></li>
+<li>结尾添加：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[archlinuxcn]</span><br><span class="line">Server =  https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch</span><br></pre></td></tr></table></figure></li>
+<li>刷新数据库<code>sudo pacman -Syu</code>后<code>sudo pacman -S archlinuxcn-keyring</code></li>
+</ol>
+<h2 id="更换镜像源"><a href="#更换镜像源" class="headerlink" title="更换镜像源"></a>更换镜像源</h2><ol>
+<li>找到<code>/etc/pacman.d/mirrorlist</code></li>
+<li>添加<code>Server = https://mirrors.aliyun.com/archlinux/$repo/os/$arch</code></li>
+<li>更新数据库<code>sudo pacman -Syu</code></li>
+</ol>
+<h1 id="AUR-和-yay"><a href="#AUR-和-yay" class="headerlink" title="AUR 和 yay"></a>AUR 和 yay</h1><p>使用AUR包有两种方法：</p>
+<ul>
+<li>克隆仓库，进入仓库目录，<code>makepgk -si</code></li>
+<li>使用<code>yay</code></li>
+</ul>
+<h1 id="驱动"><a href="#驱动" class="headerlink" title="驱动"></a>驱动</h1><pre><code>1. CPU编码
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pacman -S intel-ucode    (intel的cpu装这个)</span><br><span class="line">pacman -S amd-ucode    (amd的cpu装这个)</span><br></pre></td></tr></table></figure>
+2. 显卡驱动
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pacman -S xf86-video-intel（Intel集成显卡驱动，用Intel核显就装，否则不用装）</span><br><span class="line">pacman -S xf86-video-amdgpu (AMD集成显卡驱动，用amd显卡的就装)</span><br><span class="line">pacman -S mesa nvidia(-lts) nvidia-settings nvidia-dkms nvidia-utils nvidia-prime（nvidia显卡驱动，用nvidia显卡就装，否则不用装）</span><br></pre></td></tr></table></figure>
+3. 声卡驱动(忘了怎么装得了)，和dwm里的快捷键要对上，快捷键才能用
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pacman -S alsa-utils pulseaudio pulseaudio-alsa pulseaudio-bluetooth</span><br></pre></td></tr></table></figure>
+&gt; 其他资料中(我没写进去)：
+&gt;输入“vim /etc/modprobe.d/disable_dmic.conf”，把下面的文字打进去，保存: 
+&gt;`options snd_hda_intel dmic_detect=0` 
+
+4. 网卡驱动
+- thinkbook14p(amd)版本的网卡：realtek rtl8852be wifi 6 802.11ax pcie adapter
+- 驱动地址：https://aur.archlinux.org/packages/rtw89-dkms-git
+- `yay -S rtw89-dkms-git`
+
+5. 设置亮度
+- root用户下，`sudo echo 50 &gt; /sys/class/backligh^Cmdgpu_bl0/brightness`
+- sudo 不能获得root用户的所有权限
+</code></pre>
+<h1 id="双系统引导"><a href="#双系统引导" class="headerlink" title="双系统引导"></a>双系统引导</h1><h1 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h1><h2 id="npm-fanyi-报错"><a href="#npm-fanyi-报错" class="headerlink" title="npm fanyi 报错"></a>npm fanyi 报错</h2><ul>
+<li><a href="https://github.com/afc163/fanyi#error-spawn-festival-enoent">https://github.com/afc163/fanyi#error-spawn-festival-enoent</a></li>
+<li>安装<code>sudo pacman -S festival</code></li>
+</ul>
+<h2 id="nm-tray"><a href="#nm-tray" class="headerlink" title="nm-tray"></a>nm-tray</h2><ul>
+<li>网络管理托盘,pacman就可以安装</li>
+<li>ubuntu(gnome)下可以用nm-applet</li>
+</ul>
+<h2 id="文件夹可视化管理"><a href="#文件夹可视化管理" class="headerlink" title="文件夹可视化管理"></a>文件夹可视化管理</h2><ul>
+<li>nautilus</li>
+</ul>
+<h2 id="修改光标样式"><a href="#修改光标样式" class="headerlink" title="修改光标样式"></a>修改光标样式</h2><ul>
+<li><a href="https://wiki.archlinuxcn.org/zh-hans/%E5%85%89%E6%A0%87%E4%B8%BB%E9%A2%98">https://wiki.archlinuxcn.org/zh-hans/%E5%85%89%E6%A0%87%E4%B8%BB%E9%A2%98</a></li>
+<li>lxapperance</li>
+</ul>
+<h2 id="fcitx5安装"><a href="#fcitx5安装" class="headerlink" title="fcitx5安装"></a>fcitx5安装</h2><h1 id="WARN"><a href="#WARN" class="headerlink" title="WARN"></a>WARN</h1><h1 id="WARN-1"><a href="#WARN-1" class="headerlink" title="WARN"></a>WARN</h1><h1 id="WARN-2"><a href="#WARN-2" class="headerlink" title="WARN"></a>WARN</h1><h1 id="WARN-3"><a href="#WARN-3" class="headerlink" title="WARN"></a>WARN</h1><h2 id="fcitx在终端内不能触发"><a href="#fcitx在终端内不能触发" class="headerlink" title="fcitx在终端内不能触发"></a>fcitx在终端内不能触发</h2><ul>
+<li>可能是终端的问题,比如kitty,但kitty有个好处是预览图片方便(ranger)</li>
+<li>在<code>~/.xinitrc</code>内，注意顺序  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export GTK_IM_MODULE=fcitx</span><br><span class="line">export QT_IM_MODULE=fcitx</span><br><span class="line">export XMODIFIERS=&quot;@im=fcitx&quot;</span><br><span class="line">exec dwm</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="fcitx导致xmodmap的设置被重置"><a href="#fcitx导致xmodmap的设置被重置" class="headerlink" title="fcitx导致xmodmap的设置被重置"></a>fcitx导致xmodmap的设置被重置</h2><ul>
+<li><a href="https://wiki.archlinux.org/title/fcitx">https://wiki.archlinux.org/title/fcitx</a></li>
+<li>如果把’.xmodmap’文件放到家目录下，新版(4.2.7之后)的fcitx会读取其内容，并执行</li>
+<li>如果把’.xmodmap’文件放到其他目录下，xmodmap的效果会被覆盖</li>
+<li>不仅fcitx会覆盖xmodmap,其他软件也有可能</li>
+<li>改用xkb命令：<code>setxkbmap -option &quot;caps:swapescape&quot;</code></li>
+</ul>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>arch</tag>
       </tags>
   </entry>
 </search>

@@ -42,43 +42,96 @@
   <entry>
     <title>TODO</title>
     <url>/9000/01/01/TODO/</url>
-    <content><![CDATA[<p>目的：<br>恢复更仿真的人脸：</p>
-<p>回归3dmm参数生成大致shape和texture<br>学习text2face的方法，分开面部部件，shape上分开？分开才能精细可控<br>hair eye</p>
-<p>额外的uv图用来恢复高清细节</p>
-<p>模型去除光照渲染<br>反射率之类的东西<br>部件gcn<br>meshgcn</p>
-<p>粗-细<br>眼镜</p>
-<p>舞蹈和人脸合成一起</p>
-<p>纹理细节为什么不好？</p>
-<p>expgan</p>
-<p>vim:hex 16进制表示方法<br>:set laststatus&#x3D;2<br><code>:set statusline=%&lt;%f%h%m%r%=%b\ 0x%B\ \ %l,%c%V\ %P</code></p>
-<p>vim 正则表达式替换</p>
-<p>wsl代理需要设置防火墙- ip到底是哪个？<br>easyconnect 打开导致不能git push</p>
-<p>proxy打开后，pip install报错 <a href="https://blog.csdn.net/tuzixini/article/details/88203910">https://blog.csdn.net/tuzixini/article/details/88203910</a><br>mason 不能安装python-lanuage-server <a href="https://www.saoniuhuo.com/question/detail-2133503.htmlcli">https://www.saoniuhuo.com/question/detail-2133503.htmlcli</a><br>16. pynput need sudo apt install python3-tk python3-dev<br>17. pyautogui 可以弹窗</p>
-<p>pyright opencv<br>import pyautogui<br>显示一个简单的带文字和OK按钮的消息弹窗。用户点击后返回button的文字。<br>pyautogui.alert(text&#x3D;’’, title&#x3D;’’, button&#x3D;’OK’)</p>
-<p> pip 换源</p>
-<ol start="2">
-<li>Xauthority should be wadekiny’s, instaed, login loop</li>
+    <content><![CDATA[<p>目的：<br>回归3dmm参数生成大致shape和texture<br>学习text2face的方法，分开面部部件，shape上分开？分开才能精细可控<br>hair eye<br>额外的uv图用来恢复高清细节<br>模型去除光照渲染<br>反射率之类的东西<br>部件gcn<br>meshgcn<br>粗-细<br>眼镜<br>舞蹈和人脸合成一起<br>纹理细节为什么不好？<br>expgan</p>
+<h2 id="vim"><a href="#vim" class="headerlink" title="vim:"></a>vim:</h2><p>vim 如何在浮动窗口和普通窗口切换<br>neovide can implement cursors smooth but can not input Chinese<br>vim:hex 16进制表示方法<br>:set laststatus&#x3D;2<br><code>:set statusline=%&lt;%f%h%m%r%=%b\ 0x%B\ \ %l,%c%V\ %P</code><br>vim 正则表达式替换<br>mason 不能安装python-lanuage-server <a href="https://www.saoniuhuo.com/question/detail-2133503.htmlcli">https://www.saoniuhuo.com/question/detail-2133503.htmlcli</a></p>
+<h2 id="network"><a href="#network" class="headerlink" title="network"></a>network</h2><p>wsl代理需要设置防火墙- ip到底是哪个？<br>easyconnect 打开导致不能git push</p>
+<h2 id="python"><a href="#python" class="headerlink" title="python"></a>python</h2><ol start="16">
+<li>pynput need sudo apt install python3-tk python3-dev</li>
+<li>pyautogui 可以弹窗<br>pyright opencv<br>import pyautogui<br>显示一个简单的带文字和OK按钮的消息弹窗。用户点击后返回button的文字。<br>pyautogui.alert(text&#x3D;’’, title&#x3D;’’, button&#x3D;’OK’)<br>pysocket<br>proxy打开后，pip install报错 <a href="https://blog.csdn.net/tuzixini/article/details/88203910">https://blog.csdn.net/tuzixini/article/details/88203910</a><br>pip 换源</li>
+</ol>
+<h2 id="xorg"><a href="#xorg" class="headerlink" title="xorg"></a>xorg</h2><p>Xresources修改dpi？<br><a href="https://zhuanlan.zhihu.com/p/513859236">https://zhuanlan.zhihu.com/p/513859236</a><br>2. Xauthority should be wadekiny’s, instaed, login loop<br>.Xresources<br>.xinitrc<br>免密自动登录 startx<br>xorg 缩放倍数<br>xrandr –output e-DP1 –scale 0.5x0.5<br>arch无法识别typec接口显示器</p>
+<h2 id="driver"><a href="#driver" class="headerlink" title="driver"></a>driver</h2><ol start="3">
 <li>Nvidia driver should be 470.xxx. or black screen</li>
 </ol>
-<p>~&#x2F;.fonts&#x2F; 添加字体文件，可以直接安装字体<br>windows的zip文件在ubuntu解压乱码k</p>
-<p> 开机不自动换esc capslock？</p>
-<p>grub add windows</p>
-<p>.Xresources<br>.xinitrc<br>免密自动登录 startx</p>
-<p>neovide can implement cursors smooth but can not input Chinese</p>
-<p>zotero</p>
-<p>坚果云 zotero</p>
-<p>安装微信需要打开multilib<br><a href="https://blog.csdn.net/weixin_52027058/article/details/128346840">https://blog.csdn.net/weixin_52027058/article/details/128346840</a></p>
-<p>微信<a href="https://github.com/vufa/deepin-wine-wechat-arch#%E4%BB%8Eaur%E5%AE%89%E8%A3%85">https://github.com/vufa/deepin-wine-wechat-arch#%E4%BB%8Eaur%E5%AE%89%E8%A3%85</a></p>
-<p><a href="https://github.com/vufa/deepin-wine-wechat-arch#%E4%BB%8Eaur%E5%AE%89%E8%A3%85">https://github.com/vufa/deepin-wine-wechat-arch#%E4%BB%8Eaur%E5%AE%89%E8%A3%85</a><br>o<a href="https://www.bilibili.com/video/BV1Z3411F7TL/?spm_id_from=333.337.search-card.all.click&vd_source=c59669dc10d72873dc1a840e4c9b6095">https://www.bilibili.com/video/BV1Z3411F7TL/?spm_id_from=333.337.search-card.all.click&amp;vd_source=c59669dc10d72873dc1a840e4c9b6095</a></p>
-<p>flameshot 截图不能直接复制到qq 微信 no tray refer:<br><a href="https://wiki.archlinux.org/title/Flameshot">https://wiki.archlinux.org/title/Flameshot</a></p>
-<p>vim 如何在浮动窗口和普通窗口切换<br>023-01-12T19:23:37 Messages  INFO line    8:<br>Needs xclip in X11 or wl-clipboard in Wayland.<br>2023-01-12T19:23:37 Error  ERROR Error detected while processing function MdPasteImage[5]..mdip#MarkdownClipboardImage[23]..<SNR>58_SaveFileTMP[6]..<SNR>58_SaveFileTMPLinux:<br>2023-01-12T19:23:49 Messages  INFO 2023-01-12T19:23:37 Messages  INFO line    8:<br>Needs xclip in X11 or wl-clipboard in Wayland.<br>2023-01-12T19:23:37 Error  ERROR Error detected while processing function MdPasteImage[5]..mdip#MarkdownClipboardImage[23]..<SNR>58_SaveFileTMP[6]..<SNR>58_SaveFileTMPLinux:<br>2023-01-12T19:24:01 Error  ERROR E488: Trailing characters: list</p>
-<p>flameshot &amp;<br>flameshot gui<br><a href="https://github.com/flameshot-org/flameshot/issues/2496">https://github.com/flameshot-org/flameshot/issues/2496</a></p>
-<p>xorg 缩放倍数</p>
-<p>xrandr –output e-DP1 –scale 0.5x0.5<br>arch无法识别typec接口显示器</p>
-<p>挂载windows分区<a href="https://zhuanlan.zhihu.com/p/513859236">https://zhuanlan.zhihu.com/p/513859236</a></p>
-<p>怎么有时候会卡死？好像和fcitx有关<br>grub不能识别windows<br>从archlinux.md中拆分 profile bashrcxxxxx优先级，形成一篇新的</p>
-<p>Xresources修改dpi？<br><a href="https://zhuanlan.zhihu.com/p/513859236">https://zhuanlan.zhihu.com/p/513859236</a><br>wechat 锁更新<br>okular pdf查看器查看器</p>
-<p>hexo deploy github<br>hexo 相对位置文件路径</p>
+<h2 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h2><p>从archlinux.md中拆分 profile bashrcxxxxx优先级，形成一篇新的<br>~&#x2F;.fonts&#x2F; 添加字体文件，可以直接安装字体<br>grub不能识别windows<br>挂载windows分区<a href="https://zhuanlan.zhihu.com/p/513859236">https://zhuanlan.zhihu.com/p/513859236</a></p>
+<h2 id="zotero"><a href="#zotero" class="headerlink" title="zotero"></a>zotero</h2><p>zotero<br>坚果云 zotero</p>
+<h2 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h2><p>hexo deploy github<br>hexo 相对位置文件路径<br>hexo next  搜索</p>
+<p>wechat udis86</p>
+<p>waybar sound network<br>wayland network : exex nm-applet –indicator</p>
+<blockquote>
+<p><a href="https://github.com/swaywm/sway/issues/1357#issuecomment-894436375">https://github.com/swaywm/sway/issues/1357#issuecomment-894436375</a></p>
+</blockquote>
+<p>截图：grimshot脚本</p>
+<p>obs need qt6-wayland<br>obs在屏幕缩放为2时报错不能启动<br>nvim 的dap vscode-cpp程序位置<br>g++ -g 生成调试信息 -o 输出文件名<br>vim 内置终端样式 cursor 好像还改不了<br><a href="https://github.com/neovim/neovim/issues/3681">https://github.com/neovim/neovim/issues/3681</a></p>
+<p>firefox 设置全屏不隐藏标签栏目<br><a href="https://blog.csdn.net/dongzhiquan/article/details/6245732">https://blog.csdn.net/dongzhiquan/article/details/6245732</a></p>
+<p>arch蓝牙<br>mark.vim</p>
+<p>高亮选中单词</p>
+<p>vim 代码模板<br>vim clang-format自定义格式</p>
+<p>cpp调试去掉选项2</p>
+<p>vim 中间一排数字键<br> rockerBOO &#x2F;awesome-neovim 有一些插件</p>
+<p> vimscript字符串替换 substitute<br> <a href="https://blog.csdn.net/smstong/article/details/20791329">https://blog.csdn.net/smstong/article/details/20791329</a></p>
+<p> vim redraw</p>
+<p> select mode<br> visual mode<br> modemap -x</p>
+<p> vim 导出map</p>
+<p> psmr 30</p>
+<p> sudo waydroid init<br> [22:03:12] Failed to load binder driver<br>[22:03:12] modprobe: FATAL: Module binder_linux not found in directory &#x2F;lib&#x2F;modules&#x2F;5.15.90-1-lts<br>[22:03:12] ERROR: Binder node “binder” for waydroid not found<br>[22:03:12] See also: <a href="https://github.com/waydroid">https://github.com/waydroid</a><br>Run ‘waydroid log’ for details<br><a href="https://github.com/waydroid/waydroid/issues/535">https://github.com/waydroid/waydroid/issues/535</a></p>
+<blockquote>
+<p>yay -S anbox-modules-dkms-git</p>
+</blockquote>
+<p>waydroid init下载速度太慢，手动下载<br><a href="https://github.com/waydroid/waydroid/issues/215">https://github.com/waydroid/waydroid/issues/215</a><br>注意要下载两个压缩包，并解压</p>
+<p>hyprland wlogout</p>
+<p>swaylock-effect</p>
+<p>wayland键盘映射<br><a href="https://github.com/KarsMulder/evsieve">https://github.com/KarsMulder/evsieve</a></p>
+<blockquote>
+<p><a href="https://wiki.archlinux.org/title/Input_remap_utilities">https://wiki.archlinux.org/title/Input_remap_utilities</a></p>
+</blockquote>
+<p><a href="https://python-evdev.readthedocs.io/en/latest/install.html">https://python-evdev.readthedocs.io/en/latest/install.html</a><br>先修改event的读写权限(用户所在组)</p>
+<blockquote>
+<p><a href="https://github.com/k0kubun/xremap">https://github.com/k0kubun/xremap</a><br><a href="https://cloud.tencent.com/developer/article/1725906">https://cloud.tencent.com/developer/article/1725906</a><br><a href="https://learnku.com/articles/31223">https://learnku.com/articles/31223</a><br><a href="https://www.myfreax.com/how-to-add-user-to-group-in-linux/">https://www.myfreax.com/how-to-add-user-to-group-in-linux/</a></p>
+</blockquote>
+<p>cava 显示音乐波形<br>tty-clock</p>
+<p>类似资源管理的东西 btop</p>
+<p>neovide： WINIT_UNIX_BACKEND&#x3D;x11 neovide但是仍然不能使用fcitx</p>
+<p>pip 安装的kbmap,运行提示Traceback (most recent call last):<br>  File “&#x2F;home&#x2F;wadekiny&#x2F;.local&#x2F;bin&#x2F;kbmap”, line 2, in <module><br>    from kbmap.kbmap import main<br>  File “&#x2F;home&#x2F;wadekiny&#x2F;.local&#x2F;lib&#x2F;python3.10&#x2F;site-packages&#x2F;kbmap&#x2F;kbmap.py”, line 6, in <module><br>    import pkg_resources<br>ModuleNotFoundError: No module named ‘pkg_resources’</p>
+<p>解决：pip install setuptools</p>
+<p>nerf:<br>NeRFFaceEditing: Disentangled Face Editing in Neural Radiance Fields</p>
+<ol>
+<li><p>img+audio drive  nerf<br>dfa-nerf<br>ad-nerf</p>
+</li>
+<li><p>img+text drive nerf<br>Nerf-Art<br>Zero-Shot Text-Guided Object Generation with Dream Fields<br>clip-nerf<br>coc virtual text</p>
+</li>
+</ol>
+<h1 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h1><p>项目问题 堆栈溢出<br>ulxxx命令查看</p>
+<p>waybar-hyprland-git<br><a href="https://aur.archlinux.org/packages/waybar-hyprland-git">https://aur.archlinux.org/packages/waybar-hyprland-git</a></p>
+<p>新版waybar好像取消了其他模块的hover功能,换回之前commit的那个版本<br>对于hyprland,在编译waybar时,需要<br><a href="https://github.com/Alexays/Waybar/issues/1640#issuecomment-1278519500">https://github.com/Alexays/Waybar/issues/1640#issuecomment-1278519500</a><br>否则回unknowmodule wlr&#x2F;workspaces<br>解决</p>
+<p>clone下来的waybar不能点击切换workspace,因为默认没有调用hyprctl dispatch workspace …<br>用waybar-hyprland-git中的<br>    sed -i ‘s&#x2F;zext_workspace_handle_v1_activate(workspace_handle_);&#x2F;const std::string command &#x3D; “hyprctl dispatch workspace “ + name_;\n\tsystem(command.c_str());&#x2F;g’ src&#x2F;modules&#x2F;wlr&#x2F;workspace_manager.cpp # use hyprctl to switch workspaces</p>
+<pre><code>实现
+</code></pre>
+<p>启动终端并在终端内执行命令<br><code>alacritty -t &lt;title&gt; -e &lt;command&gt;</code><br>tui ftpscp工具</p>
+<p>archlinux 开机自动启动</p>
+<blockquote>
+<p><a href="https://blog.csdn.net/gddxz_zhouhao/article/details/52837593">https://blog.csdn.net/gddxz_zhouhao/article/details/52837593</a><br><a href="https://wiki.archlinuxcn.org/wiki/Getty">https://wiki.archlinuxcn.org/wiki/Getty</a></p>
+</blockquote>
+<p>添加：<br>&#x2F;etc&#x2F;systemd&#x2F;system&#x2F;<a href="mailto:&#x67;&#101;&#x74;&#x74;&#121;&#x40;&#x74;&#x74;&#x79;&#x31;&#46;&#x73;&#101;&#114;&#118;&#x69;&#99;&#101;&#x2e;&#x64;">&#x67;&#101;&#x74;&#x74;&#121;&#x40;&#x74;&#x74;&#x79;&#x31;&#46;&#x73;&#101;&#114;&#118;&#x69;&#99;&#101;&#x2e;&#x64;</a>&#x2F;override.conf</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Service]</span><br><span class="line">ExecStart=</span><br><span class="line">ExecStart=-/usr/bin/agetty --autologin username --noclear %I $TERM</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="耗电测试"><a href="#耗电测试" class="headerlink" title="耗电测试"></a>耗电测试</h1><p>50min 13%<br>60@ 20%</p>
+<h1 id="鼠标不能用"><a href="#鼠标不能用" class="headerlink" title="鼠标不能用"></a>鼠标不能用</h1><p><a href="https://bbs.archlinux.org/viewtopic.php?id=255844">https://bbs.archlinux.org/viewtopic.php?id=255844</a></p>
+<p><a href="https://wiki.archlinux.org/title/Power_management#USB_autosuspend">https://wiki.archlinux.org/title/Power_management#USB_autosuspend</a><br>耗电模式不兼容</p>
+<h2 id="talking-head"><a href="#talking-head" class="headerlink" title="talking head"></a>talking head</h2><ol>
+<li>真正的nerf,借鉴动态nerf的方法,hyprnerf enerf dnerf</li>
+<li>use 2d  generate method(vae)</li>
+<li>情绪</li>
+<li>relighting</li>
+</ol>
+<p>keyd 导致 鼠标不能用<br><a href="https://bbs.archlinuxcn.org/viewtopic.php?id=13260">https://bbs.archlinuxcn.org/viewtopic.php?id=13260</a></p>
+<pre><code>22健康数据科学团支部
+
+22软件工程第一团支部
+
+22软件工程第二团支部
+</code></pre>
 ]]></content>
       <categories>
         <category>todo</category>
@@ -1663,129 +1716,6 @@
       <tags>
         <tag>paper</tag>
         <tag>deeplearning</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>艺术哲学与审美问题</title>
-    <url>/2022/01/30/art-caligraphy/philosopyh-of-art/</url>
-    <content><![CDATA[<h1 id="艺术哲学的旨趣"><a href="#艺术哲学的旨趣" class="headerlink" title="艺术哲学的旨趣"></a>艺术哲学的旨趣</h1><p>当我们阐发艺术作品重大价值的时候，它一定事关人生</p>
-<h2 id="哲学代表一种修养"><a href="#哲学代表一种修养" class="headerlink" title="哲学代表一种修养"></a>哲学代表一种修养</h2><ul>
-<li>哲学并没有使用价值</li>
-<li>每个人的艺术生活差别很大，不同的人有不同的爱好</li>
-<li>在艺术作品的接受中，会引起比较深入的思考，如果深入到一定层面那就是哲学，它代表了一种修养</li>
-</ul>
-<h2 id="艺术是人类最高的精神活动之一（超验）"><a href="#艺术是人类最高的精神活动之一（超验）" class="headerlink" title="艺术是人类最高的精神活动之一（超验）"></a>艺术是人类最高的精神活动之一（超验）</h2><p>黑格尔：绝对精神的三个领域：艺术、宗教、哲学。</p>
-<p>尼采：我们通过科学，从事物中发现的东西，其实是预先塞进去的，塞进去叫艺术和宗教，重新把它领出来，叫科学。</p>
-<ul>
-<li>哲学<ul>
-<li>不离日用常行内，直造先天未画前</li>
-</ul>
-</li>
-<li>艺术<ul>
-<li>言有尽而意无穷</li>
-</ul>
-</li>
-<li>宗教</li>
-</ul>
-<h2 id="什么是创新的源泉"><a href="#什么是创新的源泉" class="headerlink" title="什么是创新的源泉"></a>什么是创新的源泉</h2><ul>
-<li>性灵</li>
-</ul>
-<h2 id="美与真理的关系"><a href="#美与真理的关系" class="headerlink" title="美与真理的关系"></a>美与真理的关系</h2><ol>
-<li>什么是美的？</li>
-<li>美是什么？</li>
-</ol>
-<ul>
-<li>艺术批评的停止，表示这个民族的艺术创作的衰落</li>
-<li>审美标准有不同</li>
-<li>美不是实体，对美的本质探讨，应当转变为对艺术本性的讨论<ul>
-<li>这样一个转折就是艺术哲学取代美学</li>
-</ul>
-</li>
-<li>口味无争辩，趣味有高下</li>
-<li>我们始终在接触作品的过程中，不知不觉地从事着最起码的艺术批评</li>
-</ul>
-<h2 id="艺术判断"><a href="#艺术判断" class="headerlink" title="艺术判断"></a>艺术判断</h2><ul>
-<li>主观的感觉判断具有个体的相对性</li>
-<li>审美存在个体差异</li>
-<li>在艺术和审美的领域，我们都是为他人做判断</li>
-<li>审美判断是感性普遍性质判断，不是对感性特殊型与个别性的判断。<ul>
-<li>花是植物的一部分（理性判断）</li>
-<li>花是香的（感官 “判断”）</li>
-<li>花是美的（审美判断，感性且普遍）</li>
-</ul>
-</li>
-</ul>
-<h2 id="审美判断的普遍性"><a href="#审美判断的普遍性" class="headerlink" title="审美判断的普遍性"></a>审美判断的普遍性</h2><p>如果屈服于权威性，就不必讨论艺术哲学了</p>
-<ul>
-<li>艺术的历史表明了：美的客观性是可疑的</li>
-<li>伟大的艺术作品一定是民族的，也是世界的</li>
-<li>美是<strong>普遍的</strong>，是<strong>客观的</strong></li>
-<li>美是非逻辑的，不建立在概念的基础上</li>
-</ul>
-<h3 id="体和用"><a href="#体和用" class="headerlink" title="体和用"></a>体和用</h3><p>体是根据，才有效用，没有时间上的关系</p>
-<ul>
-<li>人类对外部事物的感知有一种先验共通感（体）</li>
-<li>审美判断（用）</li>
-</ul>
-<h3 id="康德的三大批判主题"><a href="#康德的三大批判主题" class="headerlink" title="康德的三大批判主题"></a>康德的三大批判主题</h3><ul>
-<li>第一大批判的主题：对外部事物的客观可靠的知识（也就是真）如何可能（真）</li>
-<li>第二大批判的主题：人类社会的自由如何可能，善如何可能（善）</li>
-<li>第三大批判的主题（判断力批判，判断力就是审美判断的能力）：美是如何可能的，美的存在事实（美）<ul>
-<li>愉悦因判断而生，判断因愉悦而生</li>
-<li>愉悦 → 判断：因为花的气味感到快适，所以说花是香的（没有时间上的先后）</li>
-<li>判断 → 愉悦：人类的先验共通感放到这个事物上，成功了，所以是美的（没有时间上的先后）</li>
-</ul>
-</li>
-</ul>
-<h2 id="哲学与科学的差别"><a href="#哲学与科学的差别" class="headerlink" title="哲学与科学的差别"></a>哲学与科学的差别</h2><ul>
-<li>科学从事实出发，属于实证主义的精神</li>
-<li></li>
-</ul>
-]]></content>
-      <categories>
-        <category>art</category>
-      </categories>
-      <tags>
-        <tag>art</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>章法</title>
-    <url>/2022/01/31/art-caligraphy/zhangfa/</url>
-    <content><![CDATA[<h1 id="什么是章法"><a href="#什么是章法" class="headerlink" title="什么是章法"></a>什么是章法</h1><ol>
-<li>诗文布局谋篇的法则</li>
-<li>办事的程序和规则</li>
-<li>古历法名词</li>
-</ol>
-<ul>
-<li>在书法中，章法指一件作品中各种视觉因素的组织。</li>
-</ul>
-<h2 id="章法的重要性"><a href="#章法的重要性" class="headerlink" title="章法的重要性"></a>章法的重要性</h2><ul>
-<li>王羲之《笔势论十二章》： 方圆大小各不相犯，倘一点失所，若美人之病一目。一画失节，如壮士之折一肱。</li>
-<li>孙过庭《书谱》： 一点成一字之规，一字乃终篇之准。</li>
-</ul>
-<h2 id="章法的核心规律"><a href="#章法的核心规律" class="headerlink" title="章法的核心规律"></a>章法的核心规律</h2><ul>
-<li>文似看山不喜平，书法同样适用</li>
-<li>单字，逐字，行间的布白关系</li>
-<li>结体在单字，章法是单字以外的整体问题</li>
-<li>有变化，变化中有统一</li>
-<li>文质相称</li>
-<li>自然而然</li>
-<li>平中见奇，远山近树</li>
-<li>变而有度</li>
-<li>为我所用</li>
-</ul>
-<h1 id="章法与单字"><a href="#章法与单字" class="headerlink" title="章法与单字"></a>章法与单字</h1><h1 id="名帖"><a href="#名帖" class="headerlink" title="名帖"></a>名帖</h1><ul>
-<li>杨凝式韭花帖（空灵）</li>
-</ul>
-<p><img src="/zhangfa/image-20220131011506588.png" alt="image-20220131011506588"></p>
-]]></content>
-      <categories>
-        <category>art</category>
-      </categories>
-      <tags>
-        <tag>art</tag>
-        <tag>calligraphy</tag>
       </tags>
   </entry>
   <entry>
@@ -4297,8 +4227,10 @@
 <li>*.rar 用 unrar e解压</li>
 <li>*.zip 用 unzip 解压</li>
 </ul>
-<hr>
-<hr>
+<h2 id="zip解压乱码问题"><a href="#zip解压乱码问题" class="headerlink" title="zip解压乱码问题"></a>zip解压乱码问题</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">unzip -O GBK file_name.zip</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="https://www.findhao.net/easycoding/1605">https://www.findhao.net/easycoding/1605</a></p>
+</blockquote>
 ]]></content>
       <categories>
         <category>linux</category>
@@ -4884,13 +4816,23 @@
 <h2 id="文件夹可视化管理"><a href="#文件夹可视化管理" class="headerlink" title="文件夹可视化管理"></a>文件夹可视化管理</h2><ul>
 <li>nautilus</li>
 </ul>
+<h2 id="pdf查看器"><a href="#pdf查看器" class="headerlink" title="pdf查看器"></a>pdf查看器</h2><ul>
+<li>okular</li>
+</ul>
 <h2 id="修改光标样式"><a href="#修改光标样式" class="headerlink" title="修改光标样式"></a>修改光标样式</h2><ul>
 <li><a href="https://wiki.archlinuxcn.org/zh-hans/%E5%85%89%E6%A0%87%E4%B8%BB%E9%A2%98">https://wiki.archlinuxcn.org/zh-hans/%E5%85%89%E6%A0%87%E4%B8%BB%E9%A2%98</a></li>
 <li>lxapperance</li>
 </ul>
-<h2 id="fcitx5安装"><a href="#fcitx5安装" class="headerlink" title="fcitx5安装"></a>fcitx5安装</h2><h1 id="WARN"><a href="#WARN" class="headerlink" title="WARN"></a>WARN</h1><h1 id="WARN-1"><a href="#WARN-1" class="headerlink" title="WARN"></a>WARN</h1><h1 id="WARN-2"><a href="#WARN-2" class="headerlink" title="WARN"></a>WARN</h1><h1 id="WARN-3"><a href="#WARN-3" class="headerlink" title="WARN"></a>WARN</h1><h2 id="fcitx在终端内不能触发"><a href="#fcitx在终端内不能触发" class="headerlink" title="fcitx在终端内不能触发"></a>fcitx在终端内不能触发</h2><ul>
+<h2 id="fcitx5安装"><a href="#fcitx5安装" class="headerlink" title="fcitx5安装"></a>fcitx5安装</h2><ol>
+<li>安装fcitx5<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo pacman -S fcitx5-im fcitx5-chinese-addons fcitx5-qt fcitx5-gtk</span><br></pre></td></tr></table></figure></li>
+<li>在<code>~/.xinitrc</code>中添加：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export GTK_IM_MODULE=fcitx</span><br><span class="line">export QT_IM_MODULE=fcitx</span><br><span class="line">export XMODIFIERS=@im=fcitx</span><br><span class="line">export INPUT_METHOD=fcitx</span><br><span class="line">export SDL_IM_MODULE=fcitx</span><br></pre></td></tr></table></figure></li>
+<li>添加到dwm的autostart脚本中<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">fcitx5- d &amp;</span><br></pre></td></tr></table></figure></li>
+<li>打开<code>fcitx5-configtool</code>, 将<code>Pinyin</code> 添加到输入法列表当中</li>
+<li>安装主题，需要在<code>fcitx5-configtool</code>中设置<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo pacman -S fcitx5-pinyin-zhwiki fcitx5-material-color fcitx5-nord</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="fcitx在终端内不能触发"><a href="#fcitx在终端内不能触发" class="headerlink" title="fcitx在终端内不能触发"></a>fcitx在终端内不能触发</h2><ul>
 <li>可能是终端的问题,比如kitty,但kitty有个好处是预览图片方便(ranger)</li>
-<li>在<code>~/.xinitrc</code>内，注意顺序  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export GTK_IM_MODULE=fcitx</span><br><span class="line">export QT_IM_MODULE=fcitx</span><br><span class="line">export XMODIFIERS=&quot;@im=fcitx&quot;</span><br><span class="line">exec dwm</span><br></pre></td></tr></table></figure></li>
+<li>在<code>~/.xinitrc</code>内，注意顺序  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export GTK_IM_MODULE=fcitx</span><br><span class="line">export QT_IM_MODULE=fcitx</span><br><span class="line">export XMODIFIERS=&quot;@im=fcitx&quot;</span><br><span class="line">...</span><br><span class="line">exec dwm</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="fcitx导致xmodmap的设置被重置"><a href="#fcitx导致xmodmap的设置被重置" class="headerlink" title="fcitx导致xmodmap的设置被重置"></a>fcitx导致xmodmap的设置被重置</h2><ul>
 <li><a href="https://wiki.archlinux.org/title/fcitx">https://wiki.archlinux.org/title/fcitx</a></li>
@@ -4899,6 +4841,14 @@
 <li>不仅fcitx会覆盖xmodmap,其他软件也有可能</li>
 <li>改用xkb命令：<code>setxkbmap -option &quot;caps:swapescape&quot;</code></li>
 </ul>
+<h2 id="flameshot截图不能复制到剪切板"><a href="#flameshot截图不能复制到剪切板" class="headerlink" title="flameshot截图不能复制到剪切板"></a>flameshot截图不能复制到剪切板</h2><ul>
+<li>直接<code>flameshot gui</code>不能复制到剪切板，也不会有托盘图标</li>
+<li>解决：在dwm的autostart脚本中添加：<code>flameshot gui</code></li>
+<li>可能还要安装wl-clipboard(vim中md文件快速粘贴图片)<blockquote>
+<p><a href="https://wiki.archlinux.org/title/Flameshot">https://wiki.archlinux.org/title/Flameshot</a><br><a href="https://github.com/flameshot-org/flameshot/issues/2496">https://github.com/flameshot-org/flameshot/issues/2496</a></p>
+</blockquote>
+</li>
+</ul>
 ]]></content>
       <categories>
         <category>linux</category>
@@ -4906,6 +4856,314 @@
       <tags>
         <tag>linux</tag>
         <tag>arch</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Arch Linux 下wechat和qq的安装</title>
+    <url>/2023/01/15/linux/arch/wechatandqq/</url>
+    <content><![CDATA[<h1 id="打开multilib"><a href="#打开multilib" class="headerlink" title="打开multilib"></a>打开<code>multilib</code></h1><p>否则会报错：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">warning: cannot resolve &quot;lib32-fontconfig&quot;, a dependency of &quot;wine-for-wechat&quot;</span><br><span class="line">warning: cannot resolve &quot;lib32-lcms2&quot;, a dependency of &quot;wine-for-wechat&quot;</span><br><span class="line">warning: cannot resolve &quot;lib32-libxml2&quot;, a dependency of &quot;wine-for-wechat&quot;</span><br><span class="line">warning: cannot resolve &quot;lib32-libxcursor&quot;, a dependency of &quot;wine-for-wechat&quot;</span><br><span class="line">warning: cannot resolve &quot;lib32-libxrandr&quot;, a dependency of &quot;wine-for-wechat&quot;</span><br><span class="line">warning: cannot resolve &quot;lib32-libxdamage&quot;, a dependency of &quot;wine-for-wechat&quot;</span><br><span class="line">warning: cannot resolve &quot;lib32-libxi&quot;, a dependency of &quot;wine-for-wechat&quot;</span><br><span class="line">warning: cannot resolve &quot;lib32-gettext&quot;, a dependency of &quot;wine-for-wechat&quot;</span><br><span class="line">warning: cannot resolve &quot;lib32-freetype2&quot;, a dependency of &quot;wine-for-wechat&quot;</span><br><span class="line">warning: cannot resolve &quot;lib32-glu&quot;, a dependency of &quot;wine-for-wechat&quot;</span><br><span class="line">warning: cannot resolve &quot;lib32-libsm&quot;, a dependency of &quot;wine-for-wechat&quot;</span><br><span class="line">warning: cannot resolve &quot;lib32-libpcap&quot;, a dependency of &quot;wine-for-wechat&quot;</span><br><span class="line">warning: cannot resolve &quot;lib32-faudio&quot;, a dependency of &quot;wine-for-wechat&quot;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>在<code>/etc/pacman.conf</code>中去掉下面两行的注释</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[multilib]</span><br><span class="line">Include = /etc/pacman.d/mirrorlist</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行<code>sudo pacman -Syu</code></p>
+</li>
+</ol>
+<blockquote>
+<p><a href="https://blog.csdn.net/weixin_52027058/article/details/128346840">https://blog.csdn.net/weixin_52027058/article/details/128346840</a></p>
+</blockquote>
+<h1 id="微信"><a href="#微信" class="headerlink" title="微信"></a>微信</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yay -S deepin-wine-wechat</span><br></pre></td></tr></table></figure>
+
+<h2 id="可能遇到的问题"><a href="#可能遇到的问题" class="headerlink" title="可能遇到的问题"></a>可能遇到的问题</h2><ol>
+<li>窗口周围出现奇怪的黑色或透明边框 只需要修改 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/opt/apps/xxx/files/run.sh 中的 </span><br><span class="line">export APPRUN_CMD=&quot;deepin-wine6-stable&quot;</span><br><span class="line">变更为</span><br><span class="line">export APPRUN_CMD=&quot;deepin-wine5&quot;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="固定软件包的版本："><a href="#固定软件包的版本：" class="headerlink" title="固定软件包的版本："></a>固定软件包的版本：</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">编辑 /etc/pacman.conf</span><br><span class="line"></span><br><span class="line">IgnorePkg = deepin-wine-wechat </span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><a href="https://github.com/vufa/deepin-wine-wechat-arch#%E4%BB%8Eaur%E5%AE%89%E8%A3%85">https://github.com/vufa/deepin-wine-wechat-arch#%E4%BB%8Eaur%E5%AE%89%E8%A3%85</a><br><a href="https://www.bilibili.com/video/BV1Z3411F7TL/?spm_id_from=333.337.search-card.all.click&vd_source=c59669dc10d72873dc1a840e4c9b6095">https://www.bilibili.com/video/BV1Z3411F7TL/?spm_id_from=333.337.search-card.all.click&amp;vd_source=c59669dc10d72873dc1a840e4c9b6095</a></p>
+</blockquote>
+<h1 id="QQ"><a href="#QQ" class="headerlink" title="QQ"></a>QQ</h1><h2 id="icalingua"><a href="#icalingua" class="headerlink" title="icalingua++"></a>icalingua++</h2><p><a href="https://github.com/Icalingua-plus-plus/Icalingua-plus-plus">https://github.com/Icalingua-plus-plus/Icalingua-plus-plus</a></p>
+<h2 id="linuxqq"><a href="#linuxqq" class="headerlink" title="linuxqq"></a>linuxqq</h2><p>启动很慢，有时候会卡住</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yay -S linuxqq</span><br></pre></td></tr></table></figure>
+<p><a href="https://im.qq.com/linuxqq/index.shtml">https://im.qq.com/linuxqq/index.shtml</a></p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>arch</tag>
+        <tag>wechat</tag>
+        <tag>qq</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>asd2num</title>
+    <url>/2023/02/03/linux/linux/asd2num/</url>
+    <content><![CDATA[<h1 id="安装-keyd-工具"><a href="#安装-keyd-工具" class="headerlink" title="安装 keyd 工具"></a>安装 keyd 工具</h1><blockquote>
+<p>github地址: <a href="https://github.com/rvaiya/keyd">https://github.com/rvaiya/keyd</a></p>
+</blockquote>
+<ol>
+<li><code>yay -S keyd</code></li>
+<li>添加默认配置文件<code>/etc/keyd/default.conf</code>，因为 keyd 默认将 rightshift 映射到了 leftshift，所以要改回来</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[ids]</span><br><span class="line"></span><br><span class="line">*</span><br><span class="line"></span><br><span class="line">[main]</span><br><span class="line"></span><br><span class="line">rightshift = rightshift</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="测试-keyd"><a href="#测试-keyd" class="headerlink" title="测试 keyd"></a>测试 keyd</h2><ol>
+<li><p>修改<code>/etc/keyd/default.conf</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[ids]</span><br><span class="line"></span><br><span class="line">*</span><br><span class="line"></span><br><span class="line">[main]</span><br><span class="line"></span><br><span class="line">rightshift = rightshift</span><br><span class="line"></span><br><span class="line">a=1</span><br><span class="line">1=a</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动keyd <code>sudo systemctl start keyd</code>, 如果是<code>sudo systemctl enable keyd</code>就会设置成开机启动</p>
+</li>
+<li><p>完事之后关掉 keyd <code>sudo systemctl stop keyd</code></p>
+</li>
+</ol>
+<h1 id="用python脚本实现-rightshift-切换功能"><a href="#用python脚本实现-rightshift-切换功能" class="headerlink" title="用python脚本实现 rightshift 切换功能"></a>用python脚本实现 rightshift 切换功能</h1><ol>
+<li>通过evdev库捕获键盘事件</li>
+<li>更新asd2num_flag</li>
+<li>执行系统命令<code>keyd -e &lt;expression&gt;</code> 来更改映射(因为官方给的reload功能用不了)</li>
+<li>将当前的状态写入到文件中，用来个waybar读取</li>
+<li>发送 signal 给 waybar ，更新 waybar 的显示</li>
+</ol>
+<h1 id="waybar设置"><a href="#waybar设置" class="headerlink" title="waybar设置"></a>waybar设置</h1><p>config 中添加<code>custom/asd2num</code>并设置</p>
+<h1 id="hyprland设置"><a href="#hyprland设置" class="headerlink" title="hyprland设置"></a>hyprland设置</h1><p>设置自动启动python脚本</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>wayland</tag>
+        <tag>hyprland</tag>
+        <tag>asd2num</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>talking head 论文方法汇总</title>
+    <url>/2023/03/15/3dface-paper/talking-head/</url>
+    <content><![CDATA[<h1 id="ours"><a href="#ours" class="headerlink" title="ours"></a>ours</h1><h2 id="more-reasonable-evaluation-index"><a href="#more-reasonable-evaluation-index" class="headerlink" title="more reasonable evaluation index"></a>more reasonable evaluation index</h2><h2 id="loss-function"><a href="#loss-function" class="headerlink" title="loss function"></a>loss function</h2><h1 id="基于NeRF的人脸重建"><a href="#基于NeRF的人脸重建" class="headerlink" title="基于NeRF的人脸重建"></a>基于NeRF的人脸重建</h1><h2 id="MoFaNeRF"><a href="#MoFaNeRF" class="headerlink" title="MoFaNeRF"></a>MoFaNeRF</h2><ul>
+<li>基于 facescape</li>
+</ul>
+<p><img src="/./talking-head/mofanerf.png" alt="keymap"></p>
+<h3 id="loss"><a href="#loss" class="headerlink" title="loss"></a>loss</h3><ul>
+<li>光线颜色损失</li>
+<li>refinenet损失：pix2pixHD ganloss,感知损失</li>
+</ul>
+<h2 id="HeadNeRF"><a href="#HeadNeRF" class="headerlink" title="HeadNeRF"></a>HeadNeRF</h2><h3 id="loss-1"><a href="#loss-1" class="headerlink" title="loss"></a>loss</h3><ul>
+<li>像素级损失</li>
+<li>感知损失(vgg16网络的第i层输出)</li>
+<li>分离损失(3dmm编码保持相似)<br><img src="/./talking-head/headnerf.png" alt="keymap"></li>
+</ul>
+<h1 id="基于NeRF的talking-head"><a href="#基于NeRF的talking-head" class="headerlink" title="基于NeRF的talking head"></a>基于NeRF的talking head</h1><h2 id="AD-NeRF"><a href="#AD-NeRF" class="headerlink" title="AD-NeRF"></a>AD-NeRF</h2><ul>
+<li>头部、衣服分别建立NeRF</li>
+<li>背景叠加</li>
+</ul>
+<h3 id="loss："><a href="#loss：" class="headerlink" title="loss："></a>loss：</h3><ul>
+<li>像素级</li>
+<li>deepspeech损失</li>
+</ul>
+<p><img src="/./talking-head/padnerf.png" alt="keymap"></p>
+<h2 id="DFRF"><a href="#DFRF" class="headerlink" title="DFRF"></a>DFRF</h2><p><img src="/./talking-head/dfrf.png" alt="keymap"></p>
+<h3 id="损失："><a href="#损失：" class="headerlink" title="损失："></a>损失：</h3><ul>
+<li>像素级</li>
+<li>正则化</li>
+</ul>
+<h2 id="DFA-NeRF"><a href="#DFA-NeRF" class="headerlink" title="DFA-NeRF"></a>DFA-NeRF</h2><h1 id="基于其他方法的talking-head"><a href="#基于其他方法的talking-head" class="headerlink" title="基于其他方法的talking head"></a>基于其他方法的talking head</h1>]]></content>
+      <categories>
+        <category>paper</category>
+      </categories>
+      <tags>
+        <tag>paper</tag>
+        <tag>3Dface</tag>
+        <tag>deeplearning</tag>
+        <tag>talkinghead</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>艺术哲学与审美问题</title>
+    <url>/2022/01/30/art/philosopyh-of-art/</url>
+    <content><![CDATA[<h1 id="艺术哲学的旨趣"><a href="#艺术哲学的旨趣" class="headerlink" title="艺术哲学的旨趣"></a>艺术哲学的旨趣</h1><p>当我们阐发艺术作品重大价值的时候，它一定事关人生</p>
+<h2 id="哲学代表一种修养"><a href="#哲学代表一种修养" class="headerlink" title="哲学代表一种修养"></a>哲学代表一种修养</h2><ul>
+<li>哲学并没有使用价值</li>
+<li>每个人的艺术生活差别很大，不同的人有不同的爱好</li>
+<li>在艺术作品的接受中，会引起比较深入的思考，如果深入到一定层面那就是哲学，它代表了一种修养</li>
+</ul>
+<h2 id="艺术是人类最高的精神活动之一（超验）"><a href="#艺术是人类最高的精神活动之一（超验）" class="headerlink" title="艺术是人类最高的精神活动之一（超验）"></a>艺术是人类最高的精神活动之一（超验）</h2><p>黑格尔：绝对精神的三个领域：艺术、宗教、哲学。</p>
+<p>尼采：我们通过科学，从事物中发现的东西，其实是预先塞进去的，塞进去叫艺术和宗教，重新把它领出来，叫科学。</p>
+<ul>
+<li>哲学<ul>
+<li>不离日用常行内，直造先天未画前</li>
+</ul>
+</li>
+<li>艺术<ul>
+<li>言有尽而意无穷</li>
+</ul>
+</li>
+<li>宗教</li>
+</ul>
+<h2 id="什么是创新的源泉"><a href="#什么是创新的源泉" class="headerlink" title="什么是创新的源泉"></a>什么是创新的源泉</h2><ul>
+<li>性灵</li>
+</ul>
+<h2 id="美与真理的关系"><a href="#美与真理的关系" class="headerlink" title="美与真理的关系"></a>美与真理的关系</h2><ol>
+<li>什么是美的？</li>
+<li>美是什么？</li>
+</ol>
+<ul>
+<li>艺术批评的停止，表示这个民族的艺术创作的衰落</li>
+<li>审美标准有不同</li>
+<li>美不是实体，对美的本质探讨，应当转变为对艺术本性的讨论<ul>
+<li>这样一个转折就是艺术哲学取代美学</li>
+</ul>
+</li>
+<li>口味无争辩，趣味有高下</li>
+<li>我们始终在接触作品的过程中，不知不觉地从事着最起码的艺术批评</li>
+</ul>
+<h2 id="艺术判断"><a href="#艺术判断" class="headerlink" title="艺术判断"></a>艺术判断</h2><ul>
+<li>主观的感觉判断具有个体的相对性</li>
+<li>审美存在个体差异</li>
+<li>在艺术和审美的领域，我们都是为他人做判断</li>
+<li>审美判断是感性普遍性质判断，不是对感性特殊型与个别性的判断。<ul>
+<li>花是植物的一部分（理性判断）</li>
+<li>花是香的（感官 “判断”）</li>
+<li>花是美的（审美判断，感性且普遍）</li>
+</ul>
+</li>
+</ul>
+<h2 id="审美判断的普遍性"><a href="#审美判断的普遍性" class="headerlink" title="审美判断的普遍性"></a>审美判断的普遍性</h2><p>如果屈服于权威性，就不必讨论艺术哲学了</p>
+<ul>
+<li>艺术的历史表明了：美的客观性是可疑的</li>
+<li>伟大的艺术作品一定是民族的，也是世界的</li>
+<li>美是<strong>普遍的</strong>，是<strong>客观的</strong></li>
+<li>美是非逻辑的，不建立在概念的基础上</li>
+</ul>
+<h3 id="体和用"><a href="#体和用" class="headerlink" title="体和用"></a>体和用</h3><p>体是根据，才有效用，没有时间上的关系</p>
+<ul>
+<li>人类对外部事物的感知有一种先验共通感（体）</li>
+<li>审美判断（用）</li>
+</ul>
+<h3 id="康德的三大批判主题"><a href="#康德的三大批判主题" class="headerlink" title="康德的三大批判主题"></a>康德的三大批判主题</h3><ul>
+<li>第一大批判的主题：对外部事物的客观可靠的知识（也就是真）如何可能（真）</li>
+<li>第二大批判的主题：人类社会的自由如何可能，善如何可能（善）</li>
+<li>第三大批判的主题（判断力批判，判断力就是审美判断的能力）：美是如何可能的，美的存在事实（美）<ul>
+<li>愉悦因判断而生，判断因愉悦而生</li>
+<li>愉悦 → 判断：因为花的气味感到快适，所以说花是香的（没有时间上的先后）</li>
+<li>判断 → 愉悦：人类的先验共通感放到这个事物上，成功了，所以是美的（没有时间上的先后）</li>
+</ul>
+</li>
+</ul>
+<h2 id="哲学与科学的差别"><a href="#哲学与科学的差别" class="headerlink" title="哲学与科学的差别"></a>哲学与科学的差别</h2><ul>
+<li>科学从事实出发，属于实证主义的精神</li>
+<li></li>
+</ul>
+]]></content>
+      <categories>
+        <category>art</category>
+      </categories>
+      <tags>
+        <tag>art</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>章法</title>
+    <url>/2022/01/31/art/zhangfa/</url>
+    <content><![CDATA[<h1 id="什么是章法"><a href="#什么是章法" class="headerlink" title="什么是章法"></a>什么是章法</h1><ol>
+<li>诗文布局谋篇的法则</li>
+<li>办事的程序和规则</li>
+<li>古历法名词</li>
+</ol>
+<ul>
+<li>在书法中，章法指一件作品中各种视觉因素的组织。</li>
+</ul>
+<h2 id="章法的重要性"><a href="#章法的重要性" class="headerlink" title="章法的重要性"></a>章法的重要性</h2><ul>
+<li>王羲之《笔势论十二章》： 方圆大小各不相犯，倘一点失所，若美人之病一目。一画失节，如壮士之折一肱。</li>
+<li>孙过庭《书谱》： 一点成一字之规，一字乃终篇之准。</li>
+</ul>
+<h2 id="章法的核心规律"><a href="#章法的核心规律" class="headerlink" title="章法的核心规律"></a>章法的核心规律</h2><ul>
+<li>文似看山不喜平，书法同样适用</li>
+<li>单字，逐字，行间的布白关系</li>
+<li>结体在单字，章法是单字以外的整体问题</li>
+<li>有变化，变化中有统一</li>
+<li>文质相称</li>
+<li>自然而然</li>
+<li>平中见奇，远山近树</li>
+<li>变而有度</li>
+<li>为我所用</li>
+</ul>
+<h1 id="章法与单字"><a href="#章法与单字" class="headerlink" title="章法与单字"></a>章法与单字</h1><h1 id="名帖"><a href="#名帖" class="headerlink" title="名帖"></a>名帖</h1><ul>
+<li>杨凝式韭花帖（空灵）</li>
+</ul>
+<p><img src="/zhangfa/image-20220131011506588.png" alt="image-20220131011506588"></p>
+]]></content>
+      <categories>
+        <category>art</category>
+      </categories>
+      <tags>
+        <tag>art</tag>
+        <tag>calligraphy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>magic-swap</title>
+    <url>/2023/02/07/art/magic/swap/</url>
+    <content><![CDATA[<h2 id="NEW"><a href="#NEW" class="headerlink" title="NEW"></a>NEW</h2><p>我前两天发现了一个理论，就是说一副牌54张，总有一张和你特别有缘</p>
+<p>做好标记可以先放到一边了，暂时用不到它</p>
+<p>今天要做的事情找到我的一张本命牌，因为我只练习了两天半，所以功力还不太够，需要你帮我一下。</p>
+<p>首先, 把牌掏出来<code>掏牌+展示背面</code>,背面都蓝色。正面<code>右手扇</code>,可能因为太冷了，他不想把花色漏出来，搓一下就好了<code>color change</code>,<code>左手扇</code></p>
+<blockquote>
+<p>等一小会儿</p>
+</blockquote>
+<p>下面要进入正题了，这个魔术的第一步，是要你帮我选一张牌，作为我本命牌的指示牌。你可能不太理解，诶～不是说找本命牌吗，怎么还要个啥指示牌，这个指示牌是有一些信息的，一会有用。</p>
+<p>下面我这样拨牌，在你想停的地方说停。<br><code>shin lim force</code></p>
+<p>这张就是你选的指示牌，<code>推出去</code>, 你先拿着它，</p>
+<p>我这有一支笔，需要你在这张牌的正面做个标记, 确保这张牌是独一无二的</p>
+<p>好了吗，把这张牌给我，好像还没干<code>吹</code>, 现在这张♠5是这副牌里最尊贵的一张了，先把它压在手机下面<code>top change</code>.</p>
+<p>下面麻烦你像这样，<code>切牌</code> 切一半左右的牌放到旁边。<br>标记一下你切牌的地方。<code>cross force</code></p>
+<p>下面最重要的来了,就是要找到我的本名牌， 刚才你已经选了一张牌，你还记得花色和点数吗<br>…<br>ok, 你在上面做了记号<code>目光+手指</code>，变成了地球上专属于你的一张牌。刚才你又帮我切了一下牌，你切的那张牌，我可以感觉到就是我的本命牌。但感觉可能是不准的，所以要证明一下。本命牌有个特点就是，他的所有者，可以通过特异功能感受到他的位置。<br>…</p>
+<p>先看一下你帮我找的本名牌是啥，凹～原来是 ♥ 2, 然后我也在这张牌上做个记号<code>做记号</code>,然后放在这<br><code>切牌，合在一起</code></p>
+<p><code>翻开本名牌</code></p>
+<p><code>目光+手指</code>这张应该就是我的本名牌, 我给他插到这副牌里，我们只知道那张♥2在大概中间的位置，具体是第几张不知道，</p>
+<p>接下来我要把这副牌放到牌盒里，透过牌盒来感应♥2的位置。<code>插好</code>,oh～不过在这之前你可以先洗一下牌，确保没人知道我签名内张牌的位置.<br>怎么洗都可以<br>洗好了吗<br><code>接过</code></p>
+<p>那装进去<br><code>取牌，放到牌盒，压住牌舌</code></p>
+<blockquote>
+<p>骗小手</p>
+</blockquote>
+<p>ok 现在我要发动特异功能了，把你的左手盖到手机和牌上，右手伸出来。<br>现在，你集中注意力，想着你刚才签名那张牌的花色和点数</p>
+<blockquote>
+<p>等一会<br>好了，我感受到了，他好像就在这,把手反过来<br><code>放上去,抽</code></p>
+</blockquote>
+<h2 id="OLD"><a href="#OLD" class="headerlink" title="OLD"></a>OLD</h2><p>今天要做的事情找到我的一张本命牌，因为我只练习了两天半，所以功力还不太够，需要你帮我一下。</p>
+<p>首先, 把牌掏出来<code>掏牌+展示背面</code>,背面都蓝色。正面<code>右手扇</code>,可能因为太冷了，他不想把花色漏出来，搓一下就好了<code>color change</code>,<code>左手扇</code></p>
+<blockquote>
+<p>等一小会儿</p>
+</blockquote>
+<p>下面要进入正题了，这个魔术的第一步，是要你帮我选一张牌，作为我本命牌的指示牌。你可能不太理解，诶～不是说找本命牌吗，怎么还要个啥指示牌，这个指示牌是有一些信息的，一会有用。</p>
+<p>下面我这样拨牌，在你想停的地方说停。<br><code>shin lim force</code></p>
+<p>这张就是你选的指示牌，<code>推出去</code>, 你先拿着它，</p>
+<p>我这有一支笔，需要你在这张牌的正面做个标记, 确保这张牌是独一无二的</p>
+<p>好了吗，把这张牌给我，好像还没干<code>吹</code>, 现在这张♠5是这副牌里最尊贵的一张了，先把它压在手机下面<code>top change</code>.</p>
+<p>下面麻烦你像这样，<code>切牌</code> 切一半左右的牌放到旁边。<br>标记一下你切牌的地方。<code>cross force</code></p>
+<p>下面最重要的来了,就是要找到我的本名牌， 刚才你已经选了一张牌，你还记得花色和点数吗<br>…<br>ok, 你在上面做了记号<code>目光+手指</code>，变成了地球上专属于你的一张牌。刚才你又帮我切了一下牌，你切的那张牌，我可以感觉到就是我的本命牌。但感觉可能是不准的，所以要证明一下。本命牌有个特点就是，他的所有者，可以通过特异功能感受到他的位置。<br>…</p>
+<p>先看一下你帮我找的本名牌是啥，凹～原来是 ♥ 2, 然后我也在这张牌上做个记号<code>做记号</code>,然后放在这<br><code>切牌，合在一起</code></p>
+<p><code>翻开本名牌</code></p>
+<p><code>目光+手指</code>这张应该就是我的本名牌, 我给他插到这副牌里，我们只知道那张♥2在大概中间的位置，具体是第几张不知道，</p>
+<p>接下来我要把这副牌放到牌盒里，透过牌盒来感应♥2的位置。<code>插好</code>,oh～不过在这之前你可以先洗一下牌，确保没人知道我签名内张牌的位置.<br>怎么洗都可以<br>洗好了吗<br><code>接过</code></p>
+<p>那装进去<br><code>取牌，放到牌盒，压住牌舌</code></p>
+<blockquote>
+<p>骗小手</p>
+</blockquote>
+<p>ok 现在我要发动特异功能了，把你的左手盖到手机和牌上，右手伸出来。<br>现在，你集中注意力，想着你刚才签名那张牌的花色和点数</p>
+<blockquote>
+<p>等一会<br>好了，我感受到了，他好像就在这,把手反过来<br><code>放上去,抽</code></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>art</category>
+      </categories>
+      <tags>
+        <tag>art</tag>
+        <tag>magic</tag>
       </tags>
   </entry>
 </search>
